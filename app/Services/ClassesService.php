@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use RRule\RRule;
+// use RRule\RRule;
 use App\Models\Classes;
 use Square\Models\Money;
 use Square\SquareClient;
@@ -29,11 +29,11 @@ class ClassesService
         $location = $request->location;
         $price = $request->price;
         $datetime = $request->datetime;
-        $square_datetime = new RRule([
-            'FREQ' => 'YEARLY',
-            'DTSTART' => $datetime,
-            'COUNT' => 1
-        ]);
+        // $square_datetime = new RRule([
+        //     'FREQ' => 'YEARLY',
+        //     'DTSTART' => $datetime,
+        //     'COUNT' => 1
+        // ]);
 
 
         if ($category == "samba") {
@@ -81,12 +81,12 @@ class ClassesService
         $class_specs->setPriceMoney($price_money);
         $class_specs->setItemOptionValues($options);
 
-        $square_datetime_converted = new CatalogTimePeriod();
-        $square_datetime_converted->setEvent($square_datetime->rfcString());
+        // $square_datetime_converted = new CatalogTimePeriod();
+        // $square_datetime_converted->setEvent($square_datetime->rfcString());
 
         $new_class_variation = new CatalogObject('ITEM_VARIATION', '#' . $name);
         $new_class_variation->setItemVariationData($class_specs);
-        $new_class_variation->setTimePeriodData($square_datetime_converted);
+        // $new_class_variation->setTimePeriodData($square_datetime_converted);
 
         $variations = [$new_class_variation];
 

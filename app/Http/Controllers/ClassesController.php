@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use RRule\RRule;
+use Inertia\Inertia;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Services\ClassesService;
@@ -19,7 +20,9 @@ class ClassesController extends Controller
             $classes[] = $class;
         }
 
-        return view('classes.index', ['classes' => $classes]);
+        return Inertia::render('Classes', [
+            'classes' => $classes
+        ]);
     }
 
 
@@ -33,6 +36,11 @@ class ClassesController extends Controller
             // Handle the case where the class with the given ID was not found
             return abort(404);
         }
+    }
+
+    public function create()
+    {
+        return Inertia::render('CreateClass');
     }
 
     public function store(Request $request)
