@@ -24,10 +24,8 @@ class StudentController extends Controller
 
     public function createpayment(Request $request)
     {
-        // dd($request->all());
 
         $token = $request->input('token');
-        // dd($token);
         $user = auth()->user();
         $client = app(SquareClient::class);
 
@@ -47,10 +45,8 @@ class StudentController extends Controller
         $api_response = $client->getPaymentsApi()->createPayment($body);
         if ($api_response->isSuccess()) {
             $result = $api_response->getResult();
-            dd($result);
         } else {
             $errors = $api_response->getErrors();
-            dd($errors);
         }
 
         return redirect()->route('dashboard');

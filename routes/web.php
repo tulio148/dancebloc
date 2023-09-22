@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClassesController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -29,6 +30,10 @@ Route::get('/', function () {
 Route::get('/payment', function () {
     return Inertia::render('Payment');
 });
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
+Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 Route::post('/student/payment', [StudentController::class, 'createpayment'])->name('student.payment');
 
 Route::get('/dashboard', function () {
