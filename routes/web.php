@@ -30,7 +30,7 @@ Route::get('/', function () {
 Route::get('/payment', function () {
     return Inertia::render('Payment');
 });
-Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index')->middleware('admin');
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
