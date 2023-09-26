@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -36,6 +37,6 @@ class FacebookController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

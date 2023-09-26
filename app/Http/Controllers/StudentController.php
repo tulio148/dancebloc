@@ -24,7 +24,7 @@ class StudentController extends Controller
 
     public function createpayment(Request $request)
     {
-
+        dd($request->all());
         $token = $request->input('token');
         $user = auth()->user();
         $client = app(SquareClient::class);
