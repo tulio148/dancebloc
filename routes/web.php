@@ -27,11 +27,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/payment', function () {
+Route::get('/classes/payment', function () {
     return Inertia::render('Payment');
-});
-Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index')->middleware('admin');
+})->name('payment');
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
+Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
 Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
 Route::post('/student/payment', [StudentController::class, 'createpayment'])->name('student.payment');
@@ -40,10 +42,10 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__ . '/auth.php';

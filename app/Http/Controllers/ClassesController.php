@@ -20,22 +20,22 @@ class ClassesController extends Controller
             $classes[] = $class;
         }
 
-        return Inertia::render('Classes', [
+        return Inertia::render('Classes/Index', [
             'classes' => $classes
         ]);
     }
 
 
-    public function show(Classes $class)
+    public function show(string $id)
     {
-
-        if ($class) {
-            // Assuming you have a 'show.blade.php' view for displaying class details
-            return view('classes.show', ['class' => $class]);
-        } else {
-            // Handle the case where the class with the given ID was not found
-            return abort(404);
-        }
+        $class = Classes::findOrFail($id);
+        return Inertia::render('Classes/Show', [
+            'class_' => $class->only(
+                'id',
+                'name',
+                'description'
+            )
+        ]);
     }
 
     public function create()

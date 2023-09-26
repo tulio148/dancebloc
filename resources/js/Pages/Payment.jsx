@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { router } from "@inertiajs/react";
+import Modal from "@/Components/Modal";
 import { PaymentForm, CreditCard } from "react-square-web-payments-sdk";
 
 export default function Payment({ auth }) {
@@ -20,15 +21,13 @@ export default function Payment({ auth }) {
     };
 
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Payment
-                </h2>
-            }
-        >
-            <div className="grid justify-center items-center h-screen">
+        <Modal show={true} onClose={() => {}}>
+            {/* <div className="grid justify-center items-center h-screen"> */}
+            <h1 className="text-3xl font-bold">
+                Please enter your card details
+            </h1>
+            {/* </div> */}
+            <div className="grid justify-center items-center ">
                 <PaymentForm
                     applicationId="sandbox-sq0idb-GNnar5fUY7GP5eZtj1sc3g"
                     cardTokenizeResponseReceived={handlePaymentResponse} // Use the handler function
@@ -37,6 +36,6 @@ export default function Payment({ auth }) {
                     <CreditCard />
                 </PaymentForm>
             </div>
-        </AuthenticatedLayout>
+        </Modal>
     );
 }
