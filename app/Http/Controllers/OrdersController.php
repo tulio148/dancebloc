@@ -22,6 +22,7 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
-        app(OrdersService::class)->store();
+        app(OrdersService::class)->store($request);
+        return redirect()->route('dashboard');
     }
 }

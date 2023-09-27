@@ -12,11 +12,12 @@ use Square\Models\CreateOrderRequest;
 
 class OrdersService
 {
-    public function store()
+    public function store($request)
     {
-        // $items = $request->items;
-
-        $items = ['2Z7NZ55KS2XTORG2SXHIRWW2'];
+        $id = $request->id;
+        $name = $request->name;
+        $items = [$id];
+        $items_names = [$name];
         $orderLineItems = [];
 
         foreach ($items as $item) {
@@ -51,12 +52,13 @@ class OrdersService
 
         if ($api_response->isSuccess()) {
             $total_money = $api_response->getResult()->getOrder()->getTotalMoney()->getAmount() / 100;
-            $id = $api_response->getResult()->getOrder()->getId();
+            $order_id = $api_response->getResult()->getOrder()->getId();
             Orders::create(
                 [
-                    'id' => $id,
+                    'id' => $order_id,
                     'student_id' => $student_id,
                     'items' => json_encode($items),
+                    'items_names' => json_encode($items_names),
                     'order_total' => $total_money
                 ]
             );

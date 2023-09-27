@@ -30,6 +30,7 @@ class Orders extends Model
         'id',
         'student_id',
         'items',
+        'items_names',
         'order_total',
     ];
 
