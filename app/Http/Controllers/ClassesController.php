@@ -38,6 +38,18 @@ class ClassesController extends Controller
         ]);
     }
 
+    public function enroll(string $id)
+    {
+        $class = Classes::findOrFail($id);
+        return Inertia::render('Classes/Enroll', [
+            'class_' => $class->only(
+                'id',
+                'name',
+                'description'
+            )
+        ]);
+    }
+
     public function create()
     {
         return Inertia::render('CreateClass');
