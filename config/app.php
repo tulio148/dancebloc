@@ -172,6 +172,7 @@ return [
         App\Providers\StudentServiceProvider::class,
         App\Providers\ClassesServiceProvider::class,
         App\Providers\OrdersServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class
     ])->toArray(),
 
