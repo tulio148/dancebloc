@@ -32,6 +32,7 @@ class Orders extends Model
         'items',
         'items_names',
         'order_total',
+        'payment_id'
     ];
 
 
