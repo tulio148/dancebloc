@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\PaymentController;
@@ -45,6 +46,9 @@ Route::post('/order/store', [OrdersController::class, 'store'])->name('order.sto
 Route::post('/payment', [PaymentController::class, 'store'])->name('payment');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'verified', 'admin'])->name('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

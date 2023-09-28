@@ -20,7 +20,7 @@ class ClassesController extends Controller
             $classes[] = $class;
         }
 
-        return Inertia::render('Classes/Index', [
+        return Inertia::render('Classes/AllClasses', [
             'classes' => $classes
         ]);
     }

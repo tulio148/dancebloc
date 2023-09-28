@@ -14,7 +14,7 @@ class DashboardController extends Controller
         $orders = $user->student ?  $user->student->orders : [];
         $classes = $user->student ?  $user->student->classes : [];
 
-        return Inertia::render('Dashboard/Index', [
+        return Inertia::render('Dashboard/Dashboard', [
             'orders' => $orders,
             'classes' => $classes
         ]);
