@@ -30,8 +30,7 @@ class OrdersService
         $client = app(SquareClient::class);
         $user = auth()->user();
         if (!$user->student_id) {
-            $student = app(StudentService::class);
-            $student->store($user);
+            app(StudentService::class)->store($user);
         }
         $student_id = auth()->user()->student_id;
         $idempotency_key = uniqid();

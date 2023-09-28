@@ -9,7 +9,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\DashboardController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +25,6 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
 });
 
@@ -42,12 +39,12 @@ Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.s
 Route::get('/classes/{id}/enroll', [ClassesController::class, 'enroll'])->name('classes.enroll')->middleware('auth');
 
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
+
 Route::post('/order/store', [OrdersController::class, 'store'])->name('order.store');
 
 Route::post('/payment', [PaymentController::class, 'store'])->name('payment');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
-// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

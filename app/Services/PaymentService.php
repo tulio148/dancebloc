@@ -2,41 +2,54 @@
 
 namespace App\Services;
 
-use Illuminate\Http\Request;
-use Square\Models\CreatePaymentRequest;
+use App\Models\Orders;
+use App\Models\Payments;
 use Square\Models\Money;
 use Square\SquareClient;
+use Illuminate\Http\Request;
+use Square\Models\CreatePaymentRequest;
 
 class PaymentService
 {
-    public function payment(Request $request)
+    public function pay(Request $request)
     {
         $token = $request->input('token');
-        $id = $request->input('id');
-        $amount = $request->input('amount') * 100;
+        $order_id = $request->input('id');
+        $amount = $request->input('amount');
         $user = auth()->user();
+        $student = $user->student;
         $client = app(SquareClient::class);
 
         $amount_money = new Money();
-        $amount_money->setAmount($amount);
+        $amount_money->setAmount($amount * 100);
         $amount_money->setCurrency('AUD');
         $idempotency_key = uniqid();
 
         $body = new CreatePaymentRequest($token, $idempotency_key);
         $body->setAmountMoney($amount_money);
         $body->setAutocomplete(true);
-        $body->setCustomerId($user->student_id);
-        $body->setOrderId($id);
+        $body->setCustomerId($student->id);
+        $body->setOrderId($order_id);
         $body->setLocationId(env('SQUARE_LOCATION_ID'));
         $body->setAcceptPartialAuthorization(false);
 
         $api_response = $client->getPaymentsApi()->createPayment($body);
         if ($api_response->isSuccess()) {
-            $result = $api_response->getResult();
-            return $result; // Payment was successful
+            $payment_id = $api_response->getResult()->getPayment()->getId();
+            Orders::where('id', $order_id)->update(['state' => 'COMPLETED', 'payment_id' => $payment_id]);
+            Payments::create(
+                [
+                    'id' => $payment_id,
+                    'order_id' => $order_id,
+                    'student_id' => $student->id,
+                    'total_money' => $amount
+                ]
+            );
+            return true;
         } else {
             $errors = $api_response->getErrors();
-            return ['error' => $errors]; // Payment failed
+            dd($errors);
+            return ['error' => $errors];
         }
     }
 }

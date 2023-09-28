@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
-use Square\SquareClient;
+use App\Models\Orders;
 use App\Models\Student;
+use Square\SquareClient;
+use Illuminate\Http\Request;
 use Square\Models\CreateCustomerRequest;
 
 class StudentService
@@ -47,6 +49,22 @@ class StudentService
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
+        }
+    }
+
+    public function addClass(Request $request)
+    {
+        $order_id = $request->input('id');
+        $student = auth()->user()->student;
+        $order = Orders::find($order_id);
+        if ($order) {
+            $itemsNames = json_decode($order->items, true);
+        };
+        foreach ($itemsNames as $classId) {
+            $student->classes()->attach($classId, [
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }

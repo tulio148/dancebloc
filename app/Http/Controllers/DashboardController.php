@@ -12,9 +12,11 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $orders = $user->student ?  $user->student->orders : [];
+        $classes = $user->student ?  $user->student->classes : [];
 
         return Inertia::render('Dashboard/Index', [
-            'orders' => $orders
+            'orders' => $orders,
+            'classes' => $classes
         ]);
     }
 }
