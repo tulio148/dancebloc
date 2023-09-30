@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+.loginBtn {
+    @apply flex justify-between items-center rounded-md p-3;
+    background-color: #fff;
+    color: #000;
+    font-size: 16px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+  }
+  
+  .loginBtn:focus {
+    outline: none;
+  }
+  
+  .loginBtn:active {
+    box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Facebook */
+  .loginBtn--facebook {
+    @apply bg-blue-600 text-white;
+  }
+
+  .loginBtn--facebook:hover,
+  .loginBtn--facebook:focus {
+    @apply bg-blue-700;
+  }
+}
