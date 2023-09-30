@@ -29,15 +29,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/classes/payment', function () {
-    return Inertia::render('Payment');
-})->name('payment');
-
-Route::get('/classes', [ClassesController::class, 'index'])->name('classes.index');
+Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
-Route::get('/classes/{id}', [ClassesController::class, 'show'])->name('classes.show');
-Route::get('/classes/{id}/enroll', [ClassesController::class, 'enroll'])->name('classes.enroll')->middleware('auth');
+Route::get('/classes/{class}', [ClassesController::class, 'show'])->name('classes.show');
+Route::get('/classes/{class}/enroll', [ClassesController::class, 'enroll'])->name('classes.enroll')->middleware('auth');
 
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
 
