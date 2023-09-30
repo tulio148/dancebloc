@@ -1,11 +1,19 @@
 import { Head } from "@inertiajs/react";
 import Guest from "@/Layouts/GuestLayout";
 import { Link } from "@inertiajs/react";
+import AuthenticatedLayout from "@/Layouts/Layout";
 
-export default function Classes({ classes }) {
+export default function Classes({ auth, classes }) {
     console.log(classes);
     return (
-        <Guest>
+        <AuthenticatedLayout
+            user={auth.user}
+            header={
+                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                    Dashboard
+                </h2>
+            }
+        >
             <Head title="Classes" />
             <div className="border w-3/4 h-3/4 grid grid-cols-2 gap-4 p-8">
                 {classes.map((item) => (
@@ -20,6 +28,6 @@ export default function Classes({ classes }) {
                     </Link>
                 ))}
             </div>
-        </Guest>
+        </AuthenticatedLayout>
     );
 }

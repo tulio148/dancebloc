@@ -1,10 +1,10 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
 import Payment from "./Partials/Payment";
 
 export default function Dashboard({ auth, orders, classes }) {
     return (
-        <AuthenticatedLayout
+        <Layout
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
@@ -51,6 +51,6 @@ export default function Dashboard({ auth, orders, classes }) {
                     <p>{item.description}</p>
                 </div>
             ))}
-        </AuthenticatedLayout>
+        </Layout>
     );
 }
