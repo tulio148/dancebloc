@@ -24,6 +24,11 @@ class Classes extends Model
      */
     protected $keyType = 'string';
 
+    public function getRouteKeyName(): string
+    {
+        return 'name';
+    }
+
     protected $fillable = [
         'id', 'name', "description", "style", 'level', 'instructor', 'enrollment_mode', 'datetime', 'location', 'price'
     ];

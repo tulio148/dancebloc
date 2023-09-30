@@ -20,15 +20,14 @@ class ClassesController extends Controller
             $classes[] = $class;
         }
 
-        return Inertia::render('Classes/AllClasses', [
+        return Inertia::render('Classes/Classes', [
             'classes' => $classes
         ]);
     }
 
 
-    public function show(string $id)
+    public function show(Classes $class)
     {
-        $class = Classes::findOrFail($id);
         return Inertia::render('Classes/Show', [
             'class_' => $class->only(
                 'id',
@@ -38,9 +37,8 @@ class ClassesController extends Controller
         ]);
     }
 
-    public function enroll(string $id)
+    public function enroll(Classes $class)
     {
-        $class = Classes::findOrFail($id);
         return Inertia::render('Classes/Enroll', [
             'class_' => $class->only(
                 'id',
