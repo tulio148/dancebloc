@@ -28,7 +28,7 @@ export default function Register() {
     };
 
     return (
-        <Layout>
+        <>
             <Head title="Register" />
             <div className="w-screen h-screen flex justify-center items-center">
                 <div className=" sm:border border-gray-300 sm:shadow-md p-10 sm:p-8 sm:w-3/4 w-full max-w-xl">
@@ -179,6 +179,6 @@ export default function Register() {
                     </div>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 }
