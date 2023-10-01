@@ -1,15 +1,17 @@
 import { router } from "@inertiajs/react";
 import Modal from "@/Components/Modal";
 import { useState } from "react";
-import { PaymentForm, CreditCard } from "react-square-web-payments-sdk";
+import {
+    PaymentForm,
+    CreditCard,
+    GooglePay,
+} from "react-square-web-payments-sdk";
 
 export default function Payment({ id, amount }) {
-    // Function to handle cardTokenizeResponseReceived
-    const handlePaymentResponse = (token, verifiedBuyer) => {
-        // console.log("token:", token);
-        // console.log("verifiedBuyer:", verifiedBuyer);
+    const appId = import.meta.env.VITE_SQUARE_APPLICATION_ID;
+    const locationId = import.meta.env.VITE_SQUARE_LOCATION_ID;
 
-        // Check if the token status is 200
+    const handlePaymentResponse = (token, verifiedBuyer) => {
         if (token.status === "OK") {
             console.log(token.token);
             router.post("/payment", {
@@ -23,7 +25,6 @@ export default function Payment({ id, amount }) {
     };
 
     const [isOpen, setIsOpen] = useState(false);
-
     const closeModal = () => {
         setIsOpen(false);
     };
@@ -32,17 +33,49 @@ export default function Payment({ id, amount }) {
         <>
             <button onClick={() => setIsOpen(true)}>pay </button>
             <Modal show={isOpen} onClose={closeModal}>
-                <h1 className="text-3xl font-bold">
-                    Please enter your card details
-                </h1>
-                {/* </div> */}
-                <div className="grid justify-center items-center ">
+                <div className="p-6 border h-full">
                     <PaymentForm
-                        applicationId="sandbox-sq0idb-GNnar5fUY7GP5eZtj1sc3g"
-                        cardTokenizeResponseReceived={handlePaymentResponse} // Use the handler function
-                        locationId="LQ8X13Y7ZQ55H"
+                        formProps={{
+                            className:
+                                "flex flex-col justify-center gap-10 my-auto h-full",
+                        }}
+                        applicationId={appId}
+                        cardTokenizeResponseReceived={handlePaymentResponse}
+                        locationId={locationId}
+                        createPaymentRequest={() => ({
+                            countryCode: "AU",
+                            currencyCode: "AUD",
+                            // pending is only required if it's true.
+                            total: {
+                                amount: amount,
+                                label: "Total",
+                            },
+                        })}
                     >
-                        <CreditCard />
+                        <GooglePay buttonColor="white" />
+
+                        <CreditCard
+                            buttonProps={{
+                                css: {
+                                    backgroundColor: "#e75480",
+                                    fontSize: "20px",
+                                    color: "white",
+                                    "&:hover": {
+                                        backgroundColor: "#FFC0CB",
+                                    },
+                                    // marginTop: "-12px",
+                                    fontWeight: "normal",
+                                },
+                            }}
+                            style={{
+                                input: {
+                                    fontSize: "14px",
+                                },
+                                "input::placeholder": {
+                                    color: "#771520",
+                                },
+                            }}
+                        />
                     </PaymentForm>
                 </div>
             </Modal>

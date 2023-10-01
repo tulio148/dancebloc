@@ -1,6 +1,8 @@
 <?php
 
 return [
-    'accessToken' => env('SQUARE_ACCESS_TOKEN'),
-    'environment' => env('SQUARE_ENVIRONMENT')
+    'accessToken' => env('VITE_SQUARE_ACCESS_TOKEN'),
+    'environment' => env('VITE_SQUARE_ENVIRONMENT'),
+    'appId' => env('VITE_SQUARE_APP_ID'),
+    'locationId' => env('VITE_SQUARE_LOCATION_ID')
 ];
