@@ -7,7 +7,7 @@ export default function Admin({ auth, students, classes }) {
             user={auth.user}
             header={
                 <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Admin
+                    Admin: {auth.user.name}
                 </h2>
             }
         >
