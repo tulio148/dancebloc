@@ -23,7 +23,7 @@ export default function Modal({
     }[maxWidth];
 
     return (
-        <Transition appear show={show} as={Fragment} leave="duration-200">
+        <Transition show={show} as={Fragment} leave="duration-200">
             <Dialog
                 as="div"
                 id="modal"
