@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
@@ -174,8 +174,8 @@ export default function ({ user, header, children }) {
                     leaveFrom="transform translate-y-0"
                     leaveTo="transform translate-y-[0]"
                 >
-                    {(ref) => (
-                        <div ref={ref} className="sm:hidden bg-pink-300">
+                    {() => (
+                        <div className="sm:hidden bg-pink-300">
                             <div className="pt-2 pb-3 space-y-1">
                                 <ResponsiveNavLink
                                     href={route("classes")}
@@ -194,7 +194,7 @@ export default function ({ user, header, children }) {
                                             Log in
                                         </ResponsiveNavLink>
                                     </div>
-                                    <div className="pb-1  border-gray-200">
+                                    <div className="pb-1 border-gray-200">
                                         <ResponsiveNavLink
                                             href={route("register")}
                                             active={route().current("register")}
@@ -263,18 +263,7 @@ export default function ({ user, header, children }) {
                 </Transition>
             </nav>
 
-            <main className="mt-16">
-                <div className="bg-gray-100">
-                    {header && (
-                        <header className="bg-white shadow ">
-                            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                                {header}
-                            </div>
-                        </header>
-                    )}
-                </div>
-                {children}
-            </main>
+            <main className="mt-16">{children}</main>
         </div>
     );
 }

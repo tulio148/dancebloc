@@ -1,19 +1,34 @@
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
 import Payment from "./Partials/Payment";
+import TabNav from "@/Components/TabNav";
+import { useState } from "react";
 
 export default function Dashboard({ auth, orders, classes }) {
-    return (
-        <Layout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Dashboard
-                </h2>
-            }
-        >
-            <Head title="Dashboard" />
+    const tabs = [
+        {
+            label: "My Classes",
+        },
+        {
+            label: "Another one",
+        },
+        {
+            label: "Orders",
+        },
+    ];
 
+    const [activeTab, setActiveTab] = useState(-1);
+    const handleTabChange = (index) => {
+        setActiveTab(index);
+    };
+    return (
+        <Layout user={auth.user}>
+            <Head title="Dashboard" />
+            <TabNav
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={handleTabChange}
+            />
             <div>
                 <h2>Open Orders</h2>
                 {orders.map((item) =>

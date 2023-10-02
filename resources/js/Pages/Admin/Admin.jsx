@@ -1,28 +1,36 @@
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
-import AdminTabNav from "./AdminTabNav";
+import TabNav from "@/Components/TabNav";
+import { useState } from "react";
+import Classes from "@/Pages/Admin/Classes";
 
 export default function Admin({ auth, students, classes }) {
+    const tabs = [
+        {
+            label: "Classes",
+        },
+        {
+            label: "Students",
+        },
+        {
+            label: "Orders",
+        },
+    ];
+
+    const [activeTab, setActiveTab] = useState(-1);
+    const handleTabChange = (index) => {
+        setActiveTab(index);
+    };
     return (
         <Layout user={auth.user}>
             <Head title="Admin" />
-            <AdminTabNav />
+            <TabNav
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={handleTabChange}
+            />
 
-            <h2>Classes</h2>
-            {classes.map((item) => (
-                <div key={item.id} className="col-span-2 sm:col-span-1 border">
-                    <p>{item.name}</p>
-                    <p>{item.description}</p>
-                </div>
-            ))}
-
-            <h2>Students</h2>
-            {students.map((item) => (
-                <div key={item.id} className="col-span-2 sm:col-span-1 border">
-                    <p>{item.name}</p>
-                    <p>{item.email}</p>
-                </div>
-            ))}
+            {activeTab === 0 && <Classes classes={classes} />}
         </Layout>
     );
 }
