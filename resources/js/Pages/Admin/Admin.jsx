@@ -1,17 +1,12 @@
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
+import AdminTabNav from "./AdminTabNav";
 
 export default function Admin({ auth, students, classes }) {
     return (
-        <Layout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Admin: {auth.user.name}
-                </h2>
-            }
-        >
+        <Layout user={auth.user}>
             <Head title="Admin" />
+            <AdminTabNav />
 
             <h2>Classes</h2>
             {classes.map((item) => (
@@ -20,6 +15,7 @@ export default function Admin({ auth, students, classes }) {
                     <p>{item.description}</p>
                 </div>
             ))}
+
             <h2>Students</h2>
             {students.map((item) => (
                 <div key={item.id} className="col-span-2 sm:col-span-1 border">
