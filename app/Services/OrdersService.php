@@ -38,7 +38,7 @@ class OrdersService
 
 
         $line_items = $orderLineItems;
-        $order = new Order(env('SQUARE_LOCATION_ID'));
+        $order = new Order(env('VITE_SQUARE_LOCATION_ID'));
         $order->setSource($source);
         $order->setCustomerId($student_id);
         $order->setLineItems($line_items);

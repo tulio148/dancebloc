@@ -56,6 +56,6 @@ class ClassesController extends Controller
     public function store(Request $request)
     {
         app(ClassesService::class)->store($request);
-        return redirect()->route('dashboard')->with('message', 'Class created successfully')->with('status', 200);
+        return redirect()->route('admin')->with('message', 'Class created successfully')->with('status', 200);
     }
 }
