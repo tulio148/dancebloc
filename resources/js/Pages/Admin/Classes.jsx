@@ -1,19 +1,26 @@
+import { useState } from "react";
+import ClassCard from "@/Components/ClassCard";
 import CreateClass from "@/Components/CreateClassForm";
+import Modal from "@/Components/Modal";
 export default function Classes({ classes }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const handle = () => {
+        setIsOpen(!isOpen);
+    };
+    const closeModal = () => {
+        setIsOpen(false);
+    };
     return (
         <>
-            <div>
+            <div className="flex flex-col items-center gap-6 max-w-7xl mx-auto px-4 ">
                 {classes.map((item) => (
-                    <div
-                        key={item.id}
-                        className="col-span-2 sm:col-span-1 border"
-                    >
-                        <p>{item.name}</p>
-                        <p>{item.description}</p>
-                    </div>
+                    <ClassCard key={item.id} class_={item} />
                 ))}
             </div>
-            <CreateClass />
+            <button onClick={handle}>Create Class</button>
+            <Modal show={isOpen} onClose={closeModal}>
+                <CreateClass />
+            </Modal>
         </>
     );
 }
