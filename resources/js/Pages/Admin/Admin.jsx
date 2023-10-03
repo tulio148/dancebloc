@@ -29,8 +29,9 @@ export default function Admin({ auth, students, classes }) {
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
             />
-
-            {activeTab === 0 && <Classes classes={classes} />}
+            <div className="pt-24 ">
+                {activeTab === 0 && <Classes classes={classes} />}
+            </div>
         </Layout>
     );
 }

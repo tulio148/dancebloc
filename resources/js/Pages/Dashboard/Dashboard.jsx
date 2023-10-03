@@ -33,11 +33,7 @@ export default function Dashboard({ auth, orders, classes }) {
                 <h2>Open Orders</h2>
                 {orders.map((item) =>
                     item.state === "OPEN" ? (
-                        <div
-                            key={item.id}
-                            className="col-span-2 sm:col-span-1 border"
-                        >
-                            <p>{JSON.parse(item.items_names)}</p>
+                        <div key={item.id} className=" border ">
                             <p>{item.order_total}</p>
                             <Payment id={item.id} amount={item.order_total} />
                         </div>

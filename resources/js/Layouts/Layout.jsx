@@ -11,9 +11,9 @@ export default function ({ user, header, children }) {
         useState(false);
     return (
         <div>
-            <nav className="bg-white border-b border-gray-100 w-full fixed  top-0 left-0 ">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between h-16">
+            <nav className="w-full fixed top-0 left-0 ">
+                <div className=" px-4 sm:px-6 lg:px-8 bg-db-pink z-50">
+                    <div className="max-w-7xl mx-auto flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
@@ -129,11 +129,11 @@ export default function ({ user, header, children }) {
                                         (previousState) => !previousState
                                     )
                                 }
-                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500  focus:outline-none  focus:text-gray-500 transition duration-150 ease-in-out"
                             >
                                 <svg
-                                    className="h-6 w-6"
-                                    stroke="currentColor"
+                                    className="h-6 w-6 "
+                                    stroke="white"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                 >
@@ -167,15 +167,15 @@ export default function ({ user, header, children }) {
 
                 <Transition
                     show={showingNavigationDropdown}
-                    enter="transition-transform duration-200"
-                    enterFrom="transform translate-y-[-100%]"
-                    enterTo="transform translate-y-0"
-                    leave="transition-transform duration-0"
-                    leaveFrom="transform translate-y-0"
-                    leaveTo="transform translate-y-[0]"
+                    enter="transition-transform duration-700"
+                    enterFrom="transform translate-x-[100%]"
+                    enterTo="transform translate-x-0"
+                    leave="transition-transform duration-200"
+                    leaveFrom="transform translate-x-0"
+                    leaveTo="transform translate-x-[100%]"
                 >
                     {() => (
-                        <div className="sm:hidden bg-pink-300">
+                        <div className="sm:hidden bg-db-light-pink z-10">
                             <div className="pt-2 pb-3 space-y-1">
                                 <ResponsiveNavLink
                                     href={route("classes")}
