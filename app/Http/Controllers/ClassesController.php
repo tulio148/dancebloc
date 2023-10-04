@@ -48,14 +48,23 @@ class ClassesController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        return Inertia::render('CreateClass');
-    }
 
     public function store(Request $request)
     {
-        app(ClassesService::class)->store($request);
+        app(ClassesService::class)->upsert($request);
         return redirect()->route('admin')->with('message', 'Class created successfully')->with('status', 200);
+    }
+
+
+    public function update(Request $request)
+    {
+        app(ClassesService::class)->upsert($request);
+        return redirect()->route('admin')->with('message', 'Class updated successfully')->with('status', 200);
+    }
+
+    public function destroy(Classes $class)
+    {
+        app(ClassesService::class)->destroy($class);
+        return redirect()->route('admin')->with('message', 'Class deleted successfully')->with('status', 200);
     }
 }

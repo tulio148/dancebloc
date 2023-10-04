@@ -33,6 +33,7 @@ Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
 Route::get('/classes/{class}', [ClassesController::class, 'show'])->name('classes.show');
+Route::delete('/classes/{class}', [ClassesController::class, 'destroy'])->name('classes.destroy');
 Route::get('/classes/{class}/enroll', [ClassesController::class, 'enroll'])->name('classes.enroll')->middleware('auth');
 
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
