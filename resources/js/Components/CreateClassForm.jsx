@@ -5,17 +5,17 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 
-export default function CreateClass() {
+export default function CreateClass({ initialData }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        title: "",
-        datetime: "",
-        description: "",
-        style: "",
-        level: "",
-        instructor: "",
-        enrollment_mode: "",
-        location: "",
-        price: "",
+        title: initialData?.name || "",
+        datetime: initialData?.datetime || "",
+        description: initialData?.description || "",
+        style: initialData?.style || "",
+        level: initialData?.level || "",
+        instructor: initialData?.instructor || "",
+        enrollment_mode: initialData?.enrollment_mode || "",
+        location: initialData?.location || "",
+        price: initialData?.price || "",
     });
 
     const submit = (e) => {

@@ -18,7 +18,7 @@ use Square\Models\UpsertCatalogObjectRequest;
 class ClassesService
 {
 
-    public function store($request)
+    public function upsert($request)
     {
         $name = $request->title;
         $description = $request->description;
@@ -120,18 +120,37 @@ class ClassesService
             $id = $result->getCatalogObject()->getItemData()->getVariations()[0]->getId();
 
 
-            Classes::create([
-                'id' => $id,
-                'name' => $name,
-                'description' => $description,
-                'style' => $category,
-                'level' => $level,
-                'instructor' => $instructor,
-                'enrollment_mode' => $enrollment_mode,
-                'location' => $location,
-                'price' => $price,
-                'datetime' => $datetime
-            ]);
+            Classes::updateOrCreate(
+                ['name' => $name],
+                [
+                    'id' => $id,
+                    'name' => $name,
+                    'description' => $description,
+                    'style' => $category,
+                    'level' => $level,
+                    'instructor' => $instructor,
+                    'enrollment_mode' => $enrollment_mode,
+                    'location' => $location,
+                    'price' => $price,
+                    'datetime' => $datetime
+                ]
+            );
+        } else {
+            $errors = $api_response->getErrors();
+            dd($errors);
+        }
+    }
+
+
+
+    public function destroy($class)
+    {
+        $client = app(SquareClient::class);
+        $api_response = $client->getCatalogApi()->deleteCatalogObject($class->id);
+
+        if ($api_response->isSuccess()) {
+            $result = $api_response->getResult();
+            $class->delete();
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
