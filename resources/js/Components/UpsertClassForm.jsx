@@ -5,10 +5,19 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 
-export default function CreateClass({ initialData }) {
+export default function UpsertClass({ initialData }) {
+    const inputDatetime = initialData?.datetime;
+    const parsedDatetime = new Date(inputDatetime);
+    const year = parsedDatetime.getFullYear();
+    const month = (parsedDatetime.getMonth() + 1).toString().padStart(2, "0");
+    const day = parsedDatetime.getDate().toString().padStart(2, "0");
+    const hour = parsedDatetime.getHours().toString().padStart(2, "0");
+    const minute = parsedDatetime.getMinutes().toString().padStart(2, "0");
+    const formattedDatetime = `${year}-${month}-${day}T${hour}:${minute}`;
+
     const { data, setData, post, processing, errors, reset } = useForm({
-        title: initialData?.name || "",
-        datetime: initialData?.datetime || "",
+        name: initialData?.name || "",
+        datetime: formattedDatetime || "",
         description: initialData?.description || "",
         style: initialData?.style || "",
         level: initialData?.level || "",
@@ -27,18 +36,18 @@ export default function CreateClass({ initialData }) {
     return (
         <form onSubmit={submit}>
             <div className="flex flex-col gap-2 p-3">
-                <InputLabel htmlFor="title" value="Title" />
+                <InputLabel htmlFor="name" value="Title" />
                 <TextInput
-                    id="title"
-                    name="title"
-                    value={data.title}
+                    id="name"
+                    name="name"
+                    value={data.name}
                     className="mt-1 block w-full"
-                    autoComplete="title"
+                    autoComplete="name"
                     isFocused={true}
-                    onChange={(e) => setData("title", e.target.value)}
+                    onChange={(e) => setData("name", e.target.value)}
                     required
                 />
-                <InputError message={errors.title} className="mt-2" />
+                <InputError message={errors.name} className="mt-2" />
                 <InputLabel htmlFor="datetime" value="datetime" />
                 <TextInput
                     id="datetime"
