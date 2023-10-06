@@ -18,7 +18,7 @@ class CreateClassesTable extends Migration
             $table->string('enrollment_mode');
             $table->dateTime('datetime')->nullable();
             $table->string('location')->nullable();
-            $table->decimal('price', 4, 2);
+            $table->decimal('price', 8, 2);
             $table->timestamps();
         });
     }

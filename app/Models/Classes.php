@@ -30,7 +30,7 @@ class Classes extends Model
     }
 
     protected $fillable = [
-        'id', 'name', "description", "style", 'level', 'instructor', 'enrollment_mode', 'datetime', 'location', 'price'
+        'id', 'name', "description", "style", 'level', 'instructor', 'enrollment_mode', 'datetime', 'location', 'price', "version", "stupid_square_name"
     ];
 
     protected $casts = [

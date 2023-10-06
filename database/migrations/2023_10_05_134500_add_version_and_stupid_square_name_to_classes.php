@@ -9,8 +9,8 @@ class AddVersionAndStupidSquareNameToClasses extends Migration
     public function up()
     {
         Schema::table('classes', function (Blueprint $table) {
-            $table->bigInteger('version');
-            $table->string('stupid_square_name');
+            $table->bigInteger('version')->after('price');
+            $table->string('stupid_square_name')->after('version');
         });
     }
 
