@@ -37,6 +37,7 @@ Route::delete('/classes/{class}', [ClassesController::class, 'destroy'])->name('
 Route::get('/classes/{class}/enroll', [ClassesController::class, 'enroll'])->name('classes.enroll')->middleware('auth');
 
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
+Route::post('/class/update', [ClassesController::class, 'update'])->name('class.update');
 
 Route::post('/order/store', [OrdersController::class, 'store'])->name('order.store');
 

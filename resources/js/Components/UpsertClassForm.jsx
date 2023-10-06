@@ -6,18 +6,12 @@ import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 
 export default function UpsertClass({ initialData }) {
-    const inputDatetime = initialData?.datetime;
-    const parsedDatetime = new Date(inputDatetime);
-    const year = parsedDatetime.getFullYear();
-    const month = (parsedDatetime.getMonth() + 1).toString().padStart(2, "0");
-    const day = parsedDatetime.getDate().toString().padStart(2, "0");
-    const hour = parsedDatetime.getHours().toString().padStart(2, "0");
-    const minute = parsedDatetime.getMinutes().toString().padStart(2, "0");
-    const formattedDatetime = `${year}-${month}-${day}T${hour}:${minute}`;
+    const formattedDatetime = formatDatetime(initialData?.datetime);
 
     const { data, setData, post, processing, errors, reset } = useForm({
+        id: initialData?.id || "",
         name: initialData?.name || "",
-        datetime: formattedDatetime || "",
+        datetime: formattedDatetime ? formattedDatetime : "",
         description: initialData?.description || "",
         style: initialData?.style || "",
         level: initialData?.level || "",
@@ -25,12 +19,14 @@ export default function UpsertClass({ initialData }) {
         enrollment_mode: initialData?.enrollment_mode || "",
         location: initialData?.location || "",
         price: initialData?.price || "",
+        version: initialData?.version || "",
+        stupid_square_name: initialData?.stupid_square_name || "",
     });
 
     const submit = (e) => {
         e.preventDefault();
         console.log(data);
-        post(route("class.store"));
+        initialData ? post(route("class.update")) : post(route("class.store"));
     };
 
     return (
@@ -142,3 +138,17 @@ export default function UpsertClass({ initialData }) {
         </form>
     );
 }
+
+const formatDatetime = (date) => {
+    if (!date) {
+        return;
+    }
+    const parsedDatetime = new Date(date);
+    const year = parsedDatetime.getFullYear();
+    const month = (parsedDatetime.getMonth() + 1).toString().padStart(2, "0");
+    const day = parsedDatetime.getDate().toString().padStart(2, "0");
+    const hour = parsedDatetime.getHours().toString().padStart(2, "0");
+    const minute = parsedDatetime.getMinutes().toString().padStart(2, "0");
+    const formattedDatetime = `${year}-${month}-${day}T${hour}:${minute}`;
+    return formattedDatetime;
+};

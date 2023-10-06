@@ -4,6 +4,7 @@ namespace App\Services;
 
 // use RRule\RRule;
 use App\Models\Classes;
+use Illuminate\Http\Request;
 use Square\Models\Money;
 use Square\SquareClient;
 use Square\Models\CatalogItem;
@@ -18,8 +19,9 @@ use Square\Models\UpsertCatalogObjectRequest;
 class ClassesService
 {
 
-    public function upsert($request)
+    public function store($request)
     {
+
         $name = $request->name;
         $description = $request->description;
         $style = $request->style;
@@ -36,9 +38,7 @@ class ClassesService
         // ]);
 
 
-        if ($style == "samba") {
-            $style_id = "OB5TM7ROA7PQNQFP5IK26QRJ";
-        }
+
 
         $level_id = "BCBVPJAEHUHOOGNLTFIVRIND";
 
@@ -75,7 +75,7 @@ class ClassesService
         $options = [$choose_level, $choose_enrollment_mode];
 
         $class_specs = new CatalogItemVariation();
-        $class_specs->setItemId("#" . $style . '_class');
+        $class_specs->setItemId(env('VITE_SQUARE_SAMBA_CLASS_ID'));
         $class_specs->setName($name);
         $class_specs->setPricingType('FIXED_PRICING');
         $class_specs->setPriceMoney($price_money);
@@ -86,51 +86,24 @@ class ClassesService
 
         $new_class_variation = new CatalogObject('ITEM_VARIATION', '#' . $name);
         $new_class_variation->setItemVariationData($class_specs);
-        // $new_class_variation->setTimePeriodData($square_datetime_converted);
 
-        $variations = [$new_class_variation];
-
-        $set_level = new CatalogItemOptionForItem();
-        $set_level->setItemOptionId($level_id);
-
-        $set_enrollment_mode = new CatalogItemOptionForItem();
-        $set_enrollment_mode->setItemOptionId($enrollment_mode_id);
-
-        $class_options = [$set_level, $set_enrollment_mode];
-
-        $new_class_data = new CatalogItem();
-        $new_class_data->setName($style . '_class');
-        $new_class_data->setCategoryId($style_id);
-        $new_class_data->setVariations($variations);
-        $new_class_data->setProductType('REGULAR');
-        $new_class_data->setItemOptions($class_options);
-        // $new_class_data->setDescriptionHtml($description);
-
-        // "EKBHHG45W26ZYJTRQK4Q22WO"
-
-        // 36DZ4HHW3VI3FDKLQFC3CQV5
-
-        // 1696512128288
-
-        // advancedother.wordJointerm
-
-        $new_class = new CatalogObject("ITEM", "#" . $style . '_class');
-        $new_class->setItemData($new_class_data);
-
-        $body = new UpsertCatalogObjectRequest($idempotency_key, $new_class);
+        $body = new UpsertCatalogObjectRequest($idempotency_key, $new_class_variation);
 
         $api_response = $client->getCatalogApi()->upsertCatalogObject($body);
 
         if ($api_response->isSuccess()) {
             $result = $api_response->getResult();
-            $id = $result->getCatalogObject()->getItemData()->getVariations()[0]->getId();
-            $version = $result->getCatalogObject()->getItemData()->getVariations()[0]->getVersion();
-            $stupid_square_name = $result->getCatalogObject()->getItemData()->getVariations()[0]->getItemVariationData()->getName();
+
+            $id = $result->getCatalogObject()->getId();
+            $version = $result->getCatalogObject()->getVersion();
+            $stupid_square_name = $result->getCatalogObject()->getItemVariationData()->getName();
 
             Classes::updateOrCreate(
                 ['id' => $id],
                 [
                     'id' => $id,
+                    'version' => $version,
+                    'stupid_square_name' => $stupid_square_name,
                     'name' => $name,
                     'description' => $description,
                     'style' => $style,
@@ -140,16 +113,113 @@ class ClassesService
                     'location' => $location,
                     'price' => $price,
                     'datetime' => $datetime,
-                    'version' => $version,
-                    'stupid_square_name' => $stupid_square_name
                 ]
             );
+            dd($result);
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
         }
     }
 
+
+    public function update(Request $request)
+    {
+
+
+
+
+        $client = app(SquareClient::class);
+        $idempotency_key = uniqid();
+
+        $id = $request->id;
+        $name = $request->name;
+        $description = $request->description;
+        $style = $request->style;
+        $level = $request->level;
+        $instructor = $request->instructor;
+        $enrollment_mode = $request->enrollment_mode;
+        $location = $request->location;
+        $price = $request->price;
+        $datetime = $request->datetime;
+        $version = $request->version;
+        $stupid_square_name =  $request->stupid_square_name;
+
+        $class = Classes::find($id);
+
+        if ($class == null) {
+            return;
+        }
+
+        $class->name = $name;
+        $class->description = $description;
+        $class->style = $style;
+        $class->level = $level;
+        $class->instructor = $instructor;
+        $class->enrollment_mode = $enrollment_mode;
+        $class->location = $location;
+        $class->price = $price;
+        $class->datetime = $datetime;
+
+        $level_id = "BCBVPJAEHUHOOGNLTFIVRIND";
+
+        if ($level == "beginner") {
+            $level_value_id = "OBOQYIEYBJU4ZGIGDH6E7746";
+        } else {
+            $level_value_id = "S7M3TZNQ2UMWWS3EFUYNJF3J";
+        }
+
+        $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";
+
+        if ($enrollment_mode == "single") {
+            $enrollment_mode_value_id = "7B6AMXMCQZANHHOMWUZ7DT3X";
+        } else {
+            $enrollment_mode_value_id = "QTTBGTGLINEZKN73LUMD7EX7";
+        }
+
+
+        $price_money = new \Square\Models\Money();
+        $price_money->setAmount($price);
+        $price_money->setCurrency('AUD');
+
+        $choose_level = new \Square\Models\CatalogItemOptionValueForItemVariation();
+        $choose_level->setItemOptionId($level_id);
+        $choose_level->setItemOptionValueId($level_value_id);
+
+        $choose_enrollment_mode = new CatalogItemOptionValueForItemVariation();
+        $choose_enrollment_mode->setItemOptionId($enrollment_mode_id);
+        $choose_enrollment_mode->setItemOptionValueId($enrollment_mode_value_id);
+
+        $options = [$choose_level, $choose_enrollment_mode];
+
+        $item_variation_data = new \Square\Models\CatalogItemVariation();
+        $item_variation_data->setItemId(env('VITE_SQUARE_SAMBA_CLASS_ID'));
+        $item_variation_data->setName($stupid_square_name);
+        $item_variation_data->setPricingType('FIXED_PRICING');
+        $item_variation_data->setPriceMoney($price_money);
+        $item_variation_data->setItemOptionValues($options);
+
+        $object = new \Square\Models\CatalogObject('ITEM_VARIATION', $id);
+        $object->setVersion($version);
+        $object->setItemVariationData($item_variation_data);
+
+        $body = new \Square\Models\UpsertCatalogObjectRequest($idempotency_key, $object);
+
+        $api_response = $client->getCatalogApi()->upsertCatalogObject($body);
+
+        if ($api_response->isSuccess()) {
+            $result = $api_response->getResult();
+            $new_version = $result->getCatalogObject()->getVersion();
+            $new_stupid_square_name = $result->getCatalogObject()->getItemVariationData()->getName();
+            $class->version = $new_version;
+            $class->stupid_square_name = $new_stupid_square_name;
+            $class->save();
+            dd($result);
+        } else {
+            $errors = $api_response->getErrors();
+            dd($errors);
+        }
+    }
 
 
     public function destroy($class)
