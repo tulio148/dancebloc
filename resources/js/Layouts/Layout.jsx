@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
@@ -9,6 +9,26 @@ import { Transition } from "@headlessui/react";
 export default function ({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+    const dropdownRef = useRef(null);
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                // Clicked outside the dropdown, so close it
+                setShowingNavigationDropdown(false);
+            }
+        }
+
+        // Attach the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
@@ -164,110 +184,110 @@ export default function ({ user, header, children }) {
                         </div>
                     </div>
                 </div>
-
-                <Transition
-                    show={showingNavigationDropdown}
-                    enter="transition-transform duration-700"
-                    enterFrom="transform translate-x-[100%]"
-                    enterTo="transform translate-x-0"
-                    leave="transition-transform duration-200"
-                    leaveFrom="transform translate-x-0"
-                    leaveTo="transform translate-x-[100%]"
-                >
-                    {() => (
-                        <div
-                            className={`sm:hidden bg-db-light-pink ${
-                                route().current("admin") ||
-                                route().current("dashboard")
-                                    ? "mt-14"
-                                    : ""
-                            }`}
-                        >
-                            <div className="pt-2 pb-3 space-y-1">
-                                <ResponsiveNavLink
-                                    href={route("classes")}
-                                    active={route().current("classes")}
-                                >
-                                    Classes
-                                </ResponsiveNavLink>
-                            </div>
-                            {!user && (
-                                <>
-                                    <div className="pt-4 pb-1 border-t border-gray-200">
+                <div ref={dropdownRef}>
+                    <Transition
+                        show={showingNavigationDropdown}
+                        enter="transition-transform duration-700"
+                        enterFrom="transform translate-x-[100%]"
+                        enterTo="transform translate-x-0"
+                        leave="transition-transform duration-200"
+                        leaveFrom="transform translate-x-0"
+                        leaveTo="transform translate-x-[100%]"
+                    >
+                        {() => (
+                            <div
+                                className={`sm:hidden bg-db-light-pink ${
+                                    route().current("admin") ||
+                                    route().current("dashboard")
+                                        ? "mt-14"
+                                        : ""
+                                }`}
+                            >
+                                <div className="flex flex-col gap-5 py-8">
+                                    <div className="">
                                         <ResponsiveNavLink
-                                            href={route("login")}
-                                            active={route().current("login")}
+                                            href={route("classes")}
+                                            active={route().current("classes")}
                                         >
-                                            Log in
+                                            Classes
                                         </ResponsiveNavLink>
                                     </div>
-                                    <div className="pb-1 border-gray-200">
-                                        <ResponsiveNavLink
-                                            href={route("register")}
-                                            active={route().current("register")}
-                                        >
-                                            Sign up
-                                        </ResponsiveNavLink>
-                                    </div>
-                                </>
-                            )}
-                            {user ? (
-                                <>
-                                    {user.admin == 1 && (
-                                        <div className="pt-2 pb-3 space-y-1">
-                                            <ResponsiveNavLink
-                                                href={route("admin")}
-                                                active={route().current(
-                                                    "admin"
-                                                )}
-                                            >
-                                                Admin
-                                            </ResponsiveNavLink>
-                                        </div>
+                                    {!user && (
+                                        <>
+                                            <div className="pt-4 pb-1 border-t border-gray-200">
+                                                <ResponsiveNavLink
+                                                    href={route("login")}
+                                                    active={route().current(
+                                                        "login"
+                                                    )}
+                                                >
+                                                    Log in
+                                                </ResponsiveNavLink>
+                                            </div>
+                                            <div className="pb-1 border-gray-200">
+                                                <ResponsiveNavLink
+                                                    href={route("register")}
+                                                    active={route().current(
+                                                        "register"
+                                                    )}
+                                                >
+                                                    Sign up
+                                                </ResponsiveNavLink>
+                                            </div>
+                                        </>
                                     )}
-                                    <div className="pt-2 pb-3 space-y-1">
-                                        <ResponsiveNavLink
-                                            href={route("dashboard")}
-                                            active={route().current(
-                                                "dashboard"
+                                    {user ? (
+                                        <>
+                                            {user.admin == 1 && (
+                                                <div className="">
+                                                    <ResponsiveNavLink
+                                                        href={route("admin")}
+                                                        active={route().current(
+                                                            "admin"
+                                                        )}
+                                                    >
+                                                        Admin
+                                                    </ResponsiveNavLink>
+                                                </div>
                                             )}
-                                        >
-                                            Dashboard
-                                        </ResponsiveNavLink>
-                                    </div>
-
-                                    <div className="pt-4 pb-1 border-t border-gray-200">
-                                        <div className="px-4">
-                                            <div className="font-medium text-base text-gray-800">
-                                                {user.name}
+                                            <div className="">
+                                                <ResponsiveNavLink
+                                                    href={route("dashboard")}
+                                                    active={route().current(
+                                                        "dashboard"
+                                                    )}
+                                                >
+                                                    Dashboard
+                                                </ResponsiveNavLink>
                                             </div>
-                                            <div className="font-medium text-sm text-gray-500">
-                                                {user.email}
-                                            </div>
-                                        </div>
 
-                                        <div className="mt-3 space-y-1">
-                                            <ResponsiveNavLink
-                                                href={route("profile.edit")}
-                                            >
-                                                Profile
-                                            </ResponsiveNavLink>
-                                            <ResponsiveNavLink
-                                                method="post"
-                                                href={route("logout")}
-                                                as="button"
-                                            >
-                                                Log Out
-                                            </ResponsiveNavLink>
-                                        </div>
-                                    </div>
-                                </>
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
-                    )}
-                </Transition>
+                                            <div className="border-t border-gray-200">
+                                                <div className="mt-3 space-y-1">
+                                                    <ResponsiveNavLink
+                                                        href={route(
+                                                            "profile.edit"
+                                                        )}
+                                                    >
+                                                        Profile
+                                                    </ResponsiveNavLink>
+                                                    <ResponsiveNavLink
+                                                        method="post"
+                                                        href={route("logout")}
+                                                        as="button"
+                                                    >
+                                                        Log Out
+                                                    </ResponsiveNavLink>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div></div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
+                    </Transition>
+                </div>
             </nav>
 
             <main className="mt-16 bg-gradient-to-b from-db-pink min-h-screen  ">
