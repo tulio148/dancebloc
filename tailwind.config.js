@@ -13,8 +13,8 @@ export default {
     theme: {
         extend: {
             colors: {
-                "db-pink": "#E87183",
-                "db-light-pink": "#FFD8E4",
+                "db-pink": "#CE5DAE",
+                "db-light-pink": "#FFFCFF",
                 "db-green": "#57743F",
             },
             fontFamily: {

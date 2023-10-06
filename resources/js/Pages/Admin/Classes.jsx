@@ -3,8 +3,8 @@ import ClassCard from "@/Components/ClassCard";
 import UpsertClass from "@/Components/UpsertClassForm";
 import Modal from "@/Components/Modal";
 import { router } from "@inertiajs/react";
-import Bin from "@/Components/BinIcon";
-import Pencil from "@/Components/PencilIcon";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default function Classes({ classes }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -28,16 +28,20 @@ export default function Classes({ classes }) {
 
     return (
         <>
-            <div className="flex flex-col items-center gap-6 max-w-7xl mx-auto px-4 ">
+            <div className="flex flex-col items-center gap-6 max-w-7xl mx-auto px-8 ">
                 {classes.map((item) => (
                     <div className="flex flex-col gap-2" key={item.id}>
                         <ClassCard class_={item} />
-                        <div className="self-center ">
+                        <div className="self-end ">
                             <button
                                 className="p-4"
                                 onClick={() => updateHandle(item.id)}
                             >
-                                <Pencil />
+                                <FontAwesomeIcon
+                                    icon={faPenToSquare}
+                                    size="xl"
+                                    style={{ color: "#404040" }}
+                                />
                                 <Modal
                                     show={updateIsOpen == item.id}
                                     onClose={closeUpdateModal}
@@ -56,7 +60,11 @@ export default function Classes({ classes }) {
                                     })
                                 }
                             >
-                                <Bin />
+                                <FontAwesomeIcon
+                                    icon={faTrashCan}
+                                    size="xl"
+                                    style={{ color: "#404040" }}
+                                />
                             </button>
                         </div>
                     </div>
