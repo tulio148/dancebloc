@@ -15,8 +15,9 @@ export default function ({ user, header, children }) {
         function handleClickOutside(event) {
             if (
                 dropdownRef.current &&
-                !dropdownRef.current.contains(event.target) &&
-                !buttonRef.current.contains(event.target)
+                !dropdownRef.current.contains(event.target)
+                //  &&
+                // !buttonRef.current.contains(event.target)
             ) {
                 // Clicked outside the dropdown, so close it
                 setShowingNavigationDropdown(false);
