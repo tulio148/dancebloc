@@ -1,17 +1,17 @@
 export default function TabNav({ tabs, activeTab, onTabChange }) {
     return (
-        <div className="mx-auto bg-db-light-pink fixed w-full ">
-            <div className="flex gap-2 p-2 max-w-7xl mx-auto">
+        <div className=" fixed top-16 w-full ">
+            <div className="flex gap-2 p-2 max-w-7xl mx-auto bg-white">
                 {tabs.map((tab, index) => (
                     <button
                         key={index}
                         onClick={() => onTabChange(index)}
-                        className={`w-full rounded-md py-2.5 text-sm font-medium text-black-700
+                        className={`w-full rounded-t-lg border-b-2  py-2.5 text-md font-medium text-black-700
                 focus:outline-none
               ${
                   index === activeTab
-                      ? "bg-white shadow transition-opacity duration-1000 bg-opacity-100"
-                      : " bg-white text-black-100 hover:bg-white/[0.12] hover:text-black transition-opacity duration-1000 bg-opacity-10"
+                      ? "bg-db-pink shadow transition-colors duration-500 text-slate-100 "
+                      : " text-slate-900 focus:border-b border-b-0 text-opacity-90 hover:text-opacity-100 transition-colors duration-500 "
               }`}
                     >
                         {tab.label}

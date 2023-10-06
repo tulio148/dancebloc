@@ -175,7 +175,14 @@ export default function ({ user, header, children }) {
                     leaveTo="transform translate-x-[100%]"
                 >
                     {() => (
-                        <div className="sm:hidden bg-db-light-pink z-10">
+                        <div
+                            className={`sm:hidden bg-db-light-pink ${
+                                route().current("admin") ||
+                                route().current("dashboard")
+                                    ? "mt-14"
+                                    : ""
+                            }`}
+                        >
                             <div className="pt-2 pb-3 space-y-1">
                                 <ResponsiveNavLink
                                     href={route("classes")}
@@ -263,7 +270,9 @@ export default function ({ user, header, children }) {
                 </Transition>
             </nav>
 
-            <main className="mt-16">{children}</main>
+            <main className="mt-16 bg-gradient-to-b from-db-pink min-h-screen  ">
+                {children}
+            </main>
         </div>
     );
 }
