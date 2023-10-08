@@ -1,23 +1,61 @@
 import Layout from "@/Layouts/Layout";
+import Home from "./Home";
 import { Head } from "@inertiajs/react";
-import Payment from "./Partials/Payment";
 import TabNav from "@/Components/TabNav";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faHouse,
+    faCalendarDays,
+    faCartShopping,
+    faGear,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Dashboard({ auth, orders, classes }) {
     const tabs = [
         {
-            label: "My Classes",
+            label: "Home",
+            icon: (
+                <FontAwesomeIcon
+                    icon={faHouse}
+                    size="xl"
+                    style={{ color: "#5c749d" }}
+                />
+            ),
         },
         {
-            label: "Another one",
+            label: "My Classes",
+            icon: (
+                <FontAwesomeIcon
+                    icon={faCalendarDays}
+                    size="xl"
+                    style={{ color: "#5c749d" }}
+                />
+            ),
         },
         {
             label: "Orders",
+            icon: (
+                <FontAwesomeIcon
+                    icon={faCartShopping}
+                    size="xl"
+                    style={{ color: "#5c749d" }}
+                />
+            ),
+        },
+        {
+            label: "Settings",
+            icon: (
+                <FontAwesomeIcon
+                    icon={faGear}
+                    size="xl"
+                    style={{ color: "#5c749d" }}
+                />
+            ),
         },
     ];
 
-    const [activeTab, setActiveTab] = useState(-1);
+    const [activeTab, setActiveTab] = useState(0);
     const handleTabChange = (index) => {
         setActiveTab(index);
     };
@@ -29,7 +67,9 @@ export default function Dashboard({ auth, orders, classes }) {
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
             />
-            <div className="pt-24 border max-w-7xl mx-auto h-screen"></div>
+            <div className="sm:pt-24 max-w-7xl mx-auto h-screen">
+                <Home user={auth.user} />
+            </div>
         </Layout>
     );
 }
