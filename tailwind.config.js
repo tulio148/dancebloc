@@ -16,9 +16,11 @@ export default {
                 "db-pink": "#FF00F7",
                 "db-light-pink": "#FFFCFF",
                 "db-green": "#07DA0A",
+                "special-blue": "#5c749d",
             },
             fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                // sans: ["Figtree", ...defaultTheme.fontFamily.sans],
+                sans: ["Raleway", ...defaultTheme.fontFamily.sans],
             },
         },
     },
