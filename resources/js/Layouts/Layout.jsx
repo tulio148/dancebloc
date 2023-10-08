@@ -1,10 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faBars,
+    faXmark,
+    faArrowRightToBracket,
+    faDoorOpen,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function ({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -31,29 +37,18 @@ export default function ({ user, header, children }) {
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
-                <div className=" px-4 sm:px-6 lg:px-8 bg-db-pink z-50">
+                <div className=" px-6  lg:px-8 bg-db-pink z-50">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
-                        <div className="flex">
+                        <div className="flex justify-between w-full">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
-
-                            {user && (
-                                <>
-                                    <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                        <NavLink
-                                            href={route("dashboard")}
-                                            active={route().current(
-                                                "dashboard"
-                                            )}
-                                        >
-                                            Dashboard
-                                        </NavLink>
-                                    </div>
-                                    {user.admin == 1 && (
-                                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div className="gap-8 hidden sm:flex">
+                                {user && (
+                                    <>
+                                        {user.admin == 1 && (
                                             <NavLink
                                                 href={route("admin")}
                                                 active={route().current(
@@ -62,12 +57,17 @@ export default function ({ user, header, children }) {
                                             >
                                                 Admin
                                             </NavLink>
-                                        </div>
-                                    )}
-                                </>
-                            )}
-
-                            <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                        )}
+                                        <NavLink
+                                            href={route("dashboard")}
+                                            active={route().current(
+                                                "dashboard"
+                                            )}
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </>
+                                )}
                                 <NavLink
                                     href={route("classes")}
                                     active={route().current("classes")}
@@ -75,73 +75,36 @@ export default function ({ user, header, children }) {
                                     Classes
                                 </NavLink>
                             </div>
+                            {user ? (
+                                <div className="hidden sm:flex gap-5">
+                                    <NavLink
+                                        method="post"
+                                        href={route("logout")}
+                                        as="button"
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faDoorOpen}
+                                            size="xl"
+                                            style={{ color: "#020203" }}
+                                        />
+                                        Sign Out
+                                    </NavLink>
+                                </div>
+                            ) : (
+                                <div className="hidden sm:flex gap-5 ">
+                                    <NavLink href={route("login")}>
+                                        <FontAwesomeIcon
+                                            icon={faArrowRightToBracket}
+                                            size="xl"
+                                            style={{ color: "#020203" }}
+                                        />
+                                        Sign in
+                                    </NavLink>
+                                </div>
+                            )}
                         </div>
 
-                        {user ? (
-                            <div className="hidden sm:flex sm:items-center sm:ml-6">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md border">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                            >
-                                                {user.name}
-
-                                                <svg
-                                                    className="ml-2 -mr-0.5 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
-
-                                    <Dropdown.Content>
-                                        <Dropdown.Link
-                                            href={route("profile.edit")}
-                                        >
-                                            Profile
-                                        </Dropdown.Link>
-                                        <Dropdown.Link
-                                            href={route("logout")}
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
-                        ) : (
-                            <div className="flex">
-                                <div className="hidden sm:flex sm:items-center sm:ml-6">
-                                    <Link
-                                        href={route("register")}
-                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                    >
-                                        Sign up
-                                    </Link>
-                                </div>
-                                <div className="hidden sm:flex sm:items-center sm:ml-6">
-                                    <Link
-                                        href={route("login")}
-                                        className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                                    >
-                                        Log in
-                                    </Link>
-                                </div>
-                            </div>
-                        )}
-
-                        <div className="-mr-2 flex items-center sm:hidden">
+                        <div className="flex items-center sm:hidden">
                             <button
                                 ref={buttonRef}
                                 onClick={() =>
@@ -149,37 +112,21 @@ export default function ({ user, header, children }) {
                                         (previousState) => !previousState
                                     )
                                 }
-                                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500  focus:outline-none  focus:text-gray-500 transition duration-150 ease-in-out"
+                                className="inline-flex items-center justify-center p-2 "
                             >
-                                <svg
-                                    className="h-6 w-6 "
-                                    stroke="white"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        className={
-                                            !showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M4 6h16M4 12h16M4 18h16"
+                                {!showingNavigationDropdown ? (
+                                    <FontAwesomeIcon
+                                        icon={faBars}
+                                        size="xl"
+                                        style={{ color: "#ffffff" }}
                                     />
-                                    <path
-                                        className={
-                                            showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
-                                        }
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M6 18L18 6M6 6l12 12"
+                                ) : (
+                                    <FontAwesomeIcon
+                                        icon={faXmark}
+                                        size="2xl"
+                                        style={{ color: "#ffffff" }}
                                     />
-                                </svg>
+                                )}
                             </button>
                         </div>
                     </div>
@@ -195,87 +142,64 @@ export default function ({ user, header, children }) {
                         leaveTo="transform translate-x-[100%]"
                     >
                         {() => (
-                            <div className="sm:hidden w-full bg-db-light-pink drop-shadow-lg shadow-white ">
-                                <div className="flex flex-col gap-5 pt-8">
-                                    <div className="">
-                                        <ResponsiveNavLink
-                                            href={route("classes")}
-                                            active={route().current("classes")}
-                                        >
-                                            Classes
-                                        </ResponsiveNavLink>
-                                    </div>
-                                    {!user && (
-                                        <>
-                                            <div className="border-t border-gray-200">
-                                                <ResponsiveNavLink
-                                                    href={route("login")}
-                                                    active={route().current(
-                                                        "login"
-                                                    )}
-                                                >
-                                                    Log in
-                                                </ResponsiveNavLink>
-                                            </div>
-                                            <div className="">
-                                                <ResponsiveNavLink
-                                                    href={route("register")}
-                                                    active={route().current(
-                                                        "register"
-                                                    )}
-                                                >
-                                                    Sign up
-                                                </ResponsiveNavLink>
-                                            </div>
-                                        </>
-                                    )}
+                            <div className="flex justify-end sm:hidden w-full bg-gradient-to-bl from-white to-db-pink ">
+                                <div className="flex flex-col gap-10 my-4 p-6 border-l-4 border-white/60">
                                     {user ? (
                                         <>
                                             {user.admin == 1 && (
-                                                <div className="">
-                                                    <ResponsiveNavLink
-                                                        href={route("admin")}
-                                                        active={route().current(
-                                                            "admin"
-                                                        )}
-                                                    >
-                                                        Admin
-                                                    </ResponsiveNavLink>
-                                                </div>
-                                            )}
-                                            <div className="">
                                                 <ResponsiveNavLink
-                                                    href={route("dashboard")}
+                                                    href={route("admin")}
                                                     active={route().current(
-                                                        "dashboard"
+                                                        "admin"
                                                     )}
                                                 >
-                                                    Dashboard
+                                                    Admin
                                                 </ResponsiveNavLink>
-                                            </div>
+                                            )}
+                                            <ResponsiveNavLink
+                                                href={route("dashboard")}
+                                                active={route().current(
+                                                    "dashboard"
+                                                )}
+                                            >
+                                                Dashboard
+                                            </ResponsiveNavLink>
 
-                                            <div className="border-t border-gray-200">
-                                                <div className="">
-                                                    <ResponsiveNavLink
-                                                        href={route(
-                                                            "profile.edit"
-                                                        )}
-                                                    >
-                                                        Profile
-                                                    </ResponsiveNavLink>
-                                                    <ResponsiveNavLink
-                                                        method="post"
-                                                        href={route("logout")}
-                                                        as="button"
-                                                    >
-                                                        Log Out
-                                                    </ResponsiveNavLink>
-                                                </div>
-                                            </div>
+                                            <ResponsiveNavLink
+                                                method="post"
+                                                href={route("logout")}
+                                                as="button"
+                                            >
+                                                Log Out
+                                            </ResponsiveNavLink>
                                         </>
                                     ) : (
-                                        <div></div>
+                                        <>
+                                            <ResponsiveNavLink
+                                                href={route("login")}
+                                                active={route().current(
+                                                    "login"
+                                                )}
+                                            >
+                                                Log in
+                                            </ResponsiveNavLink>
+                                            <ResponsiveNavLink
+                                                href={route("register")}
+                                                active={route().current(
+                                                    "register"
+                                                )}
+                                            >
+                                                Sign up
+                                            </ResponsiveNavLink>
+                                        </>
                                     )}
+                                    <ResponsiveNavLink
+                                        href={route("classes")}
+                                        active={route().current("classes")}
+                                        s
+                                    >
+                                        Classes
+                                    </ResponsiveNavLink>
                                 </div>
                             </div>
                         )}

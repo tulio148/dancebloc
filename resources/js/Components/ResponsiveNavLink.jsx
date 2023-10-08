@@ -9,11 +9,11 @@ export default function ResponsiveNavLink({
     return (
         <Link
             {...props}
-            className={`w-full flex items-start justify-center border-l-4 ${
+            className={`tracking-widest pr-20 pl-2 py-2 text-xl w-fit rounded ${
                 active
-                    ? "border-indigo-400 text-indigo-700  focus:text-indigo-800 focus:bg-indigo-100 focus:border-indigo-700"
-                    : "border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300"
-            } text-base font-medium focus:outline-none transition duration-150 ease-in-out ${className}`}
+                    ? "font-bold  bg-db-green/40 text-white"
+                    : "font-normal hover:text-db-green/75"
+            }  ${className}`}
         >
             {children}
         </Link>

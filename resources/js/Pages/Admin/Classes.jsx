@@ -28,7 +28,7 @@ export default function Classes({ classes }) {
 
     return (
         <>
-            <div className="flex flex-col items-center gap-6 max-w-7xl mx-auto px-8 ">
+            <div className="flex flex-col items-center gap-6 max-w-7xl mx-10 ">
                 {classes.map((item) => (
                     <div className="flex flex-col gap-2" key={item.id}>
                         <ClassCard class_={item} />

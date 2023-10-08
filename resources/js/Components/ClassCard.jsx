@@ -28,11 +28,13 @@ export default function ClassCard({ class_ }) {
 
             <div className="w-full sm:w-1/2 px-6 py-8 flex flex-col justify-between gap-5">
                 <div className="flex justify-between items-center ">
-                    <h2 className="text-xl font-semibold ">{class_.name}</h2>
+                    <h2 className="text-xl font-semibold italic">
+                        {class_.name}
+                    </h2>
                     <p className="text-sm text-gray-500">{class_.level}</p>
                 </div>
                 {/* <div className="grid h-full pt-5 pb-2 gap-2 min-w-sm max-w-xl"> */}
-                <p className="text-gray-600 text-justify leading-6 overflow-ellipsis overflow-hidden">
+                <p className="text-gray-600 text-justify leading-6 overflow-ellipsis overflow-hidden ">
                     {class_.description}
                 </p>
                 <p className="text-md text-gray-500 place-self-end">
