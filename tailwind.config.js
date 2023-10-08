@@ -13,9 +13,9 @@ export default {
     theme: {
         extend: {
             colors: {
-                "db-pink": "#CE5DAE",
+                "db-pink": "#FF00F7",
                 "db-light-pink": "#FFFCFF",
-                "db-green": "#57743F",
+                "db-green": "#07DA0A",
             },
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
