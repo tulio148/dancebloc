@@ -15,19 +15,15 @@ export default function ({ user, header, children }) {
         function handleClickOutside(event) {
             if (
                 dropdownRef.current &&
-                !dropdownRef.current.contains(event.target)
-                //  &&
-                // !buttonRef.current.contains(event.target)
+                !dropdownRef.current.contains(event.target) &&
+                !buttonRef.current.contains(event.target)
             ) {
-                // Clicked outside the dropdown, so close it
                 setShowingNavigationDropdown(false);
             }
         }
 
-        // Attach the event listener
         document.addEventListener("mousedown", handleClickOutside);
 
-        // Clean up the event listener when the component unmounts
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
@@ -192,22 +188,15 @@ export default function ({ user, header, children }) {
                     <Transition
                         show={showingNavigationDropdown}
                         enter="transition-transform duration-700"
-                        enterFrom="transform translate-x-[100%]"
+                        enterFrom="transform translate-x-[-100%]"
                         enterTo="transform translate-x-0"
                         leave="transition-transform duration-200"
                         leaveFrom="transform translate-x-0"
                         leaveTo="transform translate-x-[100%]"
                     >
                         {() => (
-                            <div
-                                className={`sm:hidden bg-db-light-pink ${
-                                    route().current("admin") ||
-                                    route().current("dashboard")
-                                        ? "mt-14"
-                                        : ""
-                                }`}
-                            >
-                                <div className="flex flex-col gap-5 py-8">
+                            <div className="sm:hidden w-full bg-db-light-pink drop-shadow-lg shadow-white ">
+                                <div className="flex flex-col gap-5 pt-8">
                                     <div className="">
                                         <ResponsiveNavLink
                                             href={route("classes")}
@@ -218,7 +207,7 @@ export default function ({ user, header, children }) {
                                     </div>
                                     {!user && (
                                         <>
-                                            <div className="pt-4 pb-1 border-t border-gray-200">
+                                            <div className="border-t border-gray-200">
                                                 <ResponsiveNavLink
                                                     href={route("login")}
                                                     active={route().current(
@@ -228,7 +217,7 @@ export default function ({ user, header, children }) {
                                                     Log in
                                                 </ResponsiveNavLink>
                                             </div>
-                                            <div className="pb-1 border-gray-200">
+                                            <div className="">
                                                 <ResponsiveNavLink
                                                     href={route("register")}
                                                     active={route().current(
@@ -266,7 +255,7 @@ export default function ({ user, header, children }) {
                                             </div>
 
                                             <div className="border-t border-gray-200">
-                                                <div className="mt-3 space-y-1">
+                                                <div className="">
                                                     <ResponsiveNavLink
                                                         href={route(
                                                             "profile.edit"
@@ -294,7 +283,7 @@ export default function ({ user, header, children }) {
                 </div>
             </nav>
 
-            <main className="mt-16 bg-gradient-to-b from-db-pink min-h-screen  ">
+            <main className="mt-16 bg-gradient-to-b from-db-pink from-10% min-h-screen  ">
                 {children}
             </main>
         </div>

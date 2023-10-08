@@ -16,9 +16,9 @@ export default function ClassCard({ class_ }) {
     return (
         <Link
             href={route("classes.show", class_.name)}
-            className="bg-white max-w-7xl sm:w-full mx-auto p-3 flex flex-wrap justify-center overflow-hidden border rounded-lg shadow-md"
+            className="bg-white max-w-7xl sm:w-full mx-auto flex flex-wrap justify-center overflow-hidden  rounded-lg shadow-md shadow-db-green"
         >
-            <div className="w-full sm:w-1/2 border">
+            <div className="w-full sm:w-1/2 ">
                 <img
                     src="\favicon.jpg"
                     alt="alt"
@@ -26,7 +26,7 @@ export default function ClassCard({ class_ }) {
                 />
             </div>
 
-            <div className="w-full sm:w-1/2 px-5 pt-8 flex flex-col justify-between gap-5">
+            <div className="w-full sm:w-1/2 px-6 py-8 flex flex-col justify-between gap-5">
                 <div className="flex justify-between items-center ">
                     <h2 className="text-xl font-semibold ">{class_.name}</h2>
                     <p className="text-sm text-gray-500">{class_.level}</p>
