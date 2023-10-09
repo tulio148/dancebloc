@@ -12,7 +12,7 @@ import {
     faDoorOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ({ user, header, children }) {
+export default function ({ user, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
     const dropdownRef = useRef(null);
@@ -37,9 +37,9 @@ export default function ({ user, header, children }) {
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
-                <div className=" px-6  lg:px-8 bg-db-pink z-50">
+                <div className=" px-6 lg:px-8 bg-db-pink z-50">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
-                        <div className="flex justify-between w-full">
+                        <div className="flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
                                     <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
@@ -76,7 +76,7 @@ export default function ({ user, header, children }) {
                                 </NavLink>
                             </div>
                             {user ? (
-                                <div className="hidden sm:flex gap-5">
+                                <div className="hidden sm:flex gap-8">
                                     <NavLink
                                         method="post"
                                         href={route("logout")}
@@ -84,7 +84,7 @@ export default function ({ user, header, children }) {
                                     >
                                         <FontAwesomeIcon
                                             icon={faDoorOpen}
-                                            size="xl"
+                                            size="lg"
                                             style={{ color: "#020203" }}
                                         />
                                         Sign Out
@@ -95,7 +95,7 @@ export default function ({ user, header, children }) {
                                     <NavLink href={route("login")}>
                                         <FontAwesomeIcon
                                             icon={faArrowRightToBracket}
-                                            size="xl"
+                                            size="lg"
                                             style={{ color: "#020203" }}
                                         />
                                         Sign in
@@ -143,7 +143,7 @@ export default function ({ user, header, children }) {
                     >
                         {() => (
                             <div className="flex justify-end sm:hidden w-full bg-gradient-to-bl from-white to-db-pink ">
-                                <div className="flex flex-col gap-10 my-4 p-6 border-l-4 border-white/60">
+                                <div className="flex flex-col gap-10 my-4 p-6 border-l-2 border-white/60">
                                     {user ? (
                                         <>
                                             {user.admin == 1 && (
@@ -181,15 +181,7 @@ export default function ({ user, header, children }) {
                                                     "login"
                                                 )}
                                             >
-                                                Log in
-                                            </ResponsiveNavLink>
-                                            <ResponsiveNavLink
-                                                href={route("register")}
-                                                active={route().current(
-                                                    "register"
-                                                )}
-                                            >
-                                                Sign up
+                                                Sign in
                                             </ResponsiveNavLink>
                                         </>
                                     )}

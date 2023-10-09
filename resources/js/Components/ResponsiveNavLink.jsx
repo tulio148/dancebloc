@@ -9,10 +9,10 @@ export default function ResponsiveNavLink({
     return (
         <Link
             {...props}
-            className={`tracking-widest pr-20 pl-2 py-2 text-xl w-fit rounded ${
+            className={`tracking-widest pr-20 pl-2 py-2 text-xl w-fit ${
                 active
-                    ? "font-bold  bg-db-green/40 text-white"
-                    : "font-normal hover:text-db-green/75"
+                    ? "border-b border-db-green text-white font-semibold"
+                    : "hover:text-db-green/75"
             }  ${className}`}
         >
             {children}
