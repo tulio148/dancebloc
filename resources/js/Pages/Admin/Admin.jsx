@@ -55,7 +55,7 @@ export default function Admin({ auth, students, classes }) {
         },
     ];
 
-    const [activeTab, setActiveTab] = useState(-1);
+    const [activeTab, setActiveTab] = useState(0);
     const handleTabChange = (index) => {
         setActiveTab(index);
     };
