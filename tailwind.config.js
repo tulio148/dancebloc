@@ -14,7 +14,7 @@ export default {
         extend: {
             colors: {
                 "db-pink": "#FF00F7",
-                "db-light-pink": "#FFFCFF",
+                "db-light-pink": "#FF80FF",
                 "db-green": "#07DA0A",
                 "special-blue": "#5c749d",
             },

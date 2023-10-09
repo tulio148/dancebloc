@@ -56,12 +56,13 @@ export default function Payment({ id, amount }) {
 
                         <CreditCard
                             buttonProps={{
+                                // className: "bg-blue",
                                 css: {
-                                    backgroundColor: "#e75480",
+                                    backgroundColor: "#FF00F7",
                                     fontSize: "20px",
                                     color: "white",
                                     "&:hover": {
-                                        backgroundColor: "#FFC0CB",
+                                        backgroundColor: "#FF80FF",
                                     },
                                     // marginTop: "-12px",
                                     fontWeight: "normal",
