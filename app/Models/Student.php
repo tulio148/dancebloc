@@ -37,7 +37,8 @@ class Student extends Model
         'name',
         'email',
         'phone',
-        'user_id'
+        'user_id',
+        'card'
     ];
 
     /**
@@ -58,11 +59,16 @@ class Student extends Model
 
     public function orders(): HasMany
     {
-        return $this->hasMany(Orders::class);
+        return $this->hasMany(Orders::class, 'student_id', 'id');
     }
 
     public function payments(): HasMany
     {
         return $this->hasMany(Payment::class, 'student_id', 'id');
+    }
+
+    public function cards()
+    {
+        return $this->hasMany(Cards::class, 'student_id', 'id');
     }
 }

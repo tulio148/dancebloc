@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Cards;
 use App\Models\Orders;
+use Square\Models\Card;
 use App\Models\Payments;
 use Square\Models\Money;
 use Square\SquareClient;
@@ -16,6 +18,9 @@ class PaymentService
         $token = $request->input('token');
         $order_id = $request->input('id');
         $amount = $request->input('amount');
+        $cardholder = $request->input('cardholder');
+        $storecard = $request->input('storecard');
+
         $user = auth()->user();
         $student = $user->student;
         $client = app(SquareClient::class);
@@ -34,8 +39,11 @@ class PaymentService
         $body->setAcceptPartialAuthorization(false);
 
         $api_response = $client->getPaymentsApi()->createPayment($body);
+
         if ($api_response->isSuccess()) {
+
             $payment_id = $api_response->getResult()->getPayment()->getId();
+
             Orders::where('id', $order_id)->update(['state' => 'COMPLETED', 'payment_id' => $payment_id]);
             Payments::create(
                 [
@@ -45,11 +53,56 @@ class PaymentService
                     'total_money' => $amount
                 ]
             );
-            return true;
+
+            if ($storecard == true) {
+                $this->save_card($payment_id, $cardholder);
+                return "success";
+            }
+
+            return "success";
+        } else {
+            $errors = $api_response->getErrors()[0]->getDetail();
+            return $errors;
+        }
+    }
+
+    public function save_card($payment_id, $cardholder)
+    {
+
+        $user = auth()->user();
+        $student = $user->student;
+        $client = app(SquareClient::class);
+        $idempotency_key = uniqid();
+
+        $card = new Card();
+        $card->setCustomerId($student->id);
+        $card->setCardholderName($cardholder);
+
+        $body = new \Square\Models\CreateCardRequest(
+            $idempotency_key,
+            $payment_id,
+            $card
+        );
+
+        $api_response = $client->getCardsApi()->createCard($body);
+
+        if ($api_response->isSuccess()) {
+            $result = $api_response->getResult();
+            $card_id = $api_response->getResult()->getCard()->getId();
+            $brand = $api_response->getResult()->getCard()->getCardBrand();
+            $last_4 = $api_response->getResult()->getCard()->getLast4();
+            Cards::create(
+                [
+                    'id' => $card_id,
+                    'brand' => $brand,
+                    'last_4' => $last_4,
+                    'student_id' => $student->id,
+                    'cardholder_name' => $cardholder,
+                ]
+            );
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
-            return ['error' => $errors];
         }
     }
 }
