@@ -12,9 +12,17 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $payment = app(PaymentService::class);
-        $payment->pay($request);
-        if ($payment) {
+        $result = $payment->pay($request);
+        if ($result == "success") {
             app(StudentService::class)->addClass($request);
+            return response()->json([
+                'status' => 'success'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'error' => $result
+            ]);
         }
     }
 }
