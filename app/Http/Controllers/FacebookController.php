@@ -22,11 +22,12 @@ class FacebookController extends Controller
         $fbUser = Socialite::driver('facebook')->stateless()->user();
         // dd($fbUser);
 
-        $user = User::updateOrCreate(
+        $user = User::firstOrCreate(
             ['email' => $fbUser->getEmail()],
             [
                 'name' => $fbUser->getName(),
                 'email' => $fbUser->getEmail(),
+                'signed_in_with' => 'facebook'
             ]
         );
 
