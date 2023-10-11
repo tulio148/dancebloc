@@ -71,7 +71,7 @@ export default function Classes({ classes }) {
                 ))}
             </div>
             <button onClick={createHandle}>Create Class</button>
-            <Modal show={isOpen} onClose={closeCreateModal}>
+            <Modal maxWidth="3xl" show={isOpen} onClose={closeCreateModal}>
                 <UpsertClass />
             </Modal>
         </>

@@ -17,6 +17,7 @@ export default function ({ user, children }) {
         useState(false);
     const dropdownRef = useRef(null);
     const buttonRef = useRef(null);
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -37,7 +38,7 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
-                <div className=" px-6 lg:px-8 bg-db-pink z-50">
+                <div className=" py-2 px-6 lg:px-8 bg-db-pink z-50">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
                         <div className="flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
@@ -164,6 +165,14 @@ export default function ({ user, children }) {
                                             >
                                                 Dashboard
                                             </ResponsiveNavLink>
+                                            <ResponsiveNavLink
+                                                href={route("profile.edit")}
+                                                active={route().current(
+                                                    "profile"
+                                                )}
+                                            >
+                                                Profile
+                                            </ResponsiveNavLink>
 
                                             <ResponsiveNavLink
                                                 method="post"
@@ -199,7 +208,7 @@ export default function ({ user, children }) {
                 </div>
             </nav>
 
-            <main className="mt-16 bg-gradient-to-b from-db-pink from-10% min-h-screen  ">
+            <main className="mt-20 bg-gradient-to-b from-db-pink from-10% min-h-screen  ">
                 {children}
             </main>
         </div>

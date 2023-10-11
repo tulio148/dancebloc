@@ -6,13 +6,13 @@ import TabNav from "@/Components/TabNav";
 import Home from "./Home";
 import Calendar from "./Calendar";
 import Orders from "./Orders";
+// import Settings from "./Settings";
 
 export default function Dashboard({ auth, student, orders, classes }) {
     const [activeTab, setActiveTab] = useState(0);
     const handleTabChange = (index) => {
         setActiveTab(index);
     };
-    console.log(orders);
     return (
         <Layout user={auth.user}>
             <Head title="Dashboard" />
@@ -27,6 +27,7 @@ export default function Dashboard({ auth, student, orders, classes }) {
                     <Calendar user={auth.user} classes={classes} />
                 )}
                 {activeTab == 2 && <Orders user={auth.user} orders={orders} />}
+                {/* {activeTab == 3 && <Settings user={auth.user} />} */}
             </div>
         </Layout>
     );
