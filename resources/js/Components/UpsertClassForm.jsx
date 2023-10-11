@@ -31,8 +31,7 @@ export default function UpsertClass({ initialData }) {
 
     return (
         <form onSubmit={submit}>
-            <div className="flex flex-col gap-2 p-3">
-                <InputLabel htmlFor="name" value="Title" />
+            <div className="flex flex-col gap-8 p-3">
                 <TextInput
                     id="name"
                     name="name"
@@ -42,9 +41,9 @@ export default function UpsertClass({ initialData }) {
                     isFocused={true}
                     onChange={(e) => setData("name", e.target.value)}
                     required
+                    placeholder="Title"
                 />
                 <InputError message={errors.name} className="mt-2" />
-                <InputLabel htmlFor="datetime" value="datetime" />
                 <TextInput
                     id="datetime"
                     type="datetime-local"
@@ -56,7 +55,6 @@ export default function UpsertClass({ initialData }) {
                     required
                 />
                 <InputError message={errors.datetime} className="mt-2" />
-                <InputLabel htmlFor="description" value="description" />
                 <TextInput
                     id="description"
                     name="description"
@@ -64,12 +62,10 @@ export default function UpsertClass({ initialData }) {
                     className="mt-1 block w-full"
                     autoComplete="description"
                     onChange={(e) => setData("description", e.target.value)}
+                    placeholder="Description"
                     required
                 />
                 <InputError message={errors.description} className="mt-2" />
-
-                <InputLabel htmlFor="level" value="Level" />
-
                 <SelectInput
                     options={["", "beginner", "advanced"]}
                     className="mt-1 block w-full"
@@ -78,8 +74,8 @@ export default function UpsertClass({ initialData }) {
                         setData("level", e.target.value);
                     }}
                     required
+                    placeholder="Level"
                 />
-                <InputLabel htmlFor="style" value="style" />
                 <SelectInput
                     options={["", "samba", "other"]}
                     className="mt-1 block w-full"
@@ -88,8 +84,8 @@ export default function UpsertClass({ initialData }) {
                         setData("style", e.target.value);
                     }}
                     required
+                    placeholder="Style"
                 />
-                <InputLabel htmlFor="instructor" value="instructor" />
                 <SelectInput
                     options={["", "Jane Doe", "That One"]}
                     className="mt-1 block w-full"
@@ -98,8 +94,8 @@ export default function UpsertClass({ initialData }) {
                         setData("instructor", e.target.value);
                     }}
                     required
+                    placeholder="Instructor"
                 />
-                <InputLabel htmlFor="enrollment mode" value="enrollment mode" />
                 <SelectInput
                     options={["", "single", "term"]}
                     className="mt-1 block w-full"
@@ -108,8 +104,8 @@ export default function UpsertClass({ initialData }) {
                         setData("enrollment_mode", e.target.value);
                     }}
                     required
+                    placeholder="Enrollment Mode"
                 />
-                <InputLabel htmlFor="location   " value="location " />
                 <SelectInput
                     options={["", "the studio"]}
                     className="mt-1 block w-full"
@@ -118,9 +114,9 @@ export default function UpsertClass({ initialData }) {
                         setData("location", e.target.value);
                     }}
                     required
+                    placeholder="Location"
                 />
 
-                <InputLabel htmlFor="price" value="price" />
                 <TextInput
                     id="price"
                     name="price"
@@ -129,6 +125,7 @@ export default function UpsertClass({ initialData }) {
                     autoComplete="price"
                     onChange={(e) => setData("price", e.target.value)}
                     required
+                    placeholder="Price"
                 />
                 <InputError message={errors.price} className="mt-2" />
                 <PrimaryButton className="" disabled={processing}>
