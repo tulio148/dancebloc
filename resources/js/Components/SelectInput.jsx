@@ -21,7 +21,7 @@ export default forwardRef(function SelectInput(
             }
             ref={selectRef}
         >
-            <option value="" disabled selected>
+            <option value="" disabled>
                 {placeholder}
             </option>
             {options.map((option, index) => (
