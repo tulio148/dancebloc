@@ -4,6 +4,7 @@ import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
+import Textarea from "./Textarea";
 
 export default function UpsertClass({ initialData }) {
     const formattedDatetime = formatDatetime(initialData?.datetime);
@@ -30,13 +31,16 @@ export default function UpsertClass({ initialData }) {
     };
 
     return (
-        <form onSubmit={submit}>
-            <div className="flex flex-col gap-8 p-3">
+        <form
+            onSubmit={submit}
+            className="flex flex-col justify-center items-center gap-3 pb-6"
+        >
+            <div className="grid sm:grid-cols-2  gap-5 p-4 w-full">
                 <TextInput
                     id="name"
                     name="name"
                     value={data.name}
-                    className="mt-1 block w-full"
+                    className="mt-1 block sm:col-span-2 "
                     autoComplete="name"
                     isFocused={true}
                     onChange={(e) => setData("name", e.target.value)}
@@ -44,28 +48,28 @@ export default function UpsertClass({ initialData }) {
                     placeholder="Title"
                 />
                 <InputError message={errors.name} className="mt-2" />
-                <TextInput
-                    id="datetime"
-                    type="datetime-local"
-                    name="datetime"
-                    value={data.datetime}
-                    className="mt-1 block w-full"
-                    autoComplete="datetime"
-                    onChange={(e) => setData("datetime", e.target.value)}
-                    required
-                />
-                <InputError message={errors.datetime} className="mt-2" />
-                <TextInput
+                <Textarea
                     id="description"
                     name="description"
                     value={data.description}
-                    className="mt-1 block w-full"
+                    className="mt-1 block w-full sm:col-span-2"
                     autoComplete="description"
                     onChange={(e) => setData("description", e.target.value)}
                     placeholder="Description"
                     required
                 />
                 <InputError message={errors.description} className="mt-2" />
+                <TextInput
+                    id="datetime"
+                    type="datetime-local"
+                    name="datetime"
+                    value={data.datetime}
+                    className="mt-1 block col-span-1 "
+                    autoComplete="datetime"
+                    onChange={(e) => setData("datetime", e.target.value)}
+                    required
+                />
+                <InputError message={errors.datetime} className="mt-2" />
                 <SelectInput
                     options={["", "beginner", "advanced"]}
                     className="mt-1 block w-full"
@@ -128,10 +132,10 @@ export default function UpsertClass({ initialData }) {
                     placeholder="Price"
                 />
                 <InputError message={errors.price} className="mt-2" />
-                <PrimaryButton className="" disabled={processing}>
-                    Save
-                </PrimaryButton>
             </div>
+            <PrimaryButton className="" disabled={processing}>
+                Save
+            </PrimaryButton>
         </form>
     );
 }
