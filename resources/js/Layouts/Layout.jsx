@@ -5,6 +5,7 @@ import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Dropdown from "@/Components/Dropdown";
 import {
     faBars,
     faXmark,
@@ -41,7 +42,7 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
-                <div className="py-2 px-6 lg:px-8 bg-db-pink z-50">
+                <div className="py-2 px-6 lg:px-8 bg-db-pink ">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
                         <div className="flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
@@ -93,12 +94,12 @@ export default function ({ user, children }) {
                                         as="button"
                                     >
                                         <div className="flex items-center gap-2 ">
+                                            Sign Out
                                             <FontAwesomeIcon
                                                 icon={faDoorOpen}
                                                 size="md"
-                                                style={{ color: "#5c749d" }}
+                                                style={{ color: "#FFFFFF" }}
                                             />
-                                            Sign Out
                                         </div>
                                     </NavLink>
                                 </div>
@@ -160,8 +161,8 @@ export default function ({ user, children }) {
                         leaveTo="transform translate-x-[100%]"
                     >
                         {() => (
-                            <div className="flex justify-end sm:hidden w-full bg-gradient-to-r from-db-pink/10 from-10% to-db-pink to-60% ">
-                                <div className="flex flex-col gap-10 my-4 p-6 border-l border-white/60">
+                            <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-50% drop-shadow-xl ">
+                                <div className="flex flex-col gap-10 my-4 p-6 z-50">
                                     {user ? (
                                         <>
                                             {user.admin == 1 && (
@@ -171,7 +172,7 @@ export default function ({ user, children }) {
                                                         "admin"
                                                     )}
                                                 >
-                                                    <div className="flex items-center gap-2">
+                                                    <div className="flex items-center gap-5">
                                                         {route().current(
                                                             "admin"
                                                         ) ? (
@@ -201,7 +202,7 @@ export default function ({ user, children }) {
                                                     "dashboard"
                                                 )}
                                             >
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-center gap-5">
                                                     {route().current(
                                                         "dashboard"
                                                     ) ? (
@@ -219,7 +220,7 @@ export default function ({ user, children }) {
                                                             icon={
                                                                 faCalendarDays
                                                             }
-                                                            size=",d"
+                                                            size="md"
                                                             style={{
                                                                 color: "#5c749d",
                                                             }}
@@ -234,7 +235,7 @@ export default function ({ user, children }) {
                                                     "profile.edit"
                                                 )}
                                             >
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-center gap-5">
                                                     {route().current(
                                                         "profile.edit"
                                                     ) ? (
@@ -248,13 +249,13 @@ export default function ({ user, children }) {
                                                     ) : (
                                                         <FontAwesomeIcon
                                                             icon={faUser}
-                                                            size=",d"
+                                                            size="md"
                                                             style={{
                                                                 color: "#5c749d",
                                                             }}
                                                         />
                                                     )}
-                                                    Profile
+                                                    Account
                                                 </div>
                                             </ResponsiveNavLink>
 
@@ -262,8 +263,10 @@ export default function ({ user, children }) {
                                                 method="post"
                                                 href={route("logout")}
                                                 as="button"
+                                                className="mt-7 border-t border-gray-200 pt-5 pr-5"
                                             >
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-start gap-5">
+                                                    Sign Out
                                                     <FontAwesomeIcon
                                                         icon={faDoorOpen}
                                                         size="md"
@@ -271,7 +274,6 @@ export default function ({ user, children }) {
                                                             color: "#5c749d",
                                                         }}
                                                     />
-                                                    Log Out
                                                 </div>
                                             </ResponsiveNavLink>
                                         </>
@@ -283,7 +285,7 @@ export default function ({ user, children }) {
                                                     "login"
                                                 )}
                                             >
-                                                <div className="flex items-end gap-2">
+                                                <div className="flex items-center gap-5">
                                                     Sign in
                                                     <FontAwesomeIcon
                                                         icon={
@@ -298,12 +300,12 @@ export default function ({ user, children }) {
                                             </ResponsiveNavLink>
                                         </>
                                     )}
-                                    <ResponsiveNavLink
+                                    {/* <ResponsiveNavLink
                                         href={route("classes")}
                                         active={route().current("classes")}
                                     >
                                         Classes
-                                    </ResponsiveNavLink>
+                                    </ResponsiveNavLink> */}
                                 </div>
                             </div>
                         )}
@@ -311,7 +313,7 @@ export default function ({ user, children }) {
                 </div>
             </nav>
 
-            <main className="mt-20 bg-gradient-to-b from-db-pink from-10% min-h-screen  ">
+            <main className="mt-20 bg-gradient-to-b from-db-pink from-10% min-h-screen">
                 {children}
             </main>
         </div>
