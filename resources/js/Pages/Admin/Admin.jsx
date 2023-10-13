@@ -4,6 +4,7 @@ import TabNav from "@/Components/TabNav";
 import { AdminTabs } from "@/Lib/tabs";
 import { useState } from "react";
 import Classes from "@/Pages/Admin/Classes";
+import Home from "./Home";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import {
 //     faHouse,
@@ -26,7 +27,8 @@ export default function Admin({ auth, students, classes }) {
                 onTabChange={handleTabChange}
             />
             <div className="pt-24 ">
-                {activeTab === 0 && <Classes classes={classes} />}
+                {activeTab === 0 && <Home user={auth.user} />}
+                {activeTab === 1 && <Classes classes={classes} />}
             </div>
         </Layout>
     );

@@ -41,7 +41,7 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav className="w-full fixed top-0 left-0 ">
-                <div className=" py-2 px-6 lg:px-8 bg-db-pink z-50">
+                <div className="py-2 px-6 lg:px-8 bg-db-pink z-50">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
                         <div className="flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
@@ -86,16 +86,16 @@ export default function ({ user, children }) {
                                 </NavLink>
                             </div>
                             {user ? (
-                                <div className="hidden sm:flex gap-8">
+                                <div className="hidden sm:flex items-end gap-8">
                                     <NavLink
                                         method="post"
                                         href={route("logout")}
                                         as="button"
                                     >
-                                        <div className="flex items-center gap-2">
+                                        <div className="flex items-center gap-2 ">
                                             <FontAwesomeIcon
                                                 icon={faDoorOpen}
-                                                size="lg"
+                                                size="md"
                                                 style={{ color: "#5c749d" }}
                                             />
                                             Sign Out
@@ -106,12 +106,12 @@ export default function ({ user, children }) {
                                 <div className="hidden sm:flex gap-5 ">
                                     <NavLink href={route("login")}>
                                         <div className="flex items-center gap-2">
+                                            Sign in
                                             <FontAwesomeIcon
                                                 icon={faArrowRightToBracket}
                                                 size="lg"
-                                                style={{ color: "#5c749d" }}
+                                                style={{ color: "#FFFFFF" }}
                                             />
-                                            Sign in
                                         </div>
                                     </NavLink>
                                 </div>
@@ -160,8 +160,8 @@ export default function ({ user, children }) {
                         leaveTo="transform translate-x-[100%]"
                     >
                         {() => (
-                            <div className="flex justify-end sm:hidden w-full bg-gradient-to-bl from-white to-db-pink ">
-                                <div className="flex flex-col gap-10 my-4 p-6 border-l-2 border-white/60">
+                            <div className="flex justify-end sm:hidden w-full bg-gradient-to-r from-db-pink/10 from-10% to-db-pink to-60% ">
+                                <div className="flex flex-col gap-10 my-4 p-6 border-l border-white/60">
                                     {user ? (
                                         <>
                                             {user.admin == 1 && (
@@ -172,13 +172,25 @@ export default function ({ user, children }) {
                                                     )}
                                                 >
                                                     <div className="flex items-center gap-2">
-                                                        <FontAwesomeIcon
-                                                            icon={faUserTie}
-                                                            size="md"
-                                                            style={{
-                                                                color: "#5c749d",
-                                                            }}
-                                                        />
+                                                        {route().current(
+                                                            "admin"
+                                                        ) ? (
+                                                            <FontAwesomeIcon
+                                                                icon={faUserTie}
+                                                                size="md"
+                                                                style={{
+                                                                    color: "#FFFFFFF",
+                                                                }}
+                                                            />
+                                                        ) : (
+                                                            <FontAwesomeIcon
+                                                                icon={faUserTie}
+                                                                size="md"
+                                                                style={{
+                                                                    color: "#5c749d",
+                                                                }}
+                                                            />
+                                                        )}
                                                         Admin
                                                     </div>
                                                 </ResponsiveNavLink>
@@ -190,30 +202,58 @@ export default function ({ user, children }) {
                                                 )}
                                             >
                                                 <div className="flex items-center gap-2">
-                                                    <FontAwesomeIcon
-                                                        icon={faCalendarDays}
-                                                        size=",d"
-                                                        style={{
-                                                            color: "#5c749d",
-                                                        }}
-                                                    />
+                                                    {route().current(
+                                                        "dashboard"
+                                                    ) ? (
+                                                        <FontAwesomeIcon
+                                                            icon={
+                                                                faCalendarDays
+                                                            }
+                                                            size="md"
+                                                            style={{
+                                                                color: "#FFFFFFF",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <FontAwesomeIcon
+                                                            icon={
+                                                                faCalendarDays
+                                                            }
+                                                            size=",d"
+                                                            style={{
+                                                                color: "#5c749d",
+                                                            }}
+                                                        />
+                                                    )}
                                                     Dashboard
                                                 </div>
                                             </ResponsiveNavLink>
                                             <ResponsiveNavLink
                                                 href={route("profile.edit")}
                                                 active={route().current(
-                                                    "profile"
+                                                    "profile.edit"
                                                 )}
                                             >
                                                 <div className="flex items-center gap-2">
-                                                    <FontAwesomeIcon
-                                                        icon={faUser}
-                                                        size=",d"
-                                                        style={{
-                                                            color: "#5c749d",
-                                                        }}
-                                                    />
+                                                    {route().current(
+                                                        "profile.edit"
+                                                    ) ? (
+                                                        <FontAwesomeIcon
+                                                            icon={faUser}
+                                                            size="md"
+                                                            style={{
+                                                                color: "#FFFFFFF",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <FontAwesomeIcon
+                                                            icon={faUser}
+                                                            size=",d"
+                                                            style={{
+                                                                color: "#5c749d",
+                                                            }}
+                                                        />
+                                                    )}
                                                     Profile
                                                 </div>
                                             </ResponsiveNavLink>
@@ -243,17 +283,17 @@ export default function ({ user, children }) {
                                                     "login"
                                                 )}
                                             >
-                                                <div className="flex items-center gap-2">
+                                                <div className="flex items-end gap-2">
+                                                    Sign in
                                                     <FontAwesomeIcon
                                                         icon={
                                                             faArrowRightToBracket
                                                         }
-                                                        size="md"
+                                                        size="lg"
                                                         style={{
-                                                            color: "#5c749d",
+                                                            color: "#FFFFFFF",
                                                         }}
                                                     />
-                                                    Sign in
                                                 </div>
                                             </ResponsiveNavLink>
                                         </>
