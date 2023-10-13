@@ -61,10 +61,11 @@ export default function Register() {
                             <span>Sign up with Email</span>
                         </button>
                         {showEmailForm && (
-                            <form onSubmit={submit}>
+                            <form
+                                onSubmit={submit}
+                                className="flex flex-col gap-5"
+                            >
                                 <div>
-                                    <InputLabel htmlFor="name" value="Name" />
-
                                     <TextInput
                                         id="name"
                                         name="name"
@@ -76,6 +77,7 @@ export default function Register() {
                                             setData("name", e.target.value)
                                         }
                                         required
+                                        placeholder="Name"
                                     />
 
                                     <InputError
@@ -85,8 +87,6 @@ export default function Register() {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel htmlFor="email" value="Email" />
-
                                     <TextInput
                                         id="email"
                                         type="email"
@@ -98,6 +98,7 @@ export default function Register() {
                                             setData("email", e.target.value)
                                         }
                                         required
+                                        placeholder="Email"
                                     />
 
                                     <InputError
@@ -107,11 +108,6 @@ export default function Register() {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel
-                                        htmlFor="password"
-                                        value="Password"
-                                    />
-
                                     <TextInput
                                         id="password"
                                         type="password"
@@ -123,6 +119,7 @@ export default function Register() {
                                             setData("password", e.target.value)
                                         }
                                         required
+                                        placeholder="Password"
                                     />
 
                                     <InputError
@@ -132,11 +129,6 @@ export default function Register() {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel
-                                        htmlFor="password_confirmation"
-                                        value="Confirm Password"
-                                    />
-
                                     <TextInput
                                         id="password_confirmation"
                                         type="password"
@@ -151,6 +143,7 @@ export default function Register() {
                                             )
                                         }
                                         required
+                                        placeholder="Confirm Password"
                                     />
 
                                     <InputError

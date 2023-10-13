@@ -6,6 +6,7 @@ import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
+import ApplicationLogo from "@/Components/ApplicationLogo";
 
 export default function Login({ status, canResetPassword }) {
     const [showEmailForm, setShowEmailForm] = useState(false);
@@ -32,7 +33,10 @@ export default function Login({ status, canResetPassword }) {
         <>
             <Head title="Log in" />
 
-            <div className="w-screen h-screen flex justify-center items-center">
+            <div className="w-screen h-screen flex flex-col gap-12 justify-center items-center">
+                <Link href="/">
+                    <ApplicationLogo className="block h-40 w-auto fill-current text-db-pink" />
+                </Link>
                 <div className=" sm:border border-gray-300 sm:shadow-md p-10 sm:p-8 sm:w-3/4 w-full max-w-xl">
                     <div className="flex flex-col gap-4">
                         <a
@@ -64,10 +68,11 @@ export default function Login({ status, canResetPassword }) {
                             <span>Login with Email</span>
                         </button>
                         {showEmailForm && (
-                            <form onSubmit={submit}>
+                            <form
+                                onSubmit={submit}
+                                className="flex flex-col gap-5"
+                            >
                                 <div>
-                                    <InputLabel htmlFor="email" value="Email" />
-
                                     <TextInput
                                         id="email"
                                         type="email"
@@ -79,6 +84,7 @@ export default function Login({ status, canResetPassword }) {
                                         onChange={(e) =>
                                             setData("email", e.target.value)
                                         }
+                                        placeholder="Email"
                                     />
 
                                     <InputError
@@ -88,11 +94,6 @@ export default function Login({ status, canResetPassword }) {
                                 </div>
 
                                 <div className="mt-4">
-                                    <InputLabel
-                                        htmlFor="password"
-                                        value="Password"
-                                    />
-
                                     <TextInput
                                         id="password"
                                         type="password"
@@ -103,6 +104,7 @@ export default function Login({ status, canResetPassword }) {
                                         onChange={(e) =>
                                             setData("password", e.target.value)
                                         }
+                                        placeholder="Password"
                                     />
 
                                     <InputError

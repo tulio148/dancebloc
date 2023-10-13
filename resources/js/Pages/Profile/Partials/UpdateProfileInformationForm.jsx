@@ -32,14 +32,12 @@ export default function UpdateProfileInformation({
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Update your account's profile information and email address.
+                    Update your account's profile information.
                 </p>
             </header>
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
                     <TextInput
                         id="name"
                         className="mt-1 block w-full"
@@ -47,6 +45,7 @@ export default function UpdateProfileInformation({
                         onChange={(e) => setData("name", e.target.value)}
                         required
                         isFocused
+                        placeholder="Name"
                         autoComplete="name"
                     />
 
@@ -55,7 +54,6 @@ export default function UpdateProfileInformation({
 
                 {user.signed_in_with == "email" && (
                     <div>
-                        <InputLabel htmlFor="email" value="Email" />
                         <TextInput
                             id="email"
                             type="email"
@@ -63,12 +61,28 @@ export default function UpdateProfileInformation({
                             value={data.email}
                             onChange={(e) => setData("email", e.target.value)}
                             required
+                            placeholder="Email"
                             autoComplete="username"
                         />
 
                         <InputError className="mt-2" message={errors.email} />
                     </div>
                 )}
+
+                <div>
+                    <TextInput
+                        id="phone"
+                        className="mt-1 block w-full"
+                        value={data.phone}
+                        onChange={(e) => setData("phone", e.target.value)}
+                        required
+                        isFocused
+                        placeholder="Phone"
+                        autoComplete="name"
+                    />
+
+                    <InputError className="mt-2" message={errors.name} />
+                </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
