@@ -16,6 +16,7 @@ export default function UpdateProfileInformation({
         useForm({
             name: user.name,
             email: user.email,
+            phone: user.phone,
         });
 
     const submit = (e) => {
@@ -78,10 +79,10 @@ export default function UpdateProfileInformation({
                         required
                         isFocused
                         placeholder="Phone"
-                        autoComplete="name"
+                        autoComplete="phone"
                     />
 
-                    <InputError className="mt-2" message={errors.name} />
+                    <InputError className="mt-2" message={errors.phone} />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (

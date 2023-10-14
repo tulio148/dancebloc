@@ -18,7 +18,6 @@ class CreateStudentsTable extends Migration
             $table->string('id')->primary();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

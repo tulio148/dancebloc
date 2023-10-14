@@ -36,7 +36,6 @@ class Student extends Model
         'id',
         'name',
         'email',
-        'phone',
         'user_id',
         'card'
     ];
