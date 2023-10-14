@@ -14,7 +14,7 @@ export default function TabNav({ tabs, activeTab, onTabChange }) {
                 }`}
                     >
                         <span className="inline sm:hidden">{tab.icon}</span>
-                        <span className="hidden sm:inline lg:text-base text-sm">
+                        <span className="hidden sm:inline lg:text-lg text-base">
                             {tab.label}
                         </span>
                         <div

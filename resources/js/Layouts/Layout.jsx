@@ -161,7 +161,7 @@ export default function ({ user, children }) {
                         leaveTo="transform translate-x-[100%]"
                     >
                         {() => (
-                            <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-50% drop-shadow-xl ">
+                            <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-50% drop-shadow-xl">
                                 <div className="flex flex-col gap-10 my-4 p-6 z-50">
                                     {user ? (
                                         <>
@@ -263,7 +263,7 @@ export default function ({ user, children }) {
                                                 method="post"
                                                 href={route("logout")}
                                                 as="button"
-                                                className="mt-7 border-t border-gray-200 pt-5 pr-5"
+                                                className="mt-7 border-t border-white/60 pt-5 px-5"
                                             >
                                                 <div className="flex items-start gap-5">
                                                     Sign Out
@@ -271,7 +271,7 @@ export default function ({ user, children }) {
                                                         icon={faDoorOpen}
                                                         size="md"
                                                         style={{
-                                                            color: "#5c749d",
+                                                            color: "#FFFFFF",
                                                         }}
                                                     />
                                                 </div>

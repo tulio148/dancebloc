@@ -6,7 +6,7 @@ import { Head } from "@inertiajs/react";
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
     const user = auth.user;
-    console.log(user);
+
     return (
         <Layout
             user={auth.user}
@@ -34,7 +34,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                         </div>
                     )}
                     <div className="p-4 sm:p-8 bg-white shadow rounded-lg">
-                        <DeleteUserForm className="max-w-xl" />
+                        <DeleteUserForm user={user} />
                     </div>
                 </div>
             </div>
