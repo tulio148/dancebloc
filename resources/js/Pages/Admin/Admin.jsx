@@ -1,17 +1,10 @@
+import { useState } from "react";
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
-import TabNav from "@/Components/TabNav";
 import { AdminTabs } from "@/Lib/tabs";
-import { useState } from "react";
-import Classes from "@/Pages/Admin/Classes";
+import TabNav from "@/Components/TabNav";
 import Home from "./Home";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//     faHouse,
-//     faCalendarPlus,
-//     faCoins,
-//     faGear,
-// } from "@fortawesome/free-solid-svg-icons";
+import Classes from "@/Pages/Admin/Classes";
 
 export default function Admin({ auth, students, classes }) {
     const [activeTab, setActiveTab] = useState(0);
@@ -25,8 +18,9 @@ export default function Admin({ auth, students, classes }) {
                 tabs={AdminTabs}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
+                className="z-50"
             />
-            <div className="pt-24 ">
+            <div className="sm:pt-24 pt-10 mx-5 z-40 max-w-7xl">
                 {activeTab === 0 && <Home user={auth.user} />}
                 {activeTab === 1 && <Classes classes={classes} />}
             </div>

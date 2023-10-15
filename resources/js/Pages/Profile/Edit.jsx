@@ -8,32 +8,24 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
     const user = auth.user;
 
     return (
-        <Layout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Profile
-                </h2>
-            }
-        >
+        <Layout user={auth.user}>
             <Head title="Profile" />
 
-            <div className="py-12">
-                <div className="max-w-fit mx-auto px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white shadow rounded-lg">
+            <div className="py-12 max-w-2xl mx-auto">
+                <div className="max-w-fit px-6 lg:px-8 space-y-6">
+                    <div className="p-4 sm:p-8 bg-white shadow rounded-xl">
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
-                            className="max-w-xl"
                         />
                     </div>
 
                     {user.signed_in_with == "email" && (
-                        <div className="p-4 sm:p-8 bg-white shadow rounded-lg">
-                            <UpdatePasswordForm className="max-w-xl" />
+                        <div className="p-4 sm:p-8 bg-white shadow rounded-xl">
+                            <UpdatePasswordForm />
                         </div>
                     )}
-                    <div className="p-4 sm:p-8 bg-white shadow rounded-lg">
+                    <div className="p-4 sm:p-8 bg-white shadow rounded-xl">
                         <DeleteUserForm user={user} />
                     </div>
                 </div>

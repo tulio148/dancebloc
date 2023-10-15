@@ -1,7 +1,9 @@
-export default function TabNav({ tabs, activeTab, onTabChange }) {
+export default function TabNav({ tabs, activeTab, onTabChange, className }) {
     return (
-        <div className="fixed sm:sticky bottom-0 sm:top-24 w-full h-fit ">
-            <div className="flex gap-2 p-3 sm:px-6 w-full max-w-7xl mx-auto bg-white sm:bg-db-pink rounded-lg">
+        <div
+            className={`fixed left-0 bottom-0 sm:top-20 w-full h-fit bg-white sm:bg-db-pink ${className}`}
+        >
+            <div className="flex gap-2 p-3 sm:px-6 w-full max-w-7xl mx-auto  rounded-lg">
                 {tabs.map((tab, index) => (
                     <button
                         key={index}
@@ -14,7 +16,7 @@ export default function TabNav({ tabs, activeTab, onTabChange }) {
                 }`}
                     >
                         <span className="inline sm:hidden">{tab.icon}</span>
-                        <span className="hidden sm:inline lg:text-lg text-base">
+                        <span className="hidden sm:inline lg:text-base text-sm">
                             {tab.label}
                         </span>
                         <div
