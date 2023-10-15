@@ -6,7 +6,11 @@ import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
 import Textarea from "./Textarea";
 
-export default function UpsertClass({ initialData }) {
+export default function UpsertClass({
+    initialData,
+    closeCreateModal,
+    closeUpdateModal,
+}) {
     const formattedDatetime = formatDatetime(initialData?.datetime);
 
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -27,7 +31,13 @@ export default function UpsertClass({ initialData }) {
     const submit = (e) => {
         e.preventDefault();
         console.log(data);
-        initialData ? post(route("class.update")) : post(route("class.store"));
+        initialData
+            ? post(route("class.update"), {
+                  onSuccess: (page) => closeUpdateModal(),
+              })
+            : post(route("class.store"), {
+                  onSuccess: (page) => closeCreateModal(),
+              });
     };
 
     return (
