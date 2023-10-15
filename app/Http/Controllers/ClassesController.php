@@ -52,14 +52,14 @@ class ClassesController extends Controller
     public function store(Request $request)
     {
         app(ClassesService::class)->store($request);
-        return redirect()->route('admin')->with('message', 'Class created successfully')->with('status', 200);
+        return back()->with('success', 'Class created successfully')->with('status', 200);
     }
 
 
     public function update(Request $request)
     {
         app(ClassesService::class)->update($request);
-        return redirect()->route('admin')->with('message', 'Class updated successfully')->with('status', 200);
+        return back()->with('success', 'Class updated successfully')->with('status', 200);
     }
 
     public function destroy(Classes $class)

@@ -115,7 +115,6 @@ class ClassesService
                     'datetime' => $datetime,
                 ]
             );
-            dd($result);
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
@@ -125,10 +124,6 @@ class ClassesService
 
     public function update(Request $request)
     {
-
-
-
-
         $client = app(SquareClient::class);
         $idempotency_key = uniqid();
 
@@ -214,7 +209,6 @@ class ClassesService
             $class->version = $new_version;
             $class->stupid_square_name = $new_stupid_square_name;
             $class->save();
-            dd($result);
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
