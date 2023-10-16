@@ -14,13 +14,7 @@ import { Disclosure } from "@headlessui/react";
 import { Listbox } from "@headlessui/react";
 import formatDate from "@/Lib/dateformatter";
 
-const filters = [
-    { name: "Upcoming", value: "upcoming" },
-    { name: "Beginner", value: "beginner" },
-    { name: "Advanced", value: "advanced" },
-    { name: "Single", value: "enrollment mode" },
-    { name: "Term", value: "enrollment mode" },
-];
+const filters = ["upcoming", "beginner", "advanced", "single", "term"];
 
 export default function Classes({ classes }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +36,15 @@ export default function Classes({ classes }) {
             setUpdateIsOpen("");
         }, 0);
     };
-    console.log(filter);
+
+    const upcomingClasses = classes.filter(
+        (classItem) =>
+            new Date(classItem.datetime).getTime() > new Date().getTime()
+    );
+
+    const chosenClasses = filter.includes("upcoming")
+        ? upcomingClasses
+        : classes;
 
     return (
         <div className="flex flex-wrap justify-center gap-2 mx-auto">
@@ -109,9 +111,7 @@ export default function Classes({ classes }) {
                                                                                 : "font-normal"
                                                                         }`}
                                                                     >
-                                                                        {
-                                                                            filter.name
-                                                                        }
+                                                                        {filter}
                                                                     </span>
                                                                     {selected ? (
                                                                         <FontAwesomeIcon
@@ -147,96 +147,83 @@ export default function Classes({ classes }) {
                         </tr>
                     </thead>
                     <tbody className="mt-3 divide-y divide-gray-200 ">
-                        {classes
-                            .filter((item) => {
-                                return filter.some(
-                                    (filterItem) =>
-                                        filterItem.value === item.level ||
-                                        filterItem.value ===
-                                            item.enrollment_mode
-                                );
-                            })
-                            .map((item) => (
-                                <tr key={item.id}>
-                                    <td className="px-4 py-2 whitespace-wrap">
-                                        <Disclosure>
-                                            <Disclosure.Button className="w-full text-left">
-                                                {item.name}
-                                            </Disclosure.Button>
-                                            <Disclosure.Panel className="">
-                                                <div className="flex justify-between gap-2 pt-3 text-sm text-db-pink">
-                                                    {item.level}
-                                                    <br />
-                                                    {formatDate(item.datetime)}
-                                                    <div className=" flex items-end gap-7">
-                                                        <button
-                                                            className=""
-                                                            onClick={() =>
-                                                                updateHandle(
-                                                                    item.id
-                                                                )
+                        {chosenClasses.map((item) => (
+                            <tr key={item.id}>
+                                <td className="px-4 py-2 whitespace-wrap">
+                                    <Disclosure>
+                                        <Disclosure.Button className="w-full text-left">
+                                            {item.name}
+                                        </Disclosure.Button>
+                                        <Disclosure.Panel className="">
+                                            <div className="flex justify-between gap-2 pt-3 text-sm text-db-pink">
+                                                {item.level}
+                                                <br />
+                                                {formatDate(item.datetime)}
+                                                <div className=" flex items-end gap-7">
+                                                    <button
+                                                        className=""
+                                                        onClick={() =>
+                                                            updateHandle(
+                                                                item.id
+                                                            )
+                                                        }
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faPenToSquare}
+                                                            size="lg"
+                                                            style={{
+                                                                color: "#FF00F7",
+                                                            }}
+                                                        />
+                                                        <Modal
+                                                            show={
+                                                                updateIsOpen ==
+                                                                item.id
+                                                            }
+                                                            onClose={
+                                                                closeUpdateModal
                                                             }
                                                         >
-                                                            <FontAwesomeIcon
-                                                                icon={
-                                                                    faPenToSquare
+                                                            <UpsertClass
+                                                                initialData={
+                                                                    item
                                                                 }
-                                                                size="lg"
-                                                                style={{
-                                                                    color: "#FF00F7",
-                                                                }}
-                                                            />
-                                                            <Modal
-                                                                show={
-                                                                    updateIsOpen ==
-                                                                    item.id
-                                                                }
-                                                                onClose={
+                                                                closeUpdateModal={
                                                                     closeUpdateModal
                                                                 }
-                                                            >
-                                                                <UpsertClass
-                                                                    initialData={
-                                                                        item
-                                                                    }
-                                                                    closeUpdateModal={
-                                                                        closeUpdateModal
-                                                                    }
-                                                                />
-                                                            </Modal>
-                                                        </button>
-                                                        <button
-                                                            className=""
-                                                            onClick={() =>
-                                                                router.delete(
-                                                                    `/classes/${item.name}`,
-                                                                    {
-                                                                        onBefore:
-                                                                            () =>
-                                                                                confirm(
-                                                                                    "Are you sure you want to delete this class?"
-                                                                                ),
-                                                                    }
-                                                                )
-                                                            }
-                                                        >
-                                                            <FontAwesomeIcon
-                                                                icon={
-                                                                    faTrashCan
-                                                                }
-                                                                size="lg"
-                                                                style={{
-                                                                    color: "#f32013",
-                                                                }}
                                                             />
-                                                        </button>
-                                                    </div>
+                                                        </Modal>
+                                                    </button>
+                                                    <button
+                                                        className=""
+                                                        onClick={() =>
+                                                            router.delete(
+                                                                `/classes/${item.name}`,
+                                                                {
+                                                                    onBefore:
+                                                                        () =>
+                                                                            confirm(
+                                                                                "Are you sure you want to delete this class?"
+                                                                            ),
+                                                                }
+                                                            )
+                                                        }
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faTrashCan}
+                                                            size="lg"
+                                                            style={{
+                                                                color: "#f32013",
+                                                            }}
+                                                        />
+                                                    </button>
                                                 </div>
-                                            </Disclosure.Panel>
-                                        </Disclosure>
-                                    </td>
-                                </tr>
-                            ))}
+                                            </div>
+                                        </Disclosure.Panel>
+                                    </Disclosure>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
