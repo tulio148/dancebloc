@@ -5,7 +5,7 @@ import {
     faCartShopping,
     faGear,
     faCalendarPlus,
-    faCoins,
+    faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const DashboardTabs = [
@@ -30,20 +30,10 @@ export const DashboardTabs = [
         ),
     },
     {
-        label: "Orders",
+        label: "Cart",
         icon: (
             <FontAwesomeIcon
                 icon={faCartShopping}
-                size="xl"
-                style={{ color: "#5c749d" }}
-            />
-        ),
-    },
-    {
-        label: "Settings",
-        icon: (
-            <FontAwesomeIcon
-                icon={faGear}
                 size="xl"
                 style={{ color: "#5c749d" }}
             />
@@ -73,10 +63,10 @@ export const AdminTabs = [
         ),
     },
     {
-        label: "Orders",
+        label: "Students",
         icon: (
             <FontAwesomeIcon
-                icon={faCoins}
+                icon={faUsers}
                 size="xl"
                 style={{ color: "#5c749d" }}
             />
