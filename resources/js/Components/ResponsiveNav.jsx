@@ -6,23 +6,53 @@ import {
     faUser,
     faUserTie,
     faCalendarDays,
+    faMusic,
+    faPhone,
+    faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ResponsiveNav({ user }) {
     return (
-        <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-40% drop-shadow-xl">
-            <div className="flex flex-col gap-10 my-4 p-6 z-50">
+        <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-55% drop-shadow-xl">
+            <div className="flex flex-col gap-12 my-4 p-6 z-50">
                 {user ? (
                     <>
-                        {user.admin == 1 && (
+                        <div className="flex flex-col gap-4">
+                            {user.admin == 1 && (
+                                <ResponsiveNavLink
+                                    href={route("admin")}
+                                    active={route().current("admin")}
+                                >
+                                    <div className="flex items-center gap-5">
+                                        {route().current("admin") ? (
+                                            <FontAwesomeIcon
+                                                icon={faUserTie}
+                                                size="lg"
+                                                style={{
+                                                    color: "#FFFFFFF",
+                                                }}
+                                            />
+                                        ) : (
+                                            <FontAwesomeIcon
+                                                icon={faUserTie}
+                                                size="lg"
+                                                style={{
+                                                    color: "#5c749d",
+                                                }}
+                                            />
+                                        )}
+                                        Admin
+                                    </div>
+                                </ResponsiveNavLink>
+                            )}
                             <ResponsiveNavLink
-                                href={route("admin")}
-                                active={route().current("admin")}
+                                href={route("dashboard")}
+                                active={route().current("dashboard")}
                             >
                                 <div className="flex items-center gap-5">
-                                    {route().current("admin") ? (
+                                    {route().current("dashboard") ? (
                                         <FontAwesomeIcon
-                                            icon={faUserTie}
+                                            icon={faCalendarDays}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFFF",
@@ -30,75 +60,130 @@ export default function ResponsiveNav({ user }) {
                                         />
                                     ) : (
                                         <FontAwesomeIcon
-                                            icon={faUserTie}
+                                            icon={faCalendarDays}
                                             size="lg"
                                             style={{
                                                 color: "#5c749d",
                                             }}
                                         />
                                     )}
-                                    Admin
+                                    Dashboard
                                 </div>
                             </ResponsiveNavLink>
-                        )}
-                        <ResponsiveNavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
-                        >
-                            <div className="flex items-center gap-5">
-                                {route().current("dashboard") ? (
-                                    <FontAwesomeIcon
-                                        icon={faCalendarDays}
-                                        size="lg"
-                                        style={{
-                                            color: "#FFFFFFF",
-                                        }}
-                                    />
-                                ) : (
-                                    <FontAwesomeIcon
-                                        icon={faCalendarDays}
-                                        size="lg"
-                                        style={{
-                                            color: "#5c749d",
-                                        }}
-                                    />
-                                )}
-                                Dashboard
-                            </div>
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route("profile.edit")}
-                            active={route().current("profile.edit")}
-                        >
-                            <div className="flex items-center gap-5">
-                                {route().current("profile.edit") ? (
-                                    <FontAwesomeIcon
-                                        icon={faUser}
-                                        size="lg"
-                                        style={{
-                                            color: "#FFFFFFF",
-                                        }}
-                                    />
-                                ) : (
-                                    <FontAwesomeIcon
-                                        icon={faUser}
-                                        size="lg"
-                                        style={{
-                                            color: "#5c749d",
-                                        }}
-                                    />
-                                )}
-                                Account
-                            </div>
-                        </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("profile.edit")}
+                                active={route().current("profile.edit")}
+                            >
+                                <div className="flex items-center gap-5">
+                                    {route().current("profile.edit") ? (
+                                        <FontAwesomeIcon
+                                            icon={faUser}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faUser}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                    Account
+                                </div>
+                            </ResponsiveNavLink>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5">
+                                    Classes
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faMusic}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faMusic}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    Mission
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    Contact
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faPhone}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faPhone}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                        </div>
 
                         <ResponsiveNavLink
                             method="post"
                             href={route("logout")}
                             as="button"
-                            className="mt-7 border-t border-white/60 pt-5 px-5"
+                            className="self-end"
                         >
-                            <div className="flex items-start gap-5">
+                            <div className="flex items-start gap-3 text-xl tracking-normal mt-10">
                                 Sign Out
                                 <FontAwesomeIcon
                                     icon={faDoorOpen}
@@ -127,14 +212,88 @@ export default function ResponsiveNav({ user }) {
                                 />
                             </div>
                         </ResponsiveNavLink>
+                        <div className="flex flex-col gap-4">
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    Classes
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faMusic}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faMusic}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    Mission
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("classes")}
+                                active={route().current("classes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    Contact
+                                    {route().current("classes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faPhone}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFFF",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faPhone}
+                                            size="lg"
+                                            style={{
+                                                color: "#5c749d",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                        </div>
                     </>
                 )}
-                {/* <ResponsiveNavLink
-                href={route("classes")}
-                active={route().current("classes")}
-            >
-                Classes
-            </ResponsiveNavLink> */}
             </div>
         </div>
     );
