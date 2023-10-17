@@ -29,7 +29,7 @@ export default function ResponsiveNav({ user }) {
                                                 icon={faUserTie}
                                                 size="lg"
                                                 style={{
-                                                    color: "#FFFFFFF",
+                                                    color: "#00FFA0",
                                                 }}
                                             />
                                         ) : (
@@ -37,7 +37,7 @@ export default function ResponsiveNav({ user }) {
                                                 icon={faUserTie}
                                                 size="lg"
                                                 style={{
-                                                    color: "#5c749d",
+                                                    color: "#FFFFFF",
                                                 }}
                                             />
                                         )}
@@ -55,7 +55,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCalendarDays}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -63,7 +63,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCalendarDays}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -80,7 +80,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faUser}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -88,7 +88,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faUser}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -109,7 +109,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faMusic}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -117,7 +117,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faMusic}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -135,7 +135,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCircleInfo}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -143,7 +143,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCircleInfo}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -161,7 +161,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faPhone}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -169,7 +169,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faPhone}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -207,7 +207,7 @@ export default function ResponsiveNav({ user }) {
                                     icon={faArrowRightToBracket}
                                     size="lg"
                                     style={{
-                                        color: "#FFFFFFF",
+                                        color: "#00FFA0",
                                     }}
                                 />
                             </div>
@@ -225,7 +225,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faMusic}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -233,7 +233,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faMusic}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -251,7 +251,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCircleInfo}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -259,7 +259,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faCircleInfo}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}
@@ -277,7 +277,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faPhone}
                                             size="lg"
                                             style={{
-                                                color: "#FFFFFFF",
+                                                color: "#00FFA0",
                                             }}
                                         />
                                     ) : (
@@ -285,7 +285,7 @@ export default function ResponsiveNav({ user }) {
                                             icon={faPhone}
                                             size="lg"
                                             style={{
-                                                color: "#5c749d",
+                                                color: "#FFFFFF",
                                             }}
                                         />
                                     )}

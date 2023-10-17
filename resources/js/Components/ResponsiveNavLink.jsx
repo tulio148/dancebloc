@@ -11,7 +11,7 @@ export default function ResponsiveNavLink({
             {...props}
             className={` tracking-widest  py-1  text-2xl w-fit text-white ${
                 active
-                    ? " border-white/40 font-semibold rounded-lg"
+                    ? " border-white/40 font-bold rounded-lg"
                     : "hover:text-db-green/75 text-black font-light"
             }  ${className}`}
         >

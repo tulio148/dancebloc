@@ -15,7 +15,7 @@ export const DashboardTabs = [
             <FontAwesomeIcon
                 icon={faHouse}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -25,7 +25,7 @@ export const DashboardTabs = [
             <FontAwesomeIcon
                 icon={faCalendarDays}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -35,7 +35,7 @@ export const DashboardTabs = [
             <FontAwesomeIcon
                 icon={faCartShopping}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -48,7 +48,7 @@ export const AdminTabs = [
             <FontAwesomeIcon
                 icon={faHouse}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -58,7 +58,7 @@ export const AdminTabs = [
             <FontAwesomeIcon
                 icon={faCalendarPlus}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -68,7 +68,7 @@ export const AdminTabs = [
             <FontAwesomeIcon
                 icon={faUsers}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },
@@ -78,7 +78,7 @@ export const AdminTabs = [
             <FontAwesomeIcon
                 icon={faGear}
                 size="xl"
-                style={{ color: "#5c749d" }}
+                style={{ color: "#00FFA0" }}
             />
         ),
     },

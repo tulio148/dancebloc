@@ -31,7 +31,7 @@ export default function Nav({ user }) {
                         </NavLink>
                         <NavLink
                             href={route("profile.edit")}
-                            active={route().current("profile")}
+                            active={route().current("profile.edit")}
                         >
                             Profile
                         </NavLink>
@@ -52,7 +52,7 @@ export default function Nav({ user }) {
                             <FontAwesomeIcon
                                 icon={faDoorOpen}
                                 size="lg"
-                                style={{ color: "#FFFFFF" }}
+                                style={{ color: "#0096A0" }}
                             />
                         </div>
                     </NavLink>
@@ -65,7 +65,7 @@ export default function Nav({ user }) {
                             <FontAwesomeIcon
                                 icon={faArrowRightToBracket}
                                 size="lg"
-                                style={{ color: "#FFFFFF" }}
+                                style={{ color: "#0096A0" }}
                             />
                         </div>
                     </NavLink>
