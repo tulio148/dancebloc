@@ -20,8 +20,6 @@ export default function Students({ students }) {
                       .replace(/\s+/g, "")
                       .includes(query.toLowerCase().replace(/\s+/g, ""))
               );
-    console.log(query);
-    console.log(student);
     return (
         <div className="flex flex-col items-center gap-7 z-40">
             <div className="w-80 z-50">
@@ -29,7 +27,7 @@ export default function Students({ students }) {
                     <div className="relative mt-1">
                         <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
                             <Combobox.Input
-                                className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+                                className="w-full border-none py-2 pl-3 pr-10 text-md leading-5 text-gray-900 focus:ring-0"
                                 displayValue={(student) => student.name}
                                 onChange={(event) =>
                                     setQuery(event.target.value)

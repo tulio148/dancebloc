@@ -37,7 +37,7 @@ export default function Login({ status, canResetPassword }) {
                 <Link href="/">
                     <ApplicationLogo className="block h-40 w-auto fill-current text-db-pink" />
                 </Link>
-                <div className=" sm:border border-gray-300 sm:shadow-md p-10 sm:p-8 sm:w-3/4 w-full max-w-xl">
+                <div className="p-10 sm:p-8 sm:w-3/4 w-full max-w-lg">
                     <div className="flex flex-col gap-4">
                         <a
                             href="/login/Facebook"

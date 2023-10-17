@@ -15,7 +15,7 @@ export default {
             colors: {
                 "db-pink": "#FF00F7",
                 "db-light-pink": "#FF80FF",
-                "db-green": "#04ae2f",
+                "db-green": "#00FFA0",
                 "special-blue": "#5c749d",
             },
             fontFamily: {
