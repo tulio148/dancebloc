@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ResponsiveNav({ user }) {
+    console.log(route().current());
     return (
         <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-55% drop-shadow-xl">
             <div className="flex flex-col gap-12 my-4 p-6 z-50">
@@ -99,12 +100,16 @@ export default function ResponsiveNav({ user }) {
                         <div className="flex flex-col gap-4">
                             <ResponsiveNavLink
                                 href={route("classes")}
-                                active={route().current("classes")}
+                                active={
+                                    route().current("classes") ||
+                                    route().current("classes.show")
+                                }
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5">
                                     Classes
-                                    {route().current("classes") ? (
+                                    {route().current("classes") ||
+                                    route().current("classes.show") ? (
                                         <FontAwesomeIcon
                                             icon={faMusic}
                                             size="lg"
@@ -246,7 +251,10 @@ export default function ResponsiveNav({ user }) {
                             >
                                 <div className="flex items-center  gap-5 ">
                                     Mission
-                                    {route().current("classes") ? (
+                                    {route().current("classes") ||
+                                    route().current("classes.show", {
+                                        class: class_.name,
+                                    }) ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
                                             size="lg"
@@ -267,12 +275,12 @@ export default function ResponsiveNav({ user }) {
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
                                 href={route("classes")}
-                                active={route().current("classes")}
+                                active={route().current("classes.*")}
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
                                     Contact
-                                    {route().current("classes") ? (
+                                    {route().current("classes.*") ? (
                                         <FontAwesomeIcon
                                             icon={faPhone}
                                             size="lg"

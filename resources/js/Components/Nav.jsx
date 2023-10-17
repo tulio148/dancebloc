@@ -1,12 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faBars,
-    faXmark,
     faArrowRightToBracket,
     faDoorOpen,
-    faUser,
-    faUserTie,
-    faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
 import NavLink from "./NavLink";
 export default function Nav({ user }) {
@@ -39,7 +34,10 @@ export default function Nav({ user }) {
                 )}
                 <NavLink
                     href={route("classes")}
-                    active={route().current("classes")}
+                    active={
+                        route().current("classes") ||
+                        route().current("classes.show")
+                    }
                 >
                     Classes
                 </NavLink>
@@ -52,7 +50,7 @@ export default function Nav({ user }) {
                             <FontAwesomeIcon
                                 icon={faDoorOpen}
                                 size="lg"
-                                style={{ color: "#0096A0" }}
+                                style={{ color: "#00FFA0" }}
                             />
                         </div>
                     </NavLink>
@@ -65,7 +63,7 @@ export default function Nav({ user }) {
                             <FontAwesomeIcon
                                 icon={faArrowRightToBracket}
                                 size="lg"
-                                style={{ color: "#0096A0" }}
+                                style={{ color: "#00FFA0" }}
                             />
                         </div>
                     </NavLink>
