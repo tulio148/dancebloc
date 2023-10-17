@@ -1,5 +1,5 @@
 import Payment from "./Partials/Payment";
-export default function Orders({ user, orders }) {
+export default function Cart({ user, orders }) {
     return (
         <div>
             <h1>Welcome back {user.name}!</h1>

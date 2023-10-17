@@ -191,7 +191,7 @@ function CardStorageCheckbox({
                         type="checkbox"
                         checked={isChecked}
                         onChange={onChange}
-                        className="form-checkbox text-db-pink h-5 w-5"
+                        className="form-checkbox text-db-pink h-5 w-5 "
                     />
                 </label>
             </div>

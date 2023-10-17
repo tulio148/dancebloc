@@ -5,8 +5,7 @@ import { Head } from "@inertiajs/react";
 import TabNav from "@/Components/TabNav";
 import Home from "./Home";
 import Calendar from "./Calendar";
-import Orders from "./Orders";
-// import Settings from "./Settings";
+import Cart from "./Cart";
 
 export default function Dashboard({ auth, student, orders, classes }) {
     const [activeTab, setActiveTab] = useState(0);
@@ -26,8 +25,7 @@ export default function Dashboard({ auth, student, orders, classes }) {
                 {activeTab == 1 && (
                     <Calendar user={auth.user} classes={classes} />
                 )}
-                {activeTab == 2 && <Orders user={auth.user} orders={orders} />}
-                {/* {activeTab == 3 && <Settings user={auth.user} />} */}
+                {activeTab == 2 && <Cart user={auth.user} orders={orders} />}
             </div>
         </Layout>
     );
