@@ -33,9 +33,9 @@ export default function Login({ status, canResetPassword }) {
         <>
             <Head title="Log in" />
 
-            <div className="w-screen h-screen flex flex-col gap-12 justify-center items-center">
+            <div className="w-screen h-screen flex flex-col gap-8 mt-10 items-center">
                 <Link href="/">
-                    <ApplicationLogo className="block h-40 w-auto fill-current text-db-pink" />
+                    <img className="w-48" src="/favicon.jpg" alt="" />
                 </Link>
                 <div className="p-10 sm:p-8 sm:w-3/4 w-full max-w-lg">
                     <div className="flex flex-col gap-4">
