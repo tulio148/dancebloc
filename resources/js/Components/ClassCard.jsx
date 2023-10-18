@@ -8,10 +8,10 @@ export default function ClassCard({ class_ }) {
 
     return (
         <div
-            className="flex flex-col gap-4 max-w-lg border-b bg-gradient-to-b from-white/90 from-70% lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[320px] px-6 py-8 rounded-3xl  mx-3 my-10 z-40
+            className="flex flex-col gap-4 max-w-lg border-b-2 bg-gradient-to-b from-white from-70% lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[320px] px-6 py-8 rounded-3xl  mx-3 my-10 z-40
         "
         >
-            <p className="text-xl underline decoration-2 decoration-db-green underline-offset-8 text-slate-600">
+            <p className="text-xl underline decoration-2 decoration-db-green/80 underline-offset-8 text-slate-600">
                 <span className="mr-4">
                     <FontAwesomeIcon
                         icon={faCalendar}
@@ -22,7 +22,7 @@ export default function ClassCard({ class_ }) {
                 <span>{date}</span>
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-5">
-                <h2 className="max-w-fit text-xl font-semibold text-db-pink tracking-widest ">
+                <h2 className="max-w-fit text-xl font-medium text-slate-800 tracking-widest ">
                     {class_.name}
                 </h2>
                 <span className="max-w-fit text-lg border border-db-green/50 px-4 py-2 tracking-wide rounded-full text-slate-500 ">
@@ -35,7 +35,7 @@ export default function ClassCard({ class_ }) {
             </p>
             <Link
                 href={route("classes.show", class_.name)}
-                className="self-center w-fit bg-db-green/90 py-4 px-12 mt-2 rounded-xl text-slate-50 tracking-widest text-2xl font-semibold hover:bg-db-green/700 drop-shadow-xl "
+                className="self-center w-fit bg-db-green/90 py-4 px-12 mt-2 rounded-xl text-white tracking-widest text-2xl font-normal hover:bg-db-green/70 drop-shadow-xl border-b border-white/60"
             >
                 Learn More
             </Link>
