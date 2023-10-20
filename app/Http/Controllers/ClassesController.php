@@ -29,25 +29,9 @@ class ClassesController extends Controller
     public function show(Classes $class)
     {
         return Inertia::render('Classes/Show', [
-            'class_' => $class->only(
-                'id',
-                'name',
-                'description'
-            )
+            'class_' => $class
         ]);
     }
-
-    public function enroll(Classes $class)
-    {
-        return Inertia::render('Classes/Enroll', [
-            'class_' => $class->only(
-                'id',
-                'name',
-                'description'
-            )
-        ]);
-    }
-
 
     public function store(Request $request)
     {
