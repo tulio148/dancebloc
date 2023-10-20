@@ -174,7 +174,7 @@ class ClassesService
 
 
         $price_money = new \Square\Models\Money();
-        $price_money->setAmount($price);
+        $price_money->setAmount($price * 100);
         $price_money->setCurrency('AUD');
 
         $choose_level = new \Square\Models\CatalogItemOptionValueForItemVariation();
