@@ -35,7 +35,7 @@ export default function ClassCard({ class_ }) {
             </p>
             <Link
                 href={route("classes.show", class_.name)}
-                className="self-center w-fit bg-db-green/90 py-4 px-12 mt-2 rounded-xl text-white tracking-widest text-2xl font-medium hover:bg-db-green/70 drop-shadow-xl border-2 border-white"
+                className="self-center w-fit bg-db-green/90 py-4 px-12 mt-2 rounded-xl text-white tracking-widest text-2xl font-normal hover:bg-db-green/70 drop-shadow-xl border-2 border-white/60"
             >
                 Learn More
             </Link>
