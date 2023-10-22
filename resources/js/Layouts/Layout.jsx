@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import ResponsiveNav from "@/Components/ResponsiveNav";
 import Nav from "@/Components/Nav";
+import Footer from "@/Components/Footer";
 
 export default function ({ user, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -93,6 +94,7 @@ export default function ({ user, children }) {
             <main className="min-w-fit flex flex-col items-center mt-20 bg-gradient-to-b from-db-pink from-10% min-h-screen">
                 {children}
             </main>
+            <Footer />
         </div>
     );
 }
