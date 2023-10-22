@@ -100,15 +100,19 @@ export default function Show({ auth, class_ }) {
                 </h3>
             </div>
             <div
-                className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-2xl shadow-db-green brightness-105  min-w-[320px] max-w-7xl h-[600px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
+                className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-lg shadow-db-pink brightness-105  min-w-[320px] max-w-7xl h-[650px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
                 style={{ backgroundImage: `url(/fb_img_1663987814675.jpg)` }}
             >
-                <h2 className="w-full flex flex-col font-normal tracking-wider text-3xl py-5 gap-2">
-                    <span className="text-db-pink ml-1 ">dance</span>
-
-                    <span className="text-white ml-2">with</span>
-
-                    <span className="text-db-green ml-3">passion</span>
+                <h2 className="w-full flex items-center tracking-widest  py-5 px-4 gap-2">
+                    <span className=" text-db-pink font-medium text-3xl">
+                        dance
+                    </span>
+                    <span className=" text-white font-light text-3xl">
+                        with
+                    </span>
+                    <span className=" text-db-green font-medium text-3xl">
+                        passion
+                    </span>
                 </h2>
                 <Link
                     href={route("order.store")}
@@ -116,9 +120,9 @@ export default function Show({ auth, class_ }) {
                     as="button"
                     type="button"
                     data={{ id: class_.id, name: class_.name }}
-                    className="font-bold tracking-wider text-4xl py-5 text-db-pink"
+                    className="font-medium tracking-wider text-4xl py-2 text-db-pink underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4  hover:text-opacity-60"
                 >
-                    join us
+                    enrol now
                 </Link>
             </div>
         </Layout>

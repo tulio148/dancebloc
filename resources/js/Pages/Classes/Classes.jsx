@@ -25,7 +25,7 @@ export default function Classes({ auth, classes }) {
     return (
         <Layout user={auth.user}>
             <Head title="Classes" />
-            <h1 className="tracking-widest text-4xl text-white font-extralight text-right py-5 mt-8 relative">
+            <h1 className="tracking-widest text-4xl text-white font-extralight text-right py-5 mt-10 relative">
                 <Transition
                     show={true}
                     appear={true}
@@ -39,7 +39,7 @@ export default function Classes({ auth, classes }) {
                     unlock the samba groove
                 </Transition>
             </h1>
-            <div className="flex flex-wrap self-start px-4 gap-3">
+            <div className=" lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap px-4 gap-3 mt-8">
                 <button
                     onClick={() => setShowFilter(!showFilter)}
                     className="self-start max-w-fit bg-db-pink text-white font-semibold border-2 border-white/70 tracking-wider px-4 py-2 rounded-xl"
@@ -86,7 +86,7 @@ export default function Classes({ auth, classes }) {
                 )}
             </div>
             {showFilter && (
-                <div className="flex flex-col gap-3 py-4 px-6 bg-db-pink rounded-3xlmx-2 sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
+                <div className="flex flex-wrap justify-evenly gap-3 py-4 px-6 bg-db-pink rounded-3xl mx-2 sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
                     <div className="flex flex-col max-w-fit px gap-3">
                         <InputLabel className=" text-white tracking-wider pl-3  ">
                             Style
