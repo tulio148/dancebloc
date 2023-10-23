@@ -39,10 +39,10 @@ export default function Classes({ auth, classes }) {
                     unlock the samba groove
                 </Transition>
             </h1>
-            <div className=" lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap px-4 gap-3 mt-8">
+            <div className=" lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap gap-3 mt-8 px-2">
                 <button
                     onClick={() => setShowFilter(!showFilter)}
-                    className="self-start max-w-fit bg-db-pink text-white font-semibold border-2 border-white/70 tracking-wider px-4 py-2 rounded-xl"
+                    className="self-start max-w-fit bg-db-pink text-white font-normal border border-white/70 tracking-wider px-4 py-2 rounded-xl"
                 >
                     {showFilter ? "hide filters" : "show filters"}
                 </button>
@@ -86,7 +86,7 @@ export default function Classes({ auth, classes }) {
                 )}
             </div>
             {showFilter && (
-                <div className="flex flex-wrap justify-evenly gap-3 py-4 px-6 bg-db-pink rounded-3xl mx-2 sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
+                <div className="flex flex-wrap justify-between gap-3 py-4 px-4 bg-db-pink rounded-3xl sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
                     <div className="flex flex-col max-w-fit px gap-3">
                         <InputLabel className=" text-white tracking-wider pl-3  ">
                             Style
@@ -95,7 +95,7 @@ export default function Classes({ auth, classes }) {
                             options={["all", "samba"]}
                             value={style}
                             onChange={(e) => setStyle(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white tracking-wider"
+                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
                         />
                     </div>
                     <div className="flex flex-col max-w-fit  gap-3">
@@ -106,7 +106,7 @@ export default function Classes({ auth, classes }) {
                             options={["all", "beginner", "advanced", "kids"]}
                             value={level}
                             onChange={(e) => setLevel(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white tracking-wider"
+                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
                         />
                     </div>
                     <div className="flex flex-col max-w-fit  gap-3">
@@ -117,16 +117,18 @@ export default function Classes({ auth, classes }) {
                             options={["all", "single", "term"]}
                             value={enrollment}
                             onChange={(e) => setEnrollment(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white tracking-wider"
+                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
                         />
                     </div>
                 </div>
             )}
-            {filteredClasses.map((item) => (
-                <div key={item.id}>
-                    <ClassCard class_={item} />
-                </div>
-            ))}
+            <div className="flex flex-col items-center justify-center gap-16 mt-3">
+                {filteredClasses.map((item) => (
+                    <div key={item.id}>
+                        <ClassCard class_={item} />
+                    </div>
+                ))}
+            </div>
         </Layout>
     );
 }
