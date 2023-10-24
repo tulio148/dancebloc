@@ -7,7 +7,7 @@ import NavLink from "./NavLink";
 export default function Nav({ user }) {
     return (
         <>
-            <div className="gap-8 hidden sm:flex">
+            <div className="gap-8 hidden lg:flex">
                 {user && (
                     <>
                         {user.admin == 1 && (
@@ -39,11 +39,29 @@ export default function Nav({ user }) {
                         route().current("classes.show")
                     }
                 >
+                    Mission
+                </NavLink>
+                <NavLink
+                    href={route("classes")}
+                    active={
+                        route().current("classes") ||
+                        route().current("classes.show")
+                    }
+                >
+                    Contact
+                </NavLink>
+                <NavLink
+                    href={route("classes")}
+                    active={
+                        route().current("classes") ||
+                        route().current("classes.show")
+                    }
+                >
                     Classes
                 </NavLink>
             </div>
             {user ? (
-                <div className="hidden sm:flex gap-8">
+                <div className="hidden lg:flex gap-8">
                     <NavLink method="post" href={route("logout")} as="button">
                         <div className="flex items-start gap-2 py-1 ">
                             Sign Out
@@ -56,7 +74,7 @@ export default function Nav({ user }) {
                     </NavLink>
                 </div>
             ) : (
-                <div className="hidden sm:flex gap-5 ">
+                <div className="hidden md:flex gap-5 ">
                     <NavLink href={route("login")}>
                         <div className="flex items-center gap-2">
                             Sign in

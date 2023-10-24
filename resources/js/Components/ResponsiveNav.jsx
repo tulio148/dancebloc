@@ -13,7 +13,7 @@ import {
 
 export default function ResponsiveNav({ user }) {
     return (
-        <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-55% drop-shadow-xl">
+        <div className="absolute z-50 flex justify-end lg:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-55% drop-shadow-xl">
             <div className="flex flex-col gap-6 p-5 z-50">
                 {user ? (
                     <>

@@ -45,7 +45,7 @@ export default function ({ user, children }) {
                             <Nav user={user} />
                         </div>
 
-                        <div className="flex items-center sm:hidden">
+                        <div className="flex items-center lg:hidden">
                             <button
                                 ref={buttonRef}
                                 onClick={() =>
