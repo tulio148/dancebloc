@@ -17,7 +17,7 @@ export default function Show({ auth, class_ }) {
         <Layout user={auth.user}>
             <Head title={class_.name} />
 
-            <h1 className="tracking-widest text-4xl text-white font-extralight text-right py-5 mt-8 relative">
+            <h1 className="tracking-widest text-4xl text-white font-extralight text-right py-5 mt-16 relative">
                 <Transition
                     show={true}
                     appear={true}
@@ -37,97 +37,95 @@ export default function Show({ auth, class_ }) {
                     {class_.description}
                 </h3>
             </div>
-            <div className="flex justify-center sm:justify-around sm:items-center flex-wrap  w-full max-w-5xl gap-3">
-                <div className="flex flex-col gap-4 border-b bg-gradient-to-b from-white/90 from-70% max-w-xs w-full px-6 py-8 rounded-3xl shadow mx-2 my-8 z-40">
-                    <p className=" text-base  tracking-wider max-w-fit">
-                        <span className="mr-4">
-                            <FontAwesomeIcon
-                                icon={faCalendar}
-                                size="xl"
-                                style={{ color: "#FF00F7" }}
-                            />
-                        </span>
-                        <span>{formatDate(class_.datetime)}</span>
-                    </p>
-                    <p className=" text-base  tracking-wider  max-w-fit ">
-                        <span className="mr-4">
-                            <FontAwesomeIcon
-                                icon={faBolt}
-                                size="xl"
-                                style={{ color: "#FF00F7" }}
-                            />
-                        </span>
-                        <span>{class_.level}</span>
-                    </p>
-                    <p className=" text-base  tracking-wider  max-w-fit">
-                        <span className="mr-4">
-                            <FontAwesomeIcon
-                                icon={faUser}
-                                size="xl"
-                                style={{ color: "#FF00F7" }}
-                            />
-                        </span>
-                        <span>{class_.instructor}</span>
-                    </p>
-                    <p className=" text-base  tracking-wider max-w-fit">
-                        <span className="mr-4">
-                            <FontAwesomeIcon
-                                icon={faLocationDot}
-                                size="xl"
-                                style={{ color: "#FF00F7" }}
-                            />
-                        </span>
-                        <span>{class_.location}</span>
-                    </p>
-                    <p className=" text-base  tracking-widest  max-w-fit">
-                        <span className="mr-4">
-                            <FontAwesomeIcon
-                                icon={faTag}
-                                size="xl"
-                                style={{ color: "#FF00F7" }}
-                            />
-                        </span>
-                        <span>${class_.price}</span>
-                    </p>
-                    <Link
-                        href={route("order.store")}
-                        method="post"
-                        as="button"
-                        type="button"
-                        data={{ id: class_.id, name: class_.name }}
-                        className=" self-center inline-flex items-center max-w-fit px-10 py-3 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-semibold text-xl text-white tracking-widest border border-white/40 hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 shadow-lg"
-                    >
-                        enrol
-                    </Link>
-                </div>
-                <div
-                    className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-md shadow-db-pink brightness-105  min-w-[320px] max-w-7xl h-[660px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
-                    style={{
-                        backgroundImage: `url(/fb_img_1663987814675.jpg)`,
-                    }}
+            <div className="flex flex-col justify-between gap-4 border-b bg-gradient-to-b from-white/90 from-70% max-w-xs w-full h-96 px-6 py-8 rounded-3xl shadow mx-2 my-6 z-40">
+                <p className=" text-base  tracking-wider max-w-fit">
+                    <span className="mr-4">
+                        <FontAwesomeIcon
+                            icon={faCalendar}
+                            size="xl"
+                            style={{ color: "#FF00F7" }}
+                        />
+                    </span>
+                    <span>{formatDate(class_.datetime)}</span>
+                </p>
+                <p className=" text-base  tracking-wider  max-w-fit ">
+                    <span className="mr-4">
+                        <FontAwesomeIcon
+                            icon={faBolt}
+                            size="xl"
+                            style={{ color: "#FF00F7" }}
+                        />
+                    </span>
+                    <span>{class_.level}</span>
+                </p>
+                <p className=" text-base  tracking-wider  max-w-fit">
+                    <span className="mr-4">
+                        <FontAwesomeIcon
+                            icon={faUser}
+                            size="xl"
+                            style={{ color: "#FF00F7" }}
+                        />
+                    </span>
+                    <span>{class_.instructor}</span>
+                </p>
+                <p className=" text-base  tracking-wider max-w-fit">
+                    <span className="mr-4">
+                        <FontAwesomeIcon
+                            icon={faLocationDot}
+                            size="xl"
+                            style={{ color: "#FF00F7" }}
+                        />
+                    </span>
+                    <span>{class_.location}</span>
+                </p>
+                <p className=" text-base  tracking-widest  max-w-fit">
+                    <span className="mr-4">
+                        <FontAwesomeIcon
+                            icon={faTag}
+                            size="xl"
+                            style={{ color: "#FF00F7" }}
+                        />
+                    </span>
+                    <span>${class_.price}</span>
+                </p>
+                <Link
+                    href={route("order.store")}
+                    method="post"
+                    as="button"
+                    type="button"
+                    data={{ id: class_.id, name: class_.name }}
+                    className=" self-center inline-flex items-center max-w-fit px-10 py-3 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-semibold text-xl text-white tracking-widest border border-white/40 hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 shadow-lg"
                 >
-                    <h2 className="w-full flex items-center tracking-widest  py-5 mt-3 px-4 gap-2">
-                        <span className=" text-db-pink/90 font-medium text-3xl">
-                            dance
-                        </span>
-                        <span className=" text-white/90  font-light text-3xl">
-                            with
-                        </span>
-                        <span className=" text-db-green/90 font-medium text-3xl">
-                            passion
-                        </span>
-                    </h2>
-                    <Link
-                        href={route("order.store")}
-                        method="post"
-                        as="button"
-                        type="button"
-                        data={{ id: class_.id, name: class_.name }}
-                        className="font-medium tracking-wider text-4xl py-2 text-db-pink/90 underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4 hover:animate-pulse"
-                    >
-                        enrol now
-                    </Link>
-                </div>
+                    enrol
+                </Link>
+            </div>
+            <div
+                className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-md shadow-db-pink brightness-105  min-w-[320px] max-w-7xl h-[660px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
+                style={{
+                    backgroundImage: `url(/fb_img_1663987814675.jpg)`,
+                }}
+            >
+                <h2 className="w-full flex items-center tracking-widest  py-5 mt-3 px-4 gap-2">
+                    <span className=" text-db-pink/90 font-medium text-3xl">
+                        dance
+                    </span>
+                    <span className=" text-white/90  font-light text-3xl">
+                        with
+                    </span>
+                    <span className=" text-db-green/90 font-medium text-3xl">
+                        passion
+                    </span>
+                </h2>
+                <Link
+                    href={route("order.store")}
+                    method="post"
+                    as="button"
+                    type="button"
+                    data={{ id: class_.id, name: class_.name }}
+                    className="font-medium tracking-wider text-4xl py-2 text-db-pink/90 underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4 hover:animate-pulse"
+                >
+                    enrol now
+                </Link>
             </div>
         </Layout>
     );

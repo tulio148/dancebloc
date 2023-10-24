@@ -47,38 +47,38 @@ export default function Classes({ auth, classes }) {
                     {showFilter ? "hide filters" : "show filters"}
                 </button>
                 {style != "all" && (
-                    <div className="bg-white/95 font-medium border tracking-wide flex items-center gap-3 p-2 rounded h-fit">
+                    <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
                         <button onClick={() => setStyle("all")}>
-                            <span className="mr-3 text-slate-500">{style}</span>
+                            <span className="mr-2 text-slate-500">{style}</span>
                             <FontAwesomeIcon
                                 icon={faX}
-                                size="sm"
+                                size="xs"
                                 style={{ color: "#00FFA0" }}
                             />
                         </button>
                     </div>
                 )}
                 {level != "all" && (
-                    <div className="bg-white/95 font-medium border tracking-wide flex items-center gap-3 p-2 rounded h-fit">
+                    <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
                         <button onClick={() => setLevel("all")}>
-                            <span className="mr-3 text-slate-500">{level}</span>
+                            <span className="mr-2 text-slate-500">{level}</span>
                             <FontAwesomeIcon
                                 icon={faX}
-                                size="sm"
+                                size="xs"
                                 style={{ color: "#00FFA0" }}
                             />
                         </button>
                     </div>
                 )}
                 {enrollment != "all" && (
-                    <div className="bg-white/95 font-medium border tracking-wide flex items-center gap-3 p-2 rounded h-fit">
+                    <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
                         <button onClick={() => setEnrollment("all")}>
-                            <span className="mr-3 text-slate-500">
+                            <span className="mr-2 text-slate-500">
                                 {enrollment}
                             </span>
                             <FontAwesomeIcon
                                 icon={faX}
-                                size="sm"
+                                size="xs"
                                 style={{ color: "#00FFA0" }}
                             />
                         </button>
@@ -86,38 +86,38 @@ export default function Classes({ auth, classes }) {
                 )}
             </div>
             {showFilter && (
-                <div className="flex flex-wrap justify-between gap-3 py-4 px-4 bg-db-pink rounded-3xl sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
-                    <div className="flex flex-col max-w-fit px gap-3">
-                        <InputLabel className=" text-white tracking-wider pl-3  ">
+                <div className="flex flex-wrap justify-between gap-3 py-8 px-4  rounded-3xl sm:top-20  lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full ">
+                    <div className="flex flex-col max-w-fit gap-2">
+                        <InputLabel className=" text-white font-normal tracking-wider  ">
                             Style
                         </InputLabel>
                         <SelectInput
                             options={["all", "samba"]}
                             value={style}
                             onChange={(e) => setStyle(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
+                            className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"
                         />
                     </div>
-                    <div className="flex flex-col max-w-fit  gap-3">
-                        <InputLabel className="text-white font-bold tracking-wider pl-3  ">
+                    <div className="flex flex-col max-w-fit  gap-2">
+                        <InputLabel className="text-white font-normal tracking-wider">
                             Level
                         </InputLabel>
                         <SelectInput
                             options={["all", "beginner", "advanced", "kids"]}
                             value={level}
                             onChange={(e) => setLevel(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
+                            className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"
                         />
                     </div>
-                    <div className="flex flex-col max-w-fit  gap-3">
-                        <InputLabel className="text-white font-bold tracking-wider pl-3  ">
+                    <div className="flex flex-col max-w-fit  gap-2">
+                        <InputLabel className="text-white font-normal tracking-wider">
                             Enrollment
                         </InputLabel>
                         <SelectInput
                             options={["all", "single", "term"]}
                             value={enrollment}
                             onChange={(e) => setEnrollment(e.target.value)}
-                            className="bg-db-pink text-white font-semibold border border-white/70 tracking-wider"
+                            className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"
                         />
                     </div>
                 </div>
