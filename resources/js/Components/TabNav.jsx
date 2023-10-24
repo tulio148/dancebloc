@@ -1,14 +1,14 @@
 export default function TabNav({ tabs, activeTab, onTabChange, className }) {
     return (
         <div
-            className={`fixed  bottom-0 sm:top-20 sm:pt-5 w-full h-fit bg-white sm:bg-db-pink ${className}`}
+            className={`fixed  bottom-0 sm:top-20 sm:pt-10 w-full h-fit bg-white sm:bg-db-pink ${className}`}
         >
-            <div className="flex  gap-2 p-3 sm:px-6 sm:p-0 w-full max-w-7xl mx-auto">
+            <div className="flex  gap-2 p-5 sm:px-6 sm:p-0 w-full max-w-7xl mx-auto">
                 {tabs.map((tab, index) => (
                     <button
                         key={index}
                         onClick={() => onTabChange(index)}
-                        className={`w-full mx-auto py-2 relative z-10 rounded-tr-md rounded-tl-md sm:bg-gradient-to-b   
+                        className={`w-full mx-auto py-3 relative z-10 rounded-tr-md rounded-tl-md sm:bg-gradient-to-b   
                 ${
                     index === activeTab
                         ? "transition-colors duration-700 text-white font-medium from-slate-200/90 from-2%"

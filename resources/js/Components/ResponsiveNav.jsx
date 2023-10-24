@@ -14,10 +14,10 @@ import {
 export default function ResponsiveNav({ user }) {
     return (
         <div className="absolute z-50 flex justify-end sm:hidden w-full bg-gradient-to-r from-white/10 to-db-pink to-55% drop-shadow-xl">
-            <div className="flex flex-col gap-12 my-4 p-6 z-50">
+            <div className="flex flex-col gap-6 p-5 z-50">
                 {user ? (
                     <>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
                             {user.admin == 1 && (
                                 <ResponsiveNavLink
                                     href={route("admin")}
@@ -96,7 +96,7 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                         </div>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
                             <ResponsiveNavLink
                                 href={route("classes")}
                                 active={
@@ -105,7 +105,7 @@ export default function ResponsiveNav({ user }) {
                                 }
                                 className="self-end"
                             >
-                                <div className="flex items-center  gap-5">
+                                <div className="flex items-center gap-5">
                                     Classes
                                     {route().current("classes") ||
                                     route().current("classes.show") ? (
@@ -132,7 +132,7 @@ export default function ResponsiveNav({ user }) {
                                 active={route().current("classes")}
                                 className="self-end"
                             >
-                                <div className="flex items-center  gap-5 ">
+                                <div className="flex items-center gap-5">
                                     Mission
                                     {route().current("classes") ? (
                                         <FontAwesomeIcon
@@ -187,7 +187,7 @@ export default function ResponsiveNav({ user }) {
                             as="button"
                             className="self-end"
                         >
-                            <div className="flex items-start gap-3 text-xl tracking-normal mt-10">
+                            <div className="flex items-start gap-3 tracking-normal mt-4">
                                 Sign Out
                                 <FontAwesomeIcon
                                     icon={faDoorOpen}
@@ -216,7 +216,7 @@ export default function ResponsiveNav({ user }) {
                                 />
                             </div>
                         </ResponsiveNavLink>
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
                             <ResponsiveNavLink
                                 href={route("classes")}
                                 active={
