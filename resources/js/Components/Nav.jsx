@@ -39,6 +39,15 @@ export default function Nav({ user }) {
                         route().current("classes.show")
                     }
                 >
+                    Classes
+                </NavLink>
+                <NavLink
+                    href={route("classes")}
+                    active={
+                        route().current("classes") ||
+                        route().current("classes.show")
+                    }
+                >
                     Mission
                 </NavLink>
                 <NavLink
@@ -49,15 +58,6 @@ export default function Nav({ user }) {
                     }
                 >
                     Contact
-                </NavLink>
-                <NavLink
-                    href={route("classes")}
-                    active={
-                        route().current("classes") ||
-                        route().current("classes.show")
-                    }
-                >
-                    Classes
                 </NavLink>
             </div>
             {user ? (
@@ -74,7 +74,7 @@ export default function Nav({ user }) {
                     </NavLink>
                 </div>
             ) : (
-                <div className="hidden md:flex gap-5 ">
+                <div className="hidden lg:flex gap-5 ">
                     <NavLink href={route("login")}>
                         <div className="flex items-center gap-2">
                             Sign in
