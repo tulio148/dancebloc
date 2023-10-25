@@ -91,7 +91,7 @@ export default function ({ user, children }) {
                 </div>
             </nav>
 
-            <main className="min-w-fit flex flex-col items-center mt-20 bg-gradient-to-b from-db-pink  min-h-screen">
+            <main className="flex flex-col items-center mt-20 bg-gradient-to-b from-db-pink  min-h-screen w-full">
                 {children}
             </main>
             <Footer />

@@ -2,6 +2,7 @@ export default function TabNav({ tabs, activeTab, onTabChange, className }) {
     const scrollToTop = () => {
         window.scrollTo(0, 0);
     };
+
     return (
         <div
             className={`fixed bottom-0 sm:top-20 sm:pt-10 w-full h-fit bg-white sm:bg-db-pink border-t border-db-pink ${className}`}
@@ -21,8 +22,8 @@ export default function TabNav({ tabs, activeTab, onTabChange, className }) {
                         : "text-slate-800 text-opacity-90 transition duration-700 from-slate-200/50 hover:from-slate-200/60"
                 }`}
                     >
-                        <span className="inline ">{tab.icon}</span>
-                        <span className="hidden pl-5 sm:inline lg:text-base text-base tracking-widest">
+                        <span>{tab.icon}</span>
+                        <span className="hidden pl-5 sm:inline text-base tracking-widest">
                             {tab.label}
                         </span>
                         <div

@@ -20,9 +20,9 @@ export default function Admin({ auth, students, classes }) {
                 tabs={AdminTabs}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
-                className="z-50"
+                className="z-40"
             />
-            <div className="sm:pt-24 pt-10 mx-5 z-40 max-w-7xl">
+            <div className="sm:pt-32 pt-10 mx-5 max-w-7xl z-30">
                 {activeTab === 0 && <Home user={auth.user} />}
                 {activeTab === 1 && <Classes classes={classes} />}
                 {activeTab === 2 && (
