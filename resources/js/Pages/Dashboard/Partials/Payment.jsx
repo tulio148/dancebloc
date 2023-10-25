@@ -1,4 +1,3 @@
-import { router } from "@inertiajs/react";
 import Modal from "@/Components/Modal";
 import { useState } from "react";
 import {
@@ -33,9 +32,8 @@ export default function Payment({ id, amount }) {
     };
 
     const handleCardholderNameChange = (e) => {
-        setCardholderName(e.target.value); // Update cardholder's name state
+        setCardholderName(e.target.value);
     };
-    console.log(storeCard);
 
     const handlePaymentResponse = (token, verifiedBuyer) => {
         // console.log(token.status);
@@ -70,22 +68,19 @@ export default function Payment({ id, amount }) {
                         setPaymentStatus("success");
                         setTimeout(() => {
                             window.location.href = "/dashboard";
-                        }, 1500);
+                        }, 2000);
                     } else {
                         setError(response.data.error);
                         setPaymentStatus("error");
                         setTimeout(() => {
-                            console.log("2 seconds have passed");
                             setPaymentStatus(null);
                         }, 3000);
                     }
                 })
                 .catch((error) => {
-                    // Handle any errors that occurred during the request.
                     console.error("Payment failed:", error);
                 });
         } else {
-            // Handle other cases here
         }
     };
 
