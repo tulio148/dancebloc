@@ -12,8 +12,8 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $student = $user->student;
-        $orders = $student ? $student->orders : [];
-        $classes = $student ?  $student->classes : [];
+        $orders =  $student->orders ?? [];
+        $classes = $student->classes ?? [];
 
         return Inertia::render('Dashboard/Dashboard', [
             'student' => $student,
