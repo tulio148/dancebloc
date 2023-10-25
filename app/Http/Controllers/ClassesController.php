@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use RRule\RRule;
 use Inertia\Inertia;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Services\ClassesService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
 
 class ClassesController extends Controller
 {

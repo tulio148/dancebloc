@@ -20,13 +20,9 @@ export default function Dashboard({ auth, student, orders, classes }) {
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
             />
-            <div className="sm:pt-24 max-w-7xl mx-auto h-screen">
-                {activeTab == 0 && <Home user={auth.user} />}
-                {activeTab == 1 && (
-                    <Calendar user={auth.user} classes={classes} />
-                )}
-                {activeTab == 2 && <Cart user={auth.user} orders={orders} />}
-            </div>
+            {activeTab == 0 && <Home user={auth.user} />}
+            {activeTab == 1 && <Calendar user={auth.user} classes={classes} />}
+            {activeTab == 2 && <Cart user={auth.user} orders={orders} />}
         </Layout>
     );
 }
