@@ -7,7 +7,7 @@ export default function TabNav({ tabs, activeTab, onTabChange, className }) {
         <div
             className={`fixed bottom-0 sm:top-20 sm:pt-10 w-full h-fit bg-white sm:bg-db-pink border-t border-db-pink ${className}`}
         >
-            <div className="flex  gap-2 p-5 sm:px-6 sm:p-0 w-full max-w-7xl mx-auto">
+            <div className="flex  gap-2 py-5 px-2 sm:px-6 sm:p-0 w-full max-w-7xl mx-auto">
                 {tabs.map((tab, index) => (
                     <button
                         key={index}

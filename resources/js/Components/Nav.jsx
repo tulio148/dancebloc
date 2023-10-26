@@ -7,7 +7,7 @@ import NavLink from "./NavLink";
 export default function Nav({ user }) {
     return (
         <>
-            <div className="gap-8 hidden lg:flex">
+            <div className="gap-5 hidden lg:flex">
                 {user && (
                     <>
                         {user.admin == 1 && (

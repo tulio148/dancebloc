@@ -105,7 +105,7 @@ export default function Students({ students }) {
                 </Combobox>
             </div>
             {student && (
-                <div className="lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[320px] bg-white flex flex-wrap justify-center rounded-md drop-shadow-2xl">
+                <div className="lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[300px] bg-white flex flex-wrap justify-center rounded-md drop-shadow-2xl">
                     {student.name}
                     {student.email}
                 </div>

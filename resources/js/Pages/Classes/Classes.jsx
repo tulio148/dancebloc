@@ -25,7 +25,7 @@ export default function Classes({ auth, classes }) {
     return (
         <Layout user={auth.user}>
             <Head title="Classes" />
-            <h1 className="tracking-widest text-4xl text-white font-extralight text-right py-5 my-16 relative">
+            <h1 className="lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full tracking-widest text-4xl text-white font-extralight text-right py-5 my-16 ">
                 <Transition
                     show={true}
                     appear={true}

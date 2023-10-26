@@ -11,7 +11,7 @@ export default function Calendar({ user, classes }) {
     console.log(upcomingClasses);
     console.log(classes);
     return (
-        <div className="sm:pt-28 px-3 w-full max-w-2xl flex flex-col items-center">
+        <div className="sm:pt-28 px-5 w-full max-w-2xl flex flex-col items-center">
             <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                 upcoming classes
             </h1>
@@ -19,7 +19,7 @@ export default function Calendar({ user, classes }) {
                 upcomingClasses.map((item) => (
                     <div
                         key={item.id}
-                        className="flex flex-wrap items-center gap-4 border-b bg-gradient-to-b from-white from-80% px-6 pt-6 pb-10 rounded-3xl shadow font-light text-2xl text-slate-500"
+                        className="flex flex-wrap items-center gap-4 border-b bg-white px-6 py-6  rounded-3xl shadow-md font-light text-2xl text-slate-500"
                     >
                         <p className="text-lg font-normal underline decoration-2 decoration-db-green/80 underline-offset-4 text-slate-600 pb-2">
                             <span className="mr-4">

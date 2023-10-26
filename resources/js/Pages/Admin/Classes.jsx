@@ -47,7 +47,7 @@ export default function Classes({ classes }) {
         : classes;
 
     return (
-        <div className="bg-white flex flex-wrap justify-center gap-2 mx-auto  rounded-xl drop-shadow-2xl lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[320px]">
+        <div className="bg-white flex flex-wrap justify-center gap-2 mx-auto  rounded-xl drop-shadow-2xl lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[300px]">
             <table className="w-full divide-y divide-db-pink/30">
                 <thead>
                     <tr>

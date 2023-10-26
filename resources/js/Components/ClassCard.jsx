@@ -8,7 +8,7 @@ export default function ClassCard({ class_ }) {
 
     return (
         <div
-            className="flex flex-col gap-4 max-w-lg border-b bg-gradient-to-b from-white from-70% lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[320px] px-6 pt-10 pb-6 rounded-3xl mx-3 z-40 shadow
+            className="flex flex-col gap-4 max-w-lg border-b bg-gradient-to-b from-white from-70% lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[300px] px-6 pt-10 pb-6 rounded-3xl mx-3 z-40 shadow
         "
         >
             <p className="text-xl underline decoration-2 decoration-db-green/80 underline-offset-4 text-slate-600">
@@ -35,7 +35,7 @@ export default function ClassCard({ class_ }) {
             </p>
             <Link
                 href={route("classes.show", class_.name)}
-                className=" self-center inline-flex items-center max-w-fit px-10 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-3xl text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 "
+                className=" self-center inline-flex items-center max-w-fit px-10 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 "
             >
                 learn more
             </Link>
