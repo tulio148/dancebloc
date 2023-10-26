@@ -7,7 +7,8 @@ import {
 } from "react-square-web-payments-sdk";
 import axios from "axios";
 
-export default function Payment({ id, amount }) {
+export default function Payment({ order }) {
+    console.log(order);
     const appId = import.meta.env.VITE_SQUARE_APPLICATION_ID;
     const locationId = import.meta.env.VITE_SQUARE_LOCATION_ID;
 
@@ -54,8 +55,8 @@ export default function Payment({ id, amount }) {
 
             const data = {
                 token: token.token,
-                id: id,
-                amount: amount,
+                id: order.id,
+                amount: order.order_total,
                 cardholder: cardholderName,
                 storecard: storeCard,
             };
@@ -86,7 +87,7 @@ export default function Payment({ id, amount }) {
 
     return (
         <>
-            <button onClick={openPaymentForm}>pay </button>
+            <button onClick={openPaymentForm}>pay</button>
             <Modal show={isOpen} onClose={closeModal} maxWidth="md">
                 <div className="p-6 h-full">
                     {paymentStatus === "success" ? (
@@ -98,6 +99,8 @@ export default function Payment({ id, amount }) {
                         </p>
                     ) : (
                         <>
+                            <div>{JSON.parse(order.items_names)}</div>
+                            <div>Subtotal: {order.order_total}</div>
                             <PaymentForm
                                 applicationId={appId}
                                 cardTokenizeResponseReceived={
@@ -108,7 +111,7 @@ export default function Payment({ id, amount }) {
                                     countryCode: "AU",
                                     currencyCode: "AUD",
                                     total: {
-                                        amount: amount,
+                                        amount: order.order_total,
                                         label: "Total",
                                     },
                                 })}
