@@ -87,7 +87,12 @@ export default function Payment({ order }) {
 
     return (
         <>
-            <button onClick={openPaymentForm}>pay</button>
+            <button
+                onClick={openPaymentForm}
+                className=" self-center inline-flex items-center max-w-fit px-10 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 "
+            >
+                checkout
+            </button>
             <Modal show={isOpen} onClose={closeModal} maxWidth="md">
                 <div className="p-6 h-full">
                     {paymentStatus === "success" ? (
@@ -99,8 +104,6 @@ export default function Payment({ order }) {
                         </p>
                     ) : (
                         <>
-                            <div>{JSON.parse(order.items_names)}</div>
-                            <div>Subtotal: {order.order_total}</div>
                             <PaymentForm
                                 applicationId={appId}
                                 cardTokenizeResponseReceived={
@@ -148,6 +151,12 @@ export default function Payment({ order }) {
                                     }}
                                 ></CreditCard>
                             </PaymentForm>
+                            <div className="flex justify-between w-full mt-10 px-4 border-b text-lg tracking-wider ">
+                                <p className=" font-normal">Subtotal </p>
+                                <p className=" font-medium">
+                                    ${order.order_total}
+                                </p>
+                            </div>
                         </>
                     )}
                 </div>
