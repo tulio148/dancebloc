@@ -28,7 +28,19 @@ class OrdersController extends Controller
 
     public function store(Request $request)
     {
-        app(OrdersService::class)->store($request);
-        return redirect()->route('dashboard');
+        $openOrder = Orders::where('state', 'OPEN')->first();
+        if ($openOrder) {
+            app(OrdersService::class)->update($openOrder, $request);
+            return redirect()->route('dashboard');
+        } else {
+            app(OrdersService::class)->create($request);
+            return redirect()->route('dashboard');
+        }
+    }
+
+    public function delete_class(Request $request)
+    {
+        $order = Orders::find($request->order_id);
+        app(OrdersService::class)->delete($order, $request);
     }
 }
