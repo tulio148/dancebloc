@@ -29,8 +29,8 @@ class Orders extends Model
     protected $fillable = [
         'id',
         'student_id',
-        'items',
-        'items_names',
+        'items_ids',
+        'items_uid',
         'order_total',
         'payment_id'
     ];

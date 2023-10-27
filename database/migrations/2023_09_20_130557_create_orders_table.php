@@ -11,7 +11,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('student_id');
-            $table->json('items');
+            $table->json('items_ids');
             $table->decimal('order_total', 8, 2);
             $table->timestamps();
         });
