@@ -40,6 +40,7 @@ Route::post('/class/store', [ClassesController::class, 'store'])->name('class.st
 Route::post('/class/update', [ClassesController::class, 'update'])->name('class.update');
 
 Route::post('/order/store', [OrdersController::class, 'store'])->name('order.store');
+Route::post('/order/delete_class', [OrdersController::class, 'delete_class'])->name('order.delete_class');
 
 Route::post('/payment', [PaymentController::class, 'store'])->name('payment');
 
