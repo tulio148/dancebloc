@@ -15,12 +15,25 @@ class DashboardController extends Controller
         $student = $user->student;
         $orders =  $student->orders ?? [];
         $enrolled_classes = $student->classes ?? [];
-        $classes = Classes::all();
+        $classes_in_student_orders = [];
+        $cards = $student->cards ?? [];
+
+
+        foreach ($orders as $order) {
+            $classesIds = json_decode($order->items_ids, true);
+            foreach ($classesIds as $class_id) {
+                $classInstance = Classes::find($class_id);
+                if ($classInstance && !in_array($classInstance, $classes_in_student_orders)) {
+                    $classes_in_student_orders[] = $classInstance;
+                }
+            }
+        }
 
         return Inertia::render('Dashboard/Dashboard', [
             'student' => $student,
             'orders' => $orders,
-            'classes' => $classes,
+            'cards' => $cards,
+            'classes' => $classes_in_student_orders,
             'enrolled_classes' => $enrolled_classes
         ]);
     }

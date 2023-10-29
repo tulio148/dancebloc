@@ -8,8 +8,8 @@ export default function Calendar({ user, enrolled_classes }) {
         (classItem) =>
             new Date(classItem.datetime).getTime() > new Date().getTime()
     );
-    console.log(upcomingClasses);
-    console.log(enrolled_classes);
+    // console.log(upcomingClasses);
+    // console.log(enrolled_classes);
     return (
         <div className="sm:pt-28 px-5 w-full max-w-2xl flex flex-col items-center">
             <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">

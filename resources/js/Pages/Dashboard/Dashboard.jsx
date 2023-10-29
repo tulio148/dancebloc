@@ -11,6 +11,7 @@ export default function Dashboard({
     auth,
     student,
     orders,
+    cards,
     classes,
     enrolled_classes,
 }) {
@@ -34,7 +35,13 @@ export default function Dashboard({
                 />
             )}
             {activeTab == 2 && (
-                <Cart user={auth.user} classes={classes} orders={orders} />
+                <Cart
+                    user={auth.user}
+                    classes={classes}
+                    orders={orders}
+                    cards={cards}
+                    enrolled_classes={enrolled_classes}
+                />
             )}
         </Layout>
     );
