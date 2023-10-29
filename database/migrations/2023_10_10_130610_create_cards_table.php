@@ -9,7 +9,7 @@ class CreateCardsTable extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
-            $table->string('id'); // You can use 'bigIncrements' instead if you want a big integer ID
+            $table->string('id')->primary();
             $table->string('brand');
             $table->string('last_4');
             $table->string('student_id');

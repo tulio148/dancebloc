@@ -58,9 +58,9 @@ class StudentService
         $student = auth()->user()->student;
         $order = Orders::find($order_id);
         if ($order) {
-            $itemsNames = json_decode($order->items, true);
+            $items = json_decode($order->items_ids, true);
         };
-        foreach ($itemsNames as $classId) {
+        foreach ($items as $classId) {
             $student->classes()->attach($classId, [
                 'created_at' => now(),
                 'updated_at' => now(),

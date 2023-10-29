@@ -22,6 +22,3 @@ return new class extends Migration
         });
     }
 };
-
-
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga provident officia nam corrupti consectetur modi qui sequi ipsa magnam enim. Iste asperiores in, unde iusto illum soluta? Mollitia earum nam, sint nostrum repellendus, atque libero molestiae corporis inventore autem unde.

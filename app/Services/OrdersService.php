@@ -20,7 +20,6 @@ class OrdersService
         $items_ids = [$class_id];
         $orderLineItems = [];
 
-        $student_id = auth()->user()->student_id;
         $idempotency_key = uniqid();
 
         $client = app(SquareClient::class);
@@ -29,6 +28,7 @@ class OrdersService
             app(StudentService::class)->store($user);
         }
         $source = new OrderSource();
+        $student_id = auth()->user()->student_id;
 
         foreach ($items_ids as $item) {
             $orderLineItem = new OrderLineItem(1);
