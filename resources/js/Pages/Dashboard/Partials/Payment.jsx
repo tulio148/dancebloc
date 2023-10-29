@@ -7,8 +7,8 @@ import {
 } from "react-square-web-payments-sdk";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
-
+import { faCcMastercard, faCcVisa } from "@fortawesome/free-brands-svg-icons";
+import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 export default function Payment({ order, cards }) {
     console.log(cards);
     const appId = import.meta.env.VITE_SQUARE_APPLICATION_ID;
@@ -161,47 +161,64 @@ export default function Payment({ order, cards }) {
                                 })}
                             >
                                 <GooglePay buttonColor="white" />
-                                <div className="py-10 flex flex-col gap-7">
+                                <div className="pt-10 flex flex-col gap-7">
                                     {cards.map((card) => {
-                                        if (card.brand === "VISA") {
-                                            return (
-                                                <button
-                                                    onClick={() =>
-                                                        handlePaymentResponseStoredCard(
-                                                            card.id
-                                                        )
-                                                    }
-                                                    className="flex items-end border-2 p-1 border-db-pink/50 "
-                                                >
-                                                    <span className=" pr-2 tracking-widest text-lg text-db-pink  font-medium">
-                                                        pay{" "}
-                                                    </span>
-                                                    <span className="pr-2 tracking-widest text-lg">
-                                                        with{" "}
-                                                    </span>
+                                        return (
+                                            <button
+                                                onClick={() =>
+                                                    handlePaymentResponseStoredCard(
+                                                        card.id
+                                                    )
+                                                }
+                                                className="flex items-center border-2 p-1 border-db-pink/50 "
+                                            >
+                                                <span className=" pr-2 tracking-widest text-lg text-db-pink  font-medium">
+                                                    pay{" "}
+                                                </span>
+                                                <span className="pr-2 tracking-widest text-lg">
+                                                    with{" "}
+                                                </span>
+                                                {card.brand === "VISA" ? (
                                                     <FontAwesomeIcon
                                                         icon={faCcVisa}
-                                                        size="2xl"
+                                                        size="xl"
                                                         style={{
                                                             color: "#FF00F7",
                                                         }}
                                                     />
-                                                    <span className="tracking-widest text-lg px-2">
-                                                        ending in
-                                                    </span>
-                                                    <span className="tracking-widest text-lg text-db-pink font-medium">
-                                                        {card.last_4}
-                                                    </span>
-                                                </button>
-                                            );
-                                        }
-                                        // Add conditions for other card brands here...
+                                                ) : card.brand ===
+                                                  "MASTERCARD" ? (
+                                                    <FontAwesomeIcon
+                                                        icon={faCcMastercard}
+                                                        size="xl"
+                                                        style={{
+                                                            color: "#FF00F7",
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <FontAwesomeIcon
+                                                        icon={faCreditCard}
+                                                        size="xl"
+                                                        style={{
+                                                            color: "#FF00F7",
+                                                        }}
+                                                    />
+                                                )}
+
+                                                <span className="tracking-widest text-lg px-2">
+                                                    ending in
+                                                </span>
+                                                <span className="tracking-widest text-lg text-db-pink font-medium">
+                                                    {card.last_4}
+                                                </span>
+                                            </button>
+                                        );
                                     })}
                                 </div>
                                 {!showCardComponents && (
                                     <button
                                         onClick={showCardComponentsButton}
-                                        className="text-lg tracking-widest border-b-2 border-db-pink "
+                                        className="text-lg tracking-widest border-b-2 border-db-pink pt-8"
                                     >
                                         Use Another Card
                                     </button>
