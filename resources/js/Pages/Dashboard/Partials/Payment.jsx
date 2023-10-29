@@ -6,9 +6,11 @@ import {
     GooglePay,
 } from "react-square-web-payments-sdk";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCcVisa } from "@fortawesome/free-brands-svg-icons";
 
-export default function Payment({ order }) {
-    console.log(order);
+export default function Payment({ order, cards }) {
+    console.log(cards);
     const appId = import.meta.env.VITE_SQUARE_APPLICATION_ID;
     const locationId = import.meta.env.VITE_SQUARE_LOCATION_ID;
 
@@ -19,6 +21,10 @@ export default function Payment({ order }) {
 
     const [storeCard, setStoreCard] = useState(false);
     const [cardholderName, setCardholderName] = useState("");
+
+    const [showCardComponents, setShowCardComponents] = useState(
+        cards.length === 0
+    );
 
     const closeModal = () => {
         setIsOpen(false);
@@ -36,7 +42,11 @@ export default function Payment({ order }) {
         setCardholderName(e.target.value);
     };
 
-    const handlePaymentResponse = (token, verifiedBuyer) => {
+    const showCardComponentsButton = () => {
+        setShowCardComponents(true);
+    };
+
+    const handlePaymentResponseNewCard = (token, verifiedBuyer) => {
         // console.log(token.status);
         // if (token.status === "OK") {
         //     console.log(token.token);
@@ -85,6 +95,37 @@ export default function Payment({ order }) {
         }
     };
 
+    const handlePaymentResponseStoredCard = (id) => {
+        const data = {
+            token: id,
+            id: order.id,
+            amount: order.order_total,
+            cardholder: cardholderName,
+            storecard: storeCard,
+        };
+
+        axios
+            .post("/payment", data)
+            .then((response) => {
+                console.log(response);
+                if (response.data.status == "success") {
+                    setPaymentStatus("success");
+                    setTimeout(() => {
+                        window.location.href = "/dashboard";
+                    }, 2000);
+                } else {
+                    setError(response.data.error);
+                    setPaymentStatus("error");
+                    setTimeout(() => {
+                        setPaymentStatus(null);
+                    }, 3000);
+                }
+            })
+            .catch((error) => {
+                console.error("Payment failed:", error);
+            });
+    };
+
     return (
         <>
             <button
@@ -107,7 +148,7 @@ export default function Payment({ order }) {
                             <PaymentForm
                                 applicationId={appId}
                                 cardTokenizeResponseReceived={
-                                    handlePaymentResponse
+                                    handlePaymentResponseNewCard
                                 }
                                 locationId={locationId}
                                 createPaymentRequest={() => ({
@@ -120,40 +161,91 @@ export default function Payment({ order }) {
                                 })}
                             >
                                 <GooglePay buttonColor="white" />
+                                <div className="py-10 flex flex-col gap-7">
+                                    {cards.map((card) => {
+                                        if (card.brand === "VISA") {
+                                            return (
+                                                <button
+                                                    onClick={() =>
+                                                        handlePaymentResponseStoredCard(
+                                                            card.id
+                                                        )
+                                                    }
+                                                    className="flex items-end border-2 p-1 border-db-pink/50 "
+                                                >
+                                                    <span className=" pr-2 tracking-widest text-lg text-db-pink  font-medium">
+                                                        pay{" "}
+                                                    </span>
+                                                    <span className="pr-2 tracking-widest text-lg">
+                                                        with{" "}
+                                                    </span>
+                                                    <FontAwesomeIcon
+                                                        icon={faCcVisa}
+                                                        size="2xl"
+                                                        style={{
+                                                            color: "#FF00F7",
+                                                        }}
+                                                    />
+                                                    <span className="tracking-widest text-lg px-2">
+                                                        ending in
+                                                    </span>
+                                                    <span className="tracking-widest text-lg text-db-pink font-medium">
+                                                        {card.last_4}
+                                                    </span>
+                                                </button>
+                                            );
+                                        }
+                                        // Add conditions for other card brands here...
+                                    })}
+                                </div>
+                                {!showCardComponents && (
+                                    <button
+                                        onClick={showCardComponentsButton}
+                                        className="text-lg tracking-widest border-b-2 border-db-pink "
+                                    >
+                                        Use Another Card
+                                    </button>
+                                )}
 
-                                <CardStorageCheckbox
-                                    isChecked={storeCard}
-                                    onChange={handleCardStorageChange}
-                                    cardholderName={cardholderName}
-                                    onCardholderNameChange={
-                                        handleCardholderNameChange
-                                    }
-                                />
-                                <CreditCard
-                                    buttonProps={{
-                                        css: {
-                                            backgroundColor: "#FF00F7",
-                                            fontSize: "20px",
-                                            color: "white",
-                                            "&:hover": {
-                                                backgroundColor: "#FF80FF",
-                                            },
-                                            fontWeight: "normal",
-                                        },
-                                    }}
-                                    style={{
-                                        input: {
-                                            fontSize: "14px",
-                                        },
-                                        "input::placeholder": {
-                                            color: "#771520",
-                                        },
-                                    }}
-                                ></CreditCard>
+                                {showCardComponents && (
+                                    <>
+                                        <CardStorageCheckbox
+                                            isChecked={storeCard}
+                                            onChange={handleCardStorageChange}
+                                            cardholderName={cardholderName}
+                                            onCardholderNameChange={
+                                                handleCardholderNameChange
+                                            }
+                                        />
+
+                                        <CreditCard
+                                            buttonProps={{
+                                                css: {
+                                                    backgroundColor: "#FF00F7",
+                                                    fontSize: "20px",
+                                                    color: "white",
+                                                    "&:hover": {
+                                                        backgroundColor:
+                                                            "#FF80FF",
+                                                    },
+                                                    fontWeight: "normal",
+                                                },
+                                            }}
+                                            style={{
+                                                input: {
+                                                    fontSize: "14px",
+                                                },
+                                                "input::placeholder": {
+                                                    color: "#771520",
+                                                },
+                                            }}
+                                        ></CreditCard>
+                                    </>
+                                )}
                             </PaymentForm>
-                            <div className="flex justify-between w-full mt-10 px-4 border-b text-lg tracking-wider ">
+                            <div className="flex justify-between w-full mt-10 border-b text-lg tracking-wider ">
                                 <p className=" font-normal">Subtotal </p>
-                                <p className=" font-medium">
+                                <p className=" font-medium text-db-pink ">
                                     ${order.order_total}
                                 </p>
                             </div>
@@ -185,7 +277,7 @@ function CardStorageCheckbox({
                     value={cardholderName}
                     onChange={onCardholderNameChange}
                     placeholder="Cardholder's Name"
-                    className="p-2 border border-slate-300 rounded-md w-full"
+                    className="p-2 border border-slate-300 rounded-md w-full tracking-wider"
                 />
             </div>
 
