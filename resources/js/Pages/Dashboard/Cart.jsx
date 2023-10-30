@@ -1,21 +1,88 @@
 import Payment from "./Partials/Payment";
 import { Link } from "@inertiajs/react";
-export default function Cart({ user, orders, classes, cards }) {
-    console.log(cards);
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCcMastercard, faCcVisa } from "@fortawesome/free-brands-svg-icons";
+import { faCreditCard, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { router } from "@inertiajs/react";
+export default function Cart({ orders, classes, cards }) {
     return (
         <div className="sm:pt-28 px-5 w-full max-w-2xl flex flex-col items-center">
+            {cards.length > 0 && (
+                <>
+                    <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
+                        saved cards
+                    </h1>
+                    <div className="p-4 sm:p-8 w-full border-b bg-gradient-to-br from-white from-50% shadow rounded-xl">
+                        {cards.map((card) => {
+                            return (
+                                <div className="flex justify-between">
+                                    <div>
+                                        {card.brand === "VISA" ? (
+                                            <FontAwesomeIcon
+                                                icon={faCcVisa}
+                                                size="2xl"
+                                                style={{
+                                                    color: "#FF00F7",
+                                                }}
+                                            />
+                                        ) : card.brand === "MASTERCARD" ? (
+                                            <FontAwesomeIcon
+                                                icon={faCcMastercard}
+                                                size="2xl"
+                                                style={{
+                                                    color: "#FF00F7",
+                                                }}
+                                            />
+                                        ) : (
+                                            <FontAwesomeIcon
+                                                icon={faCreditCard}
+                                                size="2xl"
+                                                style={{
+                                                    color: "#FF00F7",
+                                                }}
+                                            />
+                                        )}
+                                        <span className="tracking-widest text-lg px-2">
+                                            ending in
+                                        </span>
+                                        <span className="tracking-widest text-lg text-db-pink font-medium">
+                                            {card.last_4}
+                                        </span>
+                                    </div>
+                                    <button
+                                        onClick={() =>
+                                            router.delete(`/cards/${card.id}`, {
+                                                onBefore: () =>
+                                                    confirm(
+                                                        "Are you sure you want to delete this card?"
+                                                    ),
+                                            })
+                                        }
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faTrashCan}
+                                            size="xl"
+                                            style={{
+                                                color: "#f32013",
+                                            }}
+                                        />
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </>
+            )}
             <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                 open orders
             </h1>
-            {/* {orders.map((order) => {
-                if (order.state == "OPEN") { */}
             {orders.some((order) => order.state === "OPEN") ? (
                 orders.map((order) => {
                     if (order.state === "OPEN") {
                         return (
                             <div
                                 key={order.id}
-                                className="flex flex-col gap-4 justify-end w-full bg-white px-6 py-6 rounded-3xl shadow-md font-light text-xl text-slate-500"
+                                className="flex flex-col gap-4 justify-end w-full bg-white px-6 py-6 rounded-xl shadow-md font-light text-xl text-slate-500"
                             >
                                 <div className="flex flex-col gap-5">
                                     {JSON.parse(order.items_ids).map(
@@ -72,7 +139,7 @@ export default function Cart({ user, orders, classes, cards }) {
                     }
                 })
             ) : (
-                <div className="flex flex-col gap-4 justify-end w-full bg-white px-6 py-6 rounded-3xl shadow-md font-light tracking-wider text-xl text-slate-500">
+                <div className="flex flex-col gap-4 justify-end w-full p-4 sm:p-8 border-b bg-gradient-to-br from-white from-50% rounded-xl shadow-md font-light tracking-wider text-xl text-slate-500">
                     No open orders.
                 </div>
             )}
