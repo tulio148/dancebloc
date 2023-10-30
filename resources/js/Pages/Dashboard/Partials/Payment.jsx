@@ -170,7 +170,7 @@ export default function Payment({ order, cards }) {
                                                         card.id
                                                     )
                                                 }
-                                                className="flex items-center border-2 p-1 border-db-pink/50 "
+                                                className="flex justify-between items-center border p-2 border-db-pink/20   shadow-db-pink "
                                             >
                                                 <span className=" pr-2 tracking-widest text-lg text-db-pink  font-medium">
                                                     pay{" "}
@@ -218,9 +218,12 @@ export default function Payment({ order, cards }) {
                                 {!showCardComponents && (
                                     <button
                                         onClick={showCardComponentsButton}
-                                        className="text-lg tracking-widest border-b-2 border-db-pink pt-8"
+                                        className="text-lg tracking-widest border-b border-db-pink/20 pt-8 ml-2"
                                     >
-                                        Use Another Card
+                                        <span>use another</span>
+                                        <span className="text-db-pink pl-2">
+                                            card
+                                        </span>
                                     </button>
                                 )}
 
@@ -261,7 +264,9 @@ export default function Payment({ order, cards }) {
                                 )}
                             </PaymentForm>
                             <div className="flex justify-between w-full mt-10 border-b text-lg tracking-wider ">
-                                <p className=" font-normal">Subtotal </p>
+                                <p className=" font-light tracking-widest">
+                                    Subtotal{" "}
+                                </p>
                                 <p className=" font-medium text-db-pink ">
                                     ${order.order_total}
                                 </p>

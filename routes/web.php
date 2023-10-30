@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CardsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\PaymentController;
@@ -43,6 +44,8 @@ Route::post('/order/store', [OrdersController::class, 'store'])->name('order.sto
 Route::post('/order/delete_class', [OrdersController::class, 'delete_class'])->name('order.delete_class');
 
 Route::post('/payment', [PaymentController::class, 'store'])->name('payment');
+
+Route::delete('/cards/{card}', [CardsController::class, 'destroy']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

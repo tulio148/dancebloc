@@ -21,7 +21,7 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     </div>
 
                     {user.signed_in_with == "email" && (
-                        <div className="p-4 sm:p-8 bg-white shadow rounded-xl">
+                        <div className="p-4 sm:p-8 bg-gradient-to-br from-white from-50% shadow rounded-xl">
                             <UpdatePasswordForm />
                         </div>
                     )}

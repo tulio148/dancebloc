@@ -28,7 +28,7 @@ export default function Nav({ user }) {
                             href={route("profile.edit")}
                             active={route().current("profile.edit")}
                         >
-                            Profile
+                            Account
                         </NavLink>
                     </>
                 )}
