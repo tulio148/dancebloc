@@ -173,6 +173,7 @@ return [
         App\Providers\ClassesServiceProvider::class,
         App\Providers\OrdersServiceProvider::class,
         App\Providers\PaymentServiceProvider::class,
+        App\Providers\CardsServiceProvider::class,
         \SocialiteProviders\Manager\ServiceProvider::class
     ])->toArray(),
 

@@ -55,7 +55,7 @@ class PaymentService
             );
 
             if ($storecard == true) {
-                $this->save_card($payment_id, $cardholder);
+                app(CardsService::class)->create($payment_id, $cardholder);
                 return "success";
             }
 
@@ -66,43 +66,43 @@ class PaymentService
         }
     }
 
-    public function save_card($payment_id, $cardholder)
-    {
+    // public function save_card($payment_id, $cardholder)
+    // {
 
-        $user = auth()->user();
-        $student = $user->student;
-        $client = app(SquareClient::class);
-        $idempotency_key = uniqid();
+    //     $user = auth()->user();
+    //     $student = $user->student;
+    //     $client = app(SquareClient::class);
+    //     $idempotency_key = uniqid();
 
-        $card = new Card();
-        $card->setCustomerId($student->id);
-        $card->setCardholderName($cardholder);
+    //     $card = new Card();
+    //     $card->setCustomerId($student->id);
+    //     $card->setCardholderName($cardholder);
 
-        $body = new \Square\Models\CreateCardRequest(
-            $idempotency_key,
-            $payment_id,
-            $card
-        );
+    //     $body = new \Square\Models\CreateCardRequest(
+    //         $idempotency_key,
+    //         $payment_id,
+    //         $card
+    //     );
 
-        $api_response = $client->getCardsApi()->createCard($body);
+    //     $api_response = $client->getCardsApi()->createCard($body);
 
-        if ($api_response->isSuccess()) {
-            $result = $api_response->getResult();
-            $card_id = $api_response->getResult()->getCard()->getId();
-            $brand = $api_response->getResult()->getCard()->getCardBrand();
-            $last_4 = $api_response->getResult()->getCard()->getLast4();
-            Cards::create(
-                [
-                    'id' => $card_id,
-                    'brand' => $brand,
-                    'last_4' => $last_4,
-                    'student_id' => $student->id,
-                    'cardholder_name' => $cardholder,
-                ]
-            );
-        } else {
-            $errors = $api_response->getErrors();
-            dd($errors);
-        }
-    }
+    //     if ($api_response->isSuccess()) {
+    //         $result = $api_response->getResult();
+    //         $card_id = $api_response->getResult()->getCard()->getId();
+    //         $brand = $api_response->getResult()->getCard()->getCardBrand();
+    //         $last_4 = $api_response->getResult()->getCard()->getLast4();
+    //         Cards::create(
+    //             [
+    //                 'id' => $card_id,
+    //                 'brand' => $brand,
+    //                 'last_4' => $last_4,
+    //                 'student_id' => $student->id,
+    //                 'cardholder_name' => $cardholder,
+    //             ]
+    //         );
+    //     } else {
+    //         $errors = $api_response->getErrors();
+    //         dd($errors);
+    //     }
+    // }
 }
