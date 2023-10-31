@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -13,11 +14,11 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $student = $user->student;
-        $orders =  $student->orders ?? [];
         $enrolled_classes = $student->classes ?? [];
+        $sorted_enrolled_classes = $enrolled_classes->sortBy(fn ($item) => $item['datetime'])->values()->all();
         $classes_in_student_orders = [];
         $cards = $student->cards ?? [];
-
+        $orders =  $student->orders ?? [];
 
         foreach ($orders as $order) {
             $classesIds = json_decode($order->items_ids, true);
@@ -34,7 +35,7 @@ class DashboardController extends Controller
             'orders' => $orders,
             'cards' => $cards,
             'classes' => $classes_in_student_orders,
-            'enrolled_classes' => $enrolled_classes
+            'enrolled_classes' => $sorted_enrolled_classes
         ]);
     }
 }

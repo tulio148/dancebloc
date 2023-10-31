@@ -27,7 +27,9 @@ export default function Dashboard({
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
             />
-            {activeTab == 0 && <Home user={auth.user} />}
+            {activeTab == 0 && (
+                <Home user={auth.user} enrolled_classes={enrolled_classes} />
+            )}
             {activeTab == 1 && (
                 <Calendar
                     user={auth.user}
