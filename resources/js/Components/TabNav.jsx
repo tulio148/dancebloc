@@ -1,4 +1,9 @@
-export default function TabNav({ tabs, activeTab, onTabChange, className }) {
+export default function TabNav({
+    tabs,
+    activeTab,
+    handleTabChange,
+    className,
+}) {
     const scrollToTop = () => {
         window.scrollTo(0, 0);
     };
@@ -12,7 +17,7 @@ export default function TabNav({ tabs, activeTab, onTabChange, className }) {
                     <button
                         key={index}
                         onClick={() => {
-                            onTabChange(index);
+                            handleTabChange(index);
                             scrollToTop();
                         }}
                         className={`w-full mx-auto py-3 relative z-10 rounded-tr-md rounded-tl-md sm:bg-gradient-to-b   
