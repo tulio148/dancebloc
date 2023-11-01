@@ -25,10 +25,15 @@ export default function Dashboard({
             <TabNav
                 tabs={DashboardTabs}
                 activeTab={activeTab}
-                onTabChange={handleTabChange}
+                handleTabChange={handleTabChange}
             />
             {activeTab == 0 && (
-                <Home user={auth.user} enrolled_classes={enrolled_classes} />
+                <Home
+                    handleTabChange={handleTabChange}
+                    user={auth.user}
+                    orders={orders}
+                    enrolled_classes={enrolled_classes}
+                />
             )}
             {activeTab == 1 && (
                 <Calendar

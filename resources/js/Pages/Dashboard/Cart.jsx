@@ -148,7 +148,7 @@ export default function Cart({ orders, classes, cards }) {
                     }
                 })
             ) : (
-                <div className="flex flex-col gap-4 justify-end w-full p-4 sm:p-8 border-b bg-gradient-to-br from-white from-50% rounded-xl shadow font-light tracking-wider text-xl text-slate-500">
+                <div className="flex flex-col gap-4 justify-end w-full p-4 sm:p-8 border-b bg-gradient-to-br from-white from-50% rounded-xl shadow font-light tracking-widest text-xl text-slate-500">
                     No open orders.
                 </div>
             )}

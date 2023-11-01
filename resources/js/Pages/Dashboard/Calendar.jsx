@@ -43,7 +43,7 @@ export default function Calendar({ user, enrolled_classes }) {
                     </div>
                 ))
             ) : (
-                <div className="w-full flex flex-wrap items-center gap-4 border-b bg-gradient-to-b from-white from-80% px-6 pt-6 pb-10 rounded-3xl shadow font-light text-2xl text-slate-500 tracking-wider">
+                <div className="w-full flex flex-wrap items-center gap-4 border-b bg-gradient-to-br from-white from-60% p-6 rounded-xl shadow font-light text-2xl text-slate-500 tracking-wider">
                     <h2>No upcoming classes.</h2>
                 </div>
             )}
