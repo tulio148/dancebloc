@@ -26,8 +26,12 @@ class ClassesController extends Controller
 
     public function show(Classes $class)
     {
+        $user = auth()->user();
+        $student = $user->student;
+        $enrolled_classes = $student->classes;
         return Inertia::render('Classes/Show', [
-            'class_' => $class
+            'class_' => $class,
+            'enrolled_classes' => $enrolled_classes
         ]);
     }
 

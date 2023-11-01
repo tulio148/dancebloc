@@ -12,7 +12,11 @@ import {
 import { Head } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 
-export default function Show({ auth, class_ }) {
+export default function Show({ auth, class_, enrolled_classes }) {
+    const isEnrolled = enrolled_classes.reduce((enrolled, item) => {
+        return enrolled || item.id === class_.id;
+    }, false);
+
     return (
         <Layout user={auth.user}>
             <Head title={class_.name} />
@@ -88,20 +92,26 @@ export default function Show({ auth, class_ }) {
                     </span>
                     <span>${class_.price}</span>
                 </p>
-                <Link
-                    href={route("order.store")}
-                    method="post"
-                    as="button"
-                    type="button"
-                    data={{
-                        id: class_.id,
-                        name: class_.name,
-                        price: class_.price,
-                    }}
-                    className=" self-center inline-flex items-center max-w-fit px-8 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150 "
-                >
-                    enrol
-                </Link>
+                {isEnrolled ? (
+                    <div className="self-center inline-flex items-center max-w-fit px-8 py-3 mt-6 bg-gradient-to-tr from-db-pink/30 to-db-pink/30 rounded-md font-normal text-2xl text-white tracking-widest">
+                        enrolled
+                    </div>
+                ) : (
+                    <Link
+                        href={route("order.store")}
+                        method="post"
+                        as="button"
+                        type="button"
+                        data={{
+                            id: class_.id,
+                            name: class_.name,
+                            price: class_.price,
+                        }}
+                        className="self-center inline-flex items-center max-w-fit px-8 py-3 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
+                    >
+                        enrol
+                    </Link>
+                )}
             </div>
             <div
                 className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-md shadow-db-pink brightness-105  min-w-[320px] max-w-7xl h-[660px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
@@ -120,20 +130,26 @@ export default function Show({ auth, class_ }) {
                         passion
                     </span>
                 </h2>
-                <Link
-                    href={route("order.store")}
-                    method="post"
-                    as="button"
-                    type="button"
-                    data={{
-                        id: class_.id,
-                        name: class_.name,
-                        price: class_.price,
-                    }}
-                    className="font-medium tracking-wider text-4xl py-2 text-db-pink/90 underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4 hover:animate-pulse"
-                >
-                    enrol now
-                </Link>
+                {isEnrolled ? (
+                    <div className="text-center font-medium tracking-wider text-4xl py-2 text-db-pink/90  mx-2 my-4">
+                        enrolled
+                    </div>
+                ) : (
+                    <Link
+                        href={route("order.store")}
+                        method="post"
+                        as="button"
+                        type="button"
+                        data={{
+                            id: class_.id,
+                            name: class_.name,
+                            price: class_.price,
+                        }}
+                        className="font-medium tracking-wider text-4xl py-2 text-db-pink/90 underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4 hover:animate-pulse"
+                    >
+                        enrol now
+                    </Link>
+                )}
             </div>
         </Layout>
     );
