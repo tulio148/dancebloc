@@ -128,13 +128,13 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("classes")}
-                                active={route().current("classes")}
+                                href={route("mission")}
+                                active={route().current("mission")}
                                 className="self-end"
                             >
-                                <div className="flex items-center gap-5">
+                                <div className="flex items-center  gap-5 ">
                                     Mission
-                                    {route().current("classes") ? (
+                                    {route().current("mission") ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
                                             size="lg"
@@ -154,13 +154,13 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("classes")}
-                                active={route().current("classes")}
+                                href={route("contact")}
+                                active={route().current("contact")}
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
                                     Contact
-                                    {route().current("classes") ? (
+                                    {route().current("contact") ? (
                                         <FontAwesomeIcon
                                             icon={faPhone}
                                             size="lg"
@@ -187,7 +187,7 @@ export default function ResponsiveNav({ user }) {
                             as="button"
                             className="self-end"
                         >
-                            <div className="flex items-start gap-3 tracking-normal mt-4">
+                            <div className="flex items-start gap-3  mt-4">
                                 Sign Out
                                 <FontAwesomeIcon
                                     icon={faDoorOpen}
@@ -248,14 +248,13 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("classes")}
-                                active={route().current("classes")}
+                                href={route("mission")}
+                                active={route().current("mission")}
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
                                     Mission
-                                    {route().current("classes") ||
-                                    route().current("classes.show") ? (
+                                    {route().current("mission") ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
                                             size="lg"
@@ -275,13 +274,13 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("classes")}
-                                active={""}
+                                href={route("contact")}
+                                active={route().current("contact")}
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
                                     Contact
-                                    {" " ? (
+                                    {route().current("contact") ? (
                                         <FontAwesomeIcon
                                             icon={faPhone}
                                             size="lg"

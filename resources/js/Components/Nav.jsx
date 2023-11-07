@@ -42,20 +42,14 @@ export default function Nav({ user }) {
                     Classes
                 </NavLink>
                 <NavLink
-                    href={route("classes")}
-                    active={
-                        route().current("classes") ||
-                        route().current("classes.show")
-                    }
+                    href={route("mission")}
+                    active={route().current("mission")}
                 >
                     Mission
                 </NavLink>
                 <NavLink
-                    href={route("classes")}
-                    active={
-                        route().current("classes") ||
-                        route().current("classes.show")
-                    }
+                    href={route("contact")}
+                    active={route().current("contact")}
                 >
                     Contact
                 </NavLink>
