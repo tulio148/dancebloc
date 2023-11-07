@@ -25,7 +25,7 @@ export default function Home({
                             style={{ color: "#FF00F7" }}
                             beatFade
                         />
-                        <span className="text-xl text-slate-500 tracking-widest">
+                        <span className="text-xl font-light text-slate-500 tracking-widest">
                             Go to checkout
                         </span>
                     </button>
