@@ -30,6 +30,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('mission');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
+
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 
 Route::get('/classes/create', [ClassesController::class, 'create'])->name('classes.create');
