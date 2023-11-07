@@ -19,7 +19,7 @@ export default function Admin({ auth, students, classes }) {
             <TabNav
                 tabs={AdminTabs}
                 activeTab={activeTab}
-                onTabChange={handleTabChange}
+                handleTabChange={handleTabChange}
                 className="z-40"
             />
             <div className="sm:pt-32 pt-10 mx-5 max-w-7xl z-30">
