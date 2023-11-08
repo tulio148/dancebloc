@@ -25,21 +25,22 @@ export default function Classes({ auth, classes }) {
     return (
         <Layout user={auth.user}>
             <Head title="Classes" />
-            <h1 className="lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full tracking-widest text-4xl text-white font-extralight text-right py-5 my-16 ">
-                <Transition
-                    show={true}
-                    appear={true}
-                    enter="transition-opacity ease-linear duration-1000"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="transition-opacity duration-1000"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
+            <Transition
+                show={true}
+                appear={true}
+                enter="transition-opacity ease-linear duration-1000"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-1000"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+                className="lg:min-w-[700px] sm:min-w-[500px] min-w-full flex justify-end"
+            >
+                <h1 className="max-w-md tracking-widest text-5xl text-white font-thin text-right py-5 my-16 ">
                     unlock the samba groove
-                </Transition>
-            </h1>
-            <div className=" lg:sm:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap gap-3 mt-8 px-5">
+                </h1>
+            </Transition>
+            <div className=" lg:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap gap-3 mt-8 px-5">
                 <button
                     onClick={() => setShowFilter(!showFilter)}
                     className="self-start max-w-fit bg-db-pink text-white font-normal border border-white/70 tracking-wider px-4 py-2 rounded-xl"

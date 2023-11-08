@@ -8,7 +8,7 @@ export default function ClassCard({ class_ }) {
 
     return (
         <div
-            className="flex flex-col gap-4 max-w-lg border-b bg-gradient-to-b from-white from-70% lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[300px] px-6 pt-10 pb-6 rounded-3xl mx-3 z-40 shadow
+            className="flex flex-col gap-4 max-w-lg border-b bg-gradient-to-b from-white from-70% lg:min-w-[700px] sm:min-w-[500px] min-w-[300px] px-6 pt-10 pb-6 rounded-3xl mx-3 z-40 shadow
         "
         >
             <p className="text-xl underline decoration-2 decoration-db-green/80 underline-offset-4 text-slate-600">
