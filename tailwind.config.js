@@ -22,6 +22,9 @@ export default {
                 // sans: ["Figtree", ...defaultTheme.fontFamily.sans],
                 sans: ["Raleway", ...defaultTheme.fontFamily.sans],
             },
+            transitionDuration: {
+                2000: "2000ms",
+            },
         },
     },
 
