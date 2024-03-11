@@ -28,7 +28,7 @@ class ClassesController extends Controller
     {
         $user = auth()->user();
         $student = $user->student;
-        $enrolled_classes = $student->classes;
+        $enrolled_classes = $student->classes ?? [];
         return Inertia::render('Classes/Show', [
             'class_' => $class,
             'enrolled_classes' => $enrolled_classes
