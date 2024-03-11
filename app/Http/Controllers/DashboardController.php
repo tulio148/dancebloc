@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $student = $user->student;
-        $enrolled_classes = $student->classes ?? [];
+        $enrolled_classes = $student->classes ?? collect();
         $sorted_enrolled_classes = $enrolled_classes->sortBy(fn ($item) => $item['datetime'])->values()->all();
         $classes_in_student_orders = [];
         $cards = $student->cards ?? [];
