@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\NewPasswordController;
@@ -38,6 +39,10 @@ Route::middleware('guest')->group(function () {
     Route::get('login/Facebook', [FacebookController::class, 'redirectToFacebook']);
 
     Route::get('/login/Facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+
+    Route::get('/login/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
+
+    Route::get('/login/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 });
 
 Route::middleware('auth')->group(function () {

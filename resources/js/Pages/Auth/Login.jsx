@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 export default function Login({ status, canResetPassword }) {
     const [showEmailForm, setShowEmailForm] = useState(false);
@@ -33,9 +34,13 @@ export default function Login({ status, canResetPassword }) {
         <>
             <Head title="Log in" />
 
-            <div className="w-screen h-screen flex flex-col gap-8 mt-10 items-center">
+            <div className="w-screen h-screen bg-db-pink flex flex-col gap-8 items-center">
                 <Link href="/">
-                    <img className="w-48" src="/favicon.jpg" alt="" />
+                    <img
+                        className="w-48 mt-12"
+                        src="/logonobg.png"
+                        alt="logo"
+                    />
                 </Link>
                 <div className="p-10 sm:p-8 sm:w-3/4 w-full max-w-lg">
                     <div className="flex flex-col gap-4">
@@ -43,28 +48,52 @@ export default function Login({ status, canResetPassword }) {
                             href="/login/Facebook"
                             className="loginBtn loginBtn--facebook flex justify-center items-center gap-5 mb-8"
                         >
+                            <FontAwesomeIcon
+                                icon={faFacebookF}
+                                size="xl"
+                                style={{ color: "#FFFFFF" }}
+                            />
+                            <span>Login with Facebook</span>
+                        </a>
+                        <a
+                            href="/login/google"
+                            className="loginBtn loginBtn--google flex justify-center items-center gap-5 mb-8"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4"
-                                fill="currentColor"
-                                viewBox="0 0 24 24"
+                                viewBox="0 0 48 48"
+                                width="24px"
+                                height="24px"
                             >
-                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                                <path
+                                    fill="#FFC107"
+                                    d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"
+                                />
+                                <path
+                                    fill="#FF3D00"
+                                    d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"
+                                />
+                                <path
+                                    fill="#4CAF50"
+                                    d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"
+                                />
+                                <path
+                                    fill="#1976D2"
+                                    d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
+                                />
                             </svg>
-                            <span>Login with Facebook</span>
+                            <span>Login with Google</span>
                         </a>
 
                         <button
                             onClick={() => setShowEmailForm(!showEmailForm)}
                             className="loginBtn flex justify-center items-center gap-5 mb-8"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-4 w-4"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
-                            </svg>
+                            <FontAwesomeIcon
+                                icon={faAt}
+                                size="xl"
+                                style={{ color: "#FF00F7" }}
+                            />
                             <span>Login with Email</span>
                         </button>
                         {showEmailForm && (
