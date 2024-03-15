@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CardsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ClassesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\DashboardController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+
 */
 
 Route::get('/', function () {
@@ -34,9 +35,9 @@ Route::get('/about', function () {
     return Inertia::render('About');
 })->name('mission');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-})->name('contact');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
 
