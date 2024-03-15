@@ -25,8 +25,5 @@ class ContactController extends Controller
         ]);
 
         Mail::to('info@danceblocbrazil.com')->send(new ContactFormMail($data));
-
-
-        return redirect('/contact')->with('success', 'Your message has been sent!');
     }
 }

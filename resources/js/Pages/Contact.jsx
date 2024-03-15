@@ -1,9 +1,12 @@
 import Layout from "@/Layouts/Layout";
+import { Head } from "@inertiajs/react";
+import Modal from "@/Components/Modal";
 import { useForm } from "@inertiajs/react";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import Textarea from "@/Components/Textarea";
 import { Transition } from "@headlessui/react";
+import { useState } from "react";
 export default function Contact({ auth }) {
     const { data, setData, post, processing, errors } = useForm({
         name: "",
@@ -12,12 +15,30 @@ export default function Contact({ auth }) {
         content: "",
     });
 
+    const [isOpen, setIsOpen] = useState(false);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("contact.submit"));
+        post(route("contact.submit"), {
+            onSuccess: () => {
+                setIsOpen(true); // Open modal on successful submission
+                setTimeout(() => setIsOpen(false), 2000); // Close modal after 2 seconds
+            },
+        });
     };
     return (
         <Layout user={auth.user}>
+            <Head title="Contact" />;
+            <Modal show={isOpen} maxWidth="md">
+                <div className="p-6 h-full">
+                    <h5 className="text-xl font-medium leading-6 text-center">
+                        Success!
+                    </h5>
+                    <p className="mt-2 text-sm text-gray-500">
+                        Your message has been sent.
+                    </p>
+                </div>
+            </Modal>
             <Transition
                 show={true}
                 appear={true}
