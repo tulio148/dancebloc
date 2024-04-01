@@ -12,14 +12,16 @@ export default function Welcome({ auth }) {
     console.log(inView);
     return (
         <Layout user={auth.user}>
-            <title>Home Page</title>
-            <meta
-                name="description"
-                content="Whether you&#39;ve always dreamed of mastering the captivating moves of Samba, the
+            <Head>
+                <title>Home Page</title>
+                <meta
+                    name="description"
+                    content="Whether you&#39;ve always dreamed of mastering the captivating moves of Samba, the
 energetic kicks of Capoeira, or the sassy flow of Funk, Dance Bloc Brazil is your
 gateway to South American rhythm. Our fun and engaging classes cater to all levels,
 from complete beginners to seasoned dancers."
-            />
+                />
+            </Head>
             <Transition
                 show={true}
                 appear={true}
