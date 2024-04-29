@@ -29,7 +29,7 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
-});
+})->name('welcome');;
 
 Route::get('/about', function () {
     return Inertia::render('About');

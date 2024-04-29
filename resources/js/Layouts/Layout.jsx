@@ -31,10 +31,27 @@ export default function ({ user, children }) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, []);
+
+    const [isTransparent, setIsTransparent] = useState(true);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsTransparent(window.scrollY == 0);
+        };
+        window.addEventListener("scroll", handleScroll);
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     return (
         <div>
-            <nav className="w-full fixed top-0 left-0 z-50 ">
-                <div className="py-2 px-6 lg:px-8 bg-db-pink ">
+            <nav
+                className={`w-full fixed top-0 left-0 z-50 transition-opacity duration-1000 ${
+                    isTransparent && route().current("welcome")
+                        ? "bg-transparent opacity-0"
+                        : "bg-db-pink opacity-100"
+                }`}
+            >
+                <div className="py-2 px-6 lg:px-8  ">
                     <div className="max-w-7xl mx-auto flex justify-between h-16">
                         <div className="flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
