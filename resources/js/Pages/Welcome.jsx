@@ -191,7 +191,7 @@ export default function Welcome({ auth }) {
             {/* LOGO ANIMATION */}
             <img
                 id="logoimg"
-                src="/logonobg.png"
+                src="/logonobg.webp"
                 alt=""
                 className="w-[350px] mb-[2000px]"
             />
@@ -219,7 +219,7 @@ export default function Welcome({ auth }) {
             </div>
             <div
                 id="danceclass"
-                className=" flex flex-col justify-between bg-[url('/danceclass.jpg')] bg-cover bg-center h-screen w-full mb-[1500px] overflow-hidden"
+                className=" flex flex-col justify-between bg-[url('/danceclass.webp')] bg-cover bg-center h-screen w-full mb-[1500px] overflow-hidden"
             >
                 <div
                     id="heading3"
@@ -241,7 +241,7 @@ export default function Welcome({ auth }) {
 
             <div
                 id="functions"
-                className="flex flex-col justify-between bg-[url('/functions.jpg')] bg-cover bg-center h-screen w-full  "
+                className="flex flex-col justify-between bg-[url('/functions.webp')] bg-cover bg-center h-screen w-full  "
             >
                 <div
                     id="heading5"
@@ -260,11 +260,11 @@ export default function Welcome({ auth }) {
                     </h1>
                 </div>
             </div>
-
+            {/* 
             <div
                 id="costumes"
                 className="flex items-end bg-[url('/costume.jpg')] bg-cover bg-center h-screen w-full  "
-            ></div>
+            ></div> */}
 
             {/* <div className=" flex flex-col max-w-7xl  mt-14 mx-5 border-b bg-gradient-to-br  from-white from-90% p-9  rounded-xl shadow font-bold text-2xl text-black/60 tracking-wider leading-relaxed text-justify mb-[4000px]">
                 <div className="bg-[url('/bateria.jpg')] bg-cover bg-center w-[250px] h-[250px] rounded-full border-2 border-white/80"></div>
