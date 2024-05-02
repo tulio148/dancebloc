@@ -31,9 +31,14 @@ Route::get('/', function () {
     ]);
 })->name('welcome');;
 
+
+
 Route::get('/about', function () {
     return Inertia::render('About');
 })->name('mission');
+Route::get('/functions', function () {
+    return Inertia::render('Functions/Functions');
+})->name('functions');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
