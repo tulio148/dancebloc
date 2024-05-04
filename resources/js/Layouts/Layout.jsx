@@ -43,7 +43,7 @@ export default function ({ user, children }) {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
     return (
-        <div className=" scroll-smooth">
+        <div>
             <nav
                 className={`w-full fixed top-0 left-0 z-50 transition-opacity duration-1000 ${
                     isTransparent && route().current("welcome")
