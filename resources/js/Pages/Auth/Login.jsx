@@ -38,7 +38,7 @@ export default function Login({ status, canResetPassword }) {
                 <Link href="/">
                     <img
                         className="w-48 mt-12"
-                        src="/logonobg.png"
+                        src="/logonobg.webp"
                         alt="logo"
                     />
                 </Link>
