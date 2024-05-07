@@ -8,20 +8,20 @@
     "packages": [
         {
             "name": "apimatic/core",
-            "version": "0.3.7",
+            "version": "0.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apimatic/core-lib-php.git",
-                "reference": "50fafa9c463ef8440f4b8841a3ab9913be4641ee"
+                "reference": "ce29310c78c2aa4f62fe76baed0e69275fd3444a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apimatic/core-lib-php/zipball/50fafa9c463ef8440f4b8841a3ab9913be4641ee",
-                "reference": "50fafa9c463ef8440f4b8841a3ab9913be4641ee",
+                "url": "https://api.github.com/repos/apimatic/core-lib-php/zipball/ce29310c78c2aa4f62fe76baed0e69275fd3444a",
+                "reference": "ce29310c78c2aa4f62fe76baed0e69275fd3444a",
                 "shasum": ""
             },
             "require": {
-                "apimatic/core-interfaces": "~0.1.0",
+                "apimatic/core-interfaces": "~0.1.4",
                 "apimatic/jsonmapper": "^3.1.1",
                 "ext-curl": "*",
                 "ext-dom": "*",
@@ -55,22 +55,22 @@
             ],
             "support": {
                 "issues": "https://github.com/apimatic/core-lib-php/issues",
-                "source": "https://github.com/apimatic/core-lib-php/tree/0.3.7"
+                "source": "https://github.com/apimatic/core-lib-php/tree/0.3.8"
             },
-            "time": "2024-04-01T10:19:31+00:00"
+            "time": "2024-05-06T03:42:23+00:00"
         },
         {
             "name": "apimatic/core-interfaces",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apimatic/core-interfaces-php.git",
-                "reference": "fad0d992a3900636865bc4b3a7c4dd77ae10d22f"
+                "reference": "a030736e675b5522a5c1183ebfb1b9b101eb1181"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apimatic/core-interfaces-php/zipball/fad0d992a3900636865bc4b3a7c4dd77ae10d22f",
-                "reference": "fad0d992a3900636865bc4b3a7c4dd77ae10d22f",
+                "url": "https://api.github.com/repos/apimatic/core-interfaces-php/zipball/a030736e675b5522a5c1183ebfb1b9b101eb1181",
+                "reference": "a030736e675b5522a5c1183ebfb1b9b101eb1181",
                 "shasum": ""
             },
             "require": {
@@ -98,9 +98,9 @@
             ],
             "support": {
                 "issues": "https://github.com/apimatic/core-interfaces-php/issues",
-                "source": "https://github.com/apimatic/core-interfaces-php/tree/0.1.3"
+                "source": "https://github.com/apimatic/core-interfaces-php/tree/0.1.4"
             },
-            "time": "2024-03-07T04:56:42+00:00"
+            "time": "2024-05-04T04:33:59+00:00"
         },
         {
             "name": "apimatic/jsonmapper",
@@ -4015,21 +4015,21 @@
         },
         {
             "name": "socialiteproviders/manager",
-            "version": "v4.5.1",
+            "version": "v4.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "a67f194f0f4c4c7616c549afc697b78df9658d44"
+                "reference": "dea5190981c31b89e52259da9ab1ca4e2b258b21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/a67f194f0f4c4c7616c549afc697b78df9658d44",
-                "reference": "a67f194f0f4c4c7616c549afc697b78df9658d44",
+                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/dea5190981c31b89e52259da9ab1ca4e2b258b21",
+                "reference": "dea5190981c31b89e52259da9ab1ca4e2b258b21",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "laravel/socialite": "^5.2",
+                "laravel/socialite": "^5.5",
                 "php": "^8.0"
             },
             "require-dev": {
@@ -4085,7 +4085,7 @@
                 "issues": "https://github.com/socialiteproviders/manager/issues",
                 "source": "https://github.com/socialiteproviders/manager"
             },
-            "time": "2024-02-17T08:58:03+00:00"
+            "time": "2024-05-04T07:57:39+00:00"
         },
         {
             "name": "square/square",
@@ -8207,16 +8207,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.28.0",
+            "version": "1.29.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb"
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
-                "reference": "cd06d6b1a1b3c75b0b83f97577869fd85a3cd4fb",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/536889f2b340489d328f5ffb7b02bb6b183ddedc",
+                "reference": "536889f2b340489d328f5ffb7b02bb6b183ddedc",
                 "shasum": ""
             },
             "require": {
@@ -8248,9 +8248,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.28.0"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.29.0"
             },
-            "time": "2024-04-03T18:51:33+00:00"
+            "time": "2024-05-06T12:04:23+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

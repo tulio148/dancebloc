@@ -224,9 +224,9 @@ export default function Welcome({ auth }) {
                 />
             </Head>
             {/* HERO */}
-            <div className="flex items-end bg-[url('/background.webp')] mt-[-80px] bg-fixed bg-cover bg-center h-screen w-full lg:bg-top">
+            <div className="flex items-start bg-[url('/dancer1.webp')] mt-[-80px] bg-fixed bg-cover bg-center h-screen w-full lg:bg-center">
                 <div id="logo-text" className="w-full flex justify-end">
-                    <h1 className=" max-w-md tracking-widest text-6xl sm:text-7xl opacity-80 text-white font-bold text-right pb-20 my-4 lg:mr-10 ">
+                    <h1 className=" max-w-md md:max-w-lg  tracking-widest text-5xl sm:text-7xl opacity-80 text-white font-bold text-right pb-20 mt-10 mx-2 lg:mr-10 ">
                         dance <span className="text-db-pink">bloc</span> Bra
                         <span className=" text-green-600">z</span>
                         <span className=" text-yellow-300">i</span>l
