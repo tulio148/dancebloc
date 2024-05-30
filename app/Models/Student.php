@@ -63,7 +63,7 @@ class Student extends Model
 
     public function payments(): HasMany
     {
-        return $this->hasMany(Payment::class, 'student_id', 'id');
+        return $this->hasMany(Payments::class, 'student_id', 'id');
     }
 
     public function cards()

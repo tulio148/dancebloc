@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Student;
+use App\Models\Orders;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Payments extends Model
 {
@@ -40,6 +42,6 @@ class Payments extends Model
     // Define the relationship with the Order model
     public function order()
     {
-        return $this->belongsTo(Order::class, 'order_id', 'id');
+        return $this->belongsTo(Orders::class, 'order_id', 'id');
     }
 }
