@@ -162,10 +162,14 @@ class ClassesService
 
         $level_id = "BCBVPJAEHUHOOGNLTFIVRIND";
 
-        if ($level == "beginner") {
-            $level_value_id = "OBOQYIEYBJU4ZGIGDH6E7746";
-        } else {
-            $level_value_id = "S7M3TZNQ2UMWWS3EFUYNJF3J";
+        if ($level == "open") {
+            $level_value_id = "PDCO2FBCTNLOVLTG5IEZ2FKU";
+        } elseif ($level == "beginner") {
+            $level_value_id = "7VSWSOWDEEUYICBQLHQDUIFW";
+        } elseif ($level == "intermediate") {
+            $level_value_id = "V5W7BTDS4SM6TD2U2N72JAXU";
+        } elseif ($level == "advanced") {
+            $level_value_id = "WFH4FS4QHIYJF4SZSOHZVP6E";
         }
 
         // $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";

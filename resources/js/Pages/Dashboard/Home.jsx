@@ -9,7 +9,7 @@ export default function Home({
     handleTabChange,
 }) {
     return (
-        <div className="sm:pt-28 px-5 w-full max-w-5xl flex flex-col items-center">
+        <div className="sm:pt-52 pt-20 px-5 w-full max-w-5xl flex flex-col items-center">
             <h1 className="w-full tracking-widest text-2xl text-white font-extralight text-left py-10 ">
                 Welcome back, {user.name}!
             </h1>

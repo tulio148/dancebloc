@@ -13,7 +13,7 @@ import { Disclosure } from "@headlessui/react";
 import formatDate from "@/Lib/dateformatter";
 export default function Cart({ orders, classes, cards }) {
     return (
-        <div className="sm:pt-28 px-5 w-full max-w-2xl flex flex-col items-center">
+        <div className="sm:pt-52 pt-20 px-5 w-full max-w-2xl flex flex-col items-center">
             {cards.length > 0 && (
                 <>
                     <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">

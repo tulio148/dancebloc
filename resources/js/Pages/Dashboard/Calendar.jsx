@@ -11,7 +11,7 @@ export default function Calendar({ user, enrolled_classes }) {
     // console.log(upcomingClasses);
     // console.log(enrolled_classes);
     return (
-        <div className="sm:pt-28 px-5 w-full max-w-2xl flex flex-col items-center gap-10">
+        <div className="sm:pt-52 pt-20 px-5 w-full max-w-2xl flex flex-col items-center gap-10">
             <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                 upcoming classes
             </h1>
