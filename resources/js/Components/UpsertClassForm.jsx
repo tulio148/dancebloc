@@ -80,7 +80,13 @@ export default function UpsertClass({
                 />
                 <InputError message={errors.datetime} className="mt-2" />
                 <SelectInput
-                    options={["", "beginner", "advanced"]}
+                    options={[
+                        "",
+                        "open",
+                        "beginner",
+                        "intermediate",
+                        "advanced",
+                    ]}
                     className="mt-1 block w-full"
                     value={data.level}
                     onChange={(e) => {

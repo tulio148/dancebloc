@@ -23,8 +23,8 @@ export default function TabNav({
                         className={`w-full mx-auto py-3 relative z-10 rounded-tr-md rounded-tl-md sm:bg-gradient-to-b   
                 ${
                     index === activeTab
-                        ? "transition duration-700 text-white font-medium from-slate-200/80"
-                        : "text-slate-800 text-opacity-90 transition duration-700 from-slate-200/50 hover:from-slate-200/60"
+                        ? "transition duration-700 text-white font-semibold from-slate-200/80"
+                        : "text-white text-opacity-90 transition duration-700 from-slate-200/50 hover:from-slate-200/60"
                 }`}
                     >
                         <span>{tab.icon}</span>

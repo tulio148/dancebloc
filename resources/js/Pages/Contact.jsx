@@ -28,7 +28,7 @@ export default function Contact({ auth }) {
     };
     return (
         <Layout user={auth.user}>
-            <Head title="Contact" />;
+            <Head title="Contact" />
             <Modal show={isOpen} maxWidth="md">
                 <div className="p-6 h-full">
                     <h5 className="text-xl font-medium leading-6 text-center">

@@ -40,21 +40,25 @@ class ClassesService
 
 
 
-        $level_id = "BCBVPJAEHUHOOGNLTFIVRIND";
-
-        if ($level == "beginner") {
-            $level_value_id = "OBOQYIEYBJU4ZGIGDH6E7746";
-        } else {
-            $level_value_id = "S7M3TZNQ2UMWWS3EFUYNJF3J";
+        $level_id = "OC2KDCWQDHSRINFMR7BOV4GG";
+        if ($level == "open") {
+            $level_value_id = "PDCO2FBCTNLOVLTG5IEZ2FKU";
+        } elseif ($level == "beginner") {
+            $level_value_id = "7VSWSOWDEEUYICBQLHQDUIFW";
+        } elseif ($level == "intermediate") {
+            $level_value_id = "V5W7BTDS4SM6TD2U2N72JAXU";
+        } elseif ($level == "advanced") {
+            $level_value_id = "WFH4FS4QHIYJF4SZSOHZVP6E";
         }
 
-        $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";
 
-        if ($enrollment_mode == "single") {
-            $enrollment_mode_value_id = "7B6AMXMCQZANHHOMWUZ7DT3X";
-        } else {
-            $enrollment_mode_value_id = "QTTBGTGLINEZKN73LUMD7EX7";
-        }
+        // $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";
+
+        // if ($enrollment_mode == "single") {
+        //     $enrollment_mode_value_id = "7B6AMXMCQZANHHOMWUZ7DT3X";
+        // } else {
+        //     $enrollment_mode_value_id = "QTTBGTGLINEZKN73LUMD7EX7";
+        // }
 
 
         $client = app(SquareClient::class);
@@ -68,11 +72,11 @@ class ClassesService
         $choose_level->setItemOptionId($level_id);
         $choose_level->setItemOptionValueId($level_value_id);
 
-        $choose_enrollment_mode = new CatalogItemOptionValueForItemVariation();
-        $choose_enrollment_mode->setItemOptionId($enrollment_mode_id);
-        $choose_enrollment_mode->setItemOptionValueId($enrollment_mode_value_id);
+        // $choose_enrollment_mode = new CatalogItemOptionValueForItemVariation();
+        // $choose_enrollment_mode->setItemOptionId($enrollment_mode_id);
+        // $choose_enrollment_mode->setItemOptionValueId($enrollment_mode_value_id);
 
-        $options = [$choose_level, $choose_enrollment_mode];
+        $options = [$choose_level];
 
         $class_specs = new CatalogItemVariation();
         $class_specs->setItemId(env('VITE_SQUARE_SAMBA_CLASS_ID'));
@@ -164,13 +168,13 @@ class ClassesService
             $level_value_id = "S7M3TZNQ2UMWWS3EFUYNJF3J";
         }
 
-        $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";
+        // $enrollment_mode_id = "AOCHMQYDJTS57ZVIU7XZ4ITC";
 
-        if ($enrollment_mode == "single") {
-            $enrollment_mode_value_id = "7B6AMXMCQZANHHOMWUZ7DT3X";
-        } else {
-            $enrollment_mode_value_id = "QTTBGTGLINEZKN73LUMD7EX7";
-        }
+        // if ($enrollment_mode == "single") {
+        //     $enrollment_mode_value_id = "7B6AMXMCQZANHHOMWUZ7DT3X";
+        // } else {
+        //     $enrollment_mode_value_id = "QTTBGTGLINEZKN73LUMD7EX7";
+        // }
 
 
         $price_money = new \Square\Models\Money();
@@ -182,8 +186,8 @@ class ClassesService
         $choose_level->setItemOptionValueId($level_value_id);
 
         $choose_enrollment_mode = new CatalogItemOptionValueForItemVariation();
-        $choose_enrollment_mode->setItemOptionId($enrollment_mode_id);
-        $choose_enrollment_mode->setItemOptionValueId($enrollment_mode_value_id);
+        // $choose_enrollment_mode->setItemOptionId($enrollment_mode_id);
+        // $choose_enrollment_mode->setItemOptionValueId($enrollment_mode_value_id);
 
         $options = [$choose_level, $choose_enrollment_mode];
 

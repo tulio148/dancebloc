@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Head, Link } from "@inertiajs/react";
 import Layout from "@/Layouts/Layout";
-import { ScrollTrigger } from "gsap/all";
+import { Flip, ScrollTrigger, TextPlugin } from "gsap/all";
 
 export default function Welcome({ auth }) {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(TextPlugin);
     gsap.registerPlugin(useGSAP);
 
     useGSAP(() => {
@@ -18,197 +20,109 @@ export default function Welcome({ auth }) {
             scrollTrigger: {
                 trigger: "#logo-img",
                 start: "center center",
-                end: "+=5000px",
-                scrub: true,
+                end: "+=6000px",
+                // scrub: true,
                 pin: "#logo-img",
-                toggleActions: "play reset reverse reset",
+                toggleActions: "play none none none",
                 // markers: true,
             },
-            opacity: 0,
+            autoAlpha: 0,
+            // opacity: 0,
+            scale: 0.2,
+            duration: 4,
         });
         gsap.from("#dancer1", {
             scrollTrigger: {
                 id: "dancer1",
                 trigger: "#dancer1",
                 start: "top top",
-                end: "+=6000px",
-                // scrub: true,
+                end: "+=5000px",
                 pin: "#dancer1",
-                toggleActions: "play none none none",
+                toggleActions: "play  none none none",
                 // markers: true,
             },
-            opacity: 0,
+            autoAlpha: 0,
+            // opacity: 0,
             duration: 1,
             ease: "power4.in",
         });
-        gsap.from("#heading1", {
-            scrollTrigger: {
-                id: "heading",
-                trigger: "#dancer1",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            // opacity: 0,
-            xPercent: 100,
-            duration: 2,
-            delay: 1,
-            ease: "power4.out",
-        });
-        gsap.from("#heading2", {
-            scrollTrigger: {
-                id: "heading2",
-                trigger: "#dancer1",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            xPercent: -100,
-            duration: 2,
-            delay: 1.5,
-            ease: "power4.out",
-        });
+
         gsap.from("#danceclass", {
             scrollTrigger: {
                 id: "danceclass",
                 trigger: "#danceclass",
                 start: "top top",
-                end: "+=6000px",
-                // scrub: true,
+                end: "+=5000px",
                 pin: "#danceclass",
-                toggleActions: "play none none none",
+                toggleActions: "play  none none none",
                 // markers: true,
+                preventOverlaps: true,
             },
-            opacity: 0,
+            // opacity: 0,
+            autoAlpha: 0,
             duration: 1,
             ease: "power4.in",
         });
-        gsap.from("#heading3", {
+
+        gsap.from("#events", {
             scrollTrigger: {
-                id: "heading3",
-                trigger: "#danceclass",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            // opacity: 0,
-            xPercent: 100,
-            duration: 2,
-            delay: 1,
-            ease: "power4.out",
-        });
-        gsap.from("#heading4", {
-            scrollTrigger: {
-                id: "heading4",
-                trigger: "#danceclass",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            xPercent: -100,
-            duration: 2,
-            delay: 1.5,
-            ease: "power4.out",
-        });
-        gsap.from("#functions", {
-            scrollTrigger: {
-                id: "functions",
-                trigger: "#functions",
+                id: "events",
+                trigger: "#events",
                 start: "top top",
                 end: "+=4000px",
-                // scrub: true,
-                pin: "#functions",
+                pin: "#events",
                 toggleActions: "play none none none",
                 // markers: true,
             },
-            opacity: 0,
+            autoAlpha: 0,
+            // opacity: 0,
             duration: 1,
             ease: "power4.in",
         });
-        gsap.from("#heading5", {
-            scrollTrigger: {
-                id: "heading5",
-                trigger: "#functions",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            // opacity: 0,
-            xPercent: 100,
-            duration: 2,
-            delay: 1,
-            ease: "power4.out",
-        });
-        gsap.from("#heading6", {
-            scrollTrigger: {
-                id: "heading6",
-                trigger: "#functions",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
-                // markers: true,
-            },
-            xPercent: -100,
-            duration: 2,
-            delay: 1.5,
-            ease: "power4.out",
-        });
+
         gsap.from("#costumes", {
             scrollTrigger: {
                 id: "costumes",
                 trigger: "#costumes",
                 start: "top top",
-                end: "+=3000px",
-                // scrub: true,
+                end: "+=2000px",
                 pin: "#costumes",
                 toggleActions: "play none none none",
                 // markers: true,
             },
-            opacity: 0,
+            autoAlpha: 0,
+            // opacity: 0,
             duration: 1,
             ease: "power4.in",
         });
-        gsap.from("#heading7", {
+
+        gsap.to("#heading-text-1", {
             scrollTrigger: {
-                id: "heading7",
-                trigger: "#costumes",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
+                id: "heading-text-1",
+                trigger: "#heading-text-1",
+                start: "top center",
+                // end: " bottom",
+                toggleActions: "play none restart reverse",
                 // markers: true,
             },
-            // opacity: 0,
-            xPercent: 100,
-            duration: 2,
-            delay: 1,
-            ease: "power4.out",
+            text: {
+                value: "more than just steps",
+                speed: 1.5,
+            },
         });
-        gsap.from("#heading8", {
+
+        gsap.to("#heading-text-2", {
             scrollTrigger: {
-                id: "heading8",
-                trigger: "#costumes",
-                start: "top top",
-                // end: "+=2200px",
-                // scrub: true,
-                toggleActions: "play none none none",
+                id: "heading-text-2",
+                trigger: "#heading-text-2",
+                start: "top center",
+                toggleActions: "play none restart reverse",
                 // markers: true,
             },
-            xPercent: -100,
-            duration: 2,
-            delay: 1.5,
-            ease: "power4.out",
+            text: {
+                value: "beyond the studio",
+                speed: 1,
+            },
         });
     });
     return (
@@ -224,9 +138,9 @@ export default function Welcome({ auth }) {
                 />
             </Head>
             {/* HERO */}
-            <div className="flex items-start bg-[url('/dancer1.webp')] mt-[-80px] bg-fixed bg-cover bg-center h-screen w-full lg:bg-center">
+            <div className="flex items-start bg-[url('/background.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
                 <div id="logo-text" className="w-full flex justify-end">
-                    <h1 className=" max-w-md md:max-w-lg  tracking-widest text-5xl sm:text-7xl opacity-80 text-white font-bold text-right pb-20 mt-10 mx-2 lg:mr-10 ">
+                    <h1 className=" max-w-md md:max-w-lg  tracking-widest text-6xl sm:text-[12vw] lg:text-[10vw] xl:text-[8.5vw] opacity-90 text-white font-bold text-right pb-20 mt-10 mx-2 lg:mr-10 ">
                         dance <span className="text-db-pink">bloc</span> Bra
                         <span className=" text-green-600">z</span>
                         <span className=" text-yellow-300">i</span>l
@@ -238,18 +152,18 @@ export default function Welcome({ auth }) {
                 id="logo-img"
                 src="/logonobg.webp"
                 alt=""
-                className="w-[350px] mb-[1800px]"
+                className="w-[350px] mb-[2000px]"
             />
             {/* DANCER WITH TEXT */}
             <div
                 id="dancer1"
-                className=" flex flex-col justify-between bg-[url('/dancer1.webp')] bg-cover bg-center xl:bg-contain h-screen w-full mb-[2000px] overflow-hidden"
+                className=" flex flex-col justify-between bg-[url('/dancer1.webp')] bg-cover bg-center xl:bg-contain h-screen w-full   mb-[2000px]"
             >
                 <div
                     id="heading1"
                     className=" w-full bg-gradient-to-l from-db-pink/90 from-30% py-1 my-32 shadow-md shadow-db-pink/30"
                 >
-                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl text-white  font-extralight text-right">
+                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white  font-extralight lg:font-thin text-right">
                         unleash your
                     </h1>
                 </div>
@@ -257,7 +171,7 @@ export default function Welcome({ auth }) {
                     id="heading2"
                     className=" w-full bg-gradient-to-r from-db-pink/90 from-30% py-1  my-32 shadow-md shadow-db-pink/30"
                 >
-                    <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl text-white font-extralight text-left">
+                    <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-left">
                         inner brazilian
                     </h1>
                 </div>
@@ -270,7 +184,7 @@ export default function Welcome({ auth }) {
                     id="heading3"
                     className=" w-full bg-gradient-to-l from-db-green from-30% py-4 pr-6 my-32 shadow-md shadow-db-green/70 flex justify-end"
                 >
-                    <h1 className="tracking-widest lg:px-24 text-5xl w-1/2 text-white font-extralight text-right">
+                    <h1 className="tracking-widest lg:px-24 text-5xl lg:text-7xl w-1/2 text-white font-extralight lg:font-thin text-right">
                         dance classes
                     </h1>
                 </div>
@@ -279,32 +193,31 @@ export default function Welcome({ auth }) {
                     className=" w-full bg-db-green/90 py-4  my-32 shadow-md shadow-db-green/70"
                 >
                     <Link href={route("classes")}>
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl text-white font-extralight text-center">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
                             learn more
                         </h1>
                     </Link>
                 </div>
             </div>
-
             <div
-                id="functions"
-                className=" flex flex-col justify-between bg-[url('/functions.webp')] bg-cover bg-center h-screen w-full mb-[2000px] overflow-hidden"
+                id="events"
+                className=" flex flex-col justify-between bg-[url('/events.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
             >
                 <div
                     id="heading5"
                     className=" w-full bg-gradient-to-l from-db-pink
                      from-20% py-4 my-32 shadow-md shadow-db-pink/70"
                 >
-                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl text-white font-extralight text-right">
-                        functions
+                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-right">
+                        events
                     </h1>
                 </div>
                 <div
                     id="heading6"
                     className=" w-full bg-db-pink/80 from-20% py-4  my-32 shadow-md shadow-db-pink/70"
                 >
-                    <Link href={route("functions")}>
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl text-white font-extralight text-center">
+                    <Link href={route("events")}>
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
                             learn more
                         </h1>
                     </Link>
@@ -312,13 +225,13 @@ export default function Welcome({ auth }) {
             </div>
             <div
                 id="costumes"
-                className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[4000px] overflow-hidden"
+                className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[2000px] overflow-hidden"
             >
                 <div
                     id="heading7"
                     className=" w-full bg-gradient-to-l from-db-green from-20% py-4 my-32 shadow-md shadow-db-green/70"
                 >
-                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl text-white font-extralight text-right">
+                    <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-right">
                         costumes
                     </h1>
                 </div>
@@ -326,32 +239,56 @@ export default function Welcome({ auth }) {
                     id="heading8"
                     className=" w-full bg-db-green/80 from-20% py-4  my-32 "
                 >
-                    {/* <Link href={route("costumes")}> */}
-                    <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl text-white font-extralight text-center">
+                    <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
                         coming soon
                     </h1>
-                    {/* </Link> */}
                 </div>
             </div>
-
-            {/* 
             <div
-                id="costumes"
-                className="flex items-end bg-[url('/costume.jpg')] bg-cover bg-center h-screen w-full  "
-            ></div> */}
-
-            {/* <div className=" flex flex-col max-w-7xl  mt-14 mx-5 border-b bg-gradient-to-br  from-white from-90% p-9  rounded-xl shadow font-bold text-2xl text-black/60 tracking-wider leading-relaxed text-justify mb-[4000px]">
-                <div className="bg-[url('/bateria.jpg')] bg-cover bg-center w-[250px] h-[250px] rounded-full border-2 border-white/80"></div>
-                <div className="bg-[url('/funk.webp')] bg-cover w-[250px] h-[250px] rounded-full border-2 border-white/80"></div>
-                Whether you&#39;ve always dreamed of mastering the captivating
-                moves of Samba, the energetic kicks of Capoeira, or the sassy
-                flow of Funk, Dance Bloc Brazil is your gateway to South
-                American rhythm.
-                <br />
-                <br />
-                Our fun and engaging classes cater to all levels, from complete
-                beginners to seasoned dancers.
-            </div> */}
+                id="text-1"
+                className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[100px]"
+            >
+                <div
+                    id="heading-text-1"
+                    className=" self-start mx-7 bg-white rounded-sm h-[33px] md:h-[60px] pr-[1px] text-db-pink/90 font-extrabold text-4xl md:text-7xl sm:mb-1"
+                ></div>
+                <div className=" max-w-3xl m-4 px-4 py-14 sm:p-8 border border-white/50 bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40  rounded-xl">
+                    <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
+                        At Dance Bloc Brazil, we believe dance is more than just
+                        physical activity. It&#39;s a celebration of culture, a
+                        way to connect with your body, and a chance to build a
+                        supportive community.
+                        <br />
+                        <br />
+                        Our experienced instructors are not just teachers; they
+                        are passionate artists who will guide you on your dance
+                        journey with enthusiasm and cultural understanding.
+                    </p>
+                </div>
+            </div>
+            <div
+                id="text-2"
+                className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[4000px]"
+            >
+                <div
+                    id="heading-text-2"
+                    className="self-start mx-7 bg-white rounded-sm h-[33px] md:h-[60px] pr-[1px] text-db-pink/90 font-extrabold text-4xl md:text-7xl sm:mb-1"
+                ></div>
+                <div className=" max-w-3xl m-4 px-4 py-10 sm:p-8 border border-white/50  bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40 rounded-xl">
+                    <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
+                        We don&#39;t just teach dance; we bring it to life!
+                        Dance Bloc Brazil is a sought-after entertainment
+                        company, adding a touch of Brazilian flair to events
+                        throughout Perth.
+                        <br />
+                        <br />
+                        We light up stages at weddings, corporate functions,
+                        festivals, and private parties, captivating audiences
+                        with our authentic costumes, high-energy routines, and
+                        infectious rhythms.
+                    </p>
+                </div>
+            </div>
         </Layout>
     );
 }

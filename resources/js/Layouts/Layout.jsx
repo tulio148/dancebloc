@@ -45,10 +45,10 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav
-                className={`w-full fixed top-0 left-0 z-50 transition-opacity duration-1000 ${
+                className={`w-full fixed top-0 left-0 z-50 transition-opacity duration-1000 bg-db-pink ${
                     isTransparent && route().current("welcome")
-                        ? "bg-transparent opacity-0"
-                        : "bg-db-pink opacity-100"
+                        ? " opacity-0"
+                        : " opacity-100"
                 }`}
             >
                 <div className="py-2 px-6 lg:px-8  ">
@@ -108,7 +108,7 @@ export default function ({ user, children }) {
                 </div>
             </nav>
 
-            <main className="flex flex-col items-center mt-20 bg-gradient-to-b from-db-pink  min-h-screen w-full">
+            <main className="flex flex-col items-center bg-gradient-to-b from-db-pink min-h-screen w-full">
                 {children}
             </main>
             <Footer />
