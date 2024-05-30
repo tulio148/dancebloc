@@ -11,10 +11,11 @@ import {
 import { router } from "@inertiajs/react";
 import { Disclosure } from "@headlessui/react";
 import formatDate from "@/Lib/dateformatter";
+
 export default function Cart({ orders, classes, cards }) {
     return (
         <div className="sm:pt-52 pt-20 px-5 w-full max-w-2xl flex flex-col items-center">
-            {cards.length > 0 && (
+            {cards?.length > 0 && (
                 <>
                     <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                         saved cards
@@ -22,7 +23,10 @@ export default function Cart({ orders, classes, cards }) {
                     <div className="p-4 sm:p-8 w-full border-b bg-gradient-to-br from-white from-50% shadow rounded-xl">
                         {cards.map((card) => {
                             return (
-                                <div className="flex justify-between">
+                                <div
+                                    className="flex justify-between"
+                                    key={card.id}
+                                >
                                     <div className="flex justify-between items-end">
                                         {card.brand === "VISA" ? (
                                             <FontAwesomeIcon
@@ -83,7 +87,7 @@ export default function Cart({ orders, classes, cards }) {
             <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                 open orders
             </h1>
-            {orders.some((order) => order.state === "OPEN") ? (
+            {orders?.some((order) => order.state === "OPEN") ? (
                 orders.map((order) => {
                     if (order.state === "OPEN") {
                         return (
@@ -92,7 +96,7 @@ export default function Cart({ orders, classes, cards }) {
                                 className="flex flex-col gap-4 justify-end w-full bg-white border-b px-6 py-6 rounded-xl shadow font-light text-xl text-slate-500"
                             >
                                 <div className="flex flex-col gap-5">
-                                    {JSON.parse(order.items_ids).map(
+                                    {JSON.parse(order.items_ids)?.map(
                                         (id, index, array) => {
                                             const class_ = classes.find(
                                                 (classItem) =>
@@ -105,12 +109,12 @@ export default function Cart({ orders, classes, cards }) {
                                                 : "flex flex-wrap gap-4 justify-between w-full items-start border-b pb-3 border-db-pink/30";
                                             return (
                                                 <div
-                                                    key={class_.id}
+                                                    key={class_?.id}
                                                     className={borderClass}
                                                 >
                                                     <div className="flex flex-col gap-1 items-start">
                                                         <p className=" tracking-wider">
-                                                            {class_.name}
+                                                            {class_?.name}
                                                         </p>
                                                         <Link
                                                             href={route(
@@ -132,7 +136,7 @@ export default function Cart({ orders, classes, cards }) {
                                                         </Link>
                                                     </div>
 
-                                                    <p>${class_.price}</p>
+                                                    <p>${class_?.price}</p>
                                                 </div>
                                             );
                                         }
@@ -152,7 +156,7 @@ export default function Cart({ orders, classes, cards }) {
                     No open orders.
                 </div>
             )}
-            {orders.some((order) => order.state === "COMPLETED") && (
+            {orders?.some((order) => order.state === "COMPLETED") && (
                 <>
                     <h1 className="w-full tracking-widest text-4xl text-white font-extralight text-right py-10 ">
                         closed orders
@@ -203,7 +207,7 @@ export default function Cart({ orders, classes, cards }) {
                                                     <div className="flex flex-col gap-5">
                                                         {JSON.parse(
                                                             order.items_ids
-                                                        ).map(
+                                                        )?.map(
                                                             (
                                                                 id,
                                                                 index,
@@ -228,7 +232,7 @@ export default function Cart({ orders, classes, cards }) {
                                                                 return (
                                                                     <div
                                                                         key={
-                                                                            class_.id
+                                                                            class_?.id
                                                                         }
                                                                         className={
                                                                             borderClass
@@ -237,7 +241,7 @@ export default function Cart({ orders, classes, cards }) {
                                                                         <div className="flex flex-col gap-1 items-start">
                                                                             <p className=" tracking-wider">
                                                                                 {
-                                                                                    class_.name
+                                                                                    class_?.name
                                                                                 }
                                                                             </p>
                                                                         </div>
@@ -245,7 +249,7 @@ export default function Cart({ orders, classes, cards }) {
                                                                         <p>
                                                                             $
                                                                             {
-                                                                                class_.price
+                                                                                class_?.price
                                                                             }
                                                                         </p>
                                                                     </div>
