@@ -19,7 +19,7 @@ class OrdersController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $orders = Orders::where('id', $user->id)->get();
+        $orders = Orders::where('student_id', $user->student_id)->get();
         return view('orders.index', ['orders' => $orders]);
     }
 
@@ -27,7 +27,7 @@ class OrdersController extends Controller
     {
         $user = Auth::user();
         $openOrder = Orders::where('state', 'OPEN')
-            ->where('id', $user->student_id)
+            ->where('student_id', $user->student_id)
             ->first();
         if ($openOrder) {
             app(OrdersService::class)->update($openOrder, $request);
@@ -41,7 +41,7 @@ class OrdersController extends Controller
     {
         $user = Auth::user();
         $order = Orders::where('id', $request->order_id)
-            ->where('id', $user->id)
+            ->where('student_id', $user->student_id)
             ->first();
         if ($order) {
             app(OrdersService::class)->delete($order, $request);
