@@ -46,18 +46,6 @@ export default function UpsertClass({
         >
             <div className="grid sm:grid-cols-2  gap-5 p-4 w-full">
                 <TextInput
-                    id="name"
-                    name="name"
-                    value={data.name}
-                    className="mt-1 block sm:col-span-2 "
-                    autoComplete="name"
-                    isFocused={true}
-                    onChange={(e) => setData("name", e.target.value)}
-                    required
-                    placeholder="Title"
-                />
-                <InputError message={errors.name} className="mt-2" />
-                <TextInput
                     id="id"
                     name="id"
                     value={data.id}
@@ -67,6 +55,17 @@ export default function UpsertClass({
                     onChange={(e) => setData("id", e.target.value)}
                     required
                     placeholder="Id"
+                />
+                <InputError message={errors.id} className="mt-2" />
+                <TextInput
+                    id="name"
+                    name="name"
+                    value={data.name}
+                    className="mt-1 block sm:col-span-2 "
+                    autoComplete="name"
+                    onChange={(e) => setData("name", e.target.value)}
+                    required
+                    placeholder="Title"
                 />
                 <InputError message={errors.name} className="mt-2" />
                 <Textarea

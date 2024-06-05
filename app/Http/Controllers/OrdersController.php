@@ -27,7 +27,7 @@ class OrdersController extends Controller
     {
         $user = Auth::user();
         $openOrder = Orders::where('state', 'OPEN')
-            ->where('id', $user->id)
+            ->where('id', $user->student_id)
             ->first();
         if ($openOrder) {
             app(OrdersService::class)->update($openOrder, $request);
