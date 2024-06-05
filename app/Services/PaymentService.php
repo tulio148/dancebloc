@@ -65,44 +65,4 @@ class PaymentService
             return $errors;
         }
     }
-
-    // public function save_card($payment_id, $cardholder)
-    // {
-
-    //     $user = auth()->user();
-    //     $student = $user->student;
-    //     $client = app(SquareClient::class);
-    //     $idempotency_key = uniqid();
-
-    //     $card = new Card();
-    //     $card->setCustomerId($student->id);
-    //     $card->setCardholderName($cardholder);
-
-    //     $body = new \Square\Models\CreateCardRequest(
-    //         $idempotency_key,
-    //         $payment_id,
-    //         $card
-    //     );
-
-    //     $api_response = $client->getCardsApi()->createCard($body);
-
-    //     if ($api_response->isSuccess()) {
-    //         $result = $api_response->getResult();
-    //         $card_id = $api_response->getResult()->getCard()->getId();
-    //         $brand = $api_response->getResult()->getCard()->getCardBrand();
-    //         $last_4 = $api_response->getResult()->getCard()->getLast4();
-    //         Cards::create(
-    //             [
-    //                 'id' => $card_id,
-    //                 'brand' => $brand,
-    //                 'last_4' => $last_4,
-    //                 'student_id' => $student->id,
-    //                 'cardholder_name' => $cardholder,
-    //             ]
-    //         );
-    //     } else {
-    //         $errors = $api_response->getErrors();
-    //         dd($errors);
-    //     }
-    // }
 }

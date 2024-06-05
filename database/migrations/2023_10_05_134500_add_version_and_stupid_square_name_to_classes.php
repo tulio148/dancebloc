@@ -6,19 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 class AddVersionAndStupidSquareNameToClasses extends Migration
 {
-    public function up()
-    {
-        Schema::table('classes', function (Blueprint $table) {
-            $table->bigInteger('version')->after('price');
-            $table->string('stupid_square_name')->after('version');
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::table('classes', function (Blueprint $table) {
+    //         $table->bigInteger('version')->after('price');
+    //         $table->string('stupid_square_name')->after('version');
+    //     });
+    // }
 
-    public function down()
-    {
-        Schema::table('classes', function (Blueprint $table) {
-            $table->dropColumn('version');
-            $table->dropColumn('stupid_square_name');
-        });
-    }
+    // public function down()
+    // {
+    //     Schema::table('classes', function (Blueprint $table) {
+    //         $table->dropColumn('version');
+    //         $table->dropColumn('stupid_square_name');
+    //     });
+    // }
 }

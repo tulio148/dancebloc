@@ -20,11 +20,11 @@ export default function UpsertClass({
         style: initialData?.style || "",
         level: initialData?.level || "",
         instructor: initialData?.instructor || "",
-        enrollment_mode: initialData?.enrollment_mode || "",
+        // enrollment_mode: initialData?.enrollment_mode || "",
         location: initialData?.location || "",
         price: initialData?.price || "",
-        version: initialData?.version || "",
-        stupid_square_name: initialData?.stupid_square_name || "",
+        // version: initialData?.version || "",
+        // stupid_square_name: initialData?.stupid_square_name || "",
     });
 
     const submit = (e) => {
@@ -55,6 +55,18 @@ export default function UpsertClass({
                     onChange={(e) => setData("name", e.target.value)}
                     required
                     placeholder="Title"
+                />
+                <InputError message={errors.name} className="mt-2" />
+                <TextInput
+                    id="id"
+                    name="id"
+                    value={data.id}
+                    className="mt-1 block sm:col-span-2 "
+                    autoComplete="id"
+                    isFocused={true}
+                    onChange={(e) => setData("id", e.target.value)}
+                    required
+                    placeholder="Id"
                 />
                 <InputError message={errors.name} className="mt-2" />
                 <Textarea
