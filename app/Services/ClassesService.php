@@ -19,7 +19,7 @@ use Square\Models\UpsertCatalogObjectRequest;
 class ClassesService
 {
 
-    public function store($request)
+    public function store(Request $request)
     {
         $id = $request->id;
         $name = $request->name;
@@ -132,24 +132,24 @@ class ClassesService
         // $idempotency_key = uniqid();             
 
         $id = $request->id;
+        $term_id = $request->term_id;
         $name = $request->name;
         $description = $request->description;
         $style = $request->style;
         $level = $request->level;
         $instructor = $request->instructor;
-        // $enrollment_mode = $request->enrollment_mode;
         $location = $request->location;
         $price = $request->price;
         $datetime = $request->datetime;
         // $version = $request->version;
-        // $stupid_square_name =  $request->stupid_square_name;
 
         $class = Classes::find($id);
 
         if ($class == null) {
             return;
         }
-
+        $class->id = $id;
+        $class->term_id = $term_id;
         $class->name = $name;
         $class->description = $description;
         $class->style = $style;
@@ -224,7 +224,7 @@ class ClassesService
     }
 
 
-    public function destroy($class)
+    public function destroy(Classes $class)
     {
         // $client = app(SquareClient::class);
         // $api_response = $client->getCatalogApi()->deleteCatalogObject($class->id);

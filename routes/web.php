@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CardsController;
+use App\Http\Controllers\TermsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\ContactController;
@@ -53,6 +54,11 @@ Route::get('/classes/{class}/enroll', [ClassesController::class, 'enroll'])->nam
 
 Route::post('/class/store', [ClassesController::class, 'store'])->name('class.store');
 Route::post('/class/update', [ClassesController::class, 'update'])->name('class.update');
+
+Route::post('/term/store', [TermsController::class, 'store'])->name('terms.store');
+Route::post('/term/update', [TermsController::class, 'update'])->name('terms.update');
+Route::delete('/term/{term}', [TermsController::class, 'destroy'])->name('terms.destroy');
+
 
 Route::post('/order/store', [OrdersController::class, 'store'])->name('order.store');
 Route::post('/order/delete_class', [OrdersController::class, 'delete_class'])->name('order.delete_class');

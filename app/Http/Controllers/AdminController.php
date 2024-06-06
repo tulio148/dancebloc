@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Terms;
 use App\Models\Orders;
 use App\Models\Classes;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Student;
 
 class AdminController extends Controller
 {
@@ -15,9 +16,11 @@ class AdminController extends Controller
     {
         $classes = Classes::all();
         $students = Student::all();
+        $terms = Terms::all();
         return Inertia::render('Admin/Admin', [
             'classes' => $classes,
-            'students' => $students
+            'students' => $students,
+            'terms' => $terms
         ]);
     }
 }

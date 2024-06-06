@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use App\Models\Terms;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Services\ClassesService;
@@ -17,9 +18,13 @@ class ClassesController extends Controller
         foreach (Classes::all() as $class) {
             $classes[] = $class;
         }
+        $terms = [];
+        foreach (Terms::all() as $term) {
+            $terms[] = $term;
+        }
 
         return Inertia::render('Classes/Classes', [
-            'classes' => $classes
+            'classes' => $classes, 'terms' => $terms
         ]);
     }
 
