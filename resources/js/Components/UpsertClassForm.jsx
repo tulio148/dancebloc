@@ -14,17 +14,15 @@ export default function UpsertClass({
 
     const { data, setData, post, processing, errors, reset } = useForm({
         id: initialData?.id || "",
+        term_id: initialData?.term_id || "",
         name: initialData?.name || "",
         datetime: formattedDatetime ? formattedDatetime : "",
         description: initialData?.description || "",
         style: initialData?.style || "",
         level: initialData?.level || "",
         instructor: initialData?.instructor || "",
-        // enrollment_mode: initialData?.enrollment_mode || "",
         location: initialData?.location || "",
         price: initialData?.price || "",
-        // version: initialData?.version || "",
-        // stupid_square_name: initialData?.stupid_square_name || "",
     });
 
     const submit = (e) => {
@@ -55,6 +53,17 @@ export default function UpsertClass({
                     onChange={(e) => setData("id", e.target.value)}
                     required
                     placeholder="Id"
+                />
+                <InputError message={errors.id} className="mt-2" />
+                <TextInput
+                    id="term_id"
+                    name="term_id"
+                    value={data.term_id}
+                    className="mt-1 block sm:col-span-2 "
+                    autoComplete="term_id"
+                    onChange={(e) => setData("term_id", e.target.value)}
+                    required
+                    placeholder="Term Id"
                 />
                 <InputError message={errors.id} className="mt-2" />
                 <TextInput
@@ -93,10 +102,10 @@ export default function UpsertClass({
                 <SelectInput
                     options={[
                         "",
-                        "open",
-                        "beginner",
-                        "intermediate",
-                        "advanced",
+                        "Open",
+                        "Beginner",
+                        "Intermediate",
+                        "Advanced",
                     ]}
                     className="mt-1 block w-full"
                     value={data.level}
@@ -107,7 +116,7 @@ export default function UpsertClass({
                     placeholder="Level"
                 />
                 <SelectInput
-                    options={["", "samba", "other"]}
+                    options={["", "Samba", "Funk"]}
                     className="mt-1 block w-full"
                     value={data.style}
                     onChange={(e) => {
@@ -126,16 +135,7 @@ export default function UpsertClass({
                     required
                     placeholder="Instructor"
                 />
-                <SelectInput
-                    options={["", "single", "term"]}
-                    className="mt-1 block w-full"
-                    value={data.enrollment_mode}
-                    onChange={(e) => {
-                        setData("enrollment_mode", e.target.value);
-                    }}
-                    required
-                    placeholder="Enrollment Mode"
-                />
+
                 <SelectInput
                     options={["", "the studio"]}
                     className="mt-1 block w-full"

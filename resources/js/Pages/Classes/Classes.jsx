@@ -4,42 +4,51 @@ import Layout from "@/Layouts/Layout";
 import ClassCard from "@/Components/ClassCard";
 import SelectInput from "@/Components/SelectInput";
 import InputLabel from "@/Components/InputLabel";
-import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { TextPlugin, ScrollTrigger } from "gsap/all";
 
-export default function Classes({ auth, classes }) {
+export default function Classes({ auth, classes, terms }) {
+    gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(useGSAP);
+    gsap.registerPlugin(ScrollTrigger);
+
+    useGSAP(() => {
+        gsap.to("#top-header", {
+            duration: 2,
+            delay: 1,
+            text: {
+                value: "unlock the samba groove",
+            },
+            ease: "power1.out",
+        });
+    });
+
     const [showFilter, setShowFilter] = useState(false);
-    const [style, setStyle] = useState("all");
-    const [level, setLevel] = useState("all");
-    const [enrollment, setEnrollment] = useState("all");
+    const [style, setStyle] = useState("");
+    const [level, setLevel] = useState("");
+    const [enrollment, setEnrollment] = useState("");
+
+    console.log(terms);
+    console.log(classes);
 
     const filteredClasses = classes.filter((item) => {
-        if (level !== "all" && item.level !== level) return false;
-        if (style !== "all" && item.style !== style) return false;
-        if (enrollment !== "all" && item.enrollment_mode !== enrollment)
-            return false;
+        if (level !== "" && item.level !== level) return false;
+        if (style !== "" && item.style !== style) return false;
         return true;
     });
 
     return (
         <Layout user={auth.user}>
             <Head title="Classes" />
-            <Transition
-                show={true}
-                appear={true}
-                enter="transition-opacity ease-linear duration-1000"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-1000"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                className="lg:min-w-[700px] sm:min-w-[500px] min-w-full flex justify-end"
-            >
-                <h1 className="max-w-md tracking-widest text-5xl text-white font-thin text-right py-5 my-16 ">
-                    unlock the samba groove
-                </h1>
-            </Transition>
+            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top mt-16 h-screen w-full lg:bg-top">
+                <div
+                    id="top-header"
+                    className="mx-7 rounded-lg text-white font-thin h-24 bg-db-pink/80 text-5xl md:text-7xl px-1 mb-32"
+                ></div>
+            </div>
             <div className=" lg:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap gap-3 mt-8 px-5">
                 <button
                     onClick={() => setShowFilter(!showFilter)}
@@ -47,9 +56,9 @@ export default function Classes({ auth, classes }) {
                 >
                     {showFilter ? "hide filters" : "show filters"}
                 </button>
-                {style != "all" && (
+                {style != "" && (
                     <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
-                        <button onClick={() => setStyle("all")}>
+                        <button onClick={() => setStyle("")}>
                             <span className="mr-2 text-slate-500">{style}</span>
                             <FontAwesomeIcon
                                 icon={faX}
@@ -59,9 +68,9 @@ export default function Classes({ auth, classes }) {
                         </button>
                     </div>
                 )}
-                {level != "all" && (
+                {level != "" && (
                     <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
-                        <button onClick={() => setLevel("all")}>
+                        <button onClick={() => setLevel("")}>
                             <span className="mr-2 text-slate-500">{level}</span>
                             <FontAwesomeIcon
                                 icon={faX}
@@ -71,9 +80,9 @@ export default function Classes({ auth, classes }) {
                         </button>
                     </div>
                 )}
-                {enrollment != "all" && (
+                {enrollment != "" && (
                     <div className="bg-white/95 font-normal border tracking-wider flex items-center p-2 rounded h-fit">
-                        <button onClick={() => setEnrollment("all")}>
+                        <button onClick={() => setEnrollment("")}>
                             <span className="mr-2 text-slate-500">
                                 {enrollment}
                             </span>
@@ -93,7 +102,7 @@ export default function Classes({ auth, classes }) {
                             Style
                         </InputLabel>
                         <SelectInput
-                            options={["all", "samba"]}
+                            options={["", "Samba"]}
                             value={style}
                             onChange={(e) => setStyle(e.target.value)}
                             className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"
@@ -104,7 +113,13 @@ export default function Classes({ auth, classes }) {
                             Level
                         </InputLabel>
                         <SelectInput
-                            options={["all", "beginner", "advanced", "kids"]}
+                            options={[
+                                "",
+                                "Open",
+                                "Beginner",
+                                "Intermediate",
+                                "Advanced",
+                            ]}
                             value={level}
                             onChange={(e) => setLevel(e.target.value)}
                             className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"
@@ -115,7 +130,7 @@ export default function Classes({ auth, classes }) {
                             Enrollment
                         </InputLabel>
                         <SelectInput
-                            options={["all", "single", "term"]}
+                            options={["", "Casual", "Term"]}
                             value={enrollment}
                             onChange={(e) => setEnrollment(e.target.value)}
                             className="bg-db-pink text-white font-medium border border-white/70 tracking-wider"

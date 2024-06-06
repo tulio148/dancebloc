@@ -53,6 +53,16 @@ export const AdminTabs = [
         ),
     },
     {
+        label: "Terms",
+        icon: (
+            <FontAwesomeIcon
+                icon={faCalendarPlus}
+                size="xl"
+                style={{ color: "#00FFA0" }}
+            />
+        ),
+    },
+    {
         label: "Classes",
         icon: (
             <FontAwesomeIcon

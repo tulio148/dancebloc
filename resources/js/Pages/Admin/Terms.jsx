@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Modal from "@/Components/Modal";
-import UpsertClass from "@/Components/UpsertClassForm";
+import UpsertTerm from "@/Components/UpsertTermForm";
 import { router } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -16,7 +16,7 @@ import formatDate from "@/Lib/dateformatter";
 
 const filters = ["upcoming", "beginner", "advanced", "single", "term"];
 
-export default function Classes({ classes }) {
+export default function Terms({ terms }) {
     const [isOpen, setIsOpen] = useState(false);
     const [updateIsOpen, setUpdateIsOpen] = useState("");
     const [filter, setFilter] = useState([filters[0]]);
@@ -37,14 +37,12 @@ export default function Classes({ classes }) {
         }, 0);
     };
 
-    const upcomingClasses = classes.filter(
-        (classItem) =>
-            new Date(classItem.datetime).getTime() > new Date().getTime()
+    const upcomingTerms = terms.filter(
+        (termItem) =>
+            new Date(termItem.datetime).getTime() > new Date().getTime()
     );
 
-    const chosenClasses = filter.includes("upcoming")
-        ? upcomingClasses
-        : classes;
+    const chosenTerms = filter.includes("upcoming") ? upcomingTerms : terms;
 
     return (
         <div className="bg-white flex flex-wrap justify-center gap-2 mx-auto rounded-xl drop-shadow-xl lg:sm:min-w-[700px] sm:min-w-[500px] min-w-[300px]">
@@ -73,7 +71,7 @@ export default function Classes({ classes }) {
                                             onClick={createHandle}
                                         >
                                             <span className="mr-5">
-                                                New Class
+                                                New Term
                                             </span>
                                             <FontAwesomeIcon
                                                 icon={faPlus}
@@ -86,7 +84,7 @@ export default function Classes({ classes }) {
                                             onClose={closeCreateModal}
                                             className="max-h-[800px] overflow-y-auto w-4/5 max-w-2xl"
                                         >
-                                            <UpsertClass
+                                            <UpsertTerm
                                                 closeCreateModal={
                                                     closeCreateModal
                                                 }
@@ -142,7 +140,7 @@ export default function Classes({ classes }) {
                     </tr>
                 </thead>
                 <tbody className="mt-3 divide-y divide-gray-200 ">
-                    {chosenClasses.map((item) => (
+                    {chosenTerms.map((item) => (
                         <tr key={item.id}>
                             <td className="px-4 py-3 whitespace-wrap">
                                 <Disclosure>
@@ -153,7 +151,8 @@ export default function Classes({ classes }) {
                                         <div className="flex justify-between gap-2 pt-3 text-sm text-db-pink">
                                             {item.level}
                                             <br />
-                                            {formatDate(item.datetime)}
+                                            {formatDate(item.start_date)} -{" "}
+                                            {formatDate(item.end_date)}
                                             <div className=" flex items-end gap-7">
                                                 <button
                                                     className=""
@@ -177,7 +176,7 @@ export default function Classes({ classes }) {
                                                             closeUpdateModal
                                                         }
                                                     >
-                                                        <UpsertClass
+                                                        <UpsertTerm
                                                             initialData={item}
                                                             closeUpdateModal={
                                                                 closeUpdateModal
@@ -189,11 +188,11 @@ export default function Classes({ classes }) {
                                                     className=""
                                                     onClick={() =>
                                                         router.delete(
-                                                            `/classes/${item.name}`,
+                                                            `/term/${item.name}`,
                                                             {
                                                                 onBefore: () =>
                                                                     confirm(
-                                                                        "Are you sure you want to delete this class?"
+                                                                        "Are you sure you want to delete this term?"
                                                                     ),
                                                             }
                                                         )
