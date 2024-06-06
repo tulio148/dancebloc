@@ -36,11 +36,6 @@ export default function Show({ auth, class_, enrolled_classes }) {
                 </Transition>
             </h1>
 
-            <div className="px-8 py-6 rounded-3xl mx-6 my-6 max-w-5xl h-fit w-full ">
-                <h3 className="text-white text-lg text-justify leading-9 tracking-widest font-normal">
-                    {class_.description}
-                </h3>
-            </div>
             <div className="flex flex-col justify-between gap-4 border-b bg-gradient-to-b from-white/90 from-70% max-w-xs w-full h-96 px-6 py-8 rounded-3xl shadow mx-2 my-6 z-40">
                 <p className=" text-base  tracking-wider max-w-fit">
                     <span className="mr-4">
