@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 import Layout from "@/Layouts/Layout";
-import formatDate from "@/Lib/dateformatter";
+import { formatDatetime } from "@/Lib/dateformatter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCalendar,
@@ -45,7 +45,7 @@ export default function Show({ auth, class_, enrolled_classes }) {
                             style={{ color: "#FF00F7" }}
                         />
                     </span>
-                    <span>{formatDate(class_.datetime)}</span>
+                    <span>{formatDatetime(class_.datetime)}</span>
                 </p>
                 <p className=" text-base  tracking-wider  max-w-fit ">
                     <span className="mr-4">

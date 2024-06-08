@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import formatDate from "@/Lib/dateformatter";
+import { formatDatetime } from "@/Lib/dateformatter";
 import { Link } from "@inertiajs/react";
 export default function Home({
     user,
@@ -44,7 +44,7 @@ export default function Home({
                                 />
                             </span>
                             <span>
-                                {formatDate(enrolled_classes[0].datetime)}
+                                {formatDatetime(enrolled_classes[0].datetime)}
                             </span>
                         </p>
                         <div className="flex flex-wrap gap-4 justify-between w-full items-center sm:px-8">

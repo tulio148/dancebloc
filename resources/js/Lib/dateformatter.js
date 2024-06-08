@@ -1,4 +1,4 @@
-export default function formatDate(datetime) {
+export function formatDatetime(datetime) {
     const date = new Date(datetime);
     const formattedDate = date.toLocaleDateString("en-AU", {
         day: "numeric",
@@ -11,4 +11,14 @@ export default function formatDate(datetime) {
     });
     const formattedDateTime = `${formattedDate} at ${formattedTime}`;
     return formattedDateTime;
+}
+
+export function formatDate(datetime) {
+    const date = new Date(datetime);
+
+    const day = date.getUTCDate();
+    const month = date.toLocaleString("default", { month: "short" });
+    const year = date.getUTCFullYear().toString().slice(-2);
+
+    return `${day} ${month} ${year}`;
 }

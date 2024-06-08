@@ -1,4 +1,4 @@
-import formatDate from "@/Lib/dateformatter";
+import { formatDatetime } from "@/Lib/dateformatter";
 import { Link } from "@inertiajs/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
@@ -29,7 +29,7 @@ export default function Calendar({ user, enrolled_classes }) {
                                     style={{ color: "#FF00F7" }}
                                 />
                             </span>
-                            <span>{formatDate(item.datetime)}</span>
+                            <span>{formatDatetime(item.datetime)}</span>
                         </p>
                         <div className="flex flex-wrap gap-4 justify-between w-full items-center sm:px-8">
                             <span className="text-xl">{item.name}</span>

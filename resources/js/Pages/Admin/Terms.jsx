@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Disclosure } from "@headlessui/react";
 import { Listbox } from "@headlessui/react";
-import formatDate from "@/Lib/dateformatter";
+import { formatDate } from "@/Lib/dateformatter";
 
 const filters = ["upcoming", "beginner", "advanced", "single", "term"];
 

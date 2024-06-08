@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Disclosure } from "@headlessui/react";
 import { Listbox } from "@headlessui/react";
-import formatDate from "@/Lib/dateformatter";
+import { formatDatetime } from "@/Lib/dateformatter";
 
 const filters = ["upcoming", "beginner", "advanced", "single", "term"];
 
@@ -153,7 +153,7 @@ export default function Classes({ classes }) {
                                         <div className="flex justify-between gap-2 pt-3 text-sm text-db-pink">
                                             {item.level}
                                             <br />
-                                            {formatDate(item.datetime)}
+                                            {formatDatetime(item.datetime)}
                                             <div className=" flex items-end gap-7">
                                                 <button
                                                     className=""
