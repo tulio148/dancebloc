@@ -1,10 +1,10 @@
 import { Link } from "@inertiajs/react";
-import formatDate from "@/Lib/dateformatter";
+import { formatDatetime } from "@/Lib/dateformatter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 export default function ClassCard({ class_ }) {
-    const date = formatDate(class_.datetime);
+    const date = formatDatetime(class_.datetime);
 
     return (
         <div
