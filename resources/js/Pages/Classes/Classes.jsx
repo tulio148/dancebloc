@@ -10,6 +10,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { TextPlugin, ScrollTrigger } from "gsap/all";
+import CalendarComponent from "@/Components/CalendarComponent";
 
 export default function Classes({ auth, classes, terms }) {
     gsap.registerPlugin(TextPlugin);
@@ -19,7 +20,7 @@ export default function Classes({ auth, classes, terms }) {
     useGSAP(() => {
         gsap.to("#top-header1", {
             duration: 1.2,
-            delay: 1,
+            // delay: 1,
             text: {
                 value: "unlock the",
             },
@@ -27,24 +28,40 @@ export default function Classes({ auth, classes, terms }) {
         });
         gsap.to("#top-header2", {
             duration: 1.2,
-            delay: 2,
+            delay: 1,
             text: {
                 value: "samba groove",
             },
             ease: "power4.out",
         });
 
-        gsap.to("#header", {
+        gsap.to("#header-terms", {
             scrollTrigger: {
-                id: "header",
-                trigger: "#header",
+                id: "header-terms",
+                trigger: "#header-terms",
                 start: "top center",
                 toggleActions: "play none restart reverse",
             },
             text: {
-                value: "Classes",
+                value: "terms",
                 // speed: 1.5,
             },
+            duration: 1,
+            ease: "back.out",
+        });
+        gsap.to("#header-classes", {
+            scrollTrigger: {
+                id: "header-classes",
+                trigger: "#header-classes",
+                start: "top center",
+                toggleActions: "play none restart reverse",
+            },
+            text: {
+                value: "classes",
+                // speed: 1.5,
+            },
+            duration: 1,
+            ease: "back.out",
         });
     });
 
@@ -86,10 +103,10 @@ export default function Classes({ auth, classes, terms }) {
                     ></div>
                 </div>
             </div>
-            <div className=" flex bg-db-pink  w-full justify-center min-h-[80px] md:h-[100px]  ">
+            <div className=" flex bg-db-pink  w-full justify-center min-h-[80px] md:h-[100px] shadow-md mb-10 ">
                 <div
-                    id="header"
-                    className="lg:min-w-[700px] sm:min-w-[500px] min-w-[350px] rounded-xl text-white font-thin tracking-widest text-7xl md:text-8xl sm:mb-1  "
+                    id="header-terms"
+                    className="lg:min-w-[700px] sm:min-w-[500px] min-w-[320px] rounded-xl text-white font-thin tracking-widest text-7xl md:text-8xl   "
                 ></div>
             </div>
             {/* <div className=" lg:min-w-[700px] sm:min-w-[500px] min-w-full flex flex-wrap gap-3 mt-8 px-5">
@@ -156,12 +173,22 @@ export default function Classes({ auth, classes, terms }) {
                     </div>
                 </div>
             )} */}
-            <div className="flex flex-wrap justify-center gap-8 py-8 px-12 ">
+            <div className="flex flex-wrap max-w-5xl justify-center gap-8 py-8 px-4 mb-[400px] ">
                 {groupedData.map((term) => (
                     <div key={term.id}>
                         <TermCard term={term} />
                     </div>
                 ))}
+            </div>
+
+            <div className=" flex bg-db-pink  w-full justify-center min-h-[80px] md:h-[100px] shadow-md mb-10 ">
+                <div
+                    id="header-classes"
+                    className="lg:min-w-[700px] sm:min-w-[500px] min-w-[320px] rounded-xl text-white font-thin tracking-widest text-7xl md:text-8xl   "
+                ></div>
+            </div>
+            <div className="mx-4 w-full max-w-5xl">
+                <CalendarComponent classesData={classes} />
             </div>
         </Layout>
     );
