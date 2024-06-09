@@ -13,6 +13,8 @@ class TermsService
         $name = $request->name;
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $instructor = $request->instructor;
+        $description = $request->description;
         $level = $request->level;
         $style = $request->style;
         $location = $request->location;
@@ -25,7 +27,9 @@ class TermsService
                 'name' => $name,
                 'start_date' => $start_date,
                 'end_date' => $end_date,
+                'description' => $description,
                 'level' => $level,
+                'instructor' => $instructor,
                 'style' => $style,
                 'location' => $location,
                 'price' => $price,
@@ -39,11 +43,12 @@ class TermsService
         $name = $request->name;
         $start_date = $request->start_date;
         $end_date = $request->end_date;
+        $instructor = $request->instructor;
+        $description = $request->description;
         $level = $request->level;
         $style = $request->style;
         $location = $request->location;
         $price = $request->price;
-
         $term = Terms::find($id);
 
         if ($term == null) {
@@ -54,6 +59,8 @@ class TermsService
         $term->start_date = $start_date;
         $term->end_date = $end_date;
         $term->level = $level;
+        $term->instructor = $instructor;
+        $term->description = $description;
         $term->style = $style;
         $term->location = $location;
         $term->price = $price;

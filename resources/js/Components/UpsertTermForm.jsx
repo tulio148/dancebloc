@@ -3,6 +3,7 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import SelectInput from "@/Components/SelectInput";
+import Textarea from "./Textarea";
 
 export default function UpsertTerm({
     initialData,
@@ -17,6 +18,8 @@ export default function UpsertTerm({
         name: initialData?.name || "",
         start_date: formattedStart ? formattedStart : "",
         end_date: formattedEnd ? formattedEnd : "",
+        instructor: initialData?.instructor || "",
+        description: initialData?.description || "",
         level: initialData?.level || "",
         style: initialData?.style || "",
         location: initialData?.location || "",
@@ -62,10 +65,22 @@ export default function UpsertTerm({
                     required
                     placeholder="Name"
                 />
+
                 <InputError message={errors.name} className="mt-2" />
+                <Textarea
+                    id="description"
+                    name="description"
+                    value={data.description}
+                    className="mt-1 block w-full sm:col-span-2"
+                    autoComplete="description"
+                    onChange={(e) => setData("description", e.target.value)}
+                    placeholder="Description"
+                    required
+                />
+                <InputError message={errors.description} className="mt-2" />
                 <TextInput
                     id="start_date"
-                    type="date"
+                    type="datetime-local"
                     name="start_date"
                     value={data.start_date}
                     className="mt-1 block w-full"
@@ -77,7 +92,7 @@ export default function UpsertTerm({
                 <InputError message={errors.start_date} className="mt-2" />
                 <TextInput
                     id="end_date"
-                    type="date"
+                    type="datetime-local"
                     name="end_date"
                     value={data.end_date}
                     className="mt-1 block w-full"
@@ -115,6 +130,16 @@ export default function UpsertTerm({
                     placeholder="Style"
                 />
                 <InputError message={errors.style} className="mt-2" />
+                <SelectInput
+                    options={["", "Jane Doe", "That One"]}
+                    className="mt-1 block w-full"
+                    value={data.instructor}
+                    onChange={(e) => {
+                        setData("instructor", e.target.value);
+                    }}
+                    required
+                    placeholder="Instructor"
+                />
 
                 <SelectInput
                     options={["", "the studio"]}
