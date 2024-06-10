@@ -20,7 +20,7 @@ export default function TermCard({ term }) {
     };
 
     return (
-        <div className="flex flex-col gap-2 border-b bg-gradient-to-b from-white from-90% lg:min-w-[700px] sm:min-w-[500px] px-6 pt-10 pb-6 rounded-3xl  z-40 shadow">
+        <div className="flex flex-col gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% lg:min-w-[700px] sm:min-w-[500px] px-6 pt-10 pb-6 rounded-3xl  z-40 shadow">
             <div
                 className="flex  items-center gap-2 h-full cursor-pointer"
                 onClick={toggleExpand}
@@ -43,7 +43,7 @@ export default function TermCard({ term }) {
             {/* {isExpanded && ( */}
             <div
                 className={`transition-max-height duration-1000 ease-in-out overflow-hidden flex flex-col ${
-                    isExpanded ? "max-h-screen" : "max-h-0"
+                    isExpanded ? "max-h-[2000px]" : "max-h-0"
                 }`}
             >
                 <div className="border-t border-1 border-black/10"></div>
@@ -123,7 +123,15 @@ export default function TermCard({ term }) {
                 </div>
 
                 <Link
-                    href={route("classes.show", term.name)}
+                    href={route("order.store")}
+                    method="post"
+                    as="button"
+                    type="button"
+                    data={{
+                        id: term.id,
+                        name: term.name,
+                        price: term.price,
+                    }}
                     className="self-center  inline-flex items-center max-w-fit px-10 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                 >
                     enrol
