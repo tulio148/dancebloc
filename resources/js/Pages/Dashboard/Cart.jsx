@@ -107,7 +107,6 @@ export default function Cart({ orders, classes, terms, cards }) {
                                                     (term) => term.id === id
                                                 );
                                             } else {
-                                                // Handle the class case
                                                 item = classes.find(
                                                     (classItem) =>
                                                         classItem.id === id
@@ -224,14 +223,34 @@ export default function Cart({ orders, classes, terms, cards }) {
                                                                 index,
                                                                 array
                                                             ) => {
-                                                                const class_ =
-                                                                    classes.find(
+                                                                let item = null;
+                                                                const isTerm =
+                                                                    terms.some(
                                                                         (
-                                                                            classItem
+                                                                            term
                                                                         ) =>
-                                                                            classItem.id ===
+                                                                            term.id ===
                                                                             id
                                                                     );
+                                                                if (isTerm) {
+                                                                    item =
+                                                                        terms.find(
+                                                                            (
+                                                                                term
+                                                                            ) =>
+                                                                                term.id ===
+                                                                                id
+                                                                        );
+                                                                } else {
+                                                                    item =
+                                                                        classes.find(
+                                                                            (
+                                                                                classItem
+                                                                            ) =>
+                                                                                classItem.id ===
+                                                                                id
+                                                                        );
+                                                                }
                                                                 const isLastItem =
                                                                     index ===
                                                                     array.length -
@@ -243,7 +262,7 @@ export default function Cart({ orders, classes, terms, cards }) {
                                                                 return (
                                                                     <div
                                                                         key={
-                                                                            class_?.id
+                                                                            item?.id
                                                                         }
                                                                         className={
                                                                             borderClass
@@ -252,7 +271,7 @@ export default function Cart({ orders, classes, terms, cards }) {
                                                                         <div className="flex flex-col gap-1 items-start">
                                                                             <p className=" tracking-wider">
                                                                                 {
-                                                                                    class_?.name
+                                                                                    item?.name
                                                                                 }
                                                                             </p>
                                                                         </div>
@@ -260,7 +279,7 @@ export default function Cart({ orders, classes, terms, cards }) {
                                                                         <p>
                                                                             $
                                                                             {
-                                                                                class_?.price
+                                                                                item?.price
                                                                             }
                                                                         </p>
                                                                     </div>
