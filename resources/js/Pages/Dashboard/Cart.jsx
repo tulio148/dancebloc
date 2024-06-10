@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { router } from "@inertiajs/react";
 import { Disclosure } from "@headlessui/react";
-import { formatDatetime } from "@/Lib/dateformatter";
+import { formatDate } from "@/Lib/dateformatter";
 
 export default function Cart({ orders, classes, terms, cards }) {
     return (
@@ -183,7 +183,7 @@ export default function Cart({ orders, classes, terms, cards }) {
                                             <>
                                                 <Disclosure.Button className="w-full text-left flex justify-between">
                                                     <span>
-                                                        {formatDatetime(
+                                                        {formatDate(
                                                             order.updated_at
                                                         )}
                                                     </span>
