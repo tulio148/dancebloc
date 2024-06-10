@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Terms;
 use App\Models\Classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -19,6 +20,11 @@ class DashboardController extends Controller
         $classes_in_student_orders = [];
         $cards = $student->cards ?? [];
         $orders =  $student->orders ?? [];
+        $terms = [];
+        foreach (Terms::all() as $term) {
+            $terms[] = $term;
+        }
+
 
         foreach ($orders as $order) {
             $classesIds = json_decode($order->items_ids, true);
@@ -34,6 +40,7 @@ class DashboardController extends Controller
             'student' => $student,
             'orders' => $orders,
             'cards' => $cards,
+            'terms' => $terms,
             'classes' => $classes_in_student_orders,
             'enrolled_classes' => $sorted_enrolled_classes
         ]);

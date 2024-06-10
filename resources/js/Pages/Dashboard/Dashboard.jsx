@@ -13,6 +13,7 @@ export default function Dashboard({
     orders,
     cards,
     classes,
+    terms,
     enrolled_classes,
 }) {
     const [activeTab, setActiveTab] = useState(0);
@@ -47,6 +48,7 @@ export default function Dashboard({
                     classes={classes}
                     orders={orders}
                     cards={cards}
+                    terms={terms}
                     enrolled_classes={enrolled_classes}
                 />
             )}

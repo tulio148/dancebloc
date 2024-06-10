@@ -12,7 +12,7 @@ import { router } from "@inertiajs/react";
 import { Disclosure } from "@headlessui/react";
 import { formatDatetime } from "@/Lib/dateformatter";
 
-export default function Cart({ orders, classes, cards }) {
+export default function Cart({ orders, classes, terms, cards }) {
     return (
         <div className="sm:pt-52 pt-20 px-5 w-full max-w-2xl flex flex-col items-center">
             {cards?.length > 0 && (
@@ -98,10 +98,21 @@ export default function Cart({ orders, classes, cards }) {
                                 <div className="flex flex-col gap-5">
                                     {JSON.parse(order.items_ids)?.map(
                                         (id, index, array) => {
-                                            const class_ = classes.find(
-                                                (classItem) =>
-                                                    classItem.id === id
+                                            let item = null;
+                                            const isTerm = terms.some(
+                                                (term) => term.id === id
                                             );
+                                            if (isTerm) {
+                                                item = terms.find(
+                                                    (term) => term.id === id
+                                                );
+                                            } else {
+                                                // Handle the class case
+                                                item = classes.find(
+                                                    (classItem) =>
+                                                        classItem.id === id
+                                                );
+                                            }
                                             const isLastItem =
                                                 index === array.length - 1;
                                             const borderClass = isLastItem
@@ -109,12 +120,12 @@ export default function Cart({ orders, classes, cards }) {
                                                 : "flex flex-wrap gap-4 justify-between w-full items-start border-b pb-3 border-db-pink/30";
                                             return (
                                                 <div
-                                                    key={class_?.id}
+                                                    key={item?.id}
                                                     className={borderClass}
                                                 >
                                                     <div className="flex flex-col gap-1 items-start">
                                                         <p className=" tracking-wider">
-                                                            {class_?.name}
+                                                            {item?.name}
                                                         </p>
                                                         <Link
                                                             href={route(
@@ -136,7 +147,7 @@ export default function Cart({ orders, classes, cards }) {
                                                         </Link>
                                                     </div>
 
-                                                    <p>${class_?.price}</p>
+                                                    <p>${item?.price}</p>
                                                 </div>
                                             );
                                         }

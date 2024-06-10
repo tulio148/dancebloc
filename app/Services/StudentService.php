@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Terms;
 use App\Models\Orders;
 use App\Models\Student;
 use Square\SquareClient;
@@ -57,14 +58,28 @@ class StudentService
         $order_id = $request->input('id');
         $student = auth()->user()->student;
         $order = Orders::find($order_id);
+
         if ($order) {
             $items = json_decode($order->items_ids, true);
-        };
-        foreach ($items as $classId) {
-            $student->classes()->attach($classId, [
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+
+            foreach ($items as $itemId) {
+                $item = Terms::find($itemId);
+                if ($item) {
+                    $classes = $item->classes;
+                    foreach ($classes as $class) {
+                        $student->classes()->attach($class->id, [
+                            'created_at' => now(),
+                            'updated_at' => now(),
+                        ]);
+                    }
+                } else {
+                    // If the item is not a term, treat it as a class ID
+                    $student->classes()->attach($itemId, [
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
+            }
         }
     }
 }
