@@ -7,7 +7,7 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" type="image/svg+xml" href="/faviconnobg.png" />
+    <link rel="icon" type="image/svg+xml" href="/faviconnobg.webp" />
 
     <!-- Scripts -->
     @routes

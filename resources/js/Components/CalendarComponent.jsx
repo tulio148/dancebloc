@@ -83,7 +83,7 @@ export default function CalendarComponent({ classesData }) {
                                 })}{" "}
                             </div>
                             {classItem.name}
-                            <Link
+                            {/* <Link
                                 href={route("order.store")}
                                 method="post"
                                 as="button"
@@ -96,6 +96,12 @@ export default function CalendarComponent({ classesData }) {
                                 className="max-w-fit px-3 my-1 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                             >
                                 enrol
+                            </Link> */}
+                            <Link
+                                href={route("classes.show", classItem.name)}
+                                className=" inline-flex items-center max-w-fit px-6 py-1   bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
+                            >
+                                details
                             </Link>
                         </div>
                     ))}
