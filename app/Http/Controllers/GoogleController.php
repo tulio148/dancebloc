@@ -19,7 +19,7 @@ class GoogleController extends Controller
 
     public function handleGoogleCallback(Request $request): RedirectResponse
     {
-        $googleUser = Socialite::with('google')->user();
+        $googleUser = Socialite::driver('google')->user();
 
         $state = $request->get('state');
         $request->session()->put('state', $state);
