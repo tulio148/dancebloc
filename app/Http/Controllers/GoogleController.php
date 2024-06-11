@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -19,6 +19,13 @@ class GoogleController extends Controller
     public function handleGoogleCallback(Request $request): RedirectResponse
     {
         $googleUser = Socialite::with('google')->user();
+
+        $state = $request->get('state');
+        $request->session()->put('state', $state);
+
+        if (Auth::check() == false) {
+            session()->regenerate();
+        }
 
         $user = User::firstOrCreate(
             ['email' => $googleUser->getEmail()],
