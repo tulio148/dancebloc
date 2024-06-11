@@ -17,16 +17,11 @@ class GoogleController extends Controller
         return Socialite::driver('google')->redirect();
     }
 
-    public function handleGoogleCallback(Request $request): RedirectResponse
+    public function handleGoogleCallback(): RedirectResponse
     {
         $googleUser = Socialite::driver('google')->user();
 
-        $state = $request->get('state');
-        $request->session()->put('state', $state);
 
-        if (Auth::check() == false) {
-            session()->regenerate();
-        }
 
         $user = User::firstOrCreate(
             ['email' => $googleUser->getEmail()],
