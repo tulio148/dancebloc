@@ -1,3 +1,5 @@
-export default function ApplicationLogo(props) {
-    return <img className=" w-16 my-6" src="/logonobg.webp" alt="" />;
+export default function ApplicationLogo({ classNames }) {
+    return (
+        <img className={`${classNames} w-16 `} src="/logonobg.webp" alt="" />
+    );
 }

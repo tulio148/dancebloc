@@ -45,24 +45,29 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav
-                className={`w-full fixed top-0 left-0 z-50 transition-opacity duration-1000 bg-db-pink ${
-                    isTransparent && route().current("welcome")
-                        ? " opacity-0"
-                        : " opacity-100"
+                className={`transition duration-1000 w-full fixed top-0 left-0 z-50  bg-db-pink ${
+                    isTransparent &&
+                    (route().current("welcome") || route().current("classes"))
+                        ? "  bg-transparent"
+                        : " bg-db-pink"
                 }`}
             >
                 <div className="py-2 px-6 lg:px-8  ">
-                    <div className="max-w-7xl mx-auto flex justify-between h-16">
-                        <div className="flex justify-between items-center w-full">
+                    <div className="max-w-7xl mx-auto  grid grid-cols-2 justify-between h-16">
+                        <div className="  col-start-1 lg:col-span-2 justify-self-start flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo />
+                                    <ApplicationLogo
+                                        classNames={
+                                            isTransparent ? "opacity-0" : ""
+                                        }
+                                    />
                                 </Link>
                             </div>
-                            <Nav user={user} />
+                            {!isTransparent && <Nav user={user} />}
                         </div>
 
-                        <div className="flex items-center lg:hidden">
+                        <div className="justify-self-end col-start-2 flex items-center lg:hidden">
                             <button
                                 ref={buttonRef}
                                 onClick={() =>

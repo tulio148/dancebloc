@@ -141,7 +141,7 @@ export default function Welcome({ auth }) {
             {/* HERO */}
             <div className="flex items-start bg-[url('/background.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
                 <div id="logo-text" className="w-full flex justify-end">
-                    <h1 className=" max-w-md md:max-w-lg  tracking-widest text-6xl sm:text-[12vw] lg:text-[10vw] xl:text-[8.5vw]     text-white font-bold text-right pb-20 mt-10 mx-2 lg:mr-10 ">
+                    <h1 className=" max-w-md md:max-w-lg  tracking-widest text-6xl sm:text-[12vw] lg:text-[10vw] xl:text-[8.5vw]     text-white font-bold text-right pb-20 mt-16 mx-2 lg:mr-10 ">
                         dance <span className="text-db-pink">bloc</span> Bra
                         <span className=" text-green-600">z</span>
                         <span className=" text-yellow-300">i</span>l

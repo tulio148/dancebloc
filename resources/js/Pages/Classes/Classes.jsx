@@ -91,7 +91,7 @@ export default function Classes({ auth, classes, terms }) {
         <Layout user={auth.user}>
             <Head title="Classes" />
 
-            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top mt-16 mb-[500px] h-screen w-full lg:bg-top">
+            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top  mb-[500px] h-screen w-full lg:bg-top">
                 <div>
                     <div
                         id="top-header1"
