@@ -36,7 +36,7 @@ export default function TermCard({ term }) {
                             ? "rotate(90deg)"
                             : "rotate(0deg)",
                         color: "#FF00F7",
-                        transition: "transform 0.1s linear",
+                        transition: "transform 0.3s linear",
                     }}
                 />
             </div>

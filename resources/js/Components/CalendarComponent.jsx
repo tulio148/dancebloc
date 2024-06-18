@@ -59,19 +59,14 @@ export default function CalendarComponent({ classesData }) {
         const classes = classesData.filter(
             (classItem) => classItem.datetime.split("T")[0] === dateString
         );
-
         return (
-            <div
-                className={`transition-max-height duration-1000 ease-in-out overflow-hidden ${
-                    classes.length != 0 ? "max-h-[2000px]" : "max-h-0"
-                }`}
-            >
+            <>
                 {classes
                     .sort((a, b) => new Date(a.datetime) - new Date(b.datetime))
                     .map((classItem, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-4 justify-between border-b mb-4"
+                            className="flex  gap-4 justify-between items-end border-b pb-1 mb-4"
                         >
                             <div>
                                 {new Date(
@@ -92,20 +87,20 @@ export default function CalendarComponent({ classesData }) {
                                     id: classItem.id,
                                     name: classItem.name,
                                     price: classItem.price,
-                                }}
-                                className="max-w-fit px-3 my-1 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
-                            >
-                                enrol
-                            </Link> */}
+                                    }}
+                                    className="max-w-fit px-3 my-1 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
+                                    >
+                                    enrol
+                                    </Link> */}
                             <Link
                                 href={route("classes.show", classItem.name)}
-                                className=" inline-flex items-center max-w-fit px-6 py-1   bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
+                                className=" inline-flex items-center max-w-fit px-4 py-1   bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-white tracking-widest  hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                             >
                                 details
                             </Link>
                         </div>
                     ))}
-            </div>
+            </>
         );
     };
     const today = new Date().setHours(0, 0, 0, 0);
@@ -128,7 +123,7 @@ export default function CalendarComponent({ classesData }) {
                         Previous
                     </button>
                 )}
-                <p className="col-start-2 justify-self-center text-lg font-medium tracking-widest">
+                <p className="col-start-2 justify-self-center text-lg font-medium  text-white bg-db-pink rounded py-1 px-3    tracking-widest">
                     {getMonthName(currentWeekStartDate)}
                 </p>
                 <button
@@ -139,7 +134,7 @@ export default function CalendarComponent({ classesData }) {
                 </button>
             </div>
             <div
-                className="flex gap-2 w-full justify-between      border-t
+                className="flex gap-2 w-full justify-between border-t-2 pt-2
              border-db-pink mb-10"
             >
                 {weekdays.map((weekday, index) => {
@@ -156,7 +151,7 @@ export default function CalendarComponent({ classesData }) {
                                 >
                                     {weekday} {date.getDate()}
                                     <div
-                                        className={`w-full border-t-2 border-db-pink  transition-transform duration-1000 transform origin-left ${
+                                        className={`w-full border-t-4 border-db-pink  transition duration-500  ${
                                             index === activeDay
                                                 ? "scale-x-100"
                                                 : "scale-x-0"

@@ -46,7 +46,7 @@ export default function Classes({ auth, classes, terms }) {
                 value: "terms",
                 // speed: 1.5,
             },
-            duration: 1,
+            duration: 2,
             ease: "back.out",
         });
         gsap.to("#header-classes", {
@@ -60,7 +60,7 @@ export default function Classes({ auth, classes, terms }) {
                 value: "classes",
                 // speed: 1.5,
             },
-            duration: 1,
+            duration: 2,
             ease: "back.out",
         });
     });
@@ -91,7 +91,7 @@ export default function Classes({ auth, classes, terms }) {
         <Layout user={auth.user}>
             <Head title="Classes" />
 
-            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top  mb-[500px] h-screen w-full lg:bg-top">
+            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
                 <div>
                     <div
                         id="top-header1"

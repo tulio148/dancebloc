@@ -21,8 +21,8 @@ export default function Contact({ auth }) {
         e.preventDefault();
         post(route("contact.submit"), {
             onSuccess: () => {
-                setIsOpen(true); // Open modal on successful submission
-                setTimeout(() => setIsOpen(false), 2000); // Close modal after 2 seconds
+                setIsOpen(true);
+                setTimeout(() => setIsOpen(false), 2000);
             },
         });
     };
