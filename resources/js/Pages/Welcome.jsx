@@ -132,10 +132,7 @@ export default function Welcome({ auth }) {
                 <title>Home Page</title>
                 <meta
                     name="description"
-                    content="Whether you&#39;ve always dreamed of mastering the captivating moves of Samba, the
-                    energetic kicks of Capoeira, or the sassy flow of Funk, Dance Bloc Brazil is your
-                    gateway to South American rhythm. Our fun and engaging classes cater to all levels,
-                    from complete beginners to seasoned dancers."
+                    content="Whether you've always dreamed of mastering the captivating moves of Samba or the sassy flow of Funk, Dance Bloc Brazil is your gateway to South American rhythm. "
                 />
             </Head>
             <Layout user={auth.user}>
@@ -203,7 +200,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="events"
-                    className=" flex flex-col justify-between bg-[url('/events.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/events1.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
                 >
                     <div
                         id="heading5"
