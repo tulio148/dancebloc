@@ -7,11 +7,12 @@ use Inertia\Inertia;
 use App\Models\Terms;
 use App\Models\Classes;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = auth()->user();
         $student = $user->student;
@@ -24,6 +25,7 @@ class DashboardController extends Controller
         foreach (Terms::all() as $term) {
             $terms[] = $term;
         }
+
 
 
         foreach ($orders as $order) {
@@ -42,7 +44,9 @@ class DashboardController extends Controller
             'cards' => $cards,
             'terms' => $terms,
             'classes' => $classes_in_student_orders,
-            'enrolled_classes' => $sorted_enrolled_classes
+            'enrolled_classes' => $sorted_enrolled_classes,
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
         ]);
     }
 }

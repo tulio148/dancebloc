@@ -6,6 +6,7 @@ import TabNav from "@/Components/TabNav";
 import Home from "./Home";
 import Calendar from "./Calendar";
 import Cart from "./Cart";
+import Profile from "./Profile";
 
 export default function Dashboard({
     auth,
@@ -15,6 +16,8 @@ export default function Dashboard({
     classes,
     terms,
     enrolled_classes,
+    mustVerifyEmail,
+    status,
 }) {
     const [activeTab, setActiveTab] = useState(0);
     const handleTabChange = (index) => {
@@ -50,6 +53,14 @@ export default function Dashboard({
                     cards={cards}
                     terms={terms}
                     enrolled_classes={enrolled_classes}
+                />
+            )}
+
+            {activeTab == 3 && (
+                <Profile
+                    user={auth.user}
+                    mustVerifyEmail={mustVerifyEmail}
+                    status={status}
                 />
             )}
         </Layout>
