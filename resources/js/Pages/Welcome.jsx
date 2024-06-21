@@ -200,7 +200,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="events"
-                    className=" flex flex-col justify-between bg-[url('/events1.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
                 >
                     <div
                         id="heading5"
