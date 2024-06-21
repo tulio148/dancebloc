@@ -1,3 +1,4 @@
+import { Head } from "@inertiajs/react";
 import gsap from "gsap";
 import Layout from "@/Layouts/Layout";
 import { useGSAP } from "@gsap/react";
@@ -7,36 +8,36 @@ export default function Events({ auth }) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
     useGSAP(() => {
-        gsap.to("#heading", {
-            duration: 3,
-
+        gsap.to("#top-header1", {
+            duration: 1.2,
+            // delay: 1,
             text: {
-                value: "More Than Just Steps",
-                speed: 1,
+                value: "ignite",
             },
-
-            ease: "none",
+            ease: "back.in",
+        });
+        gsap.to("#top-header2", {
+            duration: 1.2,
+            delay: 1,
+            text: {
+                value: "your event",
+            },
+            ease: "power4.out",
         });
     });
     return (
         <Layout user={auth.user}>
-            <div className="flex flex-col justify-center">
-                <div
-                    id="heading"
-                    className=" m-4 bg-white max-w-fit text-db-pink font-light text-3xl"
-                ></div>
-                <div className=" max-w-3xl m-4 p-4 sm:p-8 border border-white bg-white bg-gradient-to-t from-white to-db-light-pink/20  shadow-lg rounded-xl">
-                    <p className="text-black/90 font-light text-2xl tracking-widest leading-9 md:text-justify ">
-                        At Dance Bloc Brazil, we believe dance is more than just
-                        physical activity. It&#39;s a celebration of culture, a
-                        way to connect with your body, and a chance to build a
-                        supportive community.
-                        <br />
-                        <br />
-                        Our experienced instructors are not just teachers; they
-                        are passionate artists who will guide you on your dance
-                        journey with enthusiasm and cultural understanding.
-                    </p>
+            <Head title="Events" />
+            <div className="flex items-end bg-[url('/events.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
+                <div>
+                    <div
+                        id="top-header1"
+                        className="mx-7 text-white font-thin h-14 sm:h-16 bg-db-green text-6xl md:text-7xl text-right"
+                    ></div>
+                    <div
+                        id="top-header2"
+                        className="mx-7 text-white font-thin h-14 sm:h-20  text-6xl md:text-7xl  mb-20"
+                    ></div>
                 </div>
             </div>
         </Layout>

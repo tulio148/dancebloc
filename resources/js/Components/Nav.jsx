@@ -8,30 +8,12 @@ export default function Nav({ user }) {
     return (
         <>
             <div className="gap-5 hidden lg:flex">
-                {user && (
-                    <>
-                        {user.admin == 1 && (
-                            <NavLink
-                                href={route("admin")}
-                                active={route().current("admin")}
-                            >
-                                Admin
-                            </NavLink>
-                        )}
-                        <NavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
-                        >
-                            Dashboard
-                        </NavLink>
-                        <NavLink
-                            href={route("profile.edit")}
-                            active={route().current("profile.edit")}
-                        >
-                            Account
-                        </NavLink>
-                    </>
-                )}
+                <NavLink
+                    href={route("mission")}
+                    active={route().current("mission")}
+                >
+                    About
+                </NavLink>
                 <NavLink
                     href={route("classes")}
                     active={
@@ -42,10 +24,10 @@ export default function Nav({ user }) {
                     Classes
                 </NavLink>
                 <NavLink
-                    href={route("mission")}
-                    active={route().current("mission")}
+                    href={route("events")}
+                    active={route().current("events")}
                 >
-                    Mission
+                    Events
                 </NavLink>
                 <NavLink
                     href={route("contact")}
@@ -53,9 +35,27 @@ export default function Nav({ user }) {
                 >
                     Contact
                 </NavLink>
+                {user && (
+                    <>
+                        {user.admin == 1 && (
+                            <NavLink
+                                href={route("admin")}
+                                active={route().current("admin")}
+                            >
+                                Admin
+                            </NavLink>
+                        )}
+                    </>
+                )}
             </div>
             {user ? (
-                <div className="hidden lg:flex gap-8">
+                <div className="hidden lg:flex items-center gap-8">
+                    <NavLink
+                        href={route("dashboard")}
+                        active={route().current("dashboard")}
+                    >
+                        My Dashboard
+                    </NavLink>
                     <NavLink method="post" href={route("logout")} as="button">
                         <div className="flex items-start gap-2 py-1 ">
                             Sign Out

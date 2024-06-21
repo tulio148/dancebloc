@@ -6,6 +6,7 @@ import {
     faGear,
     faCalendarPlus,
     faUsers,
+    faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export const DashboardTabs = [
@@ -34,6 +35,16 @@ export const DashboardTabs = [
         icon: (
             <FontAwesomeIcon
                 icon={faCartShopping}
+                size="xl"
+                style={{ color: "#00FFA0" }}
+            />
+        ),
+    },
+    {
+        label: "Profile",
+        icon: (
+            <FontAwesomeIcon
+                icon={faUser}
                 size="xl"
                 style={{ color: "#00FFA0" }}
             />

@@ -47,7 +47,10 @@ export default function ({ user, children }) {
             <nav
                 className={`transition duration-1000 w-full fixed top-0 left-0 z-50  bg-db-pink ${
                     isTransparent &&
-                    (route().current("welcome") || route().current("classes"))
+                    (route().current("welcome") ||
+                        route().current("classes") ||
+                        route().current("mission") ||
+                        route().current("events"))
                         ? "  bg-transparent"
                         : " bg-db-pink"
                 }`}
@@ -59,12 +62,14 @@ export default function ({ user, children }) {
                                 <Link href="/">
                                     <ApplicationLogo
                                         classNames={
-                                            isTransparent ? "opacity-0" : ""
+                                            isTransparent
+                                                ? "opacity-0 sm:opacity-100"
+                                                : ""
                                         }
                                     />
                                 </Link>
                             </div>
-                            {!isTransparent && <Nav user={user} />}
+                            <Nav user={user} />
                         </div>
 
                         <div className="justify-self-end col-start-2 flex items-center lg:hidden">

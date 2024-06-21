@@ -99,7 +99,7 @@ export default function Classes({ auth, classes, terms }) {
                     ></div>
                     <div
                         id="top-header2"
-                        className="mx-7 text-white font-thin h-14 sm:h-20  text-5xl md:text-7xl  mb-32"
+                        className="mx-7 text-white font-thin h-14 sm:h-20  text-5xl md:text-7xl  mb-20"
                     ></div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import {
     faCalendarDays,
     faMusic,
     faPhone,
+    faMask,
     faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -67,17 +68,21 @@ export default function ResponsiveNav({ user }) {
                                             }}
                                         />
                                     )}
-                                    Dashboard
+                                    My Dashboard
                                 </div>
                             </ResponsiveNavLink>
+                        </div>
+                        <div className="flex flex-col gap-2">
                             <ResponsiveNavLink
-                                href={route("profile.edit")}
-                                active={route().current("profile.edit")}
+                                href={route("mission")}
+                                active={route().current("mission")}
+                                className="self-end"
                             >
-                                <div className="flex items-center gap-5">
-                                    {route().current("profile.edit") ? (
+                                <div className="flex items-center  gap-5 ">
+                                    About
+                                    {route().current("mission") ? (
                                         <FontAwesomeIcon
-                                            icon={faUser}
+                                            icon={faCircleInfo}
                                             size="lg"
                                             style={{
                                                 color: "#00FFA0",
@@ -85,18 +90,15 @@ export default function ResponsiveNav({ user }) {
                                         />
                                     ) : (
                                         <FontAwesomeIcon
-                                            icon={faUser}
+                                            icon={faCircleInfo}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFF",
                                             }}
                                         />
                                     )}
-                                    Account
                                 </div>
                             </ResponsiveNavLink>
-                        </div>
-                        <div className="flex flex-col gap-2">
                             <ResponsiveNavLink
                                 href={route("classes")}
                                 active={
@@ -128,15 +130,15 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("mission")}
-                                active={route().current("mission")}
+                                href={route("events")}
+                                active={route().current("events")}
                                 className="self-end"
                             >
-                                <div className="flex items-center  gap-5 ">
-                                    Mission
-                                    {route().current("mission") ? (
+                                <div className="flex items-center gap-5">
+                                    Events
+                                    {route().current("events") ? (
                                         <FontAwesomeIcon
-                                            icon={faCircleInfo}
+                                            icon={faMask}
                                             size="lg"
                                             style={{
                                                 color: "#00FFA0",
@@ -144,7 +146,7 @@ export default function ResponsiveNav({ user }) {
                                         />
                                     ) : (
                                         <FontAwesomeIcon
-                                            icon={faCircleInfo}
+                                            icon={faMask}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFF",
@@ -253,7 +255,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
-                                    Mission
+                                    About
                                     {route().current("mission") ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
