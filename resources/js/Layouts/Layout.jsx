@@ -60,13 +60,7 @@ export default function ({ user, children }) {
                         <div className="  col-start-1 lg:col-span-2 justify-self-start flex justify-between items-center w-full">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo
-                                        classNames={
-                                            isTransparent
-                                                ? "opacity-0 sm:opacity-100"
-                                                : ""
-                                        }
-                                    />
+                                    <ApplicationLogo />
                                 </Link>
                             </div>
                             <Nav user={user} />

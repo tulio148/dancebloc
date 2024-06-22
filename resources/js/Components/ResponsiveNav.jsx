@@ -220,6 +220,32 @@ export default function ResponsiveNav({ user }) {
                         </ResponsiveNavLink>
                         <div className="flex flex-col gap-2">
                             <ResponsiveNavLink
+                                href={route("mission")}
+                                active={route().current("mission")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    About
+                                    {route().current("mission") ? (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#00FFA0",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faCircleInfo}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
                                 href={route("classes")}
                                 active={
                                     route().current("classes") ||
@@ -250,15 +276,15 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
-                                href={route("mission")}
-                                active={route().current("mission")}
+                                href={route("events")}
+                                active={route().current("events")}
                                 className="self-end"
                             >
-                                <div className="flex items-center  gap-5 ">
-                                    About
-                                    {route().current("mission") ? (
+                                <div className="flex items-center gap-5">
+                                    Events
+                                    {route().current("events") ? (
                                         <FontAwesomeIcon
-                                            icon={faCircleInfo}
+                                            icon={faMask}
                                             size="lg"
                                             style={{
                                                 color: "#00FFA0",
@@ -266,7 +292,7 @@ export default function ResponsiveNav({ user }) {
                                         />
                                     ) : (
                                         <FontAwesomeIcon
-                                            icon={faCircleInfo}
+                                            icon={faMask}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFF",
