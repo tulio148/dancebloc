@@ -28,7 +28,7 @@ export default function Events({ auth }) {
     return (
         <Layout user={auth.user}>
             <Head title="Events" />
-            <div className="flex items-end bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
+            <div className="flex items-end bg-[url('/events11.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
                 <div>
                     <div
                         id="top-header1"

@@ -32,7 +32,7 @@ export default function About({ auth }) {
     return (
         <Layout user={auth.user}>
             <Head title="About Us" />
-            <div className="flex items-end bg-[url('/about.webp')] bg-cover bg-left mb-3  h-screen w-full lg:bg-center">
+            <div className="flex items-end bg-[url('/about1.webp')] bg-cover bg-left mb-3  h-screen w-full lg:bg-center">
                 <div>
                     ``
                     <div

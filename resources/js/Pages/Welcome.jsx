@@ -137,7 +137,7 @@ export default function Welcome({ auth }) {
             </Head>
             <Layout user={auth.user}>
                 {/* HERO */}
-                <div className="flex items-start bg-[url('/background.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
+                <div className="flex items-start bg-[url('/background1.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
                     <div id="logo-text" className="w-full flex justify-end">
                         <h1 className=" max-w-md md:max-w-lg  tracking-widest text-6xl sm:text-[12vw] lg:text-[10vw] xl:text-[8.5vw]     text-white font-bold text-right pb-20 mt-16 mx-2 lg:mr-10 ">
                             dance <span className="text-db-pink">bloc</span> Bra
@@ -156,7 +156,7 @@ export default function Welcome({ auth }) {
                 {/* DANCER WITH TEXT */}
                 <div
                     id="dancer1"
-                    className=" flex flex-col justify-between bg-[url('/dancer1.webp')] bg-cover bg-center xl:bg-contain h-screen w-full   mb-[2000px]"
+                    className=" flex flex-col justify-between bg-[url('/dancer11.webp')] bg-cover bg-center xl:bg-contain h-screen w-full   mb-[2000px]"
                 >
                     <div
                         id="heading1"
@@ -200,7 +200,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="events"
-                    className=" flex flex-col justify-between bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/events22.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
                 >
                     <div
                         id="heading5"
