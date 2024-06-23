@@ -135,7 +135,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center gap-5">
-                                    Book a Event
+                                    Book a Show
                                     {route().current("events") ? (
                                         <FontAwesomeIcon
                                             icon={faMask}
@@ -281,7 +281,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center gap-5">
-                                    Book a Event
+                                    Book a Show
                                     {route().current("events") ? (
                                         <FontAwesomeIcon
                                             icon={faMask}

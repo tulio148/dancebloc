@@ -27,7 +27,7 @@ export default function Nav({ user }) {
                     href={route("events")}
                     active={route().current("events")}
                 >
-                    Book a Event
+                    Book a Show
                 </NavLink>
                 <NavLink
                     href={route("contact")}
