@@ -12,7 +12,7 @@ export default function Nav({ user }) {
                     href={route("mission")}
                     active={route().current("mission")}
                 >
-                    About
+                    About Us
                 </NavLink>
                 <NavLink
                     href={route("classes")}
@@ -21,13 +21,13 @@ export default function Nav({ user }) {
                         route().current("classes.show")
                     }
                 >
-                    Classes
+                    Dance Classes
                 </NavLink>
                 <NavLink
                     href={route("events")}
                     active={route().current("events")}
                 >
-                    Events
+                    Book a Event
                 </NavLink>
                 <NavLink
                     href={route("contact")}

@@ -79,7 +79,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
-                                    About
+                                    About Us
                                     {route().current("mission") ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
@@ -108,7 +108,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center gap-5">
-                                    Classes
+                                    Dance Classes
                                     {route().current("classes") ||
                                     route().current("classes.show") ? (
                                         <FontAwesomeIcon
@@ -135,7 +135,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center gap-5">
-                                    Events
+                                    Book a Event
                                     {route().current("events") ? (
                                         <FontAwesomeIcon
                                             icon={faMask}
@@ -225,7 +225,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
-                                    About
+                                    About Us
                                     {route().current("mission") ? (
                                         <FontAwesomeIcon
                                             icon={faCircleInfo}
@@ -254,7 +254,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center  gap-5 ">
-                                    Classes
+                                    Dance Classes
                                     {route().current("classes") ||
                                     route().current("classes.show") ? (
                                         <FontAwesomeIcon
@@ -281,7 +281,7 @@ export default function ResponsiveNav({ user }) {
                                 className="self-end"
                             >
                                 <div className="flex items-center gap-5">
-                                    Events
+                                    Book a Event
                                     {route().current("events") ? (
                                         <FontAwesomeIcon
                                             icon={faMask}
