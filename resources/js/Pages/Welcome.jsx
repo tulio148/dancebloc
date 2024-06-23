@@ -13,8 +13,8 @@ export default function Welcome({ auth }) {
     useGSAP(() => {
         gsap.from("#logo-text", {
             opacity: 0,
-            delay: 1,
-            duration: 3,
+            // delay: 1,
+            duration: 2,
             ease: "power2.inOut",
         });
         gsap.from("#logo-img", {
