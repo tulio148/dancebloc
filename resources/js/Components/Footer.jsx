@@ -12,21 +12,21 @@ export default function Footer() {
             <div className="w-full mt-36 mb-24 border-t border-slate-300">
                 <div className="max-w-7xl  mx-auto flex flex-col justify-center items-center mt-16">
                     <div className="w-full flex justify-around gap-3">
-                        <Link>
+                        <Link href="https://www.facebook.com/DanceBlocBrazil/">
                             <FontAwesomeIcon
                                 icon={faFacebookF}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
                         </Link>
-                        <Link>
+                        <Link href="https://www.instagram.com/danceblocbrazil/">
                             <FontAwesomeIcon
                                 icon={faInstagram}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
                         </Link>
-                        <Link>
+                        <Link href="https://www.tiktok.com/@danceblocbrazil">
                             <FontAwesomeIcon
                                 icon={faTiktok}
                                 size="3x"
