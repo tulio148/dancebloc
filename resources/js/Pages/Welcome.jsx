@@ -57,7 +57,7 @@ export default function Welcome({ auth }) {
                 pin: "#danceclass",
                 toggleActions: "play  none none none",
                 // markers: true,
-                preventOverlaps: true,
+                // preventOverlaps: true,
             },
             // opacity: 0,
             autoAlpha: 0,
@@ -70,7 +70,7 @@ export default function Welcome({ auth }) {
                 id: "events",
                 trigger: "#events",
                 start: "top top",
-                end: "+=4000px",
+                end: "+=5000px",
                 pin: "#events",
                 toggleActions: "play none none none",
                 // markers: true,
@@ -86,7 +86,7 @@ export default function Welcome({ auth }) {
                 id: "costumes",
                 trigger: "#costumes",
                 start: "top top",
-                end: "+=2000px",
+                end: "+=3000px",
                 pin: "#costumes",
                 toggleActions: "play none none none",
                 // markers: true,
@@ -97,6 +97,29 @@ export default function Welcome({ auth }) {
             ease: "power4.in",
         });
 
+        gsap.to("#text-1", {
+            scrollTrigger: {
+                id: "text-1",
+                trigger: "#text-1",
+                start: "top top",
+                end: "+=3000px",
+                toggleActions: "play none restart reverse",
+                pin: "#text-1",
+                // markers: true,
+            },
+        });
+        gsap.to("#text-2", {
+            scrollTrigger: {
+                id: "text-2",
+                trigger: "#text-2",
+                start: "top top",
+                end: "+=3000px",
+                toggleActions: "play none restart reverse",
+                pin: "#text-2",
+                // markers: true,
+            },
+        });
+
         gsap.to("#heading-text-1", {
             scrollTrigger: {
                 id: "heading-text-1",
@@ -105,10 +128,11 @@ export default function Welcome({ auth }) {
                 // end: " bottom",
                 toggleActions: "play none restart reverse",
                 // markers: true,
+                // duration: 3,
             },
             text: {
                 value: "more than just steps",
-                speed: 1.5,
+                speed: 1,
             },
         });
 
@@ -200,7 +224,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="events"
-                    className=" flex flex-col justify-between bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px]  overflow-hidden"
                 >
                     <div
                         id="heading5"
@@ -224,7 +248,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="costumes"
-                    className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[3000px] overflow-hidden"
                 >
                     <div
                         id="heading7"
@@ -245,11 +269,11 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="text-1"
-                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[100px]"
+                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[3000px]"
                 >
                     <div
                         id="heading-text-1"
-                        className=" self-start mx-7 bg-white rounded-sm h-[33px] md:h-[60px] pr-[1px] text-db-pink/90 font-extrabold text-4xl md:text-7xl sm:mb-1"
+                        className=" self-start mx-7 bg-white rounded-sm  pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
                     ></div>
                     <div className=" max-w-3xl m-4 px-4 py-14 sm:p-8 border border-white/50 bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40  rounded-xl">
                         <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
@@ -268,11 +292,11 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="text-2"
-                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[4000px]"
+                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[3000px]"
                 >
                     <div
                         id="heading-text-2"
-                        className="self-start mx-7 bg-white rounded-sm h-[33px] md:h-[60px] pr-[1px] text-db-pink/90 font-extrabold text-4xl md:text-7xl sm:mb-1"
+                        className="self-start mx-7 bg-white rounded-sm pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
                     ></div>
                     <div className=" max-w-3xl m-4 px-4 py-10 sm:p-8 border border-white/50  bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40 rounded-xl">
                         <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
