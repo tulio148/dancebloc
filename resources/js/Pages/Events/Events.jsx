@@ -21,6 +21,7 @@ export default function Events({ auth }) {
             delay: 1,
             text: {
                 value: "your event",
+                delimiter: " ",
             },
             ease: "power4.out",
         });
@@ -28,11 +29,11 @@ export default function Events({ auth }) {
     return (
         <Layout user={auth.user}>
             <Head title="Events" />
-            <div className="flex items-end bg-[url('/events11.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
+            <div className="flex items-end bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
                 <div>
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-thin h-14 sm:h-16 bg-db-green text-6xl md:text-7xl text-right"
+                        className="mx-7 text-white font-extralight h-14 sm:h-16 bg-db-pink text-6xl md:text-7xl text-right"
                     ></div>
                     <div
                         id="top-header2"

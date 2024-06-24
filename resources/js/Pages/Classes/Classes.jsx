@@ -31,6 +31,7 @@ export default function Classes({ auth, classes, terms }) {
             delay: 1,
             text: {
                 value: "samba groove",
+                delimiter: " ",
             },
             ease: "power4.out",
         });
@@ -91,7 +92,7 @@ export default function Classes({ auth, classes, terms }) {
         <Layout user={auth.user}>
             <Head title="Classes" />
 
-            <div className="flex items-end bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
+            <div className="flex items-end bg-[url('/classes.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
                 <div>
                     <div
                         id="top-header1"

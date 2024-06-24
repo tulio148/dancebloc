@@ -23,7 +23,8 @@ export default function About({ auth }) {
             duration: 1.2,
             delay: 1,
             text: {
-                value: "is love",
+                value: "is rhythmic love",
+                delimiter: " ",
             },
             ease: "power4.out",
         });
@@ -32,12 +33,11 @@ export default function About({ auth }) {
     return (
         <Layout user={auth.user}>
             <Head title="About Us" />
-            <div className="flex items-end bg-[url('/about1.webp')] bg-cover bg-left mb-3  h-screen w-full lg:bg-center">
+            <div className="flex items-end bg-[url('/about.webp')] bg-cover bg-left mb-3  h-screen w-full lg:bg-center">
                 <div>
-                    ``
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-thin h-14 sm:h-20 bg-db-green text-5xl md:text-7xl text-right"
+                        className="mx-7 text-white  font-extralight h-14 sm:h-20 bg-db-pink text-5xl md:text-7xl text-right"
                     ></div>
                     <div
                         id="top-header2"

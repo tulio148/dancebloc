@@ -206,6 +206,7 @@ export default function ResponsiveNav({ user }) {
                         <ResponsiveNavLink
                             href={route("login")}
                             active={route().current("login")}
+                            className="self-end"
                         >
                             <div className="flex items-center gap-5">
                                 Sign in
