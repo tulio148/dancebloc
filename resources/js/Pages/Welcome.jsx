@@ -248,7 +248,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="costumes"
-                    className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[3000px] overflow-hidden"
+                    className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[3500px] overflow-hidden"
                 >
                     <div
                         id="heading7"
@@ -273,7 +273,7 @@ export default function Welcome({ auth }) {
                 >
                     <div
                         id="heading-text-1"
-                        className=" self-start mx-7 bg-white rounded-sm  pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
+                        className=" self-start mx-7 bg-white rounded-sm h-24 sm:h-fit  pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
                     ></div>
                     <div className=" max-w-3xl m-4 px-4 py-14 sm:p-8 border border-white/50 bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40  rounded-xl">
                         <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
@@ -296,7 +296,7 @@ export default function Welcome({ auth }) {
                 >
                     <div
                         id="heading-text-2"
-                        className="self-start mx-7 bg-white rounded-sm pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
+                        className="self-start mx-7 bg-white rounded-sm h-24 sm:h-fit pr-[1px] text-db-pink/90 font-extrabold text-5xl md:text-7xl sm:mb-1"
                     ></div>
                     <div className=" max-w-3xl m-4 px-4 py-10 sm:p-8 border border-white/50  bg-gradient-to-b from-db-pink from-95% shadow-lg shadow-white/40 rounded-xl">
                         <p className="text-white font-normal text-xl sm:text-2xl tracking-widest leading-8 md:text-justify ">
