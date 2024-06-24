@@ -21,7 +21,6 @@ export default function Events({ auth }) {
             delay: 1,
             text: {
                 value: "your event",
-                delimiter: " ",
             },
             ease: "power4.out",
         });

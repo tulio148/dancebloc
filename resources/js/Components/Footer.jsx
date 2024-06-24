@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+// import { Link } from "@inertiajs/react";
 import {
     faInstagram,
     faTiktok,
@@ -12,27 +12,30 @@ export default function Footer() {
             <div className="w-full mt-36 mb-24 border-t border-slate-300">
                 <div className="max-w-7xl  mx-auto flex flex-col justify-center items-center mt-16">
                     <div className="w-full flex justify-around gap-3">
-                        <Link href="https://www.facebook.com/DanceBlocBrazil/">
+                        <a
+                            href="https://www.facebook.com/DanceBlocBrazil/"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon
                                 icon={faFacebookF}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
-                        </Link>
-                        <Link href="https://www.instagram.com/danceblocbrazil/">
+                        </a>
+                        <a href="https://www.instagram.com/danceblocbrazil/">
                             <FontAwesomeIcon
                                 icon={faInstagram}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
-                        </Link>
-                        <Link href="https://www.tiktok.com/@danceblocbrazil">
+                        </a>
+                        <a href="https://www.tiktok.com/@danceblocbrazil">
                             <FontAwesomeIcon
                                 icon={faTiktok}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
-                        </Link>
+                        </a>
                     </div>
                     <img
                         className=" w-48 mt-28"

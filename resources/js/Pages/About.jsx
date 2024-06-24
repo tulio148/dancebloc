@@ -24,7 +24,6 @@ export default function About({ auth }) {
             delay: 1,
             text: {
                 value: "is rhythmic love",
-                delimiter: " ",
             },
             ease: "power4.out",
         });
