@@ -66,7 +66,11 @@ export default function Classes({ auth, classes, terms }) {
     });
 
     const groupClassesByTerm = (terms, classes) => {
-        return terms.map((term) => {
+        const sortedTerms = terms.sort(
+            (a, b) => new Date(a.start_date) - new Date(b.start_date)
+        );
+
+        return sortedTerms.map((term) => {
             return {
                 ...term,
                 classes: classes.filter((cls) => cls.term_id === term.id),
