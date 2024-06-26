@@ -4,10 +4,13 @@ export function formatDatetime(datetime) {
         day: "numeric",
         month: "long",
         year: "numeric",
+        timeZone: "UTC",
     });
     const formattedTime = date.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
+        hour12: true,
+        timeZone: "UTC",
     });
     const formattedDateTime = `${formattedDate} at ${formattedTime}`;
     return formattedDateTime;
