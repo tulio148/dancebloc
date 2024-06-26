@@ -109,6 +109,8 @@ export default function UpsertTerm({
                         "Beginner",
                         "Intermediate",
                         "Advanced",
+                        "Fundamentals",
+                        "Improvers",
                     ]}
                     className="mt-1 block w-full"
                     value={data.level}
@@ -120,7 +122,7 @@ export default function UpsertTerm({
                 />
                 <InputError message={errors.level} className="mt-2" />
                 <SelectInput
-                    options={["", "Samba", "other"]}
+                    options={["", "Samba", "Funk"]}
                     className="mt-1 block w-full"
                     value={data.style}
                     onChange={(e) => {
@@ -131,7 +133,7 @@ export default function UpsertTerm({
                 />
                 <InputError message={errors.style} className="mt-2" />
                 <SelectInput
-                    options={["", "Jane Doe", "That One"]}
+                    options={["", "Lauren", "That One"]}
                     className="mt-1 block w-full"
                     value={data.instructor}
                     onChange={(e) => {
@@ -142,7 +144,7 @@ export default function UpsertTerm({
                 />
 
                 <SelectInput
-                    options={["", "the studio"]}
+                    options={["", "ICON Dance Studio"]}
                     className="mt-1 block w-full"
                     value={data.location}
                     onChange={(e) => {

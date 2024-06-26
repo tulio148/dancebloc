@@ -5,9 +5,18 @@ import { useForm } from "@inertiajs/react";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import Textarea from "@/Components/Textarea";
-import { Transition } from "@headlessui/react";
 import { useState } from "react";
+import { TextPlugin } from "gsap/all";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 export default function Contact({ auth }) {
+    gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(useGSAP);
+    useGSAP(() => {
+        gsap.to("#header", {
+            text: { value: "Contact Us", speed: 0.7 },
+        });
+    });
     const { data, setData, post, processing, errors } = useForm({
         name: "",
         email: "",
@@ -39,21 +48,12 @@ export default function Contact({ auth }) {
                     </p>
                 </div>
             </Modal>
-            <Transition
-                show={true}
-                appear={true}
-                enter="transition-opacity ease-linear duration-1000"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-1000"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                className="lg:min-w-[700px] sm:min-w-[500px] min-w-full flex justify-end"
-            >
-                <h1 className="max-w-md tracking-widest text-5xl text-white font-thin text-right py-5 my-16 ">
-                    contact us
-                </h1>
-            </Transition>
+            <div className="w-full max-w-lg mt-14">
+                <h1
+                    id="header"
+                    className="tracking-widest text-6xl text-white font-extralight  p-5 my-16 "
+                ></h1>
+            </div>
             <form
                 onSubmit={handleSubmit}
                 className="flex flex-col space-y-4 w-full max-w-lg p-4"

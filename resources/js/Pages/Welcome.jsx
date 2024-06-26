@@ -13,7 +13,6 @@ export default function Welcome({ auth }) {
     useGSAP(() => {
         gsap.from("#logo-text", {
             opacity: 0,
-            // delay: 1,
             duration: 2,
             ease: "power2.inOut",
         });
@@ -22,13 +21,10 @@ export default function Welcome({ auth }) {
                 trigger: "#logo-img",
                 start: "center center",
                 end: "+=6000px",
-                // scrub: true,
                 pin: "#logo-img",
                 toggleActions: "play none none none",
-                // markers: true,
             },
             autoAlpha: 0,
-            // opacity: 0,
             scale: 0.2,
             duration: 4,
         });
@@ -40,7 +36,6 @@ export default function Welcome({ auth }) {
                 end: "+=5000px",
                 pin: "#dancer1",
                 toggleActions: "play  none none none",
-                // markers: true,
             },
             autoAlpha: 0,
             // opacity: 0,

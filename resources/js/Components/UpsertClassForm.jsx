@@ -106,6 +106,8 @@ export default function UpsertClass({
                         "Beginner",
                         "Intermediate",
                         "Advanced",
+                        "Fundamentals",
+                        "Improvers",
                     ]}
                     className="mt-1 block w-full"
                     value={data.level}
@@ -126,7 +128,7 @@ export default function UpsertClass({
                     placeholder="Style"
                 />
                 <SelectInput
-                    options={["", "Jane Doe", "That One"]}
+                    options={["", "Lauren", "That One"]}
                     className="mt-1 block w-full"
                     value={data.instructor}
                     onChange={(e) => {
@@ -137,7 +139,7 @@ export default function UpsertClass({
                 />
 
                 <SelectInput
-                    options={["", "the studio"]}
+                    options={["", "ICON Dance Studio"]}
                     className="mt-1 block w-full"
                     value={data.location}
                     onChange={(e) => {
