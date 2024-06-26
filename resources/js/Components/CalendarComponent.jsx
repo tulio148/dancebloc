@@ -75,6 +75,7 @@ export default function CalendarComponent({ classesData }) {
                                     hour: "2-digit",
                                     minute: "2-digit",
                                     hour12: true,
+                                    timeZone: "UTC",
                                 })}{" "}
                             </div>
                             {classItem.name}
