@@ -47,7 +47,7 @@ export default function TermCard({ term }) {
                 }`}
             >
                 <div className="border-t border-1 border-black/10"></div>
-                <p className="text-slate-600 text-lg text-justify tracking-wider leading-8 whitespace-normal py-5">
+                <p className="text-slate-600 text-lg text-left tracking-wider leading-6 whitespace-normal py-5">
                     {term.description}
                 </p>
                 <div className="flex flex-col flex-wrap gap-3 mt-4 mb-10">
@@ -134,7 +134,7 @@ export default function TermCard({ term }) {
                     }}
                     className="self-center  inline-flex items-center max-w-fit px-10 py-4 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                 >
-                    enrol
+                    Book Us
                 </Link>
             </div>
             {/* )} */}

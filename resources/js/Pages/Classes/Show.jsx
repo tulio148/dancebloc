@@ -104,7 +104,7 @@ export default function Show({ auth, class_, enrolled_classes }) {
                         }}
                         className="self-center inline-flex items-center max-w-fit px-8 py-3 mt-6 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-light text-2xl text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 hover:text-opacity-80 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                     >
-                        enrol
+                        Book
                     </Link>
                 )}
             </div>
@@ -142,7 +142,7 @@ export default function Show({ auth, class_, enrolled_classes }) {
                         }}
                         className="font-medium tracking-wider text-4xl py-2 text-db-pink/90 underline decoration-db-pink decoration-2  underline-offset-8 mx-2 my-4 hover:animate-pulse"
                     >
-                        enrol now
+                        Book Now
                     </Link>
                 )}
             </div>
