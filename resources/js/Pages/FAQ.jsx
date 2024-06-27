@@ -69,7 +69,7 @@ export default function FAQ({ auth }) {
                         className="flex flex-col gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% max-w-5xl px-6 pt-10 pb-6 rounded-3xl z-40 shadow"
                     >
                         <div
-                            className="flex items-center gap-2 h-full cursor-pointer"
+                            className="flex items-center justify-between gap-2 h-full cursor-pointer"
                             onClick={() => toggleExpand(index)}
                         >
                             <p className="font-bold tracking-wide text-xl">
