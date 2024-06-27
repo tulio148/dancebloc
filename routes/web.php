@@ -40,6 +40,9 @@ Route::get('/about', function () {
 Route::get('/events', function () {
     return Inertia::render('Events/Events');
 })->name('events');
+Route::get('/faq', function () {
+    return Inertia::render('FAQ');
+})->name('faq');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');

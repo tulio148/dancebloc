@@ -10,6 +10,7 @@ import {
     faPhone,
     faMask,
     faCircleInfo,
+    faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ResponsiveNav({ user }) {
@@ -181,6 +182,32 @@ export default function ResponsiveNav({ user }) {
                                     )}
                                 </div>
                             </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("faq")}
+                                active={route().current("faq")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    FAQ
+                                    {route().current("faq") ? (
+                                        <FontAwesomeIcon
+                                            icon={faCircleQuestion}
+                                            size="lg"
+                                            style={{
+                                                color: "#00FFA0",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faCircleQuestion}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
                         </div>
 
                         <ResponsiveNavLink
@@ -209,7 +236,7 @@ export default function ResponsiveNav({ user }) {
                             className="self-end"
                         >
                             <div className="flex items-center gap-5">
-                                Sign in
+                                Sign In
                                 <FontAwesomeIcon
                                     icon={faArrowRightToBracket}
                                     size="lg"
@@ -320,6 +347,32 @@ export default function ResponsiveNav({ user }) {
                                     ) : (
                                         <FontAwesomeIcon
                                             icon={faPhone}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("faq")}
+                                active={route().current("faq")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center  gap-5 ">
+                                    FAQ
+                                    {route().current("faq") ? (
+                                        <FontAwesomeIcon
+                                            icon={faCircleQuestion}
+                                            size="lg"
+                                            style={{
+                                                color: "#00FFA0",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faCircleQuestion}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFF",

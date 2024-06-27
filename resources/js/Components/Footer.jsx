@@ -22,14 +22,20 @@ export default function Footer() {
                                 style={{ color: "#FF00F7" }}
                             />
                         </a>
-                        <a href="https://www.instagram.com/danceblocbrazil/">
+                        <a
+                            href="https://www.instagram.com/danceblocbrazil/"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon
                                 icon={faInstagram}
                                 size="3x"
                                 style={{ color: "#FF00F7" }}
                             />
                         </a>
-                        <a href="https://www.tiktok.com/@danceblocbrazil">
+                        <a
+                            href="https://www.tiktok.com/@danceblocbrazil"
+                            target="_blank"
+                        >
                             <FontAwesomeIcon
                                 icon={faTiktok}
                                 size="3x"

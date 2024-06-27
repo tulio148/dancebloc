@@ -35,6 +35,9 @@ export default function Nav({ user }) {
                 >
                     Contact
                 </NavLink>
+                <NavLink href={route("faq")} active={route().current("faq")}>
+                    FAQ
+                </NavLink>
                 {user && (
                     <>
                         {user.admin == 1 && (
