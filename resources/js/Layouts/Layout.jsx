@@ -45,13 +45,13 @@ export default function ({ user, children }) {
     return (
         <div>
             <nav
-                className={`transition duration-1000 w-full fixed top-0 left-0 z-50  bg-db-pink ${
+                className={`transition duration-1000 w-full fixed top-0 left-0  z-50 bg-db-pink ${
                     isTransparent &&
                     (route().current("welcome") ||
                         route().current("classes") ||
                         route().current("mission") ||
                         route().current("events"))
-                        ? "  bg-transparent"
+                        ? "  bg-db-pink/30  "
                         : " bg-db-pink"
                 }`}
             >
@@ -63,6 +63,7 @@ export default function ({ user, children }) {
                                     <ApplicationLogo />
                                 </Link>
                             </div>
+
                             <Nav user={user} />
                         </div>
 

@@ -175,7 +175,7 @@ export default function Welcome({ auth }) {
                         id="heading0"
                         className=" w-full bg-gradient-to-b h-fit from-db-pink/70 from-30% to-db-pink/90 to-50% py-1  shadow-md shadow-db-pink/30 mb-12"
                     >
-                        <h1 className="min-w-full tracking-[0.2em] px-2 lg:px-28 text-3xl leading-8 font-normal   text-white sm:text-5xl">
+                        <h1 className="min-w-full tracking-[0.2em] px-2 lg:px-28 text-2xl leading-8 font-normal text-center   text-white">
                             Experience Perth's premier dance school, offering
                             diverse styles, a vibrant community, professional
                             event shows, and costume hire services.
@@ -192,13 +192,13 @@ export default function Welcome({ auth }) {
                 {/* DANCER WITH TEXT */}
                 <div
                     id="dancer1"
-                    className=" flex flex-col justify-between bg-[url('/dancer.webp')] bg-cover bg-center xl:bg-contain h-screen w-full   mb-[2000px]"
+                    className=" flex flex-col justify-around bg-[url('/dancer.webp')] bg-cover bg-center xl:bg-contain h-screen w-full   mb-[2000px]"
                 >
                     <div
                         id="heading1"
                         className=" w-full bg-gradient-to-l from-db-pink/90 from-30% py-1 my-32 shadow-md shadow-db-pink/30"
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white  font-extralight lg:font-thin text-right">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-5xl text-white  font-extralight lg:font-thin text-right">
                             unleash your
                         </h1>
                     </div>
@@ -206,20 +206,20 @@ export default function Welcome({ auth }) {
                         id="heading2"
                         className=" w-full bg-gradient-to-r from-db-pink/90 from-30% py-1  my-32 shadow-md shadow-db-pink/30"
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-left">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-left">
                             inner brazilian
                         </h1>
                     </div>
                 </div>
                 <div
                     id="danceclass"
-                    className=" flex flex-col justify-between bg-[url('/danceclass.webp')] bg-cover bg-center h-screen w-full mb-[2000px] overflow-hidden"
+                    className=" flex flex-col justify-around bg-[url('/danceclass.webp')] bg-cover bg-center h-screen w-full mb-[2000px] overflow-hidden"
                 >
                     <div
                         id="heading3"
                         className=" w-full bg-gradient-to-l from-db-green from-30% py-4 pr-6 my-32 shadow-md shadow-db-green/70 flex justify-end"
                     >
-                        <h1 className="tracking-widest lg:px-24 text-5xl lg:text-7xl w-1/2 text-white font-extralight lg:font-thin text-right">
+                        <h1 className="tracking-widest lg:px-24 text-5xl lg:text-5xl w-1/2 text-white font-extralight lg:font-thin text-right">
                             dance classes
                         </h1>
                     </div>
@@ -228,7 +228,7 @@ export default function Welcome({ auth }) {
                         className=" w-full bg-db-green/90 py-4  my-32 shadow-md shadow-db-green/70"
                     >
                         <Link href={route("classes")}>
-                            <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
+                            <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-center">
                                 learn more
                             </h1>
                         </Link>
@@ -236,14 +236,14 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="events"
-                    className=" flex flex-col justify-between bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px]  overflow-hidden"
+                    className=" flex flex-col justify-around bg-[url('/events2.webp')] bg-cover bg-center sm:bg-top h-screen w-full mb-[2000px]  overflow-hidden"
                 >
                     <div
                         id="heading5"
                         className=" w-full bg-gradient-to-l from-db-pink
                     from-20% py-4 my-32 shadow-md shadow-db-pink/70"
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-right">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-right">
                             events
                         </h1>
                     </div>
@@ -252,7 +252,7 @@ export default function Welcome({ auth }) {
                         className=" w-full bg-db-pink/80 from-20% py-4  my-32 shadow-md shadow-db-pink/70"
                     >
                         <Link href={route("events")}>
-                            <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
+                            <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-center">
                                 learn more
                             </h1>
                         </Link>
@@ -260,13 +260,13 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="costumes"
-                    className=" flex flex-col justify-between bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[3500px] overflow-hidden"
+                    className=" flex flex-col justify-around bg-[url('/costume.webp')] bg-cover bg-center h-screen w-full mb-[3500px] overflow-hidden"
                 >
                     <div
                         id="heading7"
                         className=" w-full bg-gradient-to-l from-db-green from-20% py-4 my-32 shadow-md shadow-db-green/70"
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-right">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24 text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-right">
                             costumes
                         </h1>
                     </div>
@@ -274,14 +274,14 @@ export default function Welcome({ auth }) {
                         id="heading8"
                         className=" w-full bg-db-green/80 from-20% py-4  my-32 "
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-7xl text-white font-extralight lg:font-thin text-center">
+                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-center">
                             coming soon
                         </h1>
                     </div>
                 </div>
                 <div
                     id="text-1"
-                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[3000px]"
+                    className="flex flex-col justify-center items-center pt-12 max-w-5xl h-screen mb-[3000px]"
                 >
                     <div
                         id="heading-text-1"
@@ -304,7 +304,7 @@ export default function Welcome({ auth }) {
                 </div>
                 <div
                     id="text-2"
-                    className="flex flex-col justify-center items-center max-w-5xl h-screen mb-[3000px]"
+                    className="flex flex-col justify-center items-center pt-12 max-w-5xl h-screen mb-[3000px]"
                 >
                     <div
                         id="heading-text-2"

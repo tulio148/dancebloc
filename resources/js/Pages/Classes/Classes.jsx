@@ -6,7 +6,10 @@ import TermCard from "@/Components/TermCard";
 import SelectInput from "@/Components/SelectInput";
 import InputLabel from "@/Components/InputLabel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import {
+    faArrowDownLong,
+    faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { TextPlugin, ScrollTrigger } from "gsap/all";
@@ -97,7 +100,19 @@ export default function Classes({ auth, classes, terms }) {
     //     if (style !== "" && item.style !== style) return false;
     //     return true;
     // });
+    const handleClick = (id, offset = 0) => {
+        const targetElement = document.getElementById(id);
+        if (targetElement) {
+            const elementPosition =
+                targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - offset;
 
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+            });
+        }
+    };
     return (
         <Layout user={auth.user}>
             <Head title="Classes" />
@@ -105,14 +120,41 @@ export default function Classes({ auth, classes, terms }) {
             <div className="grid grid-rows-3 gri-cols-3 bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
                 <div className="row-start 1 col-span-3 "></div>
                 <div className=" row-start-2 col-start-3 col-span-1 flex flex-col justify-center items-end mx-7 gap-4">
-                    {/* <CalendarComponent /> */}
-                    <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-3 sm:text-3xl">
-                        next course start:{" "}
-                        {formatDate(groupedData[0].start_date)}
+                    <div className="flex gap-3 items-center">
+                        <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-2 sm:text-3xl">
+                            next course starts:{" "}
+                            {formatDate(groupedData[0].start_date)}
+                        </div>
+                        <button
+                            onClick={() => handleClick("header-terms", 90)}
+                            className=" animate-pulse   "
+                        >
+                            <FontAwesomeIcon
+                                icon={faArrowDownLong}
+                                size="xl"
+                                style={{
+                                    color: "#FF00F7",
+                                }}
+                            />
+                        </button>
                     </div>
-                    <div className="text-white bg-db-pink text-xl max-w-40 p-3 sm:text-3xl sm:max-w-fit">
-                        next class:{" "}
-                        {formatDatetime(groupedData[0].classes[0].datetime)}
+                    <div className="flex gap-3 items-center">
+                        <div className="text-white bg-db-pink text-xl max-w-40 p-2 sm:text-3xl sm:max-w-fit">
+                            next class:{" "}
+                            {formatDatetime(groupedData[0].classes[0].datetime)}
+                        </div>
+                        <button
+                            onClick={() => handleClick("header-classes", 90)}
+                            className=" animate-pulse   "
+                        >
+                            <FontAwesomeIcon
+                                icon={faArrowDownLong}
+                                size="xl"
+                                style={{
+                                    color: "#FF00F7",
+                                }}
+                            />
+                        </button>
                     </div>
                 </div>
                 <div className="row-start-3 col-span-3 self-end">
