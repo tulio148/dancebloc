@@ -115,6 +115,13 @@ export default function Welcome({ auth }) {
             },
         });
 
+        gsap.from("#heading0", {
+            autoAlpha: 0.1,
+            skewX: -8,
+            duration: 6,
+            delay: 1,
+            ease: "power4.out",
+        });
         gsap.to("#heading-text-1", {
             scrollTrigger: {
                 id: "heading-text-1",
@@ -156,12 +163,22 @@ export default function Welcome({ auth }) {
             </Head>
             <Layout user={auth.user}>
                 {/* HERO */}
-                <div className="flex items-start bg-[url('/background.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
+                <div className="flex flex-col justify-around  bg-[url('/background.webp')] bg-cover bg-center h-screen w-full lg:bg-center">
                     <div id="logo-text" className="w-full flex justify-end">
                         <h1 className=" max-w-md md:max-w-lg  tracking-widest text-6xl sm:text-[12vw] lg:text-[10vw] xl:text-[8.5vw]     text-white font-bold text-right pb-20 mt-16 mx-2 lg:mr-10 ">
                             dance <span className="text-db-pink">bloc</span> Bra
                             <span className=" text-green-600">z</span>
                             <span className=" text-yellow-300">i</span>l
+                        </h1>
+                    </div>
+                    <div
+                        id="heading0"
+                        className=" w-full bg-gradient-to-b h-fit from-db-pink/70 from-30% to-db-pink/90 to-50% py-1  shadow-md shadow-db-pink/30 mb-12"
+                    >
+                        <h1 className="min-w-full tracking-[0.2em] px-2 lg:px-28 text-3xl leading-8 font-normal   text-white sm:text-5xl">
+                            Experience Perth's premier dance school, offering
+                            diverse styles, a vibrant community, professional
+                            event shows, and costume hire services.
                         </h1>
                     </div>
                 </div>

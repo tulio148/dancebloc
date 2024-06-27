@@ -11,6 +11,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { TextPlugin, ScrollTrigger } from "gsap/all";
 import CalendarComponent from "@/Components/CalendarComponent";
+import { formatDate, formatDatetime } from "@/Lib/dateformatter";
 
 export default function Classes({ auth, classes, terms }) {
     gsap.registerPlugin(TextPlugin);
@@ -43,7 +44,7 @@ export default function Classes({ auth, classes, terms }) {
                 toggleActions: "play none restart reverse",
             },
             text: {
-                value: "terms",
+                value: "Courses",
                 // speed: 1.5,
             },
             duration: 2,
@@ -57,7 +58,7 @@ export default function Classes({ auth, classes, terms }) {
                 toggleActions: "play none restart reverse",
             },
             text: {
-                value: "classes",
+                value: "Classes",
                 // speed: 1.5,
             },
             duration: 2,
@@ -73,12 +74,18 @@ export default function Classes({ auth, classes, terms }) {
         return sortedTerms.map((term) => {
             return {
                 ...term,
-                classes: classes.filter((cls) => cls.term_id === term.id),
+                classes: classes
+                    .filter((cls) => cls.term_id === term.id)
+                    .sort(
+                        (a, b) => new Date(a.datetime) - new Date(b.datetime)
+                    ),
             };
         });
     };
 
     const groupedData = groupClassesByTerm(terms, classes);
+    console.log(groupedData[0].end_date);
+    console.log(groupedData[0].classes[0].datetime);
     // const [showFilter, setShowFilter] = useState(false);
     // const [style, setStyle] = useState("");
     // const [level, setLevel] = useState("");
@@ -95,11 +102,23 @@ export default function Classes({ auth, classes, terms }) {
         <Layout user={auth.user}>
             <Head title="Classes" />
 
-            <div className="flex items-end bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
-                <div>
+            <div className="grid grid-rows-3 gri-cols-3 bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
+                <div className="row-start 1 col-span-3 "></div>
+                <div className=" row-start-2 col-start-3 col-span-1 flex flex-col justify-center items-end mx-7 gap-4">
+                    {/* <CalendarComponent /> */}
+                    <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-3 sm:text-3xl">
+                        next course start:{" "}
+                        {formatDate(groupedData[0].start_date)}
+                    </div>
+                    <div className="text-white bg-db-pink text-xl max-w-40 p-3 sm:text-3xl sm:max-w-fit">
+                        next class:{" "}
+                        {formatDatetime(groupedData[0].classes[0].datetime)}
+                    </div>
+                </div>
+                <div className="row-start-3 col-span-3 self-end">
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink text-5xl md:text-7xl text-right"
+                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink text-5xl md:text-7xl text-left max-w-fit"
                     ></div>
                     <div
                         id="top-header2"

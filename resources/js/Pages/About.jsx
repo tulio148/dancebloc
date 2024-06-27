@@ -27,13 +27,6 @@ export default function About({ auth }) {
             },
             ease: "power4.out",
         });
-
-        gsap.from("#ig1", {
-            scrollTrigger: { id: "#ig1", trigger: "#ig1", start: "top top" },
-            autoAlpha: 0,
-            duration: 4,
-            ease: "power4.out",
-        });
     });
 
     return (
@@ -51,7 +44,7 @@ export default function About({ auth }) {
                     ></div>
                 </div>
             </div>
-            <div id="ig1" className="sm:w-[640px]">
+            <div className="w-full">
                 <InstagramEmbed url="https://www.instagram.com/p/C5TAzo2P5VR/" />
             </div>
         </Layout>
