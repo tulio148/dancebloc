@@ -120,47 +120,47 @@ export default function Classes({ auth, classes, terms }) {
             <div className="grid grid-rows-3 gri-cols-3 bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
                 <div className="row-start 1 col-span-3 "></div>
                 <div className=" row-start-2 col-start-3 col-span-1 flex flex-col justify-center items-end mx-7 gap-4">
-                    <div className="flex gap-3 items-center">
-                        <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-2 sm:text-3xl">
-                            next course starts:{" "}
-                            {formatDate(groupedData[0].start_date)}
+                    <button onClick={() => handleClick("header-terms", 80)}>
+                        <div className="flex gap-3 items-center">
+                            <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-2 rounded sm:text-3xl">
+                                next course starts:{" "}
+                                {formatDate(groupedData[0].start_date)}
+                            </div>
+                            <div className="animate-pulse">
+                                <FontAwesomeIcon
+                                    icon={faArrowDownLong}
+                                    size="2xl"
+                                    style={{
+                                        color: "#FF00F7",
+                                    }}
+                                />
+                            </div>
                         </div>
-                        <button
-                            onClick={() => handleClick("header-terms", 90)}
-                            className=" animate-pulse   "
-                        >
-                            <FontAwesomeIcon
-                                icon={faArrowDownLong}
-                                size="xl"
-                                style={{
-                                    color: "#FF00F7",
-                                }}
-                            />
-                        </button>
-                    </div>
-                    <div className="flex gap-3 items-center">
-                        <div className="text-white bg-db-pink text-xl max-w-40 p-2 sm:text-3xl sm:max-w-fit">
-                            next class:{" "}
-                            {formatDatetime(groupedData[0].classes[0].datetime)}
+                    </button>
+                    <button onClick={() => handleClick("header-classes", 80)}>
+                        <div className="flex gap-3 items-center">
+                            <div className="text-white bg-db-pink text-xl max-w-40 p-2  rounded sm:text-3xl sm:max-w-fit">
+                                next class:{" "}
+                                {formatDatetime(
+                                    groupedData[0].classes[0].datetime
+                                )}
+                            </div>
+                            <div className="animate-pulse">
+                                <FontAwesomeIcon
+                                    icon={faArrowDownLong}
+                                    size="2xl"
+                                    style={{
+                                        color: "#FF00F7",
+                                    }}
+                                />
+                            </div>
                         </div>
-                        <button
-                            onClick={() => handleClick("header-classes", 90)}
-                            className=" animate-pulse   "
-                        >
-                            <FontAwesomeIcon
-                                icon={faArrowDownLong}
-                                size="xl"
-                                style={{
-                                    color: "#FF00F7",
-                                }}
-                            />
-                        </button>
-                    </div>
+                    </button>
                 </div>
                 <div className="row-start-3 col-span-3 self-end">
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink text-5xl md:text-7xl text-left max-w-fit"
+                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink rounded   text-5xl md:text-7xl text-left max-w-fit"
                     ></div>
                     <div
                         id="top-header2"

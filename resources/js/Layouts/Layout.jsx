@@ -51,7 +51,7 @@ export default function ({ user, children }) {
                         route().current("classes") ||
                         route().current("mission") ||
                         route().current("events"))
-                        ? "  bg-db-pink/30  "
+                        ? "  bg-transparent lg:bg-db-pink/20  "
                         : " bg-db-pink"
                 }`}
             >
