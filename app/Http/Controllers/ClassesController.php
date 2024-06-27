@@ -14,17 +14,21 @@ class ClassesController extends Controller
 
     public function index()
     {
-        $classes = [];
-        foreach (Classes::all() as $class) {
-            $classes[] = $class;
-        }
-        $terms = [];
-        foreach (Terms::all() as $term) {
-            $terms[] = $term;
-        }
+        $now = new \DateTime();
+
+        // Get all classes and filter by datetime
+        $classes = Classes::all()->filter(function ($class) use ($now) {
+            return new \DateTime($class->datetime) > $now;
+        })->values(); // Reset keys to ensure consistency in the array
+
+        // Get all terms and filter by end_date
+        $terms = Terms::all()->filter(function ($term) use ($now) {
+            return new \DateTime($term->end_date) > $now;
+        })->values(); // Reset keys to ensure consistency in the array
 
         return Inertia::render('Classes/Classes', [
-            'classes' => $classes, 'terms' => $terms
+            'classes' => $classes,
+            'terms' => $terms
         ]);
     }
 
