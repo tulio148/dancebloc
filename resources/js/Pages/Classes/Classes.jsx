@@ -252,7 +252,7 @@ export default function Classes({ auth, classes, terms }) {
                     className="lg:min-w-[700px] sm:min-w-[500px] min-w-[320px] rounded-xl text-white font-thin tracking-widest text-7xl md:text-8xl   "
                 ></div>
             </div>
-            <div className="px-4 w-full max-w-5xl">
+            <div className="px-4 w-full max-w-5xl mb-[1000px]">
                 <CalendarComponent classesData={classes} />
             </div>
         </Layout>

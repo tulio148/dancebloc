@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 export default function FAQ({ auth }) {
-    const [expandedIndex, setExpandedIndex] = useState(null);
+    const [expandedIndices, setExpandedIndices] = useState([]);
     const faqData = [
         {
             question:
@@ -42,14 +42,22 @@ export default function FAQ({ auth }) {
     ];
 
     const toggleExpand = (index) => {
-        setExpandedIndex(expandedIndex === index ? null : index);
+        setExpandedIndices((prevIndices) =>
+            prevIndices.includes(index)
+                ? prevIndices.filter((i) => i !== index)
+                : [...prevIndices, index]
+        );
     };
 
     gsap.registerPlugin(TextPlugin);
     gsap.registerPlugin(useGSAP);
     useGSAP(() => {
         gsap.to("#header", {
-            text: { value: "Frequently Asked Questions", speed: 1 },
+            text: {
+                value: "Frequently Asked Questions",
+                speed: 0.7,
+                padSpace: true,
+            },
         });
     });
 
@@ -65,38 +73,35 @@ export default function FAQ({ auth }) {
             <div className="flex flex-col gap-7 mx-3">
                 {faqData.map((faq, index) => (
                     <div
+                        onClick={() => toggleExpand(index)}
                         key={index}
-                        className="flex flex-col gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% max-w-5xl px-6 pt-10 pb-6 rounded-3xl z-40 shadow"
+                        className="flex flex-col justify-center cursor-pointer gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% max-w-5xl px-6 py-4 rounded-3xl z-40 shadow"
                     >
-                        <div
-                            className="flex items-center justify-between gap-2 h-full cursor-pointer"
-                            onClick={() => toggleExpand(index)}
-                        >
-                            <p className="font-bold tracking-wide text-xl">
+                        <div className="flex items-center justify-between gap-2 h-full">
+                            <p className=" font-bold tracking-wide text-xl text-slate-700">
                                 {faq.question}
                             </p>
                             <FontAwesomeIcon
                                 icon={faArrowRight}
                                 size="lg"
                                 style={{
-                                    transform:
-                                        expandedIndex === index
-                                            ? "rotate(90deg)"
-                                            : "rotate(0deg)",
+                                    transform: expandedIndices.includes(index)
+                                        ? "rotate(90deg)"
+                                        : "rotate(0deg)",
                                     color: "#FF00F7",
-                                    transition: "transform 0.3s linear",
+                                    transition: "transform 0.3s ease in",
                                 }}
                             />
                         </div>
                         <div
-                            className={`transition-max-height duration-1000 ease-in-out overflow-hidden flex flex-col ${
-                                expandedIndex === index
+                            className={`transition-max-height duration-1000 linear overflow-hidden flex flex-col ${
+                                expandedIndices.includes(index)
                                     ? "max-h-[2000px]"
                                     : "max-h-0"
                             }`}
                         >
                             <div className="border-t border-1 border-black/10 mb-4"></div>
-                            <p className="text-lg tracking-wide">
+                            <p className="text-lg tracking-wide text-slate-500">
                                 {faq.answer}
                             </p>
                         </div>
