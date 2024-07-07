@@ -2,15 +2,17 @@
 
 namespace App\Services;
 
+use App\Models\Bundle;
 use App\Models\Orders;
 use Square\Models\Order;
 use Square\SquareClient;
+use Illuminate\Http\Request;
 use Square\Models\OrderSource;
 use App\Services\StudentService;
-use Illuminate\Http\Request;
 use Square\Models\OrderLineItem;
 use Square\Models\CreateOrderRequest;
 use Square\Models\UpdateOrderRequest;
+use Square\Models\OrderLineItemDiscount;
 
 class OrdersService
 {
@@ -90,6 +92,30 @@ class OrdersService
         }
         $source = new OrderSource();
 
+        if (in_array($class_id, json_decode($order->items_ids))) {
+            return;
+        }
+
+        $current_items_ids = json_decode($order->items_ids);
+        $combined_items_ids = array_unique(array_merge($current_items_ids, $items_ids));
+        $bundles = Bundle::all();
+
+        $discounts = [];
+
+        foreach ($bundles as $bundle) {
+            $bundle_items_ids = json_decode($bundle->items_ids);
+
+            sort($bundle_items_ids);
+            sort($combined_items_ids);
+
+            if ($bundle_items_ids == $combined_items_ids) {
+                $discount = new OrderLineItemDiscount();
+                $discount->setCatalogObjectId($bundle->discount_id);
+                $discount->setScope('ORDER');
+                $discounts[] = $discount;
+            }
+        }
+
         foreach ($items_ids as $item) {
             $orderLineItem = new OrderLineItem(1);
             $orderLineItem->setCatalogObjectId($item);
@@ -97,12 +123,11 @@ class OrdersService
             $orderLineItems[] = $orderLineItem;
         }
 
-
-
         $square_order = new Order(env('VITE_SQUARE_LOCATION_ID'));
         $square_order->setSource($source);
         $square_order->setCustomerId($student_id);
         $square_order->setLineItems($orderLineItems);
+        $square_order->setDiscounts($discounts); // Add the discounts to the order
         $square_order->setVersion($order->version);
 
         $body = new UpdateOrderRequest();
@@ -114,8 +139,8 @@ class OrdersService
         if ($api_response->isSuccess()) {
             $items = $api_response->getResult()->getOrder()->getLineItems();
 
-
             $total_money = $api_response->getResult()->getOrder()->getTotalMoney()->getAmount() / 100;
+            $discount_total = $api_response->getResult()->getOrder()->getTotalDiscountMoney()->getAmount() / 100;
 
             $uids = [];
             $ids = [];
@@ -127,12 +152,14 @@ class OrdersService
             $order->items_uid = json_encode($uids);
             $order->version = $api_response->getResult()->getOrder()->getVersion();
             $order->order_total = $total_money;
+            $order->discount_total = $discount_total;
             $order->save();
         } else {
             $errors = $api_response->getErrors();
             dd($errors);
         }
     }
+
 
     public function delete(Orders $order, Request $request)
     {
@@ -147,7 +174,7 @@ class OrdersService
         $square_order->setCustomerId($student_id);
         $square_order->setVersion($order->version);
 
-        $fields_to_clear = ["line_items[{$class_uid}]"];
+        $fields_to_clear = ["line_items[{$class_uid}]", "discounts"];
 
         $body = new UpdateOrderRequest();
         $body->setOrder($square_order);
@@ -174,6 +201,7 @@ class OrdersService
             $order->items_uid = json_encode($uids);
             $order->version = $api_response->getResult()->getOrder()->getVersion();
             $order->order_total = $total_money;
+            $order->discount_total = null;
             $order->save();
         } else {
             $errors = $api_response->getErrors();
