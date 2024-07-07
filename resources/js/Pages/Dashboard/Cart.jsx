@@ -152,9 +152,33 @@ export default function Cart({ orders, classes, terms, cards }) {
                                         }
                                     )}
                                 </div>
-                                <div className="flex justify-between border-t-2 border-db-pink/40 pt-4 mt-10">
-                                    <p>Subtotal</p>
-                                    <p>${order.order_total}</p>
+                                <div className="flex flex-col border-t-2 border-db-pink/40 pt-4 mt-10">
+                                    {order.discount_total != null && (
+                                        <>
+                                            <div className="flex justify-between">
+                                                <p>Total</p>
+                                                <p>
+                                                    $
+                                                    {(
+                                                        parseFloat(
+                                                            order.discount_total
+                                                        ) +
+                                                        parseFloat(
+                                                            order.order_total
+                                                        )
+                                                    ).toFixed(2)}
+                                                </p>
+                                            </div>
+                                            <div className="flex justify-between border-b mb-4">
+                                                <p>Discount</p>
+                                                <p>- ${order.discount_total}</p>
+                                            </div>
+                                        </>
+                                    )}
+                                    <div className="flex justify-between">
+                                        <p>Subtotal</p>
+                                        <p>${order.order_total}</p>
+                                    </div>
                                 </div>
                                 <Payment order={order} cards={cards} />
                             </div>

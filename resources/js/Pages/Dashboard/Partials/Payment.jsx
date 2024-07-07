@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCcMastercard, faCcVisa } from "@fortawesome/free-brands-svg-icons";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 export default function Payment({ order, cards }) {
-    console.log(cards);
     const appId = import.meta.env.VITE_SQUARE_APPLICATION_ID;
     const locationId = import.meta.env.VITE_SQUARE_LOCATION_ID;
 

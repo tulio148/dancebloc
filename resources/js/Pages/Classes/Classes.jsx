@@ -22,6 +22,13 @@ export default function Classes({ auth, classes, terms }) {
     gsap.registerPlugin(ScrollTrigger);
 
     useGSAP(() => {
+        gsap.from("#buttons", {
+            duration: 3,
+            delay: 0.5,
+            autoAlpha: 0,
+            ease: "power4.inOut",
+        });
+
         gsap.to("#top-header1", {
             duration: 1.2,
             // delay: 1,
@@ -119,7 +126,10 @@ export default function Classes({ auth, classes, terms }) {
 
             <div className="grid grid-rows-3 gri-cols-3 bg-[url('/classes1.webp')] bg-cover bg-top mb-3  h-screen w-full lg:bg-top">
                 <div className="row-start 1 col-span-3 "></div>
-                <div className=" row-start-2 col-start-3 col-span-1 flex flex-col justify-center items-end mx-7 gap-4">
+                <div
+                    id="buttons"
+                    className=" row-start-2 col-start-3 col-span-1 flex flex-col justify-center items-end mx-7 gap-4"
+                >
                     <button onClick={() => handleClick("header-terms", 80)}>
                         <div className="flex gap-3 items-center">
                             <div className="text-white bg-db-pink text-xl max-w-40 sm:max-w-fit p-2 rounded sm:text-3xl">
