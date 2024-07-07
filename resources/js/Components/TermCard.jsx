@@ -47,7 +47,7 @@ export default function TermCard({ term }) {
                 }`}
             >
                 <div className="border-t border-1 border-black/10"></div>
-                <p className="text-slate-600 text-md text-justify  tracking-wider leading-6 whitespace-normal py-5">
+                <p className="text-slate-600 text-lg text-justify  tracking-wider leading-6 whitespace-normal py-5">
                     {term.description}
                     <Link
                         href={route("order.store")}
@@ -109,13 +109,13 @@ export default function TermCard({ term }) {
                                 style={{ color: "#FF00F7" }}
                             />
                         </span>
-                        <span className="text-2xl text-slate-600 tracking-wider">
+                        <span className="text-xl text-slate-600 tracking-wider">
                             ${term.price}
                         </span>
                     </div>
                 </div>
-                <div className="mx-6 mb-8">
-                    <div className="border-x border-b border-black/20 rounded-b-md p-2 flex flex-col gap-4">
+                <div className="mx-4 mb-8">
+                    <div className="border-x border-b border-black/20 rounded-b-md p-6 flex flex-col gap-4">
                         <p className="mt-4 mb-2 text-xl w-fit tracking-widest underline underline-offset-2 decoration-2 decoration-db-pink">
                             Schedule
                         </p>

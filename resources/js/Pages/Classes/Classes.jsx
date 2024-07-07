@@ -24,7 +24,7 @@ export default function Classes({ auth, classes, terms }) {
     useGSAP(() => {
         gsap.from("#buttons", {
             duration: 3,
-            delay: 0.5,
+            delay: 0.3,
             autoAlpha: 0,
             ease: "power4.inOut",
         });
