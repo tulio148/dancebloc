@@ -115,13 +115,6 @@ export default function Welcome({ auth }) {
             },
         });
 
-        gsap.from("#heading0", {
-            autoAlpha: 0.1,
-            skewX: -8,
-            duration: 6,
-            delay: 1,
-            ease: "power4.out",
-        });
         gsap.to("#heading-text-1", {
             scrollTrigger: {
                 id: "heading-text-1",

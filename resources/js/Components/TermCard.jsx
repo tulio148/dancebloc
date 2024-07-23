@@ -20,7 +20,7 @@ export default function TermCard({ term }) {
     };
 
     return (
-        <div className="flex flex-col   gap-2  max-h-fit border-b bg-gradient-to-b from-white from-90% lg:min-w-[700px] sm:min-w-[500px] px-6 py-4 rounded-3xl z-40 shadow">
+        <div className="flex flex-col   gap-2  max-h-fit border-b bg-gradient-to-b from-white from-90% px-6 py-4 rounded-3xl z-40 shadow">
             <div
                 onClick={toggleExpand}
                 className="flex items-center justify-between gap-2 h-full cursor-pointer"

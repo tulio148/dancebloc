@@ -27,12 +27,57 @@ export default function About({ auth }) {
             },
             ease: "power4.out",
         });
+
+        gsap.to("#heading-text-1", {
+            scrollTrigger: {
+                id: "heading-text-1",
+                trigger: "#heading-text-1",
+                start: "top center",
+                // end: " bottom",
+                toggleActions: "play none restart reverse",
+                // markers: true,
+                // duration: 3,
+            },
+            text: {
+                value: "Dance Bloc Brazil",
+                speed: 1,
+            },
+        });
+        gsap.to("#heading-text-2", {
+            scrollTrigger: {
+                id: "heading-text-2",
+                trigger: "#heading-text-2",
+                start: "top center",
+                // end: " bottom",
+                toggleActions: "play none restart reverse",
+                // markers: true,
+                // duration: 3,
+            },
+            text: {
+                value: "Our Mission",
+                speed: 1,
+            },
+        });
+
+        gsap.from("#ig1", {
+            scrollTrigger: {
+                id: "ig1",
+                trigger: "#ig1",
+                start: "top center",
+                toggleActions: "play none none none",
+                // markers: true,
+                // duration: 3,
+            },
+            autoAlpha: 0,
+            scale: 0.8,
+            duration: 2,
+        });
     });
 
     return (
         <Layout user={auth.user}>
             <Head title="About Us" />
-            <div className="flex items-end bg-[url('/about.webp')] bg-cover bg-left mb-3  h-screen w-full lg:bg-center">
+            <div className="flex items-end bg-[url('/about.webp')] bg-cover bg-left mb-[200px]  h-screen w-full lg:bg-center">
                 <div>
                     <div
                         id="top-header1"
@@ -44,8 +89,36 @@ export default function About({ auth }) {
                     ></div>
                 </div>
             </div>
-            <div className="w-full">
+            <div className="flex flex-col max-w-5xl gap-2 mb-[100px]  max-h-fit border-b bg-gradient-to-b from-white from-90% px-6 py-16 mx-3 rounded-3xl z-40 shadow">
+                <div
+                    id="heading-text-1"
+                    className="   text-db-pink/90 font-extrabold text-4xl h-[36px] md:text-7xl md:h-[72px]  mb-5"
+                ></div>
+                <p className="text-2xl  text-justify text-slate-600">
+                    Located in the vibrant heart of Perth, Dance Bloc Brazil is
+                    dedicated to bringing the exhilarating energy and rich
+                    cultural heritage of Brazilian samba to our community.
+                    Whether you’re a seasoned dancer or a complete beginner, our
+                    school offers a welcoming and dynamic environment for
+                    everyone.
+                </p>
+            </div>
+            <div id="ig1" className="shadow-xl mb-[100px] min-h-fit">
                 <InstagramEmbed url="https://www.instagram.com/p/C5TAzo2P5VR/" />
+            </div>
+            <div className="flex flex-col max-w-5xl gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% px-6 py-16 mx-3 rounded-3xl z-40 shadow mb-[1000px]">
+                <div
+                    id="heading-text-2"
+                    className="   text-db-pink/90 font-extrabold text-4xl h-[36px] md:text-7xl md:h-[72px]  mb-5"
+                ></div>
+                <p className="text-2xl  text-justify text-slate-600">
+                    At Dance Bloc Brazil, our mission is to share the joy,
+                    rhythm, and spirit of samba with people of all ages and
+                    backgrounds. We strive to create a supportive and inclusive
+                    space where students can explore the beauty of Brazilian
+                    dance, improve their skills, and connect with a passionate
+                    community.
+                </p>
             </div>
         </Layout>
     );
