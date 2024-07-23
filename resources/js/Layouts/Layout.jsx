@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Link } from "@inertiajs/react";
+import { Link, Head } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -44,6 +44,14 @@ export default function ({ user, children }) {
     }, []);
     return (
         <div>
+            <Head>
+                <meta
+                    head-key="description"
+                    name="description"
+                    content="Whether you've always dreamed of mastering the captivating moves of Samba or the sassy flow of Funk, Dance Bloc Brazil is your gateway to South American rhythm. "
+                />
+                <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+            </Head>
             <nav
                 className={`transition duration-1000 w-full fixed top-0 left-0  z-50 bg-db-pink ${
                     isTransparent &&

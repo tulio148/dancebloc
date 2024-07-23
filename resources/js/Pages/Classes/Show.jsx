@@ -108,12 +108,7 @@ export default function Show({ auth, class_, enrolled_classes }) {
                     </Link>
                 )}
             </div>
-            <div
-                className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-md shadow-db-pink brightness-105  min-w-[320px] max-w-7xl h-[660px] flex flex-col justify-between bg-no-repeat bg-contain bg-center bg-black"
-                style={{
-                    backgroundImage: `url(/fb_img_1663987814675.jpg)`,
-                }}
-            >
+            <div className="border-t border-b border-white/50 my-8 mx-2 rounded-3xl shadow-md shadow-db-pink brightness-105   max-w-7xl h-screen flex flex-col justify-between bg-no-repeat w-full bg-top  bg-black bg-[url('/fb_img_1663987814675.jpg')] ">
                 <h2 className="w-full flex items-center tracking-widest  py-5 mt-3 px-4 gap-2">
                     <span className=" text-db-pink/90 font-medium text-3xl">
                         dance

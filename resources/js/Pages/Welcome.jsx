@@ -156,10 +156,6 @@ export default function Welcome({ auth }) {
         <>
             <Head>
                 <title>Home Page</title>
-                <meta
-                    name="description"
-                    content="Whether you've always dreamed of mastering the captivating moves of Samba or the sassy flow of Funk, Dance Bloc Brazil is your gateway to South American rhythm. "
-                />
             </Head>
             <Layout user={auth.user}>
                 {/* HERO */}
