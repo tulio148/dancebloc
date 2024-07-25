@@ -55,7 +55,6 @@ export default function Classes({ auth, classes, terms }) {
             },
             text: {
                 value: "Courses",
-                // speed: 1.5,
             },
             duration: 2,
             ease: "back.out",
@@ -139,9 +138,9 @@ export default function Classes({ auth, classes, terms }) {
                             <div className="animate-pulse">
                                 <FontAwesomeIcon
                                     icon={faArrowDownLong}
-                                    size="2xl"
+                                    size="3x"
                                     style={{
-                                        color: "#FF00F7",
+                                        color: "white",
                                     }}
                                 />
                             </div>
@@ -158,19 +157,19 @@ export default function Classes({ auth, classes, terms }) {
                             <div className="animate-pulse">
                                 <FontAwesomeIcon
                                     icon={faArrowDownLong}
-                                    size="2xl"
+                                    size="3x"
                                     style={{
-                                        color: "#FF00F7",
+                                        color: "white",
                                     }}
                                 />
                             </div>
                         </div>
                     </button>
                 </div>
-                <div className="row-start-3 col-span-3 self-end">
+                <div className="row-start-3 col-span-3 self-end max-w-2xl w-fit">
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink rounded   text-5xl md:text-7xl text-left max-w-fit"
+                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink rounded   text-5xl md:text-7xl text-right "
                     ></div>
                     <div
                         id="top-header2"

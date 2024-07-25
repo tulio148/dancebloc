@@ -4,6 +4,9 @@ import Layout from "@/Layouts/Layout";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { TextPlugin } from "gsap/all";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDownLong } from "@fortawesome/free-solid-svg-icons";
+import EventEnquire from "@/Components/EventEnquire";
 export default function Events({ auth }) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
@@ -24,12 +27,46 @@ export default function Events({ auth }) {
             },
             ease: "power4.out",
         });
+        gsap.from("#button", {
+            duration: 2,
+            delay: 0.3,
+            autoAlpha: 0,
+            ease: "power4.inOut",
+        });
     });
+    const handleClick = (id, offset = 0) => {
+        const targetElement = document.getElementById(id);
+        if (targetElement) {
+            const elementPosition =
+                targetElement.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+            });
+        }
+    };
     return (
         <Layout user={auth.user}>
             <Head title="Events" />
-            <div className="flex items-end bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
-                <div>
+            <div className="grid grid-rows-3 bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
+                <button
+                    id="button"
+                    className="row-start-2 justify-self-start mx-7"
+                    onClick={() => handleClick("form", 200)}
+                >
+                    <div className="animate-pulse ">
+                        <FontAwesomeIcon
+                            icon={faArrowDownLong}
+                            size="7x"
+                            style={{
+                                color: "white",
+                            }}
+                        />
+                    </div>
+                </button>
+                <div className="row-start-3 self-end max-w-2xl w-fit">
                     <div
                         id="top-header1"
                         className="mx-7 text-white font-extralight h-14 sm:h-16 bg-db-pink text-6xl md:text-7xl text-right"
@@ -39,6 +76,9 @@ export default function Events({ auth }) {
                         className="mx-7 text-white font-thin h-14 sm:h-20  text-6xl md:text-7xl  mb-20"
                     ></div>
                 </div>
+            </div>
+            <div id="form" className="mt-56">
+                <EventEnquire />
             </div>
         </Layout>
     );

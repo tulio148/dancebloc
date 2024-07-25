@@ -171,7 +171,7 @@ export default function Welcome({ auth }) {
                         id="heading0"
                         className=" w-full bg-gradient-to-b h-fit from-db-pink/70 from-30% to-db-pink/90 to-50% py-1  shadow-md shadow-db-pink/30 mb-12"
                     >
-                        <h1 className="min-w-full tracking-[0.2em] px-2 lg:px-28 text-2xl leading-8 font-normal text-center   text-white">
+                        <h1 className="min-w-full tracking-[0.2em] px-2 lg:px-28 text-2xl leading-8 font-normal text-center text-white">
                             Experience Perth's premier dance school, offering
                             diverse styles, a vibrant community, professional
                             event shows, and costume hire services.
@@ -295,6 +295,12 @@ export default function Welcome({ auth }) {
                             they are passionate artists who will guide you on
                             your dance journey with enthusiasm and cultural
                             understanding.
+                            <Link
+                                className="underline underline-offset-4 font-bold "
+                                href={route("mission")}
+                            >
+                                &nbsp;Learn about us!&nbsp;
+                            </Link>
                         </p>
                     </div>
                 </div>
@@ -318,6 +324,12 @@ export default function Welcome({ auth }) {
                             festivals, and private parties, captivating
                             audiences with our authentic costumes, high-energy
                             routines, and infectious rhythms.
+                            <Link
+                                className="underline underline-offset-4 font-bold "
+                                href={route("events")}
+                            >
+                                &nbsp;Book your event!&nbsp;
+                            </Link>
                         </p>
                     </div>
                 </div>
