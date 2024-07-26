@@ -14,7 +14,9 @@ export default function Contact({ auth }) {
     gsap.registerPlugin(useGSAP);
     useGSAP(() => {
         gsap.to("#header", {
-            text: { value: "Contact Us", speed: 0.7 },
+            text: { value: "Contact Us", rtl: true },
+            ease: "power1.inOut",
+            duration: 0.5,
         });
     });
     const { data, setData, post, processing, errors } = useForm({
@@ -51,7 +53,7 @@ export default function Contact({ auth }) {
             <div className="w-full max-w-lg mt-14">
                 <h1
                     id="header"
-                    className="tracking-widest text-6xl text-white font-extralight  p-5 my-16 "
+                    className="tracking-widest text-5xl text-white/95  font-medium  p-5 my-16 text-right"
                 ></h1>
             </div>
             <form

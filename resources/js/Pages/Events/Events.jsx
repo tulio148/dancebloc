@@ -7,6 +7,7 @@ import { TextPlugin } from "gsap/all";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownLong } from "@fortawesome/free-solid-svg-icons";
 import EventEnquire from "@/Components/EventEnquire";
+
 export default function Events({ auth }) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(TextPlugin);
@@ -29,9 +30,26 @@ export default function Events({ auth }) {
         });
         gsap.from("#button", {
             duration: 2,
-            delay: 0.3,
+            delay: 0.7,
             autoAlpha: 0,
             ease: "power4.inOut",
+        });
+        gsap.to("#header", {
+            scrollTrigger: {
+                id: "header",
+                trigger: "#header",
+                start: "top center",
+                // end: " bottom",
+                toggleActions: "play none restart reverse",
+                // markers: true,
+                // duration: 3,
+            },
+            text: {
+                value: "Send an inquiry",
+                speed: 1,
+                rtl: true,
+                preserveSpaces: true,
+            },
         });
     });
     const handleClick = (id, offset = 0) => {
@@ -53,17 +71,22 @@ export default function Events({ auth }) {
             <div className="grid grid-rows-3 bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
                 <button
                     id="button"
-                    className="row-start-2 justify-self-start mx-7"
-                    onClick={() => handleClick("form", 200)}
+                    className="row-start-2 justify-self-start md:justify-self-center mx-7 "
+                    onClick={() => handleClick("form", 80)}
                 >
-                    <div className="animate-pulse ">
-                        <FontAwesomeIcon
-                            icon={faArrowDownLong}
-                            size="7x"
-                            style={{
-                                color: "white",
-                            }}
-                        />
+                    <div className="flex gap-3 items-center animate-bounce">
+                        <div className="text-white bg-db-pink text-4xl max-w-40 sm:max-w-fit p-2 rounded sm:text-6xl">
+                            enquire
+                        </div>
+                        <div className="">
+                            <FontAwesomeIcon
+                                icon={faArrowDownLong}
+                                size="3x"
+                                style={{
+                                    color: "white",
+                                }}
+                            />
+                        </div>
                     </div>
                 </button>
                 <div className="row-start-3 self-end max-w-2xl w-fit">
@@ -77,7 +100,14 @@ export default function Events({ auth }) {
                     ></div>
                 </div>
             </div>
-            <div id="form" className="mt-56">
+
+            <div id="form" className="mt-56 max-w-2xl w-full">
+                <div className="w-full  mt-14">
+                    <h1
+                        id="header"
+                        className="tracking-widest text-4xl sm:text-6xl h-[48px] text-white/95  font-medium  my-4 px-4 text-right"
+                    ></h1>
+                </div>
                 <EventEnquire />
             </div>
         </Layout>

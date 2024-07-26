@@ -135,10 +135,10 @@ export default function Classes({ auth, classes, terms }) {
                                 next course starts:{" "}
                                 {formatDate(groupedData[0].start_date)}
                             </div>
-                            <div className="animate-pulse">
+                            <div className="animate-bounce">
                                 <FontAwesomeIcon
                                     icon={faArrowDownLong}
-                                    size="3x"
+                                    size="2xl"
                                     style={{
                                         color: "white",
                                     }}
@@ -154,10 +154,10 @@ export default function Classes({ auth, classes, terms }) {
                                     groupedData[0].classes[0].datetime
                                 )}
                             </div>
-                            <div className="animate-pulse">
+                            <div className="animate-bounce">
                                 <FontAwesomeIcon
                                     icon={faArrowDownLong}
-                                    size="3x"
+                                    size="2xl"
                                     style={{
                                         color: "white",
                                     }}

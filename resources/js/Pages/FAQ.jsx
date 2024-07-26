@@ -55,9 +55,11 @@ export default function FAQ({ auth }) {
         gsap.to("#header", {
             text: {
                 value: "Frequently Asked Questions",
-                speed: 0.7,
                 padSpace: true,
+                // rtl: true,
             },
+            ease: "power1.inOut",
+            duration: 1,
         });
     });
 
@@ -67,7 +69,7 @@ export default function FAQ({ auth }) {
             <div className="w-full max-w-5xl mt-14 mb-14 h-56 sm:h-fit">
                 <h1
                     id="header"
-                    className="tracking-widest text-5xl text-white font-extralight p-5 mt-16"
+                    className="tracking-widest text-5xl text-white/95 font-medium  p-5 mt-16"
                 ></h1>
             </div>
             <div className="flex flex-col gap-7 mx-3">

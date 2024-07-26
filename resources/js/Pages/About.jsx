@@ -167,7 +167,7 @@ export default function About({ auth }) {
                     community.
                 </p>
             </div>
-            <div id="ig2" className=" w-full mb-[100px] max-w-xl  ">
+            <div id="ig2" className=" w-full mb-[100px] max-w-xl px-3">
                 <InstagramEmbed url="https://www.instagram.com/p/C73GELmvjpf/" />
             </div>
         </Layout>

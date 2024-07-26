@@ -46,6 +46,7 @@ Route::get('/faq', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
