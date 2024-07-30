@@ -16,7 +16,7 @@ class ContactController extends Controller
         return Inertia::render('Contact');
     }
 
-    public function submit(Request $request)
+    public function contact(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string',
@@ -27,7 +27,24 @@ class ContactController extends Controller
 
         Mail::to('info@danceblocbrazil.com')->send(new ContactFormMail($data));
     }
-    public function send(Request $request)
+    public function event(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required|string',
+            'date' => 'required|date',
+            'time' => 'required|string',
+            'eventType' => 'required|string',
+            'guests' => 'required|integer',
+            'location' => 'required|string',
+            'otherInfo' => 'nullable|string',
+            'questions' => 'nullable|string',
+        ]);
+
+        Mail::to('info@danceblocbrazil.com')->send(new InquiryFormMail($data));
+    }
+    public function costume(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string',
