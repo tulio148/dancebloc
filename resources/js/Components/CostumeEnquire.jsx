@@ -49,7 +49,7 @@ export default function CostumeEnquire({ costume }) {
             </Modal>
             <form
                 onSubmit={submit}
-                className="flex flex-col justify-center items-center gap-3 mt-[400px] "
+                className="flex flex-col justify-center items-center gap-3  "
             >
                 <div className="grid sm:grid-cols-2 gap-9 p-4 w-full">
                     <div className="sm:col-span-2">

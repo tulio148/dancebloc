@@ -33,7 +33,7 @@ export default function Nav({ user }) {
                     href={route("costumes")}
                     active={route().current("costumes")}
                 >
-                    Custome Hire
+                    Costume Hire
                 </NavLink>
                 <NavLink
                     href={route("contact")}
