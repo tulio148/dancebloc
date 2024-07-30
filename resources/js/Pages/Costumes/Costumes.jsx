@@ -54,7 +54,7 @@ export default function About({ auth }) {
 
     return (
         <Layout user={auth.user}>
-            <Head title="About Us" />
+            <Head title="Costume Hire" />
             <div className="grid grid-rows-3  bg-[url('/costume.webp')] bg-cover  bg-center   h-screen w-full lg:bg-center ">
                 <button
                     id="button"
