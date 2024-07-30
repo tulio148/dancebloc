@@ -1,56 +1,43 @@
-import { Head } from "@inertiajs/react";
-import gsap from "gsap";
 import Layout from "@/Layouts/Layout";
+import { Head } from "@inertiajs/react";
 import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
-import { TextPlugin } from "gsap/all";
+import gsap from "gsap";
+import { TextPlugin, ScrollTrigger } from "gsap/all";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDownLong } from "@fortawesome/free-solid-svg-icons";
-import EventEnquire from "@/Components/EventEnquire";
+import CostumeGrid from "@/Components/CostumeGrid";
 
-export default function Events({ auth }) {
-    gsap.registerPlugin(ScrollTrigger);
+export default function About({ auth }) {
     gsap.registerPlugin(TextPlugin);
+    gsap.registerPlugin(useGSAP);
+    gsap.registerPlugin(ScrollTrigger);
+
     useGSAP(() => {
         gsap.to("#top-header1", {
             duration: 1.2,
+            // delay: 1,
             text: {
-                value: "ignite",
+                value: "Sparkle, shine, ",
             },
             ease: "back.in",
         });
         gsap.to("#top-header2", {
-            duration: 1.2,
-            delay: 1,
+            duration: 1.5,
+            delay: 1.5,
             text: {
-                value: "your event",
+                value: "samba time.",
             },
             ease: "power4.out",
         });
+
         gsap.from("#button", {
             duration: 2,
             delay: 1,
             autoAlpha: 0,
             ease: "power4.inOut",
         });
-        gsap.to("#header", {
-            scrollTrigger: {
-                id: "header",
-                trigger: "#header",
-                start: "top center",
-                // end: " bottom",
-                toggleActions: "play none restart reverse",
-                // markers: true,
-                // duration: 3,
-            },
-            text: {
-                value: "Send an inquiry",
-                speed: 1,
-                rtl: true,
-                preserveSpaces: true,
-            },
-        });
     });
+
     const handleClick = (id, offset = 0) => {
         const targetElement = document.getElementById(id);
         if (targetElement) {
@@ -64,18 +51,19 @@ export default function Events({ auth }) {
             });
         }
     };
+
     return (
         <Layout user={auth.user}>
-            <Head title="Events" />
-            <div className="grid grid-rows-3 bg-[url('/events1.webp')] bg-cover bg-center mb-3  h-screen w-full lg:bg-center">
+            <Head title="About Us" />
+            <div className="grid grid-rows-3  bg-[url('/costume.webp')] bg-cover  bg-center   h-screen w-full lg:bg-center ">
                 <button
                     id="button"
                     className="row-start-2 justify-self-start md:justify-self-center mx-7 "
-                    onClick={() => handleClick("form", 80)}
+                    onClick={() => handleClick("costumes", 40)}
                 >
                     <div className="flex gap-3 items-center animate-bounce">
-                        <div className="text-white font-light bg-db-pink text-4xl max-w-40 sm:max-w-fit p-2 rounded sm:text-6xl">
-                            enquire
+                        <div className="text-white font-light bg-db-pink text-4xl max-w-52 sm:max-w-fit p-2 rounded sm:text-6xl">
+                            see our collection
                         </div>
                         <div className="">
                             <FontAwesomeIcon
@@ -88,26 +76,19 @@ export default function Events({ auth }) {
                         </div>
                     </div>
                 </button>
-                <div className="row-start-3 self-end max-w-2xl w-fit">
+                <div className="row-start-3 self-end max-w-2xl w-fit flex flex-col gap-1">
                     <div
                         id="top-header1"
-                        className="mx-7 text-white font-extralight h-14 sm:h-16 bg-db-pink text-6xl md:text-7xl text-right"
+                        className="mx-7 text-white font-extralight h-14 sm:h-20 bg-db-pink text-5xl md:text-7xl "
                     ></div>
                     <div
                         id="top-header2"
-                        className="mx-7 text-white font-thin h-14 sm:h-20  text-6xl md:text-7xl  mb-20 "
+                        className="mx-7 self-end text-db-pink font-light shadow-lg  h-14 sm:h-20 text-5xl md:text-7xl mb-20 text-right bg-white w-fit"
                     ></div>
                 </div>
             </div>
-
-            <div id="form" className="mt-56 max-w-2xl w-full">
-                <div className="w-full  mt-14">
-                    <h1
-                        id="header"
-                        className="tracking-widest text-4xl sm:text-6xl h-[48px] text-white/95  font-medium  my-4 px-4 text-right"
-                    ></h1>
-                </div>
-                <EventEnquire />
+            <div id="costumes" className="mb-96">
+                <CostumeGrid />
             </div>
         </Layout>
     );

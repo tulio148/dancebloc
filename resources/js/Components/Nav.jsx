@@ -30,6 +30,12 @@ export default function Nav({ user }) {
                     Book a Show
                 </NavLink>
                 <NavLink
+                    href={route("costumes")}
+                    active={route().current("costumes")}
+                >
+                    Custome Hire
+                </NavLink>
+                <NavLink
                     href={route("contact")}
                     active={route().current("contact")}
                 >

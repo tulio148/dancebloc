@@ -8,7 +8,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import { useState } from "react";
 
-export default function EventEnquire({}) {
+export default function CostumeEnquire({ costume }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: "",
         email: "",
@@ -21,12 +21,13 @@ export default function EventEnquire({}) {
         otherInfo: "",
         questions: "",
     });
+    console.log(costume);
 
     const [isOpen, setIsOpen] = useState(false);
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("contact.send"), {
+        post(route("contact.event"), {
             onSuccess: () => {
                 setIsOpen(true);
                 setTimeout(() => setIsOpen(false), 2000);
@@ -48,7 +49,7 @@ export default function EventEnquire({}) {
             </Modal>
             <form
                 onSubmit={submit}
-                className="flex flex-col justify-center items-center gap-3 mb-[200px]  "
+                className="flex flex-col justify-center items-center gap-3 mt-[400px] "
             >
                 <div className="grid sm:grid-cols-2 gap-9 p-4 w-full">
                     <div className="sm:col-span-2">

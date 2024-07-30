@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faArrowRightToBracket,
     faDoorOpen,
-    faUser,
     faUserTie,
     faCalendarDays,
     faMusic,
@@ -11,6 +10,7 @@ import {
     faMask,
     faCircleInfo,
     faCircleQuestion,
+    faFeather,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ResponsiveNav({ user }) {
@@ -148,6 +148,32 @@ export default function ResponsiveNav({ user }) {
                                     ) : (
                                         <FontAwesomeIcon
                                             icon={faMask}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("costumes")}
+                                active={route().current("costumes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center gap-5">
+                                    Costume Hire
+                                    {route().current("costumes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faFeather}
+                                            size="lg"
+                                            style={{
+                                                color: "#00FFA0",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faFeather}
                                             size="lg"
                                             style={{
                                                 color: "#FFFFFF",

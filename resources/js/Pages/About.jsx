@@ -150,7 +150,10 @@ export default function About({ auth }) {
                     everyone.
                 </p>
             </div>
-            <div id="ig1" className=" w-full mb-[100px] max-w-xl px-3 ">
+            <div
+                id="ig1"
+                className=" w-full mb-[100px] max-w-xl px-3 overflow-hidden"
+            >
                 <InstagramEmbed url="https://www.instagram.com/p/C5TAzo2P5VR/" />
             </div>
             <div className="flex flex-col max-w-5xl gap-2 max-h-fit border-b bg-gradient-to-b from-white from-90% px-6 py-16 mx-3 rounded-3xl z-40 shadow mb-[100px]">
@@ -167,7 +170,10 @@ export default function About({ auth }) {
                     community.
                 </p>
             </div>
-            <div id="ig2" className=" w-full mb-[100px] max-w-xl px-3">
+            <div
+                id="ig2"
+                className=" w-full mb-[100px] max-w-xl px-3 overflow-hidden"
+            >
                 <InstagramEmbed url="https://www.instagram.com/p/C73GELmvjpf/" />
             </div>
         </Layout>
