@@ -1,4 +1,4 @@
-// import { Link } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
 import {
     faInstagram,
     faTiktok,
@@ -51,6 +51,7 @@ export default function Footer() {
                     <p className="mt-8  font-extralight tracking-widest">
                         &copy; 2024 Dance Bloc Brazil
                     </p>
+                    <Link href="/privacy">Privacy Policy</Link>
                 </div>
             </div>
         </footer>

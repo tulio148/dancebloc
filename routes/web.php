@@ -49,6 +49,10 @@ Route::get('/costumes', function () {
     return Inertia::render('Costumes/Costumes');
 })->name('costumes');
 
+Route::get('/privacy', function () {
+    return Inertia::render('PrivacyPolicy');
+})->name('privacy');
+
 
 
 
@@ -90,5 +94,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
 
 require __DIR__ . '/auth.php';
