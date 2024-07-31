@@ -356,6 +356,32 @@ export default function ResponsiveNav({ user }) {
                                 </div>
                             </ResponsiveNavLink>
                             <ResponsiveNavLink
+                                href={route("costumes")}
+                                active={route().current("costumes")}
+                                className="self-end"
+                            >
+                                <div className="flex items-center gap-5">
+                                    Costume Hire
+                                    {route().current("costumes") ? (
+                                        <FontAwesomeIcon
+                                            icon={faFeather}
+                                            size="lg"
+                                            style={{
+                                                color: "#00FFA0",
+                                            }}
+                                        />
+                                    ) : (
+                                        <FontAwesomeIcon
+                                            icon={faFeather}
+                                            size="lg"
+                                            style={{
+                                                color: "#FFFFFF",
+                                            }}
+                                        />
+                                    )}
+                                </div>
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
                                 href={route("contact")}
                                 active={route().current("contact")}
                                 className="self-end"
