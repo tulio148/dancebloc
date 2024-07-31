@@ -53,8 +53,9 @@ Route::get('/costumes', function () {
 
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactController::class, 'contact'])->name('contact.contact');
+Route::post('/contact', [ContactController::class, 'event'])->name('contact.event');
+Route::post('/contact', [ContactController::class, 'costume'])->name('contact.costume');
 
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');

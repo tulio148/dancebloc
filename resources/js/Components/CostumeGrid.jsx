@@ -12,15 +12,15 @@ export default function CostumeGrid() {
     const [costumeSelected, setCostumeSelected] = useState(null);
     const costumeDetailsRef = useRef(null);
 
-    useEffect(() => {
-        if (costumeSelected && costumeDetailsRef.current) {
-            const targetPosition = costumeDetailsRef.current.offsetTop - 68;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: "smooth",
-            });
-        }
-    }, [costumeSelected]);
+    // useEffect(() => {
+    //     if (costumeSelected && costumeDetailsRef.current) {
+    //         const targetPosition = costumeDetailsRef.current.offsetTop - 68;
+    //         window.scrollTo({
+    //             top: targetPosition,
+    //             behavior: "smooth",
+    //         });
+    //     }
+    // }, [costumeSelected]);
 
     const costume = Costumes.find((costume) => costume.id === costumeSelected);
 
@@ -60,21 +60,24 @@ export default function CostumeGrid() {
                 ></h1>
             </div>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-[400px]">
-                {!costumeSelected ? (
-                    Costumes.map((costume) => (
-                        <CostumeCard
-                            costume={costume}
-                            key={costume.id}
-                            handle={handleCostumeClick}
-                        />
-                    ))
-                ) : (
-                    <div className="col-span-full" ref={costumeDetailsRef}>
+                {Costumes.map((costume) => (
+                    <CostumeCard
+                        costume={costume}
+                        key={costume.id}
+                        handle={handleCostumeClick}
+                    />
+                ))}
+                {costumeSelected && (
+                    <Modal
+                        show={true}
+                        onClose={() => setCostumeSelected(null)}
+                        className="max-w-5xl "
+                    >
                         <CostumeDetails
                             costume={costume}
-                            handle={handleCostumeClick}
+                            handle={() => setCostumeSelected(null)}
                         />
-                    </div>
+                    </Modal>
                 )}
             </div>
         </div>

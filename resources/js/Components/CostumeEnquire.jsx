@@ -14,20 +14,16 @@ export default function CostumeEnquire({ costume }) {
         email: "",
         phone: "",
         date: "",
-        time: "",
-        eventType: "",
-        guests: "",
-        location: "",
         otherInfo: "",
         questions: "",
+        costume_name: costume.name,
     });
-    console.log(costume);
 
     const [isOpen, setIsOpen] = useState(false);
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("contact.event"), {
+        post(route("contact.costume"), {
             onSuccess: () => {
                 setIsOpen(true);
                 setTimeout(() => setIsOpen(false), 2000);
@@ -39,7 +35,7 @@ export default function CostumeEnquire({ costume }) {
         <>
             <Modal show={isOpen} maxWidth="md">
                 <div className="p-6 h-full">
-                    <h5 className="text-xl font-medium leading-6 text-center">
+                    <h5 className="text-md font-medium leading-6 text-center">
                         Success!
                     </h5>
                     <p className="mt-2 text-sm text-gray-500">
@@ -55,7 +51,7 @@ export default function CostumeEnquire({ costume }) {
                     <div className="sm:col-span-2">
                         <InputLabel
                             value="Name"
-                            className=" font-medium text-xl mb-3 tracking-wider"
+                            className=" font-medium text-md mb-3 tracking-wider"
                         />
                         <TextInput
                             id="name"
@@ -70,7 +66,7 @@ export default function CostumeEnquire({ costume }) {
                     <div className="sm:col-span-2">
                         <InputLabel
                             value="Email"
-                            className=" font-medium text-xl mb-3 tracking-wider"
+                            className=" font-medium text-md mb-3 tracking-wider"
                         />
                         <TextInput
                             id="email"
@@ -87,7 +83,7 @@ export default function CostumeEnquire({ costume }) {
                     <div className="sm:col-span-2">
                         <InputLabel
                             value="Phone"
-                            className=" font-medium text-xl mb-3 tracking-wider"
+                            className=" font-medium text-md mb-3 tracking-wider"
                         />
                         <TextInput
                             id="phone"
@@ -102,8 +98,8 @@ export default function CostumeEnquire({ costume }) {
 
                     <div className="sm:col-span-1">
                         <InputLabel
-                            value="Date"
-                            className=" font-medium text-xl mb-3 tracking-wider "
+                            value="Hire Date"
+                            className=" font-medium text-md mb-3 tracking-wider "
                         />
                         <TextInput
                             id="date"
@@ -115,83 +111,10 @@ export default function CostumeEnquire({ costume }) {
                         />
                     </div>
 
-                    <div className="sm:col-span-1">
-                        <InputLabel
-                            value="Time"
-                            className=" font-medium text-xl mb-3 tracking-wider"
-                        />
-                        <TextInput
-                            id="time"
-                            name="time"
-                            type="time"
-                            value={data.time}
-                            className="mt-1 block w-full"
-                            onChange={(e) => setData("time", e.target.value)}
-                        />
-                    </div>
-
-                    <div className="sm:col-span-2">
-                        <InputLabel
-                            value="Event Type"
-                            className=" font-medium text-xl mb-3 tracking-wider"
-                        />
-                        <SelectInput
-                            options={[
-                                "",
-                                "Corporate",
-                                "Community",
-                                "Wedding",
-                                "Birthday",
-                                "Other",
-                            ]}
-                            id="eventType"
-                            name="eventType"
-                            value={data.eventType}
-                            className="mt-1 block w-full"
-                            onChange={(e) =>
-                                setData("eventType", e.target.value)
-                            }
-                            required
-                        ></SelectInput>
-                    </div>
-
-                    <div className="sm:col-span-2">
-                        <InputLabel
-                            value="No. of Guests"
-                            className=" font-medium text-xl mb-3 tracking-wider"
-                        />
-                        <TextInput
-                            id="guests"
-                            name="guests"
-                            type="number"
-                            value={data.guests}
-                            className="mt-1 block w-full"
-                            onChange={(e) => setData("guests", e.target.value)}
-                            required
-                        />
-                    </div>
-
-                    <div className="sm:col-span-2">
-                        <InputLabel
-                            value="Location"
-                            className=" font-medium text-xl mb-3 tracking-wider"
-                        />
-                        <TextInput
-                            id="location"
-                            name="location"
-                            value={data.location}
-                            className="mt-1 block w-full"
-                            onChange={(e) =>
-                                setData("location", e.target.value)
-                            }
-                            required
-                        />
-                    </div>
-
                     <div className="sm:col-span-2">
                         <InputLabel
                             value="Other information you’d like us to know"
-                            className=" font-medium text-xl mb-3 tracking-wider"
+                            className=" font-medium text-md mb-3 tracking-wider"
                         />
                         <Textarea
                             id="otherInfo"
@@ -207,7 +130,7 @@ export default function CostumeEnquire({ costume }) {
                     <div className="sm:col-span-2">
                         <InputLabel
                             value="Questions you want to ask us"
-                            className=" font-medium text-xl mb-3 tracking-wider"
+                            className=" font-medium text-md mb-3 tracking-wider"
                         />
                         <Textarea
                             id="questions"
@@ -220,7 +143,7 @@ export default function CostumeEnquire({ costume }) {
                         />
                     </div>
                 </div>
-                <PrimaryButton className="mt-1 text-xl" disabled={processing}>
+                <PrimaryButton className="my-4 text-md" disabled={processing}>
                     Send
                 </PrimaryButton>
             </form>

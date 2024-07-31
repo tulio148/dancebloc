@@ -31,23 +31,24 @@ export default function CostumeDetails({ costume, handle }) {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div className="mb-8">
-                        <div className="flex overflow-x-auto whitespace-nowrap max-w-2xl h-36">
+                        <img
+                            src={`/costumesImages/${costume.id}/${selectedImage}`}
+                            alt={costume.name}
+                            className="w-full h-auto object-contain"
+                            loading="lazy"
+                        />
+                        <div className="flex overflow-x-auto whitespace-nowrap max-w-full h-36">
                             {costume.images.others.map((image) => (
                                 <img
                                     key={image}
                                     src={`/costumesImages/${costume.id}/${image}`}
                                     alt={`${costume.name} - Other view`}
                                     onClick={() => handleImageClick(image)}
-                                    className="inline-block border border-gray-300 hover:border-blue-500 object-cover cursor-pointer"
+                                    loading="lazy"
+                                    className="inline-block border border-gray-300 hover:border-blue-500 object-cover cursor-pointer w-36 h-36"
                                 />
                             ))}
                         </div>
-                        <img
-                            src={`/costumesImages/${costume.id}/${selectedImage}`}
-                            alt={costume.name}
-                            className="max-w-2xl max-h-[1000px] w-full"
-                            loading="lazy"
-                        />
                     </div>
 
                     <div className="w-full max-w-2xl px-4 lg:px-10">
@@ -56,7 +57,7 @@ export default function CostumeDetails({ costume, handle }) {
                         </p>
 
                         <div className="font-semibold tracking-widest text-db-pink">
-                            <ul className="flex flex-wrap gap-4 justify-between text-lg">
+                            <ul className="flex flex-col gap-4  text-lg">
                                 {[
                                     { label: "Color", value: costume.color },
                                     { label: "Size", value: costume.size },
@@ -70,7 +71,7 @@ export default function CostumeDetails({ costume, handle }) {
                                     },
                                     {
                                         label: "Price",
-                                        value: `$${costume.price}`,
+                                        value: `${costume.price}`,
                                     },
                                 ].map(({ label, value }) => (
                                     <li key={label}>
@@ -86,11 +87,11 @@ export default function CostumeDetails({ costume, handle }) {
                                 className="inline-flex justify-center w-full items-center px-6 py-2 mt-16 bg-gradient-to-tr from-db-pink to-db-pink/30 rounded-md font-normal text-md text-white tracking-widest hover:bg-gradient-to-br hover:from-db-pink hover:to-db-pink/30 focus:bg:db-pink/50 active:bg-db-pink transition ease-in-out duration-150"
                                 onClick={() => setShowForm(true)}
                             >
-                                Reserve
+                                Enquire
                             </button>
                             <button
                                 onClick={() => handle(null)}
-                                className="self-start mt-8"
+                                className="self-start my-8"
                             >
                                 <FontAwesomeIcon
                                     icon={faArrowLeftLong}
