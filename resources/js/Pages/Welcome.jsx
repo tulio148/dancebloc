@@ -270,9 +270,11 @@ export default function Welcome({ auth }) {
                         id="heading8"
                         className=" w-full bg-db-green/80 from-20% py-4  my-32 "
                     >
-                        <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-center">
-                            coming soon
-                        </h1>
+                        <Link href={route("costumes")}>
+                            <h1 className="min-w-full tracking-widest px-4 lg:px-24  text-5xl lg:text-5xl text-white font-extralight lg:font-thin text-center">
+                                learn more
+                            </h1>
+                        </Link>
                     </div>
                 </div>
                 <div
