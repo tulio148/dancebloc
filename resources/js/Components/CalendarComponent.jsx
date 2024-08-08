@@ -59,6 +59,15 @@ export default function CalendarComponent({ classesData }) {
         const classes = classesData.filter(
             (classItem) => classItem.datetime.split("T")[0] === dateString
         );
+
+        if (classes.length === 0) {
+            return (
+                <p className="text-center border-b py-2 mb-4">
+                    No classes on this day
+                </p>
+            );
+        }
+
         return (
             <>
                 {classes
@@ -66,7 +75,7 @@ export default function CalendarComponent({ classesData }) {
                     .map((classItem, index) => (
                         <div
                             key={index}
-                            className="flex  gap-4 justify-between items-end border-b pb-1 mb-4"
+                            className="flex gap-4 justify-between items-end border-b pb-1 mb-4"
                         >
                             <div>
                                 {new Date(
