@@ -29,7 +29,7 @@ class InquiryFormMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.inquiryFormEmail')
+        return $this->subject('Event Inquiry')->view('mail.inquiryFormEmail')
             ->with('data', $this->data);
     }
 }

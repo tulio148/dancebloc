@@ -30,7 +30,7 @@ export default function Contact({ auth }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("contact.submit"), {
+        post(route("contact.contact"), {
             onSuccess: () => {
                 setIsOpen(true);
                 setTimeout(() => setIsOpen(false), 2000);
@@ -40,7 +40,7 @@ export default function Contact({ auth }) {
     return (
         <Layout user={auth.user}>
             <Head title="Contact" />
-            <Modal show={isOpen} maxWidth="md">
+            <Modal show={isOpen} className="max-w-2xl">
                 <div className="p-6 h-full">
                     <h5 className="text-xl font-medium leading-6 text-center">
                         Success!

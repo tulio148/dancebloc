@@ -29,7 +29,7 @@ class CostumeFormMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.costumeFormEmail')
+        return $this->subject('Costume Inquiry')->view('mail.costumeFormEmail')
             ->with('data', $this->data);
     }
 }

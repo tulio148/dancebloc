@@ -26,7 +26,7 @@ export default function EventEnquire({}) {
 
     const submit = (e) => {
         e.preventDefault();
-        post(route("contact.send"), {
+        post(route("contact.event"), {
             onSuccess: () => {
                 setIsOpen(true);
                 setTimeout(() => setIsOpen(false), 2000);
@@ -36,7 +36,7 @@ export default function EventEnquire({}) {
 
     return (
         <>
-            <Modal show={isOpen} maxWidth="md">
+            <Modal show={isOpen} className="max-w-2xl">
                 <div className="p-6 h-full">
                     <h5 className="text-xl font-medium leading-6 text-center">
                         Success!
