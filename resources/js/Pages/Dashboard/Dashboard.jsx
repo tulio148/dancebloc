@@ -59,6 +59,7 @@ export default function Dashboard({
             {activeTab == 3 && (
                 <Profile
                     user={auth.user}
+                    student={student}
                     mustVerifyEmail={mustVerifyEmail}
                     status={status}
                 />

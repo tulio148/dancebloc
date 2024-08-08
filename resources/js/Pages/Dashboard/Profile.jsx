@@ -1,8 +1,9 @@
+import SubscriptionToggle from "@/Components/SubscriptionToggle";
 import DeleteUserForm from "./Partials/DeleteUserForm";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
 
-export default function Profile({ user, mustVerifyEmail, status }) {
+export default function Profile({ user, mustVerifyEmail, status, student }) {
     return (
         <>
             <div className="mt-40 sm:mt-52 max-w-2xl w-full   mx-auto">
@@ -12,6 +13,7 @@ export default function Profile({ user, mustVerifyEmail, status }) {
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
                         />
+                        <SubscriptionToggle student={student} />
                     </div>
 
                     {user.signed_in_with == "email" && (

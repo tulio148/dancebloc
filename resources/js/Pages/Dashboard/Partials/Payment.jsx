@@ -60,7 +60,7 @@ export default function Payment({ order, cards }) {
         // }
         // };
         if (token.status === "OK") {
-            console.log(token.token);
+            // console.log(token.token);
 
             const data = {
                 token: token.token,
@@ -73,7 +73,7 @@ export default function Payment({ order, cards }) {
             axios
                 .post("/payment", data)
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     if (response.data.status == "success") {
                         setPaymentStatus("success");
                         setTimeout(() => {
@@ -133,7 +133,7 @@ export default function Payment({ order, cards }) {
             >
                 checkout
             </button>
-            <Modal show={isOpen} onClose={closeModal} maxWidth="md">
+            <Modal show={isOpen} onClose={closeModal} className="max-w-2xl">
                 <div className="p-6 h-full">
                     {paymentStatus === "success" ? (
                         <p>Payment Successful!</p>

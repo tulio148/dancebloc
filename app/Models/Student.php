@@ -37,7 +37,12 @@ class Student extends Model
         'name',
         'email',
         'user_id',
-        'card'
+        'card',
+        'unsubscribe',
+    ];
+
+    protected $casts = [
+        'unsubscribe' => 'boolean',
     ];
 
     /**
