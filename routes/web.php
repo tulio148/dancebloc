@@ -58,8 +58,8 @@ Route::get('/privacy', function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'contact'])->name('contact.contact');
-Route::post('/contact', [ContactController::class, 'event'])->name('contact.event');
-Route::post('/contact', [ContactController::class, 'costume'])->name('contact.costume');
+Route::post('/event-enquire', [ContactController::class, 'event'])->name('contact.event');
+Route::post('/costume-enquire', [ContactController::class, 'costume'])->name('contact.costume');
 
 
 Route::get('/classes', [ClassesController::class, 'index'])->name('classes');
@@ -91,6 +91,7 @@ Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 've
 
 Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile-reminder', [ProfileController::class, 'reminder'])->name('profile.reminder');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

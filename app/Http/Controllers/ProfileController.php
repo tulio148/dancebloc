@@ -40,6 +40,20 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
 
+    public function reminder(Request $request)
+    {
+        $student = $request->user()->student;
+
+        // if (!$student) {
+        //     return response()->json(['error' => 'Student not found'], 404);
+        // }
+
+        $student->is_subscribed = !$student->is_subscribed;
+        $student->save();
+
+        // return response()->json(['message' => 'Subscription updated successfully']);
+    }
+
     /**
      * Delete the user's account.
      */
